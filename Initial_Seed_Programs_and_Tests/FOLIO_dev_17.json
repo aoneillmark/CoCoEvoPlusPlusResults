@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_17",
+  "problem_text": "All rabbits are cute. Some turtles exist. An animal is either a rabbit or a squirrel. If something is skittish, then it is not still. All squirrels are skittish. Rock is still.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Rabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.",
+  "tests": [
+    {
+      "id": "tc_b01bb167",
+      "questions": "Based on the above information, is the following statement true or false? If something is a rabbit, then it is not skittish.",
+      "conclusions": "¬∃x (Rabbit(x) → Skittish(x)) ::: If something is a rabbit, then it is not skittish. FALSE"
+    },
+    {
+      "id": "tc_cc15e894",
+      "questions": "Based on the above information, is the following statement true or false? If something is a squirrel, then it is cute.",
+      "conclusions": "Squirrel(x) → Cute(x) ::: FALSE"
+    },
+    {
+      "id": "tc_61a3c6e8",
+      "questions": "Based on the above information, is the following statement true or false? If something is a rabbit, then it is cute and it is an animal.",
+      "conclusions": "Rabbit(x) → (Cute(x) ∧ Animal(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_036cc6b3",
+      "questions": "Based on the above information, is the following statement true or false? If something is a squirrel, then it is not still.",
+      "conclusions": "∀x (Squirrel(x) → ¬Still(x)) ::: If something is a squirrel, then it is not still. TRUE"
+    },
+    {
+      "id": "tc_902026f4",
+      "questions": "Based on the above information, is the following statement true or false? If something is a rabbit, then it is cute and it is not skittish.",
+      "conclusions": "Rabbit(x) → (Cute(x) ∧ ¬Skittish(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_d8e10c43",
+      "questions": "Based on the above information, is the following statement true or false? Rock is not an animal.",
+      "conclusions": "¬Animal(rock) ::: Rock is not an animal. FALSE"
+    },
+    {
+      "id": "tc_8b09f21b",
+      "questions": "Based on the above information, is the following statement true or false? Rock is a rabbit or a squirrel.",
+      "conclusions": "Rock(rock) ∧ (Rabbit(rock) ∨ Squirrel(rock)) ::: Rock is a rabbit or a squirrel. FALSE"
+    },
+    {
+      "id": "tc_b2247ee6",
+      "questions": "Based on the above information, is the following statement true or false? If something is a squirrel, then it is cute.",
+      "conclusions": "∀x (Squirrel(x) → Cute(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_49cf4257",
+      "questions": "Based on the above information, is the following statement true or false? If something is a rabbit, then it is not a squirrel.",
+      "conclusions": "∀x (Rabbit(x) → ¬Squirrel(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_71a2422b",
+      "questions": "Based on the above information, is the following statement true or false? If something is an animal and not a rabbit, then it is a squirrel.",
+      "conclusions": "∀x ((Animal(x) ∧ ¬Rabbit(x)) → Squirrel(x)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_23ecc6ac",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x Turtle(x) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nIs(rock, Animal) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_b10325e9",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_7071666b",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x Turtle(x) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_cb7b67c5",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x ((Animal(x) ∧ Rabbit(x)) ∨ (Animal(x) ∧ Squirrel(x))) ::: If an animal is a rabbit or a squirrel, it's an animal.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_5db02a89",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x Turtle(x) ∧ Exists(x) ::: Some turtles exist.\n∀x ((Rabbit(x) ∨ Squirrel(x)) → Animal(x)) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_5f82e0a5",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_1cd7061f",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x ((Animal(x) ∧ Rabbit(x)) ∨ (Animal(x) ∧ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_95d4921f",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_a6c412eb",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x Turtle(x) ∧ Exists(x) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    },
+    {
+      "id": "sol_171a190a",
+      "text": "# Predicates:\nRabbit(x) ::: x is a rabbit.\nCute(x) ::: x is cute.\nTurtle(x) ::: x is a turtle.\nExists(x) ::: x exists.\nAnimal(x) ::: x is an animal.\nSquirrel(x) ::: x is a squirrel.\nSkittish(x) ::: x is skittish.\nStill(x) ::: x is still.\nIs(x, y) ::: x is y.\nRock(x) ::: x is Rock.\n\n# Premises:\n∀x (Rabbit(x) → Cute(x)) ::: All rabbits are cute.\n∃x (Turtle(x) ∧ Exists(x)) ::: Some turtles exist.\n∀x (Animal(x) → (Rabbit(x) ∨ Squirrel(x))) ::: An animal is either a rabbit or a squirrel.\n∀x (Skittish(x) → ¬Still(x)) ::: If something is skittish, then it is not still.\n∀x (Squirrel(x) → Skittish(x)) ::: All squirrels are skittish.\nStill(rock) ::: Rock is still.\nAnimal(rock) ::: Rock is an animal."
+    }
+  ],
+  "validation": {
+    "id": "tc_e09b22c9",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Rock is a turtle.",
+    "conclusions": "Turtle(rock) ::: Rock is a turtle. unknown"
+  }
+}

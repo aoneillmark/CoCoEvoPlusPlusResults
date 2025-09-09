@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_7",
+  "problem_text": "Monkeypox is an infectious disease caused by the monkeypox virus. Monkeypox virus can occur in certain animals, including humans. Humans are mammals. Mammals are animals. Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on. People feel tired when they get a glu.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Monkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.",
+  "tests": [
+    {
+      "id": "tc_16aa9d54",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is caused by the monkeypox virus, and the monkeypox virus can occur in animals, then some animals experience muscle pains.",
+      "conclusions": "Monkeypox(x) ∧ InfectiousDisease(x) ∧ CausedBy(x, MonkeypoxVirus(x)) ∧ OccurIn(MonkeypoxVirus(x), Animal(x)) → ∃y ∃x (Animal(x) ∧ SymptomOf(y, Monkeypox(x)) ∧ MusclePains(y)) ::: TRUE"
+    },
+    {
+      "id": "tc_9108e9cf",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease and fever is a symptom of monkeypox, then the monkeypox virus can occur in humans.",
+      "conclusions": "Monkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, humans) ∧ SymptomOf(fever, monkeypox) → ∃x ∃y (InfectiousDisease(x) ∧ CausedBy(x, y) ∧ OccurIn(y, Human)) ::: TRUE"
+    },
+    {
+      "id": "tc_74b79c55",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease caused by the monkeypox virus, and humans are mammals, then some mammals feel tired when they get muscle pains.",
+      "conclusions": "∃x ∃y (Mammal(x) ∧ SymptomOf(y, Monkeypox) ∧ MusclePains(y) ∧ FeelTiredWhen(x, y)) ::: Some mammals feel tired when they get muscle pains. FALSE"
+    },
+    {
+      "id": "tc_fbb5d1a0",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease and headache is a symptom of monkeypox, and humans are mammals, then some mammals are humans.",
+      "conclusions": "∀x (SymptomOf(headache, x) → InfectiousDisease(x)) ∧ ∀x (Mammal(x) → Human(x)) ::: Some mammals are humans. FALSE"
+    },
+    {
+      "id": "tc_ab3b5289",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease and muscle pains are a symptom of monkeypox, and glu is a symptom of feeling tired, then some animals can feel tired when they get muscle pains.",
+      "conclusions": "(Monkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ SymptomOf(musclepains, monkeypox) ∧ SymptomOf(glu, feelingtired)) → ∃x ∃y (Animal(x) ∧ FeelTiredWhen(x, y) ∧ SymptomOf(y, musclepains)) ::: FALSE"
+    },
+    {
+      "id": "tc_c2c97259",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease, and fever and headache are symptoms of monkeypox, then some animals that are mammals also have muscle pains.",
+      "conclusions": "∃x ∃y (InfectiousDisease(x) ∧ CausedBy(x, MonkeypoxVirus(y)) ∧ SymptomOf(Fever(x), x) ∧ SymptomOf(Headache(x), x) ∧ Animal(a) ∧ Mammal(a) ∧ SymptomOf(MusclePains(x), a)) ::: Some animals that are mammals also have muscle pains. FALSE"
+    },
+    {
+      "id": "tc_16ba0cf5",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease caused by the monkeypox virus, and the monkeypox virus can occur in animals, and humans are mammals, then some animals are humans.",
+      "conclusions": "∃x ∃y (Animal(x) ∧ Human(y) ∧ Mammal(y) ∧ OccurIn(MonkeypoxVirus, x) ∧ OccurIn(MonkeypoxVirus, y)) ::: Some animals are humans. FALSE"
+    },
+    {
+      "id": "tc_d1c94c5b",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease caused by the monkeypox virus, and muscle pains are a symptom of monkeypox, then some animals that are mammals are susceptible to feeling tired when they get muscle pains.",
+      "conclusions": "(Monkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxvirus) ∧ SymptomOf(musclepains, monkeypox)) → ∃x (Mammal(x) ∧ Animal(x) ∧ FeelTiredWhen(x, musclepains)) ::: FALSE"
+    },
+    {
+      "id": "tc_1387773f",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease caused by the monkeypox virus, and fever is a symptom of monkeypox, and humans are mammals, then some animals that are humans can feel tired when they get fever.",
+      "conclusions": "Monkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ∧ SymptomOf(fever, monkeypox) ∧ Human(human) ∧ Mammal(human) → ∃x ∃y (Animal(x) ∧ Human(x) ∧ SymptomOf(y, monkeypox) ∧ FeelTiredWhen(x, y)) ::: TRUE"
+    },
+    {
+      "id": "tc_d60c531e",
+      "questions": "Based on the above information, is the following statement true or false? If monkeypox is an infectious disease caused by the monkeypox virus and can occur in animals and humans, and humans are mammals, then some animals that are not humans can feel tired when they get a fever.",
+      "conclusions": "(∃x Animal(x) ∧ ¬Human(x)) ∧ ∃y (Fever(y) ∧ SymptomOf(y, Monkeypox)) ∧ ∃z Person(z) ∧ FeelTiredWhen(z, Fever(y)) ::: Some animals that are not humans can feel tired when they get a fever. FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_a838f94c",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, humans) ∧ OccurIn(monkeypoxVirus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\nSymptomOf(fever, monkeypox) ∧ SymptomOf(headache, monkeypox) ∧ SymptomOf(musclePains, monkeypox) ∧ SymptomOf(feelingTired, monkeypox) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelingTired(x)) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_99faadf6",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, humans) ∧ OccurIn(monkeypoxVirus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\nSymptomOf(Fever, monkeypox) ∧ SymptomOf(Headache, monkeypox) ∧ SymptomOf(MusclePains, monkeypox) ∧ SymptomOf(FeelingTired, monkeypox) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_d0e62c95",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, humans) ∧ OccurIn(monkeypoxVirus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_e0b538d2",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, humans) ∧ OccurIn(monkeypoxVirus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_cceebdb7",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(mp) ∧ InfectiousDisease(mp) ∧ CausedBy(mp, mp_virus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(mp_virus) ∧ OccurIn(mp_virus, humans) ∧ OccurIn(mp_virus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_8c8c7633",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(mpox) ∧ InfectiousDisease(mpox) ∧ CausedBy(mpox, mpox_virus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(mpox_virus) ∧ OccurIn(mpox_virus, humans) ∧ OccurIn(mpox_virus, animals) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_ec468e79",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(mp) ∧ InfectiousDisease(mp) ∧ CausedBy(mp, mpv) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(mpv) ∧ OccurIn(mpv, animals) ∧ OccurIn(mpv, humans) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(fever, x) ∨ SymptomOf(headache, x) ∨ SymptomOf(musclePains, x) ∨ SymptomOf(feelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(g) → FeelTiredWhen(x, g)) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_037b3cba",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ OccurIn(monkeypoxVirus, animals) ∧ OccurIn(monkeypoxVirus, humans) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ Glu(x) → FeelTiredWhen(x, Glu(x))) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_5fd52261",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(monkeypox) ∧ InfectiousDisease(monkeypox) ∧ CausedBy(monkeypox, monkeypoxVirus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(monkeypoxVirus) ∧ (∀x (Animal(x) → OccurIn(monkeypoxVirus, x)) ∧ OccurIn(monkeypoxVirus, humans)) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x (Person(x) ∧ ∃y (Glu(y) ∧ Person(x)) → FeelTiredWhen(x, y)) ::: People feel tired when they get a glu."
+    },
+    {
+      "id": "sol_b727d1ed",
+      "text": "# Predicates:\nMonkeypox(x) ::: x is Monkeypox.\nInfectiousDisease(x) ::: x is an infectious disease.\nCausedBy(x, y) ::: x is caused by y.\nMonkeypoxVirus(x) ::: x is the monkeypox virus.\nOccurIn(x, y) ::: x can occur in y.\nAnimal(x) ::: x is an animal.\nHuman(x) ::: x is a human.\nMammal(x) ::: x is a mammal.\nSymptomOf(x, y) ::: x is a symptom of y.\nFever(x) ::: x is a fever.\nHeadache(x) ::: x is a headache.\nMusclePains(x) ::: x is muscle pains.\nFeelingTired(x) ::: x is feeling tired.\nGlu(x) ::: x is a glu.\nPerson(x) ::: x is a person.\nFeelTiredWhen(x, y) ::: x feels tired when they get y.\n\n# Premises:\nMonkeypox(mpox) ∧ InfectiousDisease(mpox) ∧ CausedBy(mpox, mpox_virus) ::: Monkeypox is an infectious disease caused by the monkeypox virus.\nMonkeypoxVirus(mpox_virus) ∧ OccurIn(mpox_virus, animals) ∧ OccurIn(mpox_virus, humans) ::: Monkeypox virus can occur in certain animals, including humans.\n∀x (Human(x) → Mammal(x)) ::: Humans are mammals.\n∀x (Mammal(x) → Animal(x)) ::: Mammals are animals.\n∀x (Monkeypox(x) → (SymptomOf(Fever, x) ∧ SymptomOf(Headache, x) ∧ SymptomOf(MusclePains, x) ∧ SymptomOf(FeelingTired, x))) ::: Symptons of Monkeypox include fever, headache, muscle pains, feeling tired, and so on.\n∀x ∀y (Person(x) ∧ Glu(y) → FeelTiredWhen(x, y)) ::: People feel tired when they get a glu."
+    }
+  ],
+  "validation": {
+    "id": "tc_583a4e3b",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? There is an animal.",
+    "conclusions": "∃x Animal(x) ::: There is an animal. true"
+  }
+}

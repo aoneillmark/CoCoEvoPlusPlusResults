@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_92",
+  "problem_text": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "NaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.",
+  "tests": [
+    {
+      "id": "tc_205f404b",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a natural language processing task and its output is a text sequence.",
+      "conclusions": "NaturalLanguageProcessingTask(machineTranslation) ∧ OutputIsTextSequence(machineTranslation) ::: Machine translation is a natural language processing task and its output is a text sequence. TRUE"
+    },
+    {
+      "id": "tc_86640725",
+      "questions": "Based on the above information, is the following statement true or false? Any natural language processing task whose output is a text sequence is a language generation task, and machine translation is a language understanding task.",
+      "conclusions": "∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ∧ LanguageUnderstandingTask(machineTranslation) ::: FALSE"
+    },
+    {
+      "id": "tc_b6e1f0b2",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a language generation task and it is not a language understanding task.",
+      "conclusions": "CategorizedAs(machineTranslation, LanguageGenerationTask) ∧ ¬CategorizedAs(machineTranslation, LanguageUnderstandingTask) ::: Machine translation is a language generation task and it is not a language understanding task. FALSE"
+    },
+    {
+      "id": "tc_717c870c",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a language generation task and is not a language understanding task.",
+      "conclusions": "MachineTranslation(x) ∧ OutputIsTextSequence(x) → LanguageGenerationTask(x) ∧ ¬LanguageUnderstandingTask(x) ::: FALSE"
+    },
+    {
+      "id": "tc_baa839db",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a natural language processing task and it is a language generation task.",
+      "conclusions": "MachineTranslation(x) ∧ NaturalLanguageProcessingTask(x) ∧ LanguageGenerationTask(x) ::: TRUE"
+    },
+    {
+      "id": "tc_53e0b229",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a language generation task if and only if it is a natural language processing task and its output is a text sequence.",
+      "conclusions": "MachineTranslation(x) ↔ (NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_cc3520cc",
+      "questions": "Based on the above information, is the following statement true or false? If machine translation is a natural language processing task, then machine translation is either a language generation task or a language understanding task.",
+      "conclusions": "MachineTranslation(mt) → (LanguageGenerationTask(mt) ∨ LanguageUnderstandingTask(mt)) ::: TRUE"
+    },
+    {
+      "id": "tc_ab08b65b",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a natural language processing task, and it is a language generation task, but it is not a language understanding task.",
+      "conclusions": "NaturalLanguageProcessingTask(machineTranslation) ∧ LanguageGenerationTask(machineTranslation) ∧ ¬LanguageUnderstandingTask(machineTranslation) ::: TRUE"
+    },
+    {
+      "id": "tc_8c1f73d8",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a language understanding task.",
+      "conclusions": "¬LanguageUnderstandingTask(machineTranslation) ::: Machine translation is a language understanding task. FALSE"
+    },
+    {
+      "id": "tc_a0cb5c8b",
+      "questions": "Based on the above information, is the following statement true or false? Machine translation is a natural language processing task, and if its output is a text sequence, then it is a language generation task, and it is not a language understanding task.",
+      "conclusions": "NaturalLanguageProcessingTask(machineTranslation) ∧ (OutputIsTextSequence(machineTranslation) → LanguageGenerationTask(machineTranslation)) ∧ ¬LanguageUnderstandingTask(machineTranslation) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_99e40429",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x (NaturalLanguageProcessingTask(x) → (CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x (OutputIsTextSequence(x) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_e269fc82",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_a3c92b7b",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x (NaturalLanguageProcessingTask(x) → CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x (OutputIsTextSequence(x) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_73477660",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x (NaturalLanguageProcessingTask(x) → (CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_24b017bd",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n∀x (NaturalLanguageProcessingTask(x) → (CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task."
+    },
+    {
+      "id": "sol_67efb241",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n∀x (NaturalLanguageProcessingTask(x) → (CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_6034b9e7",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n∀x (NaturalLanguageProcessingTask(x) → CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task."
+    },
+    {
+      "id": "sol_c6be9ce1",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n∀x (NaturalLanguageProcessingTask(x) → (LanguageGenerationTask(x) ∨ LanguageUnderstandingTask(x))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_8d7d47f0",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n∀x (NaturalLanguageProcessingTask(x) → (LanguageGenerationTask(x) ∨ LanguageUnderstandingTask(x))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    },
+    {
+      "id": "sol_2e982875",
+      "text": "# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\n∀x (NaturalLanguageProcessingTask(x) → (CategorizedAs(x, LanguageGenerationTask) ∨ CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n∀x ((NaturalLanguageProcessingTask(x) ∧ OutputIsTextSequence(x)) → LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence."
+    }
+  ],
+  "validation": {
+    "id": "tc_02713829",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language generation task.",
+    "conclusions": "MachineTranslation(mt) ∧ NaturalLanguageProcessingTask(mt) ::: Machine translation is a natural language processing task."
+  }
+}

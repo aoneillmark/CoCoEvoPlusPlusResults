@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_89",
+  "problem_text": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book “Walden” by Henry Thoreau.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Book(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.",
+  "tests": [
+    {
+      "id": "tc_f9a90a50",
+      "questions": "Based on the above information, is the following statement true or false? Henry Thoreau is a person who gains knowledge from the book \"Walden\".",
+      "conclusions": "∃x ∃y ∃z (Person(x) ∧ Author(x, y) ∧ Title(y, \"Walden\") ∧ Gains(z, Knowledge(y)) ∧ Person(z)) ::: Henry Thoreau is a person who gains knowledge from the book \"Walden\". FALSE"
+    },
+    {
+      "id": "tc_b0a40347",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads a book, then Harry becomes smarter.",
+      "conclusions": "Reads(harry, walden) → Smarter(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_9fcb5de3",
+      "questions": "Based on the above information, is the following statement true or false? If a book contains knowledge and a person reads that book, then that person becomes smarter.",
+      "conclusions": "∀x ∀y (Book(x) ∧ Contains(x, y) ∧ Person(z) ∧ Reads(z, x) → Smarter(z)) ::: If a book contains knowledge and a person reads that book, then that person becomes smarter. TRUE"
+    },
+    {
+      "id": "tc_46827171",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads the book \"Walden\" and \"Walden\" contains knowledge, then Harry becomes smarter.",
+      "conclusions": "(Reads(harry, walden) ∧ Contains(walden, knowledge)) → Smarter(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_7eefe8f8",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads the book \"Walden\" and \"Walden\" has the title \"Walden\", then Harry becomes smarter.",
+      "conclusions": "(Reads(harry, walden) ∧ Title(walden, \"Walden\")) → Smarter(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_e54803c6",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads a book, then that book contains knowledge.",
+      "conclusions": "Reads(harry, walden) → Contains(walden, knowledge) ::: FALSE"
+    },
+    {
+      "id": "tc_ba003150",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads a book that has the title \"Walden\", then Harry becomes smarter.",
+      "conclusions": "(∀x (Reads(harry, x) ∧ Title(x, \"Walden\")) → Smarter(harry)) ::: TRUE"
+    },
+    {
+      "id": "tc_450bd62b",
+      "questions": "Based on the above information, is the following statement true or false? If Henry Thoreau is the author of the book \"Walden\" and Harry reads \"Walden\", then Harry becomes smarter.",
+      "conclusions": "Author(henry Thoreau, walden) ∧ Reads(harry, walden) → Smarter(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_d3bb9534",
+      "questions": "Based on the above information, is the following statement true or false? If Henry Thoreau authored a book and that book contains knowledge, then Henry Thoreau becomes smarter.",
+      "conclusions": "(∃x (Author(henry Thoreau, x) ∧ Book(x) ∧ Contains(x, knowledge))) → Smarter(henry Thoreau) ::: FALSE"
+    },
+    {
+      "id": "tc_e3e4c3ab",
+      "questions": "Based on the above information, is the following statement true or false? If Harry reads \"Walden\" and \"Walden\" contains knowledge, does Harry gain knowledge?",
+      "conclusions": "∃x ∃y (Person(x) ∧ Book(y) ∧ Title(y, \"Walden\") ∧ Reads(x, y) ∧ Contains(y, Knowledge(y))) → Gains(harry, Knowledge(walden)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_b05cf0e4",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x (Gains(x, Knowledge(x)) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_87f3c5d6",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x (Gains(x, Knowledge(y)) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_127da71e",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x (Gains(x, z) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_33786dab",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x ∀y (Gains(x, y) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_ffda6300",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x ∃y (Gains(x, y) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_e09cf71e",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x ((Book(x) ∧ Title(x, \"Walden\")) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y ((Person(x) ∧ Reads(x, y)) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x ∀y (Gains(x, y) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_82065adb",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n∀x ∀y (Gains(x, y) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_dedb73ea",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y Knowledge(y) ∧ Contains(x, y)) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x ∃y (Gains(x, y) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_9ea5afc4",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n∀x (Gains(x, Knowledge(harry)) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    },
+    {
+      "id": "sol_9b9017e4",
+      "text": "# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n∀x (Book(x) → ∃y (Knowledge(y) ∧ Contains(x, y))) ::: Books contain tons of knowledge.\n∀x ∀y (Person(x) ∧ Reads(x, y) → Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n∀x (Gains(x, Knowledge(harry)) → Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) ∧ Book(walden) ∧ Author(henrythoreau, walden) ∧ Title(walden, \"Walden\") ∧ Reads(harry, walden) ::: Harry read the book “Walden” by Henry Thoreau."
+    }
+  ],
+  "validation": {
+    "id": "tc_3a7191c0",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Walden contains knowledge.",
+    "conclusions": "Contains(walden, knowledge) ::: Walden contains knowledge. true"
+  }
+}

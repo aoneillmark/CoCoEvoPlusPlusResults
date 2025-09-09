@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_200",
+  "problem_text": "Ailton Silva, born in 1995, is commonly known as Ailton. Ailton is a football player who was loaned out to Braga. Ailton Silva is a Brazillian footballer who plays for Nautico. Nautico is a football club along with Braga. Fluminense is a football club.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "BornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.",
+  "tests": [
+    {
+      "id": "tc_a473b047",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, who was born in 1995, plays for both Braga and Nautico.",
+      "conclusions": "∃x ∃y ∃z (KnownAs(x, y) ∧ BornIn(x, 1995) ∧ FootballPlayer(x) ∧ LoanedTo(x, z) ∧ PlaysFor(x, z)) ::: Ailton Silva, who was born in 1995, plays for both Braga and Nautico. FALSE"
+    },
+    {
+      "id": "tc_dc645090",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva is a Brazilian football player who plays for Braga and was born in 1995.",
+      "conclusions": "Brazilian(ailton) ∧ FootballPlayer(ailton) ∧ PlaysFor(ailton, braga) ∧ BornIn(ailton, year1995) ::: FALSE"
+    },
+    {
+      "id": "tc_c9330dd8",
+      "questions": "Based on the above information, is the following statement true or false? Ailton, a football player born in 1995, is Brazilian and plays for Braga, and was loaned to Nautico.",
+      "conclusions": "Brazilian(ailton) ∧ PlaysFor(ailton, braga) ∧ LoanedTo(ailton, nautico) ∧ BornIn(ailton, 1995) ∧ FootballPlayer(ailton) ::: Ailton, a football player born in 1995, is Brazilian and plays for Braga, and was loaned to Nautico. FALSE"
+    },
+    {
+      "id": "tc_6026edcb",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, who is commonly known as Ailton, is a Brazilian football player who plays for Braga.",
+      "conclusions": "Brazilian(ailton) ∧ FootballPlayer(ailton) ∧ PlaysFor(ailton, braga) ∧ KnownAs(ailton, ailton) ::: Ailton Silva, who is commonly known as Ailton, is a Brazilian football player who plays for Braga. TRUE"
+    },
+    {
+      "id": "tc_b294a2ec",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, a Brazilian football player born in 1995 and commonly known as Ailton, was loaned out to Braga and plays for Nautico.",
+      "conclusions": "PlaysFor(ailton, braga) ∧ LoanedTo(ailton, nautico) ::: Ailton Silva plays for Braga and was loaned out to Nautico. FALSE"
+    },
+    {
+      "id": "tc_79e6f31c",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, born in 1995 and commonly known as Ailton, plays for Fluminense.",
+      "conclusions": "PlaysFor(ailton, fluminense) ::: Ailton Silva plays for Fluminense. FALSE"
+    },
+    {
+      "id": "tc_6e1c5e4e",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, a Brazilian football player born in 1995 and commonly known as Ailton, was loaned out to Braga, and Braga is a football club.",
+      "conclusions": "LoanedTo(ailton, braga) ∧ FootballClub(braga) ::: Ailton Silva was loaned out to Braga, and Braga is a football club. TRUE"
+    },
+    {
+      "id": "tc_4742cb5c",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, who was born in 1995 and is commonly known as Ailton, is a Brazilian football player and was loaned out to Braga, and he plays for Nautico.",
+      "conclusions": "FootballPlayer(ailton) ∧ Brazilian(ailton) ∧ LoanedTo(ailton, braga) ∧ PlaysFor(ailton, nautico) ∧ BornIn(ailton, 1995) ∧ KnownAs(ailton, ailton) ∧ FootballClub(braga) ∧ FootballClub(nautico) ::: TRUE"
+    },
+    {
+      "id": "tc_87472944",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, a Brazilian football player born in 1995 and commonly known as Ailton, plays for Nautico, and Braga is a football club.",
+      "conclusions": "PlaysFor(ailton, nautico) ∧ FootballClub(braga) ::: Ailton Silva, a Brazilian football player born in 1995 and commonly known as Ailton, plays for Nautico, and Braga is a football club. TRUE"
+    },
+    {
+      "id": "tc_df0fe57e",
+      "questions": "Based on the above information, is the following statement true or false? Ailton Silva, a Brazilian football player born in 1995 and commonly known as Ailton, was loaned out to Braga and also plays for Nautico, and Braga is a football club.",
+      "conclusions": "(LoanedTo(ailton, braga) ∧ PlaysFor(ailton, nautico)) ∧ FootballClub(braga) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_89cb378d",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton, 1995) ∧ KnownAs(ailton, ailton) ∧ FootballPlayer(ailton) ∧ LoanedTo(ailton, braga) ∧ Brazilian(ailton) ∧ PlaysFor(ailton, nautico) ::: Ailton Silva, born in 1995, is commonly known as Ailton. Ailton is a football player who was loaned out to Braga. Ailton Silva is a Brazillian footballer who plays for Nautico.\nFootballClub(braga) ∧ FootballClub(nautico) ∧ FootballClub(fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_5c9c54b1",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(ailton_silva, ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(ailton_silva) ∧ Brazilian(ailton_silva) ∧ PlaysFor(ailton_silva, nautico) ::: Ailton Silva is a Brazillian footballer who plays for Nautico.\nLoanedTo(ailton_silva, braga) ::: Ailton Silva was loaned out to Braga.\nFootballClub(nautico) ∧ FootballClub(braga) ∧ FootballClub(fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_4e088631",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ∧ KnownAs(ailton_silva, ailton) ∧ FootballPlayer(ailton_silva) ∧ LoanedTo(ailton_silva, braga) ∧ Brazilian(ailton_silva) ∧ PlaysFor(ailton_silva, nautico) ::: Ailton Silva, born in 1995, is commonly known as Ailton. Ailton is a football player who was loaned out to Braga. Ailton Silva is a Brazillian footballer who plays for Nautico.\nFootballClub(braga) ∧ FootballClub(nautico) ∧ FootballClub(fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_40e6f668",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(AiltonSilva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(AiltonSilva, Ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(Ailton) ∧ Brazilian(Ailton) ∧ PlaysFor(Ailton, Nautico) ∧ LoanedTo(Ailton, Braga) ::: Ailton is a football player, is Brazilian, plays for Nautico, and was loaned out to Braga.\nFootballClub(Nautico) ∧ FootballClub(Braga) ∧ FootballClub(Fluminense) ::: Nautico, Braga, and Fluminense are all football clubs."
+    },
+    {
+      "id": "sol_02e969bd",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ∧ KnownAs(ailton_silva, ailton) ∧ FootballPlayer(ailton_silva) ∧ LoanedTo(ailton_silva, braga) ∧ Brazilian(ailton_silva) ∧ PlaysFor(ailton_silva, nautico) ∧ FootballClub(braga) ∧ FootballClub(nautico) ∧ FootballClub(fluminense) ::: Ailton Silva, born in 1995, is commonly known as Ailton. Ailton is a football player who was loaned out to Braga. Ailton Silva is a Brazillian footballer who plays for Nautico. Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_ab88345a",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(ailton_silva, ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(ailton_silva) ∧ LoanedTo(ailton_silva, braga) ::: Ailton is a football player who was loaned out to Braga.\nBrazilian(ailton_silva) ∧ PlaysFor(ailton_silva, nautico) ::: Ailton Silva is a Brazillian footballer who plays for Nautico.\nFootballClub(nautico) ∧ FootballClub(braga) ∧ FootballClub(fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_58bbf475",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(ailton_silva, ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(ailton_silva) ::: Ailton is a football player.\nLoanedTo(ailton_silva, braga) ::: Ailton was loaned out to Braga.\nBrazilian(ailton_silva) ::: Ailton Silva is Brazillian.\nPlaysFor(ailton_silva, nautico) ::: Ailton Silva plays for Nautico.\nFootballClub(nautico) ::: Nautico is a football club.\nFootballClub(braga) ::: Braga is a football club.\nFootballClub(fluminense) ::: Fluminense is a football club."
+    },
+    {
+      "id": "sol_50a4eddf",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ::: Ailton Silva, born in 1995.\nKnownAs(ailton_silva, ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(ailton_silva) ∧ LoanedTo(ailton_silva, braga) ::: Ailton is a football player who was loaned out to Braga.\nBrazilian(ailton_silva) ∧ PlaysFor(ailton_silva, nautico) ::: Ailton Silva is a Brazillian footballer who plays for Nautico.\nFootballClub(nautico) ∧ FootballClub(braga) ∧ FootballClub(fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_8fb37633",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(AiltonSilva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(AiltonSilva, Ailton) ::: Ailton Silva is commonly known as Ailton.\nFootballPlayer(AiltonSilva) ∧ LoanedTo(AiltonSilva, Braga) ::: Ailton is a football player who was loaned out to Braga.\nBrazilian(AiltonSilva) ∧ PlaysFor(AiltonSilva, Nautico) ::: Ailton Silva is a Brazillian footballer who plays for Nautico.\nFootballClub(Nautico) ∧ FootballClub(Braga) ∧ FootballClub(Fluminense) ::: Nautico is a football club along with Braga. Fluminense is a football club."
+    },
+    {
+      "id": "sol_70e62ce2",
+      "text": "# Predicates:\nBornIn(x, y) ::: x was born in year y.\nKnownAs(x, y) ::: x is commonly known as y.\nFootballPlayer(x) ::: x is a football player.\nLoanedTo(x, y) ::: x was loaned out to y.\nBrazilian(x) ::: x is a Brazillian person.\nPlaysFor(x, y) ::: x plays for y.\nFootballClub(x) ::: x is a football club.\n\n# Premises:\nBornIn(ailton_silva, 1995) ::: Ailton Silva was born in 1995.\nKnownAs(ailton_silva, ailton) ::: Ailton Silva is commonly known as Ailton.\n∀x (FootballPlayer(x) ∧ LoanedTo(x, braga)) ::: All football players loaned to Braga are football players.\nBrazilian(ailton_silva) ::: Ailton Silva is a Brazilian.\nPlaysFor(ailton_silva, nautico) ::: Ailton Silva plays for Nautico.\n∀x (FootballClub(x) → ¬FootballPlayer(x)) ::: No football club is a football player.\nFootballClub(braga) ::: Braga is a football club.\nFootballClub(nautico) ::: Nautico is a football club.\nFootballClub(fluminense) ::: Fluminense is a football club."
+    }
+  ],
+  "validation": {
+    "id": "tc_629de735",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? No one playing for Nautico is Brazilian.",
+    "conclusions": "¬∃x (PlaysFor(x, nautico) ∧ Brazilian(x)) ::: No one playing for Nautico is Brazilian. false"
+  }
+}

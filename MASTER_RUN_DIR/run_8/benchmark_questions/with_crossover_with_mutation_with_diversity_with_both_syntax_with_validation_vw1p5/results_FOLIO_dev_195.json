@@ -1,0 +1,1253 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195",
+  "dataset": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/temp_dataset_for_FOLIO_dev_195.json",
+  "solutions": [
+    {
+      "solution_name": "sol_097930bd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_097930bd.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\n\u2203x (SixWayTie(x) \u2227 FromBelgium(x))\n\u2203x (FromBelgium(x) \u2227 OnLeaderboard(x, event1992duMaurierClassic))\nFromBelgium(descampe)\nOnLeaderboard(descampe, event1992duMaurierClassic)\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Participated(x, y))\n\u2200x (SixWayTie(x) \u2192 \u2203y (OnLeaderboard(y, event1992duMaurierClassic) \u2227 FromBelgium(y)))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0b24544e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_0b24544e.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (OnLeaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (OnLeaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y) \u2227 FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_10b6f5d2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0010/post/solutions/sol_10b6f5d2.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p) \u2227 FromBelgium(p))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_128ea5fb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_128ea5fb.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203 x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992) \u2227 FromBelgium(x))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_141ba687.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_141ba687.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_16ca32da.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0007/post/solutions/sol_16ca32da.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_18c5977f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_18c5977f.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\n\u2203x (FromBelgium(x) \u2227 OnLeaderboard(x, event1992duMaurierClassic) \u2227 SixWayTie(x))\nFromBelgium(descampe)\nOnLeaderboard(descampe, event1992duMaurierClassic)\n\u2200x (OnLeaderboard(x, event1992duMaurierClassic) \u2192 Participated(x, event1992duMaurierClassic))\n\u2200x \u2200y ((OnLeaderboard(x, event1992duMaurierClassic) \u2227 SixWayTie(x) \u2227 OnLeaderboard(y, event1992duMaurierClassic) \u2227 SixWayTie(y) \u2227 \u00ac(x = y)) \u2192 True)\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_19836173.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_19836173.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, `1992duMaurierClassic`)\nParticipated(steinhauer, `1992duMaurierClassic`)\n\u2203t. (SixWayTie(t) \u2227 Leaderboard(t, `1992duMaurierClassic`) \u2227 \u2203p. (Leaderboard(p, `1992duMaurierClassic`) \u2227 SixWayTie(t) \u2227 FromBelgium(p)))\nFromBelgium(descampe) \u2227 Leaderboard(descampe, `1992duMaurierClassic`)\n\u2200x. (Leaderboard(x, `1992duMaurierClassic`) \u2192 Participated(x, `1992duMaurierClassic`))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1a0ad296.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_1a0ad296.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, y1992duMaurierClassic)\nParticipated(steinhauer, y1992duMaurierClassic)\n\u2203tie (SixWayTie(tie) \u2227 OnLeaderboard(tie, y1992duMaurierClassic))\n\u2203x (FromBelgium(x) \u2227 OnLeaderboard(x, y1992duMaurierClassic) \u2227 SixWayTie(x))\nFromBelgium(descampe)\nOnLeaderboard(descampe, y1992duMaurierClassic)\n\u2200x (OnLeaderboard(x, y1992duMaurierClassic) \u2192 Participated(x, y1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "'tie' is an illegal variable name.  Constants may not be quantified.\nsome tie.((SixWayTie(tie)) & (OnLeaderboard(tie, y1992duMaurierClassic)))\n     ^",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1ac01d15.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_1ac01d15.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (FromBelgium(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 Leaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1de88534.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0006/post/solutions/sol_1de88534.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p) \u2227 FromBelgium(p))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_21921649.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0008/post/solutions/sol_21921649.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\n\u2203p (FromBelgium(p) \u2227 Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_229741ee.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_229741ee.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\n\u2203 tie_participant (\n    OnLeaderboard(tie_participant, event1992duMaurierClassic)\n    \u2227 SixWayTie(tie_participant)\n    \u2227 FromBelgium(tie_participant)\n)\nFromBelgium(descampe)\nOnLeaderboard(descampe, event1992duMaurierClassic)\n\u2200 x (OnLeaderboard(x, event1992duMaurierClassic) \u2192 Participated(x, event1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2bbae0b5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0007/post/solutions/sol_2bbae0b5.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2e4433a7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_2e4433a7.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, 1992duMaurierClassic)) \u2227 \u2203y (SixWayTie(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 Leaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_336aa023.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_336aa023.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_38fa83dd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_38fa83dd.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p1 (SixWayTie(p1) \u2227 OnLeaderboard(p1, duMaurierClassic1992))\n\u2203p2 (FromBelgium(p2) \u2227 OnLeaderboard(p2, duMaurierClassic1992))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2203p3 (SixWayTie(p3) \u2227 OnLeaderboard(p3, duMaurierClassic1992) \u2227 FromBelgium(p3))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_423c102b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0009/post/solutions/sol_423c102b.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4958794d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0010/post/solutions/sol_4958794d.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203x (FromBelgium(x) \u2227 Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2194 OnLeaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_496612e9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0006/post/solutions/sol_496612e9.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4a4cf375.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0003/post/solutions/sol_4a4cf375.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203tie (SixWayTie(tie) \u2227 PersonInTie(tie, p) \u2227 FromBelgium(p))\n\u2203person (FromBelgium(person) \u2227 OnLeaderboard(person, duMaurierClassic1992))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200person \u2200event (OnLeaderboard(person, event) \u2192 Participated(person, event))\n\u2200person (SixWayTie(person) \u2192 \u2203competitor (OnLeaderboard(competitor, duMaurierClassic1992) \u2227 FromBelgium(competitor)))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "'tie' is an illegal variable name.  Constants may not be quantified.\nsome tie.(((SixWayTie(tie)) & (PersonInTie(tie, p))) & (FromBelgium(p)))\n     ^",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4cc7bc08.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_4cc7bc08.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (FromBelgium(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4cd2a110.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_4cd2a110.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203tieParticipant (FromBelgium(tieParticipant) \u2227 OnLeaderboard(tieParticipant, duMaurierClassic1992) \u2227 SixWayTie(tieParticipant))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200person (OnLeaderboard(person, duMaurierClassic1992) \u2192 Participated(person, duMaurierClassic1992))\n\u2200person1 \u2200person2 ( (SixWayTie(person1) \u2227 SixWayTie(person2) \u2227 \u00ac(person1 = person2)) \u2192 True )\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5233d41a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_5233d41a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (FromBelgium(x) \u2227 Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_55c9ed3f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0007/post/solutions/sol_55c9ed3f.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5653729a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_5653729a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (FromBelgium(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5acb6c5e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_5acb6c5e.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, 1992duMaurierClassic)) \u2227 \u2203y (FromBelgium(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (Leaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5cec08ca.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0003/post/solutions/sol_5cec08ca.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\nSixWayTie(event1992duMaurierClassic)\nOnLeaderboard(descampe, event1992duMaurierClassic)\nFromBelgium(descampe)\n\u2200p. (OnLeaderboard(event1992duMaurierClassic, p) \u2192 Participated(p, event1992duMaurierClassic))\n\u2200t. (SixWayTie(event1992duMaurierClassic) \u2192 Leaderboard(event1992duMaurierClassic, t))\n\u2200p. (Leaderboard(p, event1992duMaurierClassic) \u2227 FromBelgium(p) \u2192 OnLeaderboard(p, event1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5f8814a2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0003/post/solutions/sol_5f8814a2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992).\nParticipated(steinhauer, duMaurierClassic1992).\n\u2203tie_group. (\n    (Size(tie_group) = 6) \u2227\n    \u2200person. ( (OnLeaderboard(person, duMaurierClassic1992) \u2227 SixWayTie(person)) \u2192 member(person, tie_group) ) \u2227\n    \u2200person. (member(person, tie_group) \u2192 (OnLeaderboard(person, duMaurierClassic1992) \u2227 SixWayTie(person)))\n).\n\u2203person. (FromBelgium(person) \u2227 SixWayTie(person)).\nFromBelgium(descampe).\nOnLeaderboard(descampe, duMaurierClassic1992).\n\u2200person. (OnLeaderboard(person, duMaurierClassic1992) \u2192 Participated(person, duMaurierClassic1992)).\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_68dacb3f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_68dacb3f.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203x (FromBelgium(x) \u2227 Leaderboard(x, duMaurierClassic1992))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2203p (SixWayTie(p) \u2227 Leaderboard(p, duMaurierClassic1992) \u2227 FromBelgium(p))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_72175511.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_72175511.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (OnLeaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\n\u2203p (OnLeaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p) \u2227 FromBelgium(p))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (SixWayTie(p) \u2192 \u2203q (OnLeaderboard(q, duMaurierClassic1992) \u2227 SixWayTie(q)))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_73d0d312.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0003/post/solutions/sol_73d0d312.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (SixWayTie(p) \u2227 Leaderboard(p, duMaurierClassic1992))\n\u2203p (FromBelgium(p) \u2227 Leaderboard(p, duMaurierClassic1992))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2203p (SixWayTie(p) \u2227 Leaderboard(p, duMaurierClassic1992) \u2227 FromBelgium(p))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_762aecab.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0005/post/solutions/sol_762aecab.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7cee0da5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_7cee0da5.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_82671904.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_82671904.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic)\nParticipated(steinhauer, 1992duMaurierClassic)\n\u2203t1 (SixWayTie(t1) \u2227 OnLeaderboard(t1, 1992duMaurierClassic))\n\u2203t2 (FromBelgium(t2) \u2227 OnLeaderboard(t2, 1992duMaurierClassic) \u2227 SixWayTie(t2))\nFromBelgium(descampe)\nOnLeaderboard(descampe, 1992duMaurierClassic)\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_851e5d2c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0007/post/solutions/sol_851e5d2c.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_85fce9b1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0006/post/solutions/sol_85fce9b1.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203 x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992) \u2227 FromBelgium(x))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_89a530e6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0007/post/solutions/sol_89a530e6.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p))\n\u2203p (Leaderboard(p, duMaurierClassic1992) \u2227 SixWayTie(p) \u2227 FromBelgium(p))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9390afb2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_9390afb2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 tie_group (Leaderboard(tie_group, duMaurierClassic1992) \u2227 \u2200 person_in_tie (Leaderboard(person_in_tie, duMaurierClassic1992) \u2192 FromBelgium(person_in_tie)) \u2227 SixWayTie(tie_group))\nFromBelgium(descampe) \u2227 Leaderboard(descampe, duMaurierClassic1992)\n\u2200 person (Leaderboard(person, duMaurierClassic1992) \u2192 Participated(person, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "'tie_group' is an illegal variable name.  Constants may not be quantified.\nsome tie_group.((Leaderboard(tie_group, duMaurierClassic1992)) & (all person_in_tie.(((Leaderboard(person_in_tie, duMaurierClassic1992)) -> (FromBelgium(person_in_tie))) & (SixWayTie(tie_group)))))\n     ^",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9ab7397f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0003/post/solutions/sol_9ab7397f.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (OnLeaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (OnLeaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a0d09a30.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_a0d09a30.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, event1992duMaurierClassic))\n\u2203y (FromBelgium(y) \u2227 Leaderboard(y, event1992duMaurierClassic) \u2227 SixWayTie(y))\nFromBelgium(descampe)\nLeaderboard(descampe, event1992duMaurierClassic)\n\u2200x (Leaderboard(x, event1992duMaurierClassic) \u2192 Participated(x, event1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a0f8ffe5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_a0f8ffe5.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x \u2203y (Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x) \u2227 FromBelgium(y) \u2227 Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a3e9c43e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0005/post/solutions/sol_a3e9c43e.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (OnLeaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (OnLeaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_aa24f872.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0009/post/solutions/sol_aa24f872.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203 y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ad379b19.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_ad379b19.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992) ::: steinhauer is the winner of the duMaurierClassic1992 event.\nParticipated(steinhauer, duMaurierClassic1992) ::: steinhauer participated in the duMaurierClassic1992 event.\n\u2203x ( SixWayTie(x) \u2227 \u2200entry (Leaderboard(entry, duMaurierClassic1992) \u2227 entry \u2208 x) \u2227 \u2203person (person \u2208 x \u2227 FromBelgium(person)) ) ::: There is a group of 6 entries on the leaderboard of the duMaurierClassic1992 event, and at least one person from Belgium is in that group.\nFromBelgium(descampe) ::: descampe is from Belgium.\nOnLeaderboard(descampe, duMaurierClassic1992) ::: descampe is on the leaderboard of the duMaurierClassic1992 event.\n\u2200x (OnLeaderboard(x, duMaurierClassic1992) \u2192 Participated(x, duMaurierClassic1992)) ::: All people on the leaderboard of the duMaurierClassic1992 event participated in the event.\n\u2200x (Leaderboard(x, duMaurierClassic1992) \u2192 OnLeaderboard(x, duMaurierClassic1992)) ::: All entries on the leaderboard of the duMaurierClassic1992 event are on the leaderboard.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ae076155.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_ae076155.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (SixWayTie(x) \u2227 Leaderboard(x, duMaurierClassic1992))\n\u2203y (FromBelgium(y) \u2227 Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_afb49628.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_afb49628.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (OnLeaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (FromBelgium(y) \u2227 OnLeaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_aff287b1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0008/post/solutions/sol_aff287b1.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (OnLeaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (OnLeaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c16c6ed1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_c16c6ed1.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, event1992duMaurierClassic)\nParticipated(steinhauer, event1992duMaurierClassic)\n\u2203tie ( \u2203person1 ( OnLeaderboard(person1, event1992duMaurierClassic) \u2227 SixWayTie(person1) ) )\n\u2203person2 ( FromBelgium(person2) \u2227 OnLeaderboard(person2, event1992duMaurierClassic) \u2227 SixWayTie(person2) )\nFromBelgium(descampe)\nOnLeaderboard(descampe, event1992duMaurierClassic)\n\u2200x (OnLeaderboard(x, event1992duMaurierClassic) \u2192 Participated(x, event1992duMaurierClassic))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "'tie' is an illegal variable name.  Constants may not be quantified.\nsome tie.(some person1.((OnLeaderboard(person1, event1992duMaurierClassic)) & (SixWayTie(person1))))\n     ^",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c35b8798.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_c35b8798.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203person1 \u2203person2 \u2203person3 \u2203person4 \u2203person5 \u2203person6 (OnLeaderboard(person1, duMaurierClassic1992) \u2227 OnLeaderboard(person2, duMaurierClassic1992) \u2227 OnLeaderboard(person3, duMaurierClassic1992) \u2227 OnLeaderboard(person4, duMaurierClassic1992) \u2227 OnLeaderboard(person5, duMaurierClassic1992) \u2227 OnLeaderboard(person6, duMaurierClassic1992)) \u2227 \u00ac\u2203person7 (OnLeaderboard(person7, duMaurierClassic1992) \u2227 person7 \u2260 person1 \u2227 person7 \u2260 person2 \u2227 person7 \u2260 person3 \u2227 person7 \u2260 person4 \u2227 person7 \u2260 person5 \u2227 person7 \u2260 person6)\n\u2203person_from_belgium (FromBelgium(person_from_belgium) \u2227 OnLeaderboard(person_from_belgium, duMaurierClassic1992) \u2227 (person_from_belgium = person1 \u2228 person_from_belgium = person2 \u2228 person_from_belgium = person3 \u2228 person_from_belgium = person4 \u2228 person_from_belgium = person5 \u2228 person_from_belgium = person6))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200x (OnLeaderboard(x, duMaurierClassic1992) \u2192 Participated(x, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d1b059ac.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0009/post/solutions/sol_d1b059ac.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d29f34ae.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_d29f34ae.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203tie_group \u2203person ( (\u2200x ( (x = tie_group) \u2194 SixWayTie(x) ) ) \u2227 (\u2200x ( (x \u2208 tie_group) \u2192 SixWayTie(x) ) ) \u2227 (\u2200x ( SixWayTie(x) \u2192 (x \u2208 tie_group) ) ) \u2227 (\u2200x \u2200y ( (x \u2208 tie_group) \u2227 (y \u2208 tie_group) \u2192 x=y ) ) \u2227 (count(tie_group) = 6 ) )\n\u2203person (SixWayTie(person) \u2227 FromBelgium(person))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200person (OnLeaderboard(person, duMaurierClassic1992) \u2192 Participated(person, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d7ef3e8d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0004/post/solutions/sol_d7ef3e8d.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (OnLeaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (OnLeaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ec0b4f9d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0008/post/solutions/sol_ec0b4f9d.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203 x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x) \u2227 FromBelgium(x))\nFromBelgium(descampe)\nLeaderboard(descampe, duMaurierClassic1992)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ec1f0c86.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0002/post/solutions/sol_ec1f0c86.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203 p1 p2 p3 p4 p5 p6 (\n    OnLeaderboard(p1, duMaurierClassic1992)\n    \u2227 OnLeaderboard(p2, duMaurierClassic1992)\n    \u2227 OnLeaderboard(p3, duMaurierClassic1992)\n    \u2227 OnLeaderboard(p4, duMaurierClassic1992)\n    \u2227 OnLeaderboard(p5, duMaurierClassic1992)\n    \u2227 OnLeaderboard(p6, duMaurierClassic1992)\n    \u2227 SixWayTie(p1)\n    \u2227 FromBelgium(p1)\n    \u2227 \u2200 x (SixWayTie(x) \u2192 OnLeaderboard(x, duMaurierClassic1992))\n)\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200 x (OnLeaderboard(x, duMaurierClassic1992) \u2192 Participated(x, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_eff2f297.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0009/post/solutions/sol_eff2f297.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 OnLeaderboard(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f5901fb5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/initial/solutions/sol_f5901fb5.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n\u2203x (Leaderboard(x, 1992duMaurierClassic) \u2227 SixWayTie(x)) \u2227 \u2203y (Leaderboard(y, 1992duMaurierClassic) \u2227 SixWayTie(y) \u2227 FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) \u2227 OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n\u2200x (OnLeaderboard(x, 1992duMaurierClassic) \u2192 Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ff080354.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0001/post/solutions/sol_ff080354.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ff70ec5b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_with_diversity_with_both_syntax_with_validation_vw1p5/FOLIO_dev_195/run_20250905T014525Z_044aff/run_20250905T024525_a8ff44/evo_gen_0005/post/solutions/sol_ff70ec5b.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_195",
+          "context": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Descampe is in the six-way tie in the leaderboard of the 1992 du Maurier Classic.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "SixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, duMaurierClassic1992)\nParticipated(steinhauer, duMaurierClassic1992)\n\u2203x (Leaderboard(x, duMaurierClassic1992) \u2227 SixWayTie(x))\n\u2203y (Leaderboard(y, duMaurierClassic1992) \u2227 SixWayTie(y) \u2227 FromBelgium(y))\nFromBelgium(descampe)\nOnLeaderboard(descampe, duMaurierClassic1992)\nLeaderboard(descampe, duMaurierClassic1992)\n\u2200p (OnLeaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200p (Leaderboard(p, duMaurierClassic1992) \u2192 Participated(p, duMaurierClassic1992))\n\u2200x \u2200y (Leaderboard(x, y) \u2192 OnLeaderboard(x, y))\n\u2200x \u2200y (OnLeaderboard(x, y) \u2192 Leaderboard(x, y))\n\n# Conclusion:\nSixWayTie(descampe) \u2227 OnLeaderboard(descampe, duMaurierClassic1992)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 34,
+    "total_questions": 59,
+    "overall_accuracy": 0.576271186440678
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_53",
+  "problem_text": "All Romance languages are Indo-European languages. The Romance languages are a language family. All languages within a language family are related to each other. French and Spanish are both Romance languages. German is related to Spanish. Basque is not related to any other language.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "RomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.",
+  "tests": [
+    {
+      "id": "tc_c55241ca",
+      "questions": "Based on the above information, is the following statement true or false? Basque is a Romance language.",
+      "conclusions": "RomanceLanguage(basque) ::: Basque is a Romance language. FALSE"
+    },
+    {
+      "id": "tc_1f87c4af",
+      "questions": "Based on the above information, is the following statement true or false? French and German are related.",
+      "conclusions": "Related(french, german) ::: French and German are related. FALSE"
+    },
+    {
+      "id": "tc_ccf806fb",
+      "questions": "Based on the above information, is the following statement true or false? All languages that belong to the Romance language family are related to French.",
+      "conclusions": "∀x (BelongsToFamily(x, romancelanguages) → Related(x, french)) ::: All languages that belong to the Romance language family are related to French. FALSE"
+    },
+    {
+      "id": "tc_90a67686",
+      "questions": "Based on the above information, is the following statement true or false? German is a Romance language.",
+      "conclusions": "German(german) → RomanceLanguage(german) ::: German is a Romance language. FALSE"
+    },
+    {
+      "id": "tc_5673a591",
+      "questions": "Based on the above information, is the following statement true or false? Basque is a language family.",
+      "conclusions": "LanguageFamily(basque) ::: Basque is a language family. FALSE"
+    },
+    {
+      "id": "tc_5a73c6f0",
+      "questions": "Based on the above information, is the following statement true or false? German is a Romance language and is related to Basque.",
+      "conclusions": "German(german) ∧ Related(german, basque) ::: German is a Romance language and is related to Basque. FALSE"
+    },
+    {
+      "id": "tc_4313bf99",
+      "questions": "Based on the above information, is the following statement true or false? Spanish and German are related.",
+      "conclusions": "Related(spanish, german) ::: FALSE"
+    },
+    {
+      "id": "tc_bdaeb54b",
+      "questions": "Based on the above information, is the following statement true or false? Basque is an Indo-European language.",
+      "conclusions": "IndoEuropeanLanguage(basque) ::: Basque is an Indo-European language. FALSE"
+    },
+    {
+      "id": "tc_edd6b273",
+      "questions": "Based on the above information, is the following statement true or false? All Romance languages are related to Spanish.",
+      "conclusions": "∀x (RomanceLanguage(x) → Related(x, spanish)) ::: All Romance languages are related to Spanish. TRUE"
+    },
+    {
+      "id": "tc_7ffb7944",
+      "questions": "Based on the above information, is the following statement true or false? Basque is related to French.",
+      "conclusions": "Related(basque, french) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_72cd5e76",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\n∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y (BelongsToFamily(x, y) ∧ BelongsToFamily(z, y) → Related(x, z)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ¬∃y (Related(x, y) ∧ ¬(x = y))) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_e446d731",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\n∀x (RomanceLanguage(x) → LanguageFamily(romance)) ::: The Romance languages are a language family.\n∀x ∀y ∀z (Language(x) ∧ Language(y) ∧ BelongsToFamily(x, z) ∧ BelongsToFamily(y, z) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_395e9add",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\nLanguageFamily(romance) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y ∀z (BelongsToFamily(x, z) ∧ BelongsToFamily(y, z) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_ed3165d4",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\n∃y (LanguageFamily(y) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, y))) ::: The Romance languages are a language family.\n∀x ∀y ∀z (BelongsToFamily(x, z) ∧ BelongsToFamily(y, z) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ (x = y))) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_929ea697",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\n∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y ∀z (BelongsToFamily(x, z) ∧ BelongsToFamily(y, z) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_5ddbc8eb",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\nLanguageFamily(romance) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y (BelongsToFamily(x, romance) ∧ BelongsToFamily(y, romance) → Related(x, y)) ::: All languages within the Romance language family are related to each other.\nFrench(french) ∧ Spanish(spanish) ∧ RomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ¬∃y (Related(x, y) ∧ ¬(x = y))) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_68cf9233",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\nLanguageFamily(romance) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y (BelongsToFamily(x, romance) ∧ BelongsToFamily(y, romance) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_9e2cd047",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\nLanguageFamily(romance) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, romance)) ::: The Romance languages are a language family.\n∀x ∀y (BelongsToFamily(x, romance) ∧ BelongsToFamily(y, romance) → Related(x, y)) ::: All languages within the Romance language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_510fa1b4",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\n∀x (RomanceLanguage(x) → BelongsToFamily(x, romance_family)) ::: The Romance languages are a language family.\n∀x ∀y ∀z (BelongsToFamily(x, z) ∧ BelongsToFamily(y, z) → Related(x, y)) ::: All languages within a language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    },
+    {
+      "id": "sol_4fd975ac",
+      "text": "# Predicates:\nRomanceLanguage(x) ::: x is a Romance language.\nIndoEuropeanLanguage(x) ::: x is an Indo-European language.\nLanguageFamily(x) ::: x is a language family.\nRelated(x, y) ::: x is related to y.\nLanguage(x) ::: x is a language.\nBelongsToFamily(x, y) ::: language x belongs to language family y.\nFrench(x) ::: x is French.\nSpanish(x) ::: x is Spanish.\nGerman(x) ::: x is German.\nBasque(x) ::: x is Basque.\n\n# Premises:\n∀x (RomanceLanguage(x) → IndoEuropeanLanguage(x)) ::: All Romance languages are Indo-European languages.\nLanguageFamily(romance_family) ∧ ∀x (RomanceLanguage(x) → BelongsToFamily(x, romance_family)) ::: The Romance languages are a language family.\n∀x ∀y (BelongsToFamily(x, romance_family) ∧ BelongsToFamily(y, romance_family) → Related(x, y)) ::: All languages within the Romance language family are related to each other.\nRomanceLanguage(french) ∧ RomanceLanguage(spanish) ::: French and Spanish are both Romance languages.\nRelated(german, spanish) ::: German is related to Spanish.\n∀x (Basque(x) → ∀y (Language(y) → ¬Related(x, y) ∨ x = y)) ::: Basque is not related to any other language."
+    }
+  ],
+  "validation": {
+    "id": "tc_5f9ee649",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Basque is a Romance language.",
+    "conclusions": "RomanceLanguage(basque) ::: Basque is a Romance language. false"
+  }
+}

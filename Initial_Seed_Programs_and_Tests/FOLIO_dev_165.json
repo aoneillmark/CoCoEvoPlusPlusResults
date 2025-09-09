@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_165",
+  "problem_text": "On some Mondays at 8 pm, roses are given out on TV. Every rose given out on TV is on the Bachelor. Everything on the Bachelor portrays the lives of real people. All shows portraying the lives of real people are reality TV shows. Breaking Bad is not a reality TV show.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Monday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.",
+  "tests": [
+    {
+      "id": "tc_3c82f799",
+      "questions": "Based on the above information, is the following statement true or false? Breaking Bad is a reality TV show.",
+      "conclusions": "¬RealityTVShow(BreakingBad) ::: Breaking Bad is a reality TV show. FALSE"
+    },
+    {
+      "id": "tc_0c7b67b1",
+      "questions": "Based on the above information, is the following statement true or false? If Breaking Bad is a show, then it is not a reality TV show.",
+      "conclusions": "Show(BreakingBad) → ¬RealityTVShow(BreakingBad) ::: TRUE"
+    },
+    {
+      "id": "tc_57a0ecd7",
+      "questions": "Based on the above information, is the following statement true or false? If Breaking Bad is a show, then it does not portray the lives of real people.",
+      "conclusions": "Show(BreakingBad) → ¬PortraysRealPeople(BreakingBad) ::: TRUE"
+    },
+    {
+      "id": "tc_773ebdcb",
+      "questions": "Based on the above information, is the following statement true or false? If roses are given out on TV on a Monday at 8 pm, then Breaking Bad is a reality TV show.",
+      "conclusions": "(∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x))) → RealityTVShow(BreakingBad) ::: FALSE"
+    },
+    {
+      "id": "tc_a550d52f",
+      "questions": "Based on the above information, is the following statement true or false? If a show is on the Bachelor, then it is a reality TV show.",
+      "conclusions": "∀x (OnBachelor(x) → RealityTVShow(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_d44d170b",
+      "questions": "Based on the above information, is the following statement true or false? If Breaking Bad is a show and it is not a reality TV show, then it is not on the Bachelor.",
+      "conclusions": "Show(BreakingBad) ∧ ¬RealityTVShow(BreakingBad) → ¬OnBachelor(BreakingBad) ::: TRUE"
+    },
+    {
+      "id": "tc_fc301572",
+      "questions": "Based on the above information, is the following statement true or false? If a show is on the Bachelor, then roses are given out on TV at 8 pm on a Monday.",
+      "conclusions": "∃x ∃y ∃z (Monday(x) ∧ At8pm(y) ∧ RosesGivenOutOnTV(z) ∧ OnBachelor(z) ∧ Show(z) ∧ RealityTVShow(z) ∧ PortraysRealPeople(z) ∧ ¬RealityTVShow(BreakingBad) ∧ (OnBachelor(z) → RosesGivenOutOnTV(y) ∧ Monday(x) ∧ At8pm(y))) ::: FALSE"
+    },
+    {
+      "id": "tc_9b0a2f48",
+      "questions": "Based on the above information, is the following statement true or false? If roses are given out on TV on a Monday at 8 pm, then Breaking Bad is not on the Bachelor.",
+      "conclusions": "∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) → ¬OnBachelor(BreakingBad) ::: FALSE"
+    },
+    {
+      "id": "tc_afe7123d",
+      "questions": "Based on the above information, is the following statement true or false? If a show portrays the lives of real people, then it is a reality TV show.",
+      "conclusions": "∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_ebb5f00d",
+      "questions": "Based on the above information, is the following statement true or false? If roses are given out on TV at a specific time and that time is a Monday at 8 pm, then the show where roses are given out on TV is a reality TV show.",
+      "conclusions": "(∃x (RosesGivenOutOnTV(x) ∧ Monday(x) ∧ At8pm(x))) → ∃y (∃x (RosesGivenOutOnTV(x) ∧ Monday(x) ∧ At8pm(x) ∧ OnBachelor(y)) ∧ RealityTVShow(y)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_e05dd5ec",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (Rose(x) ∧ RosesGivenOutOnTV(x) → OnBachelor(x)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_3417e3b7",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (RosesGivenOutOnTV(x) → (Rose(x) ∧ OnBachelor(x))) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_3266d664",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x ((Rose(x) ∧ RosesGivenOutOnTV(x)) → OnBachelor(x)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_dd55f6ff",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x ((RosesGivenOutOnTV(x) ∧ Rose(x)) → OnBachelor(x)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_f3b0d168",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (RosesGivenOutOnTV(x) → (∃y (Rose(y) ∧ x = y))) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_97972c5a",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (RosesGivenOutOnTV(x) → (∃y (Rose(y) ∧ x = y))) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_84776adc",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (RosesGivenOutOnTV(x) → ∃y (Rose(y) ∧ OnBachelor(y) ∧ x=y)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_a2731ca5",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x ((RosesGivenOutOnTV(x) ∧ ∃y Rose(y)) → OnBachelor(x)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_bb3dbff1",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (RosesGivenOutOnTV(x) → (∃y (Rose(y) ∧ OnBachelor(y) ∧ x=y))) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    },
+    {
+      "id": "sol_2bab07f7",
+      "text": "# Predicates:\nMonday(x) ::: x is a Monday.\nAt8pm(x) ::: x is at 8 pm.\nRosesGivenOutOnTV(x) ::: Roses are given out on TV at time x.\nOnBachelor(x) ::: x is on the Bachelor.\nRose(x) ::: x is a rose.\nPortraysRealPeople(x) ::: x portrays the lives of real people.\nRealityTVShow(x) ::: x is a reality TV show.\nShow(x) ::: x is a show.\nBreakingBad ::: Breaking Bad.\n\n# Premises:\n∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x)) ::: On some Mondays at 8 pm, roses are given out on TV.\n∀x (∃y (Rose(y) ∧ RosesGivenOutOnTV(x) ∧ x=y) → OnBachelor(x)) ::: Every rose given out on TV is on the Bachelor.\n∀x (OnBachelor(x) → PortraysRealPeople(x)) ::: Everything on the Bachelor portrays the lives of real people.\n∀x (PortraysRealPeople(x) → RealityTVShow(x)) ::: All shows portraying the lives of real people are reality TV shows.\n¬RealityTVShow(BreakingBad) ::: Breaking Bad is not a reality TV show."
+    }
+  ],
+  "validation": {
+    "id": "tc_7dc75b80",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Breaking Bad is on Monday at 8 pm.",
+    "conclusions": "∃x (Monday(x) ∧ At8pm(x) ∧ RosesGivenOutOnTV(x) → OnBachelor(x)) ::: On some Mondays at 8 pm, roses are given out on TV, and everything given out on TV on Mondays at 8 pm is on the Bachelor."
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_56",
+  "problem_text": "Robert Lewandowski is a striker. [BG] Strikers are soccer players. Robert Lewandowski left Bayern Munchen. [BG] If a player left a team they no longer play for that team.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Striker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.",
+  "tests": [
+    {
+      "id": "tc_39f574b6",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski no longer plays for Bayern Munchen.",
+      "conclusions": "¬PlaysFor(robert Lewandowski, bayern munchen) ::: Robert Lewandowski no longer plays for Bayern Munchen. TRUE"
+    },
+    {
+      "id": "tc_dd2f8e5f",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a soccer player and he left Bayern Munchen.",
+      "conclusions": "SoccerPlayer(robert) ∧ Left(robert, bayernmunchen) ::: Robert Lewandowski is a soccer player and he left Bayern Munchen. TRUE"
+    },
+    {
+      "id": "tc_087234ac",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a soccer player and he left Bayern Munchen, and he no longer plays for Bayern Munchen.",
+      "conclusions": "SoccerPlayer(robert_lewandowski) ∧ Left(robert_lewandowski, bayern_munchen) ∧ ¬PlaysFor(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski is a soccer player and he left Bayern Munchen, and he no longer plays for Bayern Munchen. TRUE"
+    },
+    {
+      "id": "tc_8d254c28",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a soccer player who left Bayern Munchen and no longer plays for Bayern Munchen.",
+      "conclusions": "SoccerPlayer(robert_lewandowski) ∧ Left(robert_lewandowski, bayern_munchen) ∧ ¬PlaysFor(robert_lewandowski, bayern_munchen) ::: TRUE"
+    },
+    {
+      "id": "tc_c916ebc5",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a striker and plays for Bayern Munchen.",
+      "conclusions": "Striker(robert_lewandowski) ∧ PlaysFor(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski is a striker and plays for Bayern Munchen. FALSE"
+    },
+    {
+      "id": "tc_a5f6a67d",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a soccer player and he no longer plays for Bayern Munchen.",
+      "conclusions": "SoccerPlayer(robert_lewandowski) ∧ ¬PlaysFor(robert_lewandowski, bayern_munchen) ::: TRUE"
+    },
+    {
+      "id": "tc_5e6f9833",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a soccer player who plays for Bayern Munchen and left Bayern Munchen.",
+      "conclusions": "SoccerPlayer(robert_lewandowski) ∧ PlaysFor(robert_lewandowski, bayern_munchen) ∧ Left(robert_lewandowski, bayern_munchen) ::: FALSE"
+    },
+    {
+      "id": "tc_c09016e2",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a striker and he plays for Bayern Munchen.",
+      "conclusions": "Striker(robert_lewandowski) ∧ PlaysFor(robert_lewandowski, bayern_munchen) ::: FALSE"
+    },
+    {
+      "id": "tc_33b5c697",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a striker, and if he left Bayern Munchen, then he does not play for Bayern Munchen.",
+      "conclusions": "Striker(robert_lewandowski) ∧ (Left(robert_lewandowski, bayern_munchen) → ¬PlaysFor(robert_lewandowski, bayern_munchen)) ::: TRUE"
+    },
+    {
+      "id": "tc_440f7eb8",
+      "questions": "Based on the above information, is the following statement true or false? Robert Lewandowski is a striker, and he no longer plays for Bayern Munchen.",
+      "conclusions": "Striker(robert_lewandowski) ∧ ¬PlaysFor(robert_lewandowski, bayern_munchen) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_543f0f81",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_2e6d9480",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_09a096cb",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\n∃y (Left(robert_lewandowski, y) ∧ y = bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_272a10e5",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\nSoccerPlayer(robert_lewandowski) ::: Robert Lewandowski is a soccer player.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players."
+    },
+    {
+      "id": "sol_853c2129",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_16dec17c",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\n∃y (Left(robert_lewandowski, y) ∧ y = bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_200df9bc",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\n∃y (y = bayern_munchen ∧ Left(robert_lewandowski, y)) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_800257f7",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_50de155a",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    },
+    {
+      "id": "sol_2dbaede0",
+      "text": "# Predicates:\nStriker(x) ::: x is a striker.\nSoccerPlayer(x) ::: x is a soccer player.\nLeft(x, y) ::: x left team y.\nPlaysFor(x, y) ::: x plays for team y.\n\n# Premises:\nStriker(robert_lewandowski) ::: Robert Lewandowski is a striker.\n∀x (Striker(x) → SoccerPlayer(x)) ::: Strikers are soccer players.\nLeft(robert_lewandowski, bayern_munchen) ::: Robert Lewandowski left Bayern Munchen.\n∀x ∀y (Left(x, y) → ¬PlaysFor(x, y)) ::: If a player left a team they no longer play for that team."
+    }
+  ],
+  "validation": {
+    "id": "tc_80b14bf2",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Robert Lewandowski is a soccer player.",
+    "conclusions": "SoccerPlayer(robert) true"
+  }
+}

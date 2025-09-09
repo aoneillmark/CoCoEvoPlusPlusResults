@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_10",
+  "problem_text": "There are six types of wild turkeys: Eastern wild turkey, Osceola wild turkey, Gould’s wild turkey, Merriam’s wild turkey, Rio Grande wild turkey, and Ocellated wild turkey. Tom is not an Eastern wild turkey. Tom is not an Osceola wild turkey. Tom is also not a Gould's wild turkey, or a Merriam's wild turkey, or a Rio Grande wild turkey. Tom is a wild turkey.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "WildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.",
+  "tests": [
+    {
+      "id": "tc_c9705a0e",
+      "questions": "Based on the above information, is the following statement true or false? Tom is a Merriam's wild turkey.",
+      "conclusions": "MerriamsWildTurkey(tom) ::: Tom is a Merriam's wild turkey. FALSE"
+    },
+    {
+      "id": "tc_ef6cd173",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Ocellated wild turkey.",
+      "conclusions": "OcellatedWildTurkey(tom) ::: Tom is an Ocellated wild turkey. FALSE"
+    },
+    {
+      "id": "tc_443553d8",
+      "questions": "Based on the above information, is the following statement true or false? Tom is either an Ocellated wild turkey or a Rio Grande wild turkey.",
+      "conclusions": "OcellatedWildTurkey(tom) ⊕ RioGrandeWildTurkey(tom) ::: TRUE"
+    },
+    {
+      "id": "tc_3924777d",
+      "questions": "Based on the above information, is the following statement true or false? Tom is not an Ocellated wild turkey and Tom is not a Rio Grande wild turkey.",
+      "conclusions": "¬OsceolaWildTurkey(tom) ∧ ¬GouldsWildTurkey(tom) ∧ ¬MerriamsWildTurkey(tom) ∧ ¬RioGrandeWildTurkey(tom) ∧ ¬EasternWildTurkey(tom) → ¬OcellatedWildTurkey(tom) ∧ ¬RioGrandeWildTurkey(tom) ::: TRUE"
+    },
+    {
+      "id": "tc_26081238",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Ocellated wild turkey and Tom is a wild turkey.",
+      "conclusions": "OcellatedWildTurkey(tom) ∧ WildTurkey(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_cdaee5f0",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Ocellated wild turkey and Tom is not a wild turkey.",
+      "conclusions": "OcellatedWildTurkey(tom) ∧ ¬WildTurkey(tom) ::: Tom is an Ocellated wild turkey and Tom is not a wild turkey. FALSE"
+    },
+    {
+      "id": "tc_fa4960ba",
+      "questions": "Based on the above information, is the following statement true or false? Tom is a Gould's wild turkey or a wild turkey.",
+      "conclusions": "GouldsWildTurkey(tom) ∨ WildTurkey(tom) ::: TRUE"
+    },
+    {
+      "id": "tc_45480e75",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Ocellated wild turkey or a Gould's wild turkey.",
+      "conclusions": "OcellatedWildTurkey(tom) ∨ GouldsWildTurkey(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_ac2f59e7",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Eastern wild turkey, or Tom is an Osceola wild turkey, or Tom is a Gould's wild turkey, or Tom is a Merriam's wild turkey, or Tom is a Rio Grande wild turkey, or Tom is an Ocellated wild turkey.",
+      "conclusions": "EasternWildTurkey(tom) ⊕ OsceolaWildTurkey(tom) ⊕ GouldsWildTurkey(tom) ⊕ MerriamsWildTurkey(tom) ⊕ RioGrandeWildTurkey(tom) ⊕ OcellatedWildTurkey(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_3a2312bd",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an Ocellated wild turkey or Tom is a wild turkey.",
+      "conclusions": "OsceolaWildTurkey(tom) ⊕ WildTurkey(tom) ::: Tom is an Osceola wild turkey or Tom is a wild turkey. FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_35047ff7",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: There are six types of wild turkeys: Eastern wild turkey, Osceola wild turkey, Gould’s wild turkey, Merriam’s wild turkey, Rio Grande wild turkey, and Ocellated wild turkey."
+    },
+    {
+      "id": "sol_fcfc9daf",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) ∧ ¬EasternWildTurkey(x) ∧ ¬OsceolaWildTurkey(x) ∧ ¬GouldsWildTurkey(x) ∧ ¬MerriamsWildTurkey(x) ∧ ¬RioGrandeWildTurkey(x) → OcellatedWildTurkey(x)) ::: All wild turkeys that are not Eastern, Osceola, Gould's, Merriam's, or Rio Grande are Ocellated wild turkeys."
+    },
+    {
+      "id": "sol_3a544b66",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∃x (WildTurkey(x) ∧ EasternWildTurkey(x) ∧ OsceolaWildTurkey(x) ∧ GouldsWildTurkey(x) ∧ MerriamsWildTurkey(x) ∧ RioGrandeWildTurkey(x) ∧ OcellatedWildTurkey(x)) ::: There are six types of wild turkeys: Eastern wild turkey, Osceola wild turkey, Gould’s wild turkey, Merriam’s wild turkey, Rio Grande wild turkey, and Ocellated wild turkey."
+    },
+    {
+      "id": "sol_e7826b5c",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: All wild turkeys are one of the six types: Eastern wild turkey, Osceola wild turkey, Gould’s wild turkey, Merriam’s wild turkey, Rio Grande wild turkey, and Ocellated wild turkey."
+    },
+    {
+      "id": "sol_02360f60",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\nOcellatedWildTurkey(tom) ::: Tom is an Ocellated wild turkey."
+    },
+    {
+      "id": "sol_00318915",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: All wild turkeys belong to one of the six specified types."
+    },
+    {
+      "id": "sol_b9b10d1e",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: There are six types of wild turkeys, and every wild turkey is one of these types."
+    },
+    {
+      "id": "sol_d150f755",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: Every wild turkey is one of the six types: Eastern wild turkey, Osceola wild turkey, Gould’s wild turkey, Merriam’s wild turkey, Rio Grande wild turkey, and Ocellated wild turkey."
+    },
+    {
+      "id": "sol_05948820",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x ((EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x)) ↔ WildTurkey(x)) ::: Every wild turkey belongs to exactly one of the six listed species."
+    },
+    {
+      "id": "sol_008612a8",
+      "text": "# Predicates:\nWildTurkey(x) ::: x is a wild turkey.\nEasternWildTurkey(x) ::: x is an Eastern wild turkey.\nOsceolaWildTurkey(x) ::: x is an Osceola wild turkey.\nGouldsWildTurkey(x) ::: x is a Gould's wild turkey.\nMerriamsWildTurkey(x) ::: x is a Merriam's wild turkey.\nRioGrandeWildTurkey(x) ::: x is a Rio Grande wild turkey.\nOcellatedWildTurkey(x) ::: x is an Ocellated wild turkey.\n\n# Premises:\nWildTurkey(tom) ::: Tom is a wild turkey.\n¬EasternWildTurkey(tom) ::: Tom is not an Eastern wild turkey.\n¬OsceolaWildTurkey(tom) ::: Tom is not an Osceola wild turkey.\n¬GouldsWildTurkey(tom) ::: Tom is also not a Gould's wild turkey.\n¬MerriamsWildTurkey(tom) ::: or a Merriam's wild turkey.\n¬RioGrandeWildTurkey(tom) ::: or a Rio Grande wild turkey.\n∀x (WildTurkey(x) → (EasternWildTurkey(x) ∨ OsceolaWildTurkey(x) ∨ GouldsWildTurkey(x) ∨ MerriamsWildTurkey(x) ∨ RioGrandeWildTurkey(x) ∨ OcellatedWildTurkey(x))) ::: Every wild turkey belongs to one of the six mentioned types."
+    }
+  ],
+  "validation": {
+    "id": "tc_ff96e7c0",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Tom is an Ocellated wild turkey.",
+    "conclusions": "OcellatedWildTurkey(tom) ::: Tom is an Ocellated wild turkey. true"
+  }
+}

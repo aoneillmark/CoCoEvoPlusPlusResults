@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_126",
+  "problem_text": "All mammals are animals. All monkeys are mammals. An animal is either a monkey or a bird. All birds fly. All animals breathe. If something can fly, then it has wings. If Rock is neither a fly nor a bird, then Rock neither flies nor breathes.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Animal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.",
+  "tests": [
+    {
+      "id": "tc_2f22f79d",
+      "questions": "Based on the above information, is the following statement true or false? If Rock is an animal, then Rock is a bird.",
+      "conclusions": "∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ∧ (¬Flies(rock) ∧ ¬Bird(rock)) → (Animal(rock) → Bird(rock)) ::: FALSE"
+    },
+    {
+      "id": "tc_55baf8d8",
+      "questions": "Based on the above information, is the following statement true or false? Rock is an animal.",
+      "conclusions": "Animal(Rock) ::: Rock is an animal. FALSE"
+    },
+    {
+      "id": "tc_d1d26ffc",
+      "questions": "Based on the above information, is the following statement true or false? If Rock is a mammal, then Rock is a bird.",
+      "conclusions": "Mammal(Rock) → Bird(Rock) ::: FALSE"
+    },
+    {
+      "id": "tc_b9000e85",
+      "questions": "Based on the above information, is the following statement true or false? Rock breathes.",
+      "conclusions": "Breathes(Rock) ::: Rock breathes. FALSE"
+    },
+    {
+      "id": "tc_79fb6051",
+      "questions": "Based on the above information, is the following statement true or false? If Rock is not an animal, then Rock is a monkey.",
+      "conclusions": "¬Animal(rock) → Monkey(rock) ::: FALSE"
+    },
+    {
+      "id": "tc_bde3f638",
+      "questions": "Based on the above information, is the following statement true or false? Rock is a monkey.",
+      "conclusions": "Monkey(Rock) ::: Rock is a monkey. FALSE"
+    },
+    {
+      "id": "tc_1293b388",
+      "questions": "Based on the above information, is the following statement true or false? If Rock is a bird, then Rock flies.",
+      "conclusions": "Bird(Rock) → Flies(Rock) ::: TRUE"
+    },
+    {
+      "id": "tc_32b9709c",
+      "questions": "Based on the above information, is the following statement true or false? If Rock flies, then Rock is a bird.",
+      "conclusions": "Flies(Rock) → Bird(Rock) ::: FALSE"
+    },
+    {
+      "id": "tc_432e598c",
+      "questions": "Based on the above information, is the following statement true or false? If an animal breathes, then it is either a monkey or a bird.",
+      "conclusions": "∀x (Animal(x) ∧ Breathes(x) → Monkey(x) ∨ Bird(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_823ba1f7",
+      "questions": "Based on the above information, is the following statement true or false? If something is an animal, then it either has wings or it is a monkey.",
+      "conclusions": "∀x (Animal(x) → (HasWings(x) ∨ Monkey(x))) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_1c6829ae",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n¬Flies(rock) ∧ ¬Bird(rock) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_46d114e2",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_b101ff8b",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Animal(x) ← Mammal(x)) ::: All mammals are animals.\n∀x (Mammal(x) ← Monkey(x)) ::: All monkeys are mammals.\n∀x (Monkey(x) ∨ Bird(x)) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → ¬(Flies(rock) ∨ Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_a9cfeb40",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → Monkey(x) ∨ Bird(x)) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_ec2770cd",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → ¬Flies(rock) ∧ ¬Breathes(rock) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_0e649a9b",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_32105ba4",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n¬Flies(rock) ∧ ¬Bird(rock) → ¬Flies(rock) ∧ ¬Breathes(rock) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_5c336f63",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_06b6a0f0",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Flies(rock) ∧ ¬Bird(rock)) → (¬Flies(rock) ∧ ¬Breathes(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    },
+    {
+      "id": "sol_d91f7b0c",
+      "text": "# Predicates:\nAnimal(x) ::: x is an animal.\nMammal(x) ::: x is a mammal.\nMonkey(x) ::: x is a monkey.\nBird(x) ::: x is a bird.\nFlies(x) ::: x flies.\nBreathes(x) ::: x breathes.\nHasWings(x) ::: x has wings.\nRock ::: Rock.\n\n# Premises:\n∀x (Mammal(x) → Animal(x)) ::: All mammals are animals.\n∀x (Monkey(x) → Mammal(x)) ::: All monkeys are mammals.\n∀x (Animal(x) → (Monkey(x) ∨ Bird(x))) ::: An animal is either a monkey or a bird.\n∀x (Bird(x) → Flies(x)) ::: All birds fly.\n∀x (Animal(x) → Breathes(x)) ::: All animals breathe.\n∀x (Flies(x) → HasWings(x)) ::: If something can fly, then it has wings.\n(¬Bird(rock) ∧ ¬Flies(rock)) → (¬Breathes(rock) ∧ ¬Flies(rock)) ::: If Rock is neither a fly nor a bird, then Rock neither flies nor breathes."
+    }
+  ],
+  "validation": {
+    "id": "tc_73a81c47",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Rock is a monkey.",
+    "conclusions": "Monkey(rock) ::: Rock is a monkey. unknown"
+  }
+}

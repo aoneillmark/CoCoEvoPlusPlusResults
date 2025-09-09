@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_113",
+  "problem_text": "The Picuris Mountains are a mountain range in New Mexico or Texas. Juan de Onate visited the Picuris Mountains. The Harding Pegmatite Mine, located in the Picuris Mountains, was donated. There are no mountain ranges in texas that have mines which have been donated.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "MountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.",
+  "tests": [
+    {
+      "id": "tc_b402649b",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is located in New Mexico.",
+      "conclusions": "LocatedIn(HardingPegmatiteMine, NewMexico) ::: The Harding Pegmatite Mine is located in New Mexico. FALSE"
+    },
+    {
+      "id": "tc_cd2ca834",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is not located in Texas.",
+      "conclusions": "¬LocatedIn(HardingPegmatiteMine, Texas) ::: The Harding Pegmatite Mine is not located in Texas. TRUE"
+    },
+    {
+      "id": "tc_a1b8f3fa",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine was donated and is located in New Mexico.",
+      "conclusions": "Donated(hardingPegmatiteMine) ∧ LocatedIn(hardingPegmatiteMine, newmexico) ::: The Harding Pegmatite Mine was donated and is located in New Mexico. TRUE"
+    },
+    {
+      "id": "tc_01640ebd",
+      "questions": "Based on the above information, is the following statement true or false? Juan de Onate visited a mountain range that has mines which have been donated.",
+      "conclusions": "∃x ∃y (Visited(juanDeOnate, x) ∧ MountainRange(x) ∧ Mine(y) ∧ LocatedIn(y, x) ∧ Donated(y)) ::: TRUE"
+    },
+    {
+      "id": "tc_57ae14fd",
+      "questions": "Based on the above information, is the following statement true or false? Juan de Onate visited the Picuris Mountains and the Harding Pegmatite Mine was donated.",
+      "conclusions": "LocatedIn(picurismountains, newmexico) ∨ LocatedIn(picurismountains, texas) ∧ Visited(juan de onate, picurismountains) ∧ Donated(hardingpegmatitemine) ∧ LocatedIn(hardingpegmatitemine, picurismountains) ∧ ¬∃x (MountainRange(x) ∧ LocatedIn(x, texas) ∧ Mine(y) ∧ LocatedIn(y, x) ∧ Donated(y)) ::: FALSE"
+    },
+    {
+      "id": "tc_9b469d10",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is located in Texas and Juan de Onate visited it.",
+      "conclusions": "LocatedIn(hardingPegmatiteMine, texas) ∧ Visited(juanDeOnate, hardingPegmatiteMine) ::: FALSE"
+    },
+    {
+      "id": "tc_5f7cfb12",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is a mine located in Texas.",
+      "conclusions": "Mine(hardingPegmatiteMine) ∧ LocatedIn(hardingPegmatiteMine, texas) ::: The Harding Pegmatite Mine is a mine located in Texas. FALSE"
+    },
+    {
+      "id": "tc_c32bd33b",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is a mine and it is located in New Mexico.",
+      "conclusions": "Mine(hardingPegmatiteMine) ∧ LocatedIn(hardingPegmatiteMine, newmexico) ::: TRUE"
+    },
+    {
+      "id": "tc_122484eb",
+      "questions": "Based on the above information, is the following statement true or false? Juan de Onate visited a mountain range that is not in Texas.",
+      "conclusions": "∃x ∃y (Visited(juanDeOnate, x) ∧ MountainRange(x) ∧ ¬LocatedIn(x, texas)) ::: Juan de Onate visited a mountain range that is not in Texas. FALSE"
+    },
+    {
+      "id": "tc_55e79eb6",
+      "questions": "Based on the above information, is the following statement true or false? The Harding Pegmatite Mine is located in New Mexico and was donated.",
+      "conclusions": "LocatedIn(hardingPegmatiteMine, newMexico) ∧ Donated(hardingPegmatiteMine) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_007e46d3",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(picurismountains) ∧ (State(newmexico) ∨ State(texas)) ∧ LocatedIn(picurismountains, newmexico) ∨ LocatedIn(picurismountains, texas) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(juandeonate, picurismountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(hardingpegmatitemine) ∧ LocatedIn(hardingpegmatitemine, picurismountains) ∧ Donated(hardingpegmatitemine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x ((Mine(x) ∧ LocatedIn(x, texas)) → ¬Donated(x)) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_607f3e09",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(picurismountains) ∧ (LocatedIn(picurismountains, newmexico) ∨ LocatedIn(picurismountains, texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(juandeonate, picurismountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(hardingpegmatitemine) ∧ LocatedIn(hardingpegmatitemine, picurismountains) ∧ Donated(hardingpegmatitemine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (Mine(x) ∧ LocatedIn(x, texas) → ¬Donated(x)) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_515a010e",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(picurismountains) ∧ (LocatedIn(picurismountains, newmexico) ∨ LocatedIn(picurismountains, texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(juandeonate, picurismountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(hardingpegmatitemine) ∧ LocatedIn(hardingpegmatitemine, picurismountains) ∧ Donated(hardingpegmatitemine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x ((Mine(x) ∧ LocatedIn(x, texas)) → ¬Donated(x)) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_d3721108",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (LocatedIn(x, Texas) → (Mine(x) → ¬Donated(x))) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_d597eeae",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (LocatedIn(x, Texas) → ¬(Mine(x) ∧ Donated(x))) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_844839bf",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x ((LocatedIn(x, Texas) ∧ Mine(x)) → ¬Donated(x)) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_84bf9ad8",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (Mine(x) → (LocatedIn(x, Texas) → ¬Donated(x))) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_c6d63806",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x ((LocatedIn(x, Texas) ∧ Mine(x)) → ¬Donated(x)) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_e05ad57d",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (LocatedIn(x, Texas) → (∃y (Mine(y) ∧ LocatedIn(y, x)) → ¬∃z (Mine(z) ∧ LocatedIn(z, x) ∧ Donated(z)))) ::: There are no mountain ranges in texas that have mines which have been donated."
+    },
+    {
+      "id": "sol_79dcd151",
+      "text": "# Predicates:\nMountainRange(x) ::: x is a mountain range.\nLocatedIn(x, y) ::: x is located in y.\nState(x) ::: x is a state.\nVisited(x, y) ::: x visited y.\nMine(x) ::: x is a mine.\nDonated(x) ::: x has been donated.\nTexas(x) ::: x is Texas.\nNewMexico(x) ::: x is New Mexico.\nPicurisMountains(x) ::: x is the Picuris Mountains.\nHardingPegmatiteMine(x) ::: x is the Harding Pegmatite Mine.\n\n# Premises:\nMountainRange(PicurisMountains) ∧ (LocatedIn(PicurisMountains, NewMexico) ∨ LocatedIn(PicurisMountains, Texas)) ::: The Picuris Mountains are a mountain range in New Mexico or Texas.\nVisited(JuanDeOnate, PicurisMountains) ::: Juan de Onate visited the Picuris Mountains.\nMine(HardingPegmatiteMine) ∧ LocatedIn(HardingPegmatiteMine, PicurisMountains) ∧ Donated(HardingPegmatiteMine) ::: The Harding Pegmatite Mine, located in the Picuris Mountains, was donated.\n∀x (LocatedIn(x, Texas) → ¬(Mine(x) ∧ Donated(x))) ::: There are no mountain ranges in texas that have mines which have been donated."
+    }
+  ],
+  "validation": {
+    "id": "tc_2e1292a6",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Juan de Onate visited a mountain range in New Mexico.",
+    "conclusions": "∃x ∃y (Visited(x, y) ∧ MountainRange(y) ∧ LocatedIn(y, NewMexico(x))) ::: Juan de Onate visited a mountain range in New Mexico. true"
+  }
+}

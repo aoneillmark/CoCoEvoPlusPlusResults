@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_103",
+  "problem_text": "If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings. If people have siblings who are the same age, then they are twins or triplets. If people complain often about annoying siblings, then they have siblings who are the same age. If people do not live at home regularly, then they do not develop strong bonds with their family members. If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly. Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Twins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.",
+  "tests": [
+    {
+      "id": "tc_2ddd8ec6",
+      "questions": "Based on the above information, is the following statement true or false? If Luke does not live at home regularly, then Luke complains often about annoying siblings.",
+      "conclusions": "¬DoNotLiveHome(luke) → ComplainOften(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_d5a052f2",
+      "questions": "Based on the above information, is the following statement true or false? If Luke develops strong bonds with his family members, then Luke is either a twin or a triplet.",
+      "conclusions": "StrongBonds(luke) → (Twins(luke) ∨ Triplets(luke)) ::: FALSE"
+    },
+    {
+      "id": "tc_d9911dce",
+      "questions": "Based on the above information, is the following statement true or false? Luke either spends a lot of time hanging out with and playing with his siblings or complains often about annoying siblings.",
+      "conclusions": "SpendTime(luke) ∨ ComplainOften(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_519d6d30",
+      "questions": "Based on the above information, is the following statement true or false? Luke complains often about annoying siblings.",
+      "conclusions": "ComplainOften(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_8c066593",
+      "questions": "Based on the above information, is the following statement true or false? Luke either develops strong bonds with his family members or does not live at home regularly.",
+      "conclusions": "StrongBonds(luke) ∨ ¬DoNotLiveHome(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_9f43c59c",
+      "questions": "Based on the above information, is the following statement true or false? If Luke is a twin or triplet, then Luke develops strong bonds with his family members.",
+      "conclusions": "Twins(luke) ∨ Triplets(luke) → StrongBonds(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_3e60b2bd",
+      "questions": "Based on the above information, is the following statement true or false? Luke complains often about annoying siblings if and only if Luke has siblings who are the same age.",
+      "conclusions": "ComplainOften(luke) ↔ SiblingsSameAge(luke) ::: FALSE"
+    },
+    {
+      "id": "tc_f7ffe2ff",
+      "questions": "Based on the above information, is the following statement true or false? If Luke often complains about annoying siblings, then Luke either spends a lot of time hanging out with and playing with his siblings or does not live at home regularly.",
+      "conclusions": "ComplainOften(luke) → (SpendTime(luke) ∨ DoNotLiveHome(luke)) ::: FALSE"
+    },
+    {
+      "id": "tc_e9da6f5d",
+      "questions": "Based on the above information, is the following statement true or false? If Luke does not live at home regularly, then Luke is a twin or triplet.",
+      "conclusions": "DoNotLiveHome(luke) → (Twins(luke) ∨ Triplets(luke)) ::: FALSE"
+    },
+    {
+      "id": "tc_71fa91bd",
+      "questions": "Based on the above information, is the following statement true or false? If Luke develops strong bonds with his family members, then Luke is a twin or triplet.",
+      "conclusions": "StrongBonds(luke) → (Twins(luke) ∨ Triplets(luke)) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_774e51b4",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n(Twins(x) ∨ Triplets(x)) → SpendTime(x) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) → (Twins(x) ∨ Triplets(x)) ::: If people have siblings who are the same age, then they are twins or triplets.\nComplainOften(x) → SiblingsSameAge(x) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n¬DoNotLiveHome(x) → StrongBonds(x) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\nSpendTime(x) → ¬DoNotLiveHome(x) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n(Twins(luke) ∨ Triplets(luke)) ⊕ ¬(Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_7e7ab1f3",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n(Twins(x) ∨ Triplets(x)) → SpendTime(x) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) → (Twins(x) ∨ Triplets(x)) ::: If people have siblings who are the same age, then they are twins or triplets.\nComplainOften(x) → SiblingsSameAge(x) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n¬DoNotLiveHome(x) → StrongBonds(x) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\nSpendTime(x) → ¬DoNotLiveHome(x) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ ¬((Twins(luke) ∨ Triplets(luke)) ∨ StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_3c663f15",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x (¬DoNotLiveHome(x) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ (¬(Twins(luke)) ∧ ¬StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_b6071307",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n(Twins(x) ∨ Triplets(x)) → SpendTime(x) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) → (Twins(x) ∨ Triplets(x)) ::: If people have siblings who are the same age, then they are twins or triplets.\nComplainOften(x) → SiblingsSameAge(x) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n¬DoNotLiveHome(x) → StrongBonds(x) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\nSpendTime(x) → ¬DoNotLiveHome(x) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ ¬((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_fdc8c98d",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x (¬DoNotLiveHome(x) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ ¬(Twins(luke) ∨ Triplets(luke)) ∧ ¬StrongBonds(luke) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_b11d143d",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n(Twins(x) ∨ Triplets(x)) → SpendTime(x) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) → (Twins(x) ∨ Triplets(x)) ::: If people have siblings who are the same age, then they are twins or triplets.\nComplainOften(x) → SiblingsSameAge(x) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n¬DoNotLiveHome(x) → StrongBonds(x) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\nSpendTime(x) → ¬DoNotLiveHome(x) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ (¬(Twins(luke)) ∧ ¬StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_71c29a1d",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x (¬DoNotLiveHome(x) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ ¬((Twins(luke) ∨ Triplets(luke)) ∨ StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_baf4a97d",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x (¬DoNotLiveHome(x) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∧ StrongBonds(luke)) ∨ (¬Twins(luke) ∧ ¬StrongBonds(luke))) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_f1cf3329",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x (¬DoNotLiveHome(x) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ⊕ ¬((Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke)) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    },
+    {
+      "id": "sol_842a53be",
+      "text": "# Predicates:\nTwins(x) ::: x is a twin.\nTriplets(x) ::: x is a triplet.\nSpendTime(x) ::: x spends a lot of time hanging out with and playing with their siblings.\nSiblingsSameAge(x) ::: x has siblings who are the same age.\nComplainOften(x) ::: x complains often about annoying siblings.\nDoNotLiveHome(x) ::: x do not live at home regularly.\nStrongBonds(x) ::: x develop strong bonds with their family members.\nLuke(x) ::: x is Luke.\n\n# Premises:\n∀x ((Twins(x) ∨ Triplets(x)) → SpendTime(x)) ::: If people are twins or triplets, then they spend a lot of time hanging out with and playing with their siblings.\n∀x (SiblingsSameAge(x) → (Twins(x) ∨ Triplets(x))) ::: If people have siblings who are the same age, then they are twins or triplets.\n∀x (ComplainOften(x) → SiblingsSameAge(x)) ::: If people complain often about annoying siblings, then they have siblings who are the same age.\n∀x ((¬DoNotLiveHome(x)) → StrongBonds(x)) ::: If people do not live at home regularly, then they do not develop strong bonds with their family members.\n∀x (SpendTime(x) → ¬DoNotLiveHome(x)) ::: If people spend a lot of time hanging out with and playing with their siblings, then they often did not live at home regularly.\n( (Twins(luke) ∨ Triplets(luke)) ∧ StrongBonds(luke) ) ⊕ ( ¬(Twins(luke) ∨ Triplets(luke)) ∧ ¬StrongBonds(luke) ) ::: Luke is either both a twin or triplet and develops strong bonds with his family members, or he neither is a twin or triplet nor develops strong bonds with his family members."
+    }
+  ],
+  "validation": {
+    "id": "tc_1c3577ec",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Luke spends a lot of time hanging out and playing with his siblings.",
+    "conclusions": "SpendTime(luke) ::: Luke spends a lot of time hanging out and playing with his siblings. unknown"
+  }
+}

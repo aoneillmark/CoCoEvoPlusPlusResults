@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_13",
+  "problem_text": "A Japanese game company created the game the Legend of Zelda. All games in the Top 10 list are made by Japanese game companies. [BG] If a game sells more than one million copies, then it will be selected into the Top 10 list. The Legend of Zelda sold more than one million copies.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Japanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.",
+  "tests": [
+    {
+      "id": "tc_40e320b9",
+      "questions": "Based on the above information, is the following statement true or false? The game the Legend of Zelda was created by a Japanese game company and is in the Top 10 list.",
+      "conclusions": "Japanese(nintendo) ∧ Created(nintendo, zelda) ∧ Top10(zelda) ∧ LegendOfZelda(zelda) ::: The game the Legend of Zelda was created by a Japanese game company and is in the Top 10 list. TRUE"
+    },
+    {
+      "id": "tc_11e76763",
+      "questions": "Based on the above information, is the following statement true or false? A game that sells more than one million copies will be created by a Japanese game company.",
+      "conclusions": "∃x ∃y (Sell(y, x) ∧ Million(x) → (Created(y, z) ∧ Japanese(y))) ::: A game that sells more than one million copies will be created by a Japanese game company. FALSE"
+    },
+    {
+      "id": "tc_cb96335f",
+      "questions": "Based on the above information, is the following statement true or false? If a game is created by a Japanese game company and sells more than one million copies, then it will be selected into the Top 10 list.",
+      "conclusions": "Created(legendOfZelda, japaneseGameCompany) ∧ Million(oneMillion) ∧ Sell(legendOfZelda, oneMillion) → Select(legendOfZelda, top10) ::: TRUE"
+    },
+    {
+      "id": "tc_12ab479a",
+      "questions": "Based on the above information, is the following statement true or false? All games created by Japanese game companies are in the Top 10 list.",
+      "conclusions": "∀x (Japanese(x) → Top10(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_15588ab8",
+      "questions": "Based on the above information, is the following statement true or false? The game the Legend of Zelda was created by a Japanese game company and was selected into the Top 10 list.",
+      "conclusions": "Created(legendOfZelda, company) ∧ Japanese(company) ∧ Select(legendOfZelda, Top10List) ::: TRUE"
+    },
+    {
+      "id": "tc_ae1603e4",
+      "questions": "Based on the above information, is the following statement true or false? If the game the Legend of Zelda is in the Top 10 list, then it was created by a Japanese game company.",
+      "conclusions": "Top10(legendofzelda) → Japanese(creator) ::: If the game the Legend of Zelda is in the Top 10 list, then it was created by a Japanese game company. FALSE"
+    },
+    {
+      "id": "tc_c40ba063",
+      "questions": "Based on the above information, is the following statement true or false? If a game is in the Top 10 list, then it sells more than one million copies.",
+      "conclusions": "Top10(legendOfZelda) → Sell(legendOfZelda, million) ::: FALSE"
+    },
+    {
+      "id": "tc_431a892e",
+      "questions": "Based on the above information, is the following statement true or false? All games created by Japanese game companies are games that sell more than one million copies.",
+      "conclusions": "∀x (Japanese(x) ∧ Game(y) ∧ Created(x, y) → (Sell(y, z) ∧ Million(z))) ::: FALSE"
+    },
+    {
+      "id": "tc_80e01a1a",
+      "questions": "Based on the above information, is the following statement true or false? The game the Legend of Zelda was created by a Japanese game company and it was selected into the Top 10 list.",
+      "conclusions": "Created(zelda, japanese_company) ∧ Select(zelda, top10) ::: TRUE"
+    },
+    {
+      "id": "tc_97578f73",
+      "questions": "Based on the above information, is the following statement true or false? If the game the Legend of Zelda was created by a Japanese game company, then it will be selected into the Top 10 list.",
+      "conclusions": "Japanese(japaneseGameCompany) ∧ Created(japaneseGameCompany, legendOfZelda) → Select(legendOfZelda, top10List) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_16665b16",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃x (Japanese(x) ∧ Created(x, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀x (Top10(x) → ∃y (Japanese(y) ∧ Created(y, x))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀x (Game(x) ∧ Sell(x, y) ∧ Million(y) → Select(x, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nLegendOfZelda(theLegendOfZelda) ∧ Sell(theLegendOfZelda, y) ∧ Million(y) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_14f7d4f8",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃x (Japanese(x) ∧ Created(x, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀x (Top10(x) → ∃y (Japanese(y) ∧ Created(y, x))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀x (Game(x) ∧ Sell(x, y) ∧ Million(y) → Select(x, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nLegendOfZelda(theLegendOfZelda) ∧ Sell(theLegendOfZelda, oneMillion) ∧ Million(oneMillion) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_f609751c",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃x (Japanese(x) ∧ Created(x, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀x (Top10(x) → ∃y (Japanese(y) ∧ Created(y, x))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀x (Sell(x, y) ∧ Million(y) → Select(x, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nLegendOfZelda(theLegendOfZelda) ∧ Sell(theLegendOfZelda, oneMillion) ∧ Million(oneMillion) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_6234688b",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃x (Japanese(x) ∧ Created(x, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀x (Top10(x) → ∃y (Japanese(y) ∧ Created(y, x))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀x (Game(x) ∧ Sell(x, y) ∧ Million(y) → Select(x, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nGame(theLegendOfZelda) ∧ Sell(theLegendOfZelda, oneMillion) ∧ Million(oneMillion) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_a825569c",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃c (Japanese(c) ∧ Created(c, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀g (Top10(g) → ∃c (Japanese(c) ∧ Created(c, g))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀g (Game(g) ∧ Sell(g, oneMillion) ∧ Million(oneMillion) → Select(g, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nGame(theLegendOfZelda) ∧ Sell(theLegendOfZelda, oneMillion) ∧ Million(oneMillion) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_eadddac6",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃company (Japanese(company) ∧ Created(company, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀game (Top10(game) → ∃company (Japanese(company) ∧ Created(company, game))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀game (Game(game) ∧ Sell(game, millionCopies) → Select(game, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nLegendOfZelda(theLegendOfZelda) ∧ Sell(theLegendOfZelda, millionCopies) ∧ Million(millionCopies) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_73f378d0",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃c (Japanese(c) ∧ Created(c, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀g (Top10(g) → ∃c (Japanese(c) ∧ Created(c, g))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀g (Sell(g, millionCopies) ∧ Million(millionCopies) → Select(g, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nGame(theLegendOfZelda) ∧ Sell(theLegendOfZelda, millionCopies) ∧ Million(millionCopies) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_ae603f77",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃c (Japanese(c) ∧ Created(c, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀g (Top10(g) → ∃c (Japanese(c) ∧ Created(c, g))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀g (Game(g) ∧ Sell(g, millionCopies) ∧ Million(millionCopies) → Select(g, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nGame(theLegendOfZelda) ∧ Sell(theLegendOfZelda, millionCopies) ∧ Million(millionCopies) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_db79ffd4",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃c (Japanese(c) ∧ Created(c, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀g (Top10(g) → ∃c (Japanese(c) ∧ Created(c, g))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀g (Game(g) ∧ Sell(g, millionCopies) ∧ Million(millionCopies) → Select(g, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nLegendOfZelda(theLegendOfZelda) ∧ Sell(theLegendOfZelda, millionCopies) ∧ Million(millionCopies) ::: The Legend of Zelda sold more than one million copies."
+    },
+    {
+      "id": "sol_f72db257",
+      "text": "# Predicates:\nJapanese(x) ::: x is a Japanese game company.\nCreated(x, y) ::: x created y.\nGame(x) ::: x is a game.\nLegendOfZelda(x) ::: x is the game the Legend of Zelda.\nTop10(x) ::: x is in the Top 10 list.\nSell(x, y) ::: x sells y copies.\nMillion(y) ::: y is one million.\nSelect(x, y) ::: x is selected into y.\n\n# Premises:\n∃c (Japanese(c) ∧ Created(c, theLegendOfZelda)) ::: A Japanese game company created the game the Legend of Zelda.\n∀g (Top10(g) → ∃c (Japanese(c) ∧ Created(c, g))) ::: All games in the Top 10 list are made by Japanese game companies.\n∀g (Game(g) ∧ Sell(g, oneMillion) → Select(g, Top10)) ::: If a game sells more than one million copies, then it will be selected into the Top 10 list.\nMillion(oneMillion) ::: one million is one million.\nGame(theLegendOfZelda) ∧ Sell(theLegendOfZelda, oneMillion) ::: The Legend of Zelda sold more than one million copies."
+    }
+  ],
+  "validation": {
+    "id": "tc_91a33c79",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? The Legend of Zelda is in the Top 10 list.",
+    "conclusions": "Top10(legendOfZelda) ::: The Legend of Zelda is in the Top 10 list. true"
+  }
+}

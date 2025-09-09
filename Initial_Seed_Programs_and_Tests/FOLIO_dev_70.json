@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_70",
+  "problem_text": "Badults is a British Sitcom series, starring members of Pappy's. Badults piloted in July 2013 on BBC Three. The Working title \"The Secret Dude Society\" was used for Badults. Andrew Collins was the script editor for Badults",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "British(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.",
+  "tests": [
+    {
+      "id": "tc_3416a547",
+      "questions": "Based on the above information, is the following statement true or false? The working title for a British sitcom series starring members of Pappy's was \"The Secret Dude Society\".",
+      "conclusions": "WorkingTitle(x) ∧ British(x) ∧ Sitcom(x) ∧ Starring(x, pappys) ∧ \"The Secret Dude Society\" ::: The working title for a British sitcom series starring members of Pappy's was \"The Secret Dude Society\". TRUE"
+    },
+    {
+      "id": "tc_e5b5b597",
+      "questions": "Based on the above information, is the following statement true or false? Andrew Collins was a script editor for a British sitcom series that piloted in July 2013.",
+      "conclusions": "ScriptEditor(andrewcollins, badults) ∧ British(badults) ∧ Sitcom(badults) ∧ Piloted(badults, july2013) ::: Andrew Collins was a script editor for a British sitcom series that piloted in July 2013. TRUE"
+    },
+    {
+      "id": "tc_1cca9c30",
+      "questions": "Based on the above information, is the following statement true or false? A British sitcom series starring members of Pappy's piloted in 2013.",
+      "conclusions": "∃x ∃y (British(x) ∧ Sitcom(x) ∧ Starring(x, y) ∧ Piloted(x, year2013)) ::: A British sitcom series starring members of Pappy's piloted in 2013. TRUE"
+    },
+    {
+      "id": "tc_ff8d233a",
+      "questions": "Based on the above information, is the following statement true or false? Badults was a British sitcom series that used the working title \"The Secret Dude Society\" and was piloted in 2013.",
+      "conclusions": "British(badults) ∧ Sitcom(badults) ∧ WorkingTitle(badults, \"The Secret Dude Society\") ∧ Piloted(badults, 2013) ::: Badults was a British sitcom series that used the working title \"The Secret Dude Society\" and was piloted in 2013. TRUE"
+    },
+    {
+      "id": "tc_abc99dde",
+      "questions": "Based on the above information, is the following statement true or false? The script editor for Badults was British and the show starred members of Pappy's.",
+      "conclusions": "ScriptEditor(andrewcollins, badults) ∧ British(badults) ∧ Starring(badults, pappys) ::: The script editor for Badults was British and the show starred members of Pappy's. FALSE"
+    },
+    {
+      "id": "tc_aaa4bbd6",
+      "questions": "Based on the above information, is the following statement true or false? Badults was a British sitcom series that piloted in 2013 and was piloted by Andrew Collins.",
+      "conclusions": "∃x ∃y (Sitcom(x) ∧ British(x) ∧ Piloted(x, year2013) ∧ ScriptEditor(y, x) ∧ British(y)) ::: There exists a sitcom series that is British and piloted in 2013, and there exists a British person who was its script editor. FALSE"
+    },
+    {
+      "id": "tc_0bd69640",
+      "questions": "Based on the above information, is the following statement true or false? The working title for Badults, a British sitcom series, was \"The Secret Dude Society\".",
+      "conclusions": "WorkingTitle(badults, \"The Secret Dude Society\") ∧ British(badults) ∧ Sitcom(badults) ::: The working title for Badults, a British sitcom series, was \"The Secret Dude Society\". TRUE"
+    },
+    {
+      "id": "tc_ee797ff9",
+      "questions": "Based on the above information, is the following statement true or false? Andrew Collins was the script editor for a sitcom series that was piloted in 2013.",
+      "conclusions": "ScriptEditor(andrewCollins, badults) ∧ Piloted(badults, year2013) ::: Andrew Collins was the script editor for a sitcom series that was piloted in 2013. FALSE"
+    },
+    {
+      "id": "tc_2478eac3",
+      "questions": "Based on the above information, is the following statement true or false? Andrew Collins was the script editor for a British sitcom series.",
+      "conclusions": "ScriptEditor(andrewcollins, badults) ∧ British(badults) ::: Andrew Collins was the script editor for a British sitcom series. TRUE"
+    },
+    {
+      "id": "tc_921a989f",
+      "questions": "Based on the above information, is the following statement true or false? Andrew Collins was the script editor for Badults, which starred members of Pappy's and had the working title \"The Secret Dude Society\".",
+      "conclusions": "ScriptEditor(andrewCollins, badults) ∧ Starring(badults, pappys) ∧ WorkingTitle(badults, theSecretDudeSociety) ::: Andrew Collins was the script editor for Badults, which starred members of Pappy's and had the working title \"The Secret Dude Society\". TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_adfc695b",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nBritish(badults) ∧ Sitcom(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: starring members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The Working title \"The Secret Dude Society\" was used for Badults.\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_be35eaa2",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nSitcom(badults) ∧ British(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults starred members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title \"The Secret Dude Society\" was used for Badults.\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_b9c7a7e2",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nBritish(badults) ∧ Sitcom(badults) ::: Badults is a British Sitcom series.\n∃x (Sitcom(x) ∧ British(x) ∧ Starring(x, pappys)) ::: There exists a British Sitcom series that stars members of Pappy's.\n∀x (Starring(x, pappys) → x = badults) ::: Anyone starring members of Pappy's is Badults.\nPiloted(badults, july2013) ∧ WorkingTitle(badults, thesecretdudesociety) ::: Badults piloted in July 2013 and had the working title \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_51623148",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nSitcom(badults) ::: Badults is a sitcom series.\nBritish(badults) ::: Badults is British.\nStarring(badults, pappys) ::: Badults starred members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title for Badults was \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_c00cb05a",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nBritish(badults) ∧ Sitcom(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults starred members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title for Badults was \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_0af7d2c6",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nSitcom(badults) ∧ British(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults stars members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: \"The Secret Dude Society\" was the working title for Badults.\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_42f2706e",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nSitcom(badults) ∧ British(badults) ::: Badults is a British Sitcom series.\n∃x (Sitcom(x) ∧ British(x) ∧ Starring(x, pappys)) ::: There exists a British Sitcom series that stars members of Pappy's.\n∀x (Starring(x, pappys) → x = badults) ::: Anyone starring members of Pappy's is Badults.\nPiloted(badults, july2013) ∧ WorkingTitle(badults, thesecretdudesociety) ::: Badults piloted in July 2013 and had the working title \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_7b88734c",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nBritish(badults) ∧ Sitcom(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults stars members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title for Badults was \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_078ef976",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nSitcom(badults) ∧ British(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults stars members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title for Badults was \"The Secret Dude Society\".\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    },
+    {
+      "id": "sol_165d13b6",
+      "text": "# Predicates:\nBritish(x) ::: x is British.\nSitcom(x) ::: x is a sitcom series.\nStarring(x, y) ::: x stars members of y.\nPiloted(x, y) ::: x piloted in year y.\nWorkingTitle(x, y) ::: The working title for x was y.\nScriptEditor(x, y) ::: x was the script editor for y.\n\n# Premises:\nBritish(badults) ∧ Sitcom(badults) ::: Badults is a British Sitcom series.\nStarring(badults, pappys) ::: Badults stars members of Pappy's.\nPiloted(badults, july2013) ::: Badults piloted in July 2013.\nWorkingTitle(badults, thesecretdudesociety) ::: The working title for Badults was \"The Secret Dude Society\".\n∃x (ScriptEditor(x, badults)) ::: Someone was the script editor for Badults.\nScriptEditor(andrewcollins, badults) ::: Andrew Collins was the script editor for Badults."
+    }
+  ],
+  "validation": {
+    "id": "tc_a5d5fea8",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Andrew Collins was the script editor for a series with the working title \"The Secret Dude Society\".",
+    "conclusions": "ScriptEditor(andrew, badults) ∧ WorkingTitle(badults, \"The Secret Dude Society\") ::: Andrew Collins was the script editor for Badults and the working title for Badults was \"The Secret Dude Society\". true"
+  }
+}

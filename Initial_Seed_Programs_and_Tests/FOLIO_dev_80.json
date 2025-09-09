@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_80",
+  "problem_text": "No bakery is spicy. All cupcakes are bakeries. All hotpots are spicy. All products of Baked by Melissa are cupcakes. If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Bakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.",
+  "tests": [
+    {
+      "id": "tc_a0a9bac9",
+      "questions": "Based on the above information, is the following statement true or false? Dried Thai chilies are a bakery.",
+      "conclusions": "¬Bakery(driedThaiChilies) ::: Dried Thai chilies are a bakery. FALSE"
+    },
+    {
+      "id": "tc_c572cf96",
+      "questions": "Based on the above information, is the following statement true or false? If dried Thai chilies are a product of Baked by Melissa, then dried Thai chilies are spicy.",
+      "conclusions": "Product(driedThaiChilies, bakedByMelissa) → Spicy(driedThaiChilies) ::: FALSE"
+    },
+    {
+      "id": "tc_a879c552",
+      "questions": "Based on the above information, is the following statement true or false? Dried Thai chilies are a product of Baked by Melissa and are a bakery.",
+      "conclusions": "Product(driedThaiChilies, BakedByMelissa(driedThaiChilies)) ∧ Bakery(driedThaiChilies) ::: Dried Thai chilies are a product of Baked by Melissa and are a bakery. FALSE"
+    },
+    {
+      "id": "tc_cde5d72a",
+      "questions": "Based on the above information, is the following statement true or false? All products of Baked by Melissa are hotpots.",
+      "conclusions": "∀x (Product(x, bakedbymelissa) → Hotpot(x)) ::: All products of Baked by Melissa are hotpots. FALSE"
+    },
+    {
+      "id": "tc_2c917230",
+      "questions": "Based on the above information, is the following statement true or false? If dried Thai chilies are a product of Baked by Melissa, then dried Thai chilies are a bakery.",
+      "conclusions": "Product(driedThaiChilies, BakedByMelissa()) → Bakery(driedThaiChilies) ::: FALSE"
+    },
+    {
+      "id": "tc_b03eb2c5",
+      "questions": "Based on the above information, is the following statement true or false? Dried Thai chilies are a hotpot or a bakery.",
+      "conclusions": "DriedThaiChilies(driedThaiChilies) ∧ Bakery(driedThaiChilies) ::: Dried Thai chilies are a bakery. FALSE"
+    },
+    {
+      "id": "tc_452bbe19",
+      "questions": "Based on the above information, is the following statement true or false? If dried Thai chilies are a product of Baked by Melissa, then dried Thai chilies are spicy or a bakery.",
+      "conclusions": "Product(driedThaiChilies, BakedByMelissa) → (Spicy(driedThaiChilies) ∨ Bakery(driedThaiChilies)) ::: TRUE"
+    },
+    {
+      "id": "tc_fda3e560",
+      "questions": "Based on the above information, is the following statement true or false? If dried Thai chilies are a product of Baked by Melissa, then dried Thai chilies are a bakery.",
+      "conclusions": "Product(driedThaiChilies, BakedByMelissa) → Bakery(driedThaiChilies) FALSE"
+    },
+    {
+      "id": "tc_b00bf5fd",
+      "questions": "Based on the above information, is the following statement true or false? All products of Baked by Melissa are spicy.",
+      "conclusions": "∀x (Product(x, bakedbymelissa) → Spicy(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_266c227a",
+      "questions": "Based on the above information, is the following statement true or false? If dried Thai chilies are a product of Baked by Melissa, then dried Thai chilies are a bakery.",
+      "conclusions": "Product(driedThaiChilies, bakedbymelissa) → Bakery(driedThaiChilies) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_42f4b89c",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, bakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(driedThaiChilies) ∨ Bakery(driedThaiChilies)) → (Hotpot(driedThaiChilies) ∨ Spicy(driedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_7f0a941f",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Spicy(x) → ¬Bakery(x)) ::: No bakery is spicy.\n∀x (Bakery(x) ← Cupcake(x)) ::: All cupcakes are bakeries.\n∀x (Spicy(x) ← Hotpot(x)) ::: All hotpots are spicy.\n∀x (Cupcake(x) ← Product(x, bakedByMelissa)) ::: All products of Baked by Melissa are cupcakes.\n(Bakery(driedThaiChilies) ∨ Spicy(driedThaiChilies)) → (Spicy(driedThaiChilies) ∨ Hotpot(driedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_0c76132a",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, y) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(driedThaiChilies) ∨ Bakery(driedThaiChilies)) → (Hotpot(driedThaiChilies) ∨ Spicy(driedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy.\n∀x (Product(x, BakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes."
+    },
+    {
+      "id": "sol_caae85b2",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Spicy(x) → ¬Bakery(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, BakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_923c1431",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, y) ∧ y = BakedByMelissa → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_70938f9b",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (x → Cupcake(x)) ∧ Product(x, BakedByMelissa) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_edc050ae",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (¬Spicy(x) ∨ ¬Bakery(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, BakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_4cd5e790",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (∀y (Product(x, y) ∧ BakedByMelissa(y)) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_e74237e0",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n∀x (Bakery(x) → ¬Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, BakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    },
+    {
+      "id": "sol_403048f8",
+      "text": "# Predicates:\nBakery(x) ::: x is a bakery.\nSpicy(x) ::: x is spicy.\nCupcake(x) ::: x is a cupcake.\nHotpot(x) ::: x is a hotpot.\nProduct(x, y) ::: x is a product of y.\nBakedByMelissa(x) ::: x is Baked by Melissa.\nDriedThaiChilies(x) ::: x is dried Thai chilies.\n\n# Premises:\n¬∃x (Bakery(x) ∧ Spicy(x)) ::: No bakery is spicy.\n∀x (Cupcake(x) → Bakery(x)) ::: All cupcakes are bakeries.\n∀x (Hotpot(x) → Spicy(x)) ::: All hotpots are spicy.\n∀x (Product(x, BakedByMelissa) → Cupcake(x)) ::: All products of Baked by Melissa are cupcakes.\n(Spicy(DriedThaiChilies) ∨ Bakery(DriedThaiChilies)) → (Hotpot(DriedThaiChilies) ∨ Spicy(DriedThaiChilies)) ::: If dried Thai chilies are spicy or a bakery, then dried Thai chilies are a hotpot or are spicy."
+    }
+  ],
+  "validation": {
+    "id": "tc_9f36fa90",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Dried Thai chilies are a product of Baked by Melissa.",
+    "conclusions": "Product(driedThaiChilies, BakedByMelissa(x)) ::: Dried Thai chilies are a product of Baked by Melissa. false"
+  }
+}

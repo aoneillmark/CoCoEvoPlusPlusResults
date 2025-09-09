@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_129",
+  "problem_text": "All people who have a wedding are people who have at least one child. All people who travel to Paris for their honeymoon are people who have a wedding. All weddings that occur in July belong to people who travel to Paris for their honeymoon. Some weddings in July are well-attended. If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding. If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "HasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.",
+  "tests": [
+    {
+      "id": "tc_cfdaed74",
+      "questions": "Based on the above information, is the following statement true or false? John has a wedding and it is well-attended.",
+      "conclusions": "∃x ∃y (John(x) ∧ Wedding(y) ∧ BelongsTo(y, x) ∧ WellAttended(y)) ::: John has a wedding and it is well-attended. FALSE"
+    },
+    {
+      "id": "tc_8818272b",
+      "questions": "Based on the above information, is the following statement true or false? If John is a person, then John has a wedding and it occurs in July.",
+      "conclusions": "Person(john) → (HasWedding(john) ∧ OccursInJuly(john)) ::: FALSE"
+    },
+    {
+      "id": "tc_4e664ecd",
+      "questions": "Based on the above information, is the following statement true or false? John has at least one child and has a wedding that occurs in July.",
+      "conclusions": "HasChild(john) ∧ ∃y (HasWedding(john, y) ∧ OccursInJuly(y)) ::: John has at least one child and has a wedding that occurs in July. FALSE"
+    },
+    {
+      "id": "tc_a46b755c",
+      "questions": "Based on the above information, is the following statement true or false? John has a wedding and John has at least one child.",
+      "conclusions": "JohnHasWedding(john) ∧ HasChild(john) ::: FALSE"
+    },
+    {
+      "id": "tc_6e3624f7",
+      "questions": "Based on the above information, is the following statement true or false? John travels to Paris for his honeymoon.",
+      "conclusions": "TravelsToParis(john) ::: John travels to Paris for his honeymoon. FALSE"
+    },
+    {
+      "id": "tc_603399f8",
+      "questions": "Based on the above information, is the following statement true or false? John has a wedding and it is well-attended.",
+      "conclusions": "John has a wedding and is well-attended. FALSE"
+    },
+    {
+      "id": "tc_3398060c",
+      "questions": "Based on the above information, is the following statement true or false? John has a wedding that occurs in July and is well-attended.",
+      "conclusions": "∃x ∃y (John(x) ∧ Wedding(y) ∧ WeddingInJuly(y) ∧ WellAttended(y) ∧ BelongsTo(y, x)) ::: John has a wedding that occurs in July and is well-attended. FALSE"
+    },
+    {
+      "id": "tc_5342e6aa",
+      "questions": "Based on the above information, is the following statement true or false? John has at least one child and does not travel to Paris for his honeymoon.",
+      "conclusions": "HasChild(john) ∧ ¬TravelsToParis(john) ::: TRUE"
+    },
+    {
+      "id": "tc_d6ed6168",
+      "questions": "Based on the above information, is the following statement true or false? If John has a wedding, then John has a wedding in July and it is well-attended.",
+      "conclusions": "John(john) ∧ HasWedding(john) → (WeddingInJuly(wedding) ∧ WellAttended(wedding) ∧ BelongsTo(wedding, john)) ::: FALSE"
+    },
+    {
+      "id": "tc_7212f41e",
+      "questions": "Based on the above information, is the following statement true or false? If John has a wedding in July, then he has a wedding and that wedding is well-attended.",
+      "conclusions": "OccursInJuly(y) ∧ BelongsTo(y, john) → (HasWedding(john) ∧ WellAttended(y)) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_f5f67770",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (WeddingInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (WeddingInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\nHasWedding(john) ∧ WellAttended(wedding) → OccursInJuly(wedding) ∨ ¬TravelsToParis(john) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.\nBelongsTo(wedding, john) ∧ OccursInJuly(wedding) → WeddingInJuly(wedding) ::: Wedding in July belongs to John."
+    },
+    {
+      "id": "sol_640da5b4",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (WeddingInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (WeddingInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (OccursInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.\n∀x ∀y (WeddingInJuly(y) ∧ BelongsTo(y, x) → WeddingInJuly(y)) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_138e5303",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (OccursInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (OccursInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (OccursInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.\n∀x ∀y (OccursInJuly(y) ∧ BelongsTo(y, x) → WeddingInJuly(y)) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_a48cf5a2",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (WeddingInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (WeddingInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (OccursInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.\n∀x ∀y (OccursInJuly(y) ∧ BelongsTo(y, x) → WeddingInJuly(y)) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_96d6b2c3",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (OccursInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (WeddingInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (OccursInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon.\n∀x ∀y (OccursInJuly(y) ∧ BelongsTo(y, x) → WeddingInJuly(y)) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_15de3853",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀w (WeddingInJuly(w) → ∃p (Person(p) ∧ BelongsTo(w, p) ∧ TravelsToParis(p))) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon.\n∃w ∃p (WeddingInJuly(w) ∧ WellAttended(w) ∧ BelongsTo(w, p)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀p ∀w ((HasWedding(p, w) ∧ WellAttended(w)) → (OccursInJuly(w) ∨ ¬TravelsToParis(p))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_3565d7e5",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀p (HasWedding(p) → HasChild(p)) ::: All people who have a wedding are people who have at least one child.\n∀p (TravelsToParis(p) → HasWedding(p)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀w (WeddingInJuly(w) → ∃p (Person(p) ∧ BelongsTo(w, p) ∧ TravelsToParis(p))) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon.\n∃w ∃p (WeddingInJuly(w) ∧ WellAttended(w) ∧ BelongsTo(w, p)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀p ∀w ((HasWedding(p, w) ∧ WellAttended(w)) → (OccursInJuly(w) ∨ ¬TravelsToParis(p))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_d10db113",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀x (WeddingInJuly(x) → TravelsToParis(x)) ::: All weddings that occur in July are people who travel to Paris for their honeymoon.\n∃x (WeddingInJuly(x) ∧ WellAttended(x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (WeddingInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_6d334aa1",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀x (HasWedding(x) → HasChild(x)) ::: All people who have a wedding are people who have at least one child.\n∀x (TravelsToParis(x) → HasWedding(x)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀y (OccursInJuly(y) → ∃x (Person(x) ∧ BelongsTo(y, x) ∧ TravelsToParis(x))) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon.\n∃y ∃x (WeddingInJuly(y) ∧ WellAttended(y) ∧ BelongsTo(y, x)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀x ∀y ((HasWedding(x, y) ∧ WellAttended(y)) → (OccursInJuly(y) ∨ ¬TravelsToParis(x))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon."
+    },
+    {
+      "id": "sol_edbef186",
+      "text": "# Predicates:\nHasWedding(x) ::: x has a wedding.\nHasChild(x) ::: x has at least one child.\nTravelsToParis(x) ::: x travels to Paris for their honeymoon.\nWeddingInJuly(x) ::: x is a wedding that occurs in July.\nWellAttended(x) ::: x is well-attended.\nPerson(x) ::: x is a person.\nWedding(x) ::: x is a wedding.\nBelongsTo(x, y) ::: x belongs to y.\nJohn(x) ::: x is John.\nHasWedding(x, y) ::: x has wedding y.\nOccursInJuly(y) ::: wedding y occurs in July.\n\n# Premises:\n∀p (HasWedding(p) → HasChild(p)) ::: All people who have a wedding are people who have at least one child.\n∀p (TravelsToParis(p) → HasWedding(p)) ::: All people who travel to Paris for their honeymoon are people who have a wedding.\n∀w (WeddingInJuly(w) → ∃p (Person(p) ∧ BelongsTo(w, p) ∧ TravelsToParis(p))) ::: All weddings that occur in July belong to people who travel to Paris for their honeymoon.\n∃w ∃p (WeddingInJuly(w) ∧ WellAttended(w) ∧ BelongsTo(w, p)) ::: Some weddings in July are well-attended.\nHasChild(john) → ¬TravelsToParis(john) ∧ ¬HasWedding(john) ::: If John has at least one child, then John does not travel to Paris for his honeymoon and does not have a wedding.\n∀p ∀w ((HasWedding(p, w) ∧ WellAttended(w)) → (WeddingInJuly(w) ∨ ¬TravelsToParis(p))) ::: If John has a wedding that is well-attended, then John has a wedding in July or, if not, then John travels to Paris for their honeymoon."
+    }
+  ],
+  "validation": {
+    "id": "tc_45ad3bd3",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? John has a wedding that is well-attended.",
+    "conclusions": "WellAttended(john) false"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_31",
+  "problem_text": "A person is either a Grand Slam champion or an Oscar-nominated actor. All people who are Grand Slam champions are professional tennis players. All Oscar-nominated actors are celebrities. All professional tennis players are athletes. If a person is a celebrity then they are well paid. If a person is an athlete then they are famous. All well-paid people live in tax havens. If Djokovic is famous and is an athlete, then Djokovic lives in well paid.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "GrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.",
+  "tests": [
+    {
+      "id": "tc_78fa6353",
+      "questions": "Based on the above information, is the following statement true or false? Djokovic is an Oscar-nominated actor and is well paid.",
+      "conclusions": "OscarNominatedActor(djokovic) ∧ WellPaid(djokovic) ::: FALSE"
+    },
+    {
+      "id": "tc_1d0a2f5c",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a professional tennis player, then he is famous.",
+      "conclusions": "Djokovic(djokovic) → Famous(djokovic) ::: TRUE"
+    },
+    {
+      "id": "tc_d3b79918",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a Grand Slam champion and an athlete, then Djokovic is well paid.",
+      "conclusions": "Djokovic(djokovic) ∧ GrandSlamChampion(djokovic) ∧ Athlete(djokovic) → WellPaid(djokovic) ::: TRUE"
+    },
+    {
+      "id": "tc_079a895d",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a Grand Slam champion, then Djokovic lives in a tax haven.",
+      "conclusions": "Djokovic(djokovic) → LivesInTaxHaven(djokovic) ::: TRUE"
+    },
+    {
+      "id": "tc_a4a5e45f",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a professional tennis player, then Djokovic is a celebrity.",
+      "conclusions": "ProfessionalTennisPlayer(djokovic) → Celebrity(djokovic) ::: FALSE"
+    },
+    {
+      "id": "tc_1eea8700",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a Grand Slam champion, then he is a celebrity.",
+      "conclusions": "GrandSlamChampion(djokovic) → Celebrity(djokovic) ::: FALSE"
+    },
+    {
+      "id": "tc_dc7d3728",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a celebrity, then Djokovic is a Grand Slam champion or an Oscar-nominated actor.",
+      "conclusions": "Celebrity(djokovic) → (GrandSlamChampion(djokovic) ∨ OscarNominatedActor(djokovic)) ::: TRUE"
+    },
+    {
+      "id": "tc_0f3f732f",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a Grand Slam champion, then Djokovic is well paid.",
+      "conclusions": "GrandSlamChampion(djokovic) → WellPaid(djokovic) ::: TRUE"
+    },
+    {
+      "id": "tc_6b613884",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a professional tennis player, then Djokovic is famous.",
+      "conclusions": "ProfessionalTennisPlayer(djokovic) → Famous(djokovic) ::: TRUE"
+    },
+    {
+      "id": "tc_73d50579",
+      "questions": "Based on the above information, is the following statement true or false? If Djokovic is a Grand Slam champion, then Djokovic is an athlete.",
+      "conclusions": "GrandSlamChampion(djokovic) → Athlete(djokovic) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_57574a23",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\nFamous(djokovic) ∧ Athlete(djokovic) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic lives in well paid."
+    },
+    {
+      "id": "sol_609117ac",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\n∀x (GrandSlamChampion(x) ∨ OscarNominatedActor(x)) ∧ ¬(GrandSlamChampion(x) ∧ OscarNominatedActor(x)) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic lives in well paid."
+    },
+    {
+      "id": "sol_22529b6d",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic lives in well paid."
+    },
+    {
+      "id": "sol_72d70fe1",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\n∀x (GrandSlamChampion(x) ∨ OscarNominatedActor(x)) ∧ ¬(GrandSlamChampion(x) ∧ OscarNominatedActor(x)) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\nFamous(djokovic) ∧ Athlete(djokovic) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic lives in well paid."
+    },
+    {
+      "id": "sol_32f70edd",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x ((GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ∧ (OscarNominatedActor(x) → Celebrity(x))) ::: People who are Grand Slam champions are professional tennis players, and Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: All Oscar-nominated actors are celebrities, and celebrities are well paid.\n∀x (Athlete(x) → Famous(x)) ::: All professional tennis players are athletes, and athletes are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\nFamous(djokovic) ∧ Athlete(djokovic) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic is well paid."
+    },
+    {
+      "id": "sol_e57d198d",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic is well paid."
+    },
+    {
+      "id": "sol_0606958e",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ∧ ∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Grand Slam champions are professional tennis players and all Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Athlete(x) → Famous(x)) ::: All athletes are famous.\n∀x (Celebrity(x) → WellPaid(x)) ::: All celebrities are well paid.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and an athlete, then he is well paid.\nGrandSlamChampion(djokovic) ⊕ OscarNominatedActor(djokovic) ::: Djokovic is either a Grand Slam champion or an Oscar-nominated actor."
+    },
+    {
+      "id": "sol_21343a40",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Celebrity(x) → WellPaid(x)) ::: If a person is a celebrity then they are well paid.\n∀x (Athlete(x) → Famous(x)) ::: If a person is an athlete then they are famous.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic is well paid."
+    },
+    {
+      "id": "sol_0bdf5185",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\n∀x (GrandSlamChampion(x) ∨ OscarNominatedActor(x)) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Athlete(x) → Famous(x)) ::: All athletes are famous.\n∀x (Celebrity(x) → WellPaid(x)) ::: All celebrities are well paid.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and an athlete, then he is well paid."
+    },
+    {
+      "id": "sol_94205593",
+      "text": "# Predicates:\nGrandSlamChampion(x) ::: x is a Grand Slam champion.\nOscarNominatedActor(x) ::: x is an Oscar-nominated actor.\nProfessionalTennisPlayer(x) ::: x is a professional tennis player.\nCelebrity(x) ::: x is a celebrity.\nWellPaid(x) ::: x is well paid.\nAthlete(x) ::: x is an athlete.\nFamous(x) ::: x is famous.\nLivesInTaxHaven(x) ::: x lives in a tax haven.\nDjokovic(x) ::: x is Djokovic.\n\n# Premises:\nGrandSlamChampion(x) ⊕ OscarNominatedActor(x) ::: A person is either a Grand Slam champion or an Oscar-nominated actor.\n∀x (GrandSlamChampion(x) → ProfessionalTennisPlayer(x)) ::: All people who are Grand Slam champions are professional tennis players.\n∀x (OscarNominatedActor(x) → Celebrity(x)) ::: All Oscar-nominated actors are celebrities.\n∀x (ProfessionalTennisPlayer(x) → Athlete(x)) ::: All professional tennis players are athletes.\n∀x (Athlete(x) → Famous(x)) ::: All athletes are famous.\n∀x (Celebrity(x) → WellPaid(x)) ::: All celebrities are well paid.\n∀x (WellPaid(x) → LivesInTaxHaven(x)) ::: All well-paid people live in tax havens.\n(Famous(djokovic) ∧ Athlete(djokovic)) → WellPaid(djokovic) ::: If Djokovic is famous and is an athlete, then Djokovic is well paid."
+    }
+  ],
+  "validation": {
+    "id": "tc_11fc3ff1",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Djokovic is a Grand Slam champion.",
+    "conclusions": "GrandSlamChampion(djokovic) ::: Djokovic is a Grand Slam champion. unknown"
+  }
+}

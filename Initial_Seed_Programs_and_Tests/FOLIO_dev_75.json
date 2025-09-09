@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_75",
+  "problem_text": "All vehicle registration plates in Istanbul begin with the number 34. Plates that do not begin with the number 34 are not from Istanbul. Joe's vehicle registration plate is from Istanbul. Tom's license plate begins with the number 35. [BG] If a license plate begins with the number 35, then it does not begin with the number 34.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "PlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.",
+  "tests": [
+    {
+      "id": "tc_8def3515",
+      "questions": "Based on the above information, is the following statement true or false? Joe's vehicle registration plate does not begin with the number 35.",
+      "conclusions": "¬BeginsWith35(joe) ::: Joe's vehicle registration plate does not begin with the number 35. TRUE"
+    },
+    {
+      "id": "tc_0aa8617b",
+      "questions": "Based on the above information, is the following statement true or false? Joe's vehicle registration plate does not begin with the number 34.",
+      "conclusions": "¬BeginsWith34(joePlate) ::: Joe's vehicle registration plate does not begin with the number 34. FALSE"
+    },
+    {
+      "id": "tc_f381fa5c",
+      "questions": "Based on the above information, is the following statement true or false? Tom's vehicle registration plate is a vehicle registration plate.",
+      "conclusions": "VehicleRegistrationPlate(tom) ::: Tom's vehicle registration plate is a vehicle registration plate. FALSE"
+    },
+    {
+      "id": "tc_4f04f09d",
+      "questions": "Based on the above information, is the following statement true or false? If Joe's vehicle registration plate begins with 34, then it is a vehicle registration plate.",
+      "conclusions": "PlateFromIstanbul(joe) → BeginsWith34(joe) ::: TRUE"
+    },
+    {
+      "id": "tc_a39af107",
+      "questions": "Based on the above information, is the following statement true or false? Joe's vehicle registration plate begins with the number 34.",
+      "conclusions": "PlateFromIstanbul(joesPlate) → BeginsWith34(joesPlate) ::: TRUE"
+    },
+    {
+      "id": "tc_6313a096",
+      "questions": "Based on the above information, is the following statement true or false? If Tom's vehicle registration plate begins with the number 35, then Joe's vehicle registration plate is a vehicle registration plate from Istanbul.",
+      "conclusions": "BeginsWith35(tom) → PlateFromIstanbul(joe) ::: FALSE"
+    },
+    {
+      "id": "tc_bff8d41e",
+      "questions": "Based on the above information, is the following statement true or false? Joe's vehicle registration plate is a vehicle registration plate, and if it is from Istanbul, then it begins with 34.",
+      "conclusions": "VehicleRegistrationPlate(joe) ∧ (PlateFromIstanbul(joe) → BeginsWith34(joe)) ::: TRUE"
+    },
+    {
+      "id": "tc_b6b6f7ec",
+      "questions": "Based on the above information, is the following statement true or false? If Tom's vehicle registration plate is from Istanbul, then it begins with the number 34.",
+      "conclusions": "PlateFromIstanbul(tom) → BeginsWith34(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_0ec7f0a2",
+      "questions": "Based on the above information, is the following statement true or false? If Joe's vehicle registration plate is from Istanbul, then it is a vehicle registration plate that begins with 34.",
+      "conclusions": "PlateFromIstanbul(joe) → BeginsWith34(joe) ::: TRUE"
+    },
+    {
+      "id": "tc_e45dba69",
+      "questions": "Based on the above information, is the following statement true or false? If Joe's vehicle registration plate begins with 34, then Tom's vehicle registration plate is not from Istanbul.",
+      "conclusions": "PlateFromIstanbul(joe) ∧ BeginsWith34(joe) → ¬PlateFromIstanbul(tom) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_391041cb",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\nPlateFromIstanbul(joesPlate) ::: Joe's vehicle registration plate is from Istanbul.\nBeginsWith35(tomsPlate) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_b87163a8",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\nPlateFromIstanbul(joesPlate) ::: Joe's vehicle registration plate is from Istanbul.\nBeginsWith35(tomsPlate) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34.\nBelongsTo(joesPlate, joe) ::: Joe's vehicle registration plate is from Istanbul.\nBelongsTo(tomsPlate, tom) ::: Tom's license plate begins with the number 35."
+    },
+    {
+      "id": "sol_842d67bc",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\nBelongsTo(joesPlate, joe) ∧ PlateFromIstanbul(joesPlate) ::: Joe's vehicle registration plate is from Istanbul.\nBelongsTo(tomsPlate, tom) ∧ BeginsWith35(tomsPlate) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_f87fe378",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (BelongsTo(x, joe) ∧ PlateFromIstanbul(x)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BelongsTo(x, tom) ∧ BeginsWith35(x)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_8d1ad3c5",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (PlateFromIstanbul(x) ∧ BelongsTo(x, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BeginsWith35(x) ∧ BelongsTo(x, tom)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_390e736d",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (PlateFromIstanbul(x) ∧ BelongsTo(x, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BeginsWith35(x) ∧ BelongsTo(x, tom)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34.\n∀x (BelongsTo(x, joe) → VehicleRegistrationPlate(x)) ::: If a plate belongs to Joe, it is a vehicle registration plate.\n∀x (BelongsTo(x, tom) → VehicleRegistrationPlate(x)) ::: If a plate belongs to Tom, it is a vehicle registration plate."
+    },
+    {
+      "id": "sol_b4ec28a0",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (PlateFromIstanbul(x) ∧ BelongsTo(x, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BeginsWith35(x) ∧ BelongsTo(x, tom)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34.\n∀x (∀y (BelongsTo(y, joe) → VehicleRegistrationPlate(y))) ::: All of Joe's plates are vehicle registration plates.\n∀x (∀y (BelongsTo(y, tom) → VehicleRegistrationPlate(y))) ::: All of Tom's plates are vehicle registration plates."
+    },
+    {
+      "id": "sol_85a89c99",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (PlateFromIstanbul(x) ∧ BelongsTo(x, joes_plate)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BeginsWith35(x) ∧ BelongsTo(x, toms_plate)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_bac68397",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃p (PlateFromIstanbul(p) ∧ BelongsTo(p, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃p (BeginsWith35(p) ∧ BelongsTo(p, tom)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34."
+    },
+    {
+      "id": "sol_0f80a779",
+      "text": "# Predicates:\nPlateFromIstanbul(x) ::: x is a vehicle registration plate from Istanbul.\nBeginsWith34(x) ::: x begins with the number 34.\nBeginsWith35(x) ::: x begins with the number 35.\nVehicleRegistrationPlate(x) ::: x is a vehicle registration plate.\nBelongsTo(x, y) ::: x is the vehicle registration plate of y.\n\n# Premises:\n∀x (PlateFromIstanbul(x) → BeginsWith34(x)) ::: All vehicle registration plates in Istanbul begin with the number 34.\n∀x (¬BeginsWith34(x) → ¬PlateFromIstanbul(x)) ::: Plates that do not begin with the number 34 are not from Istanbul.\n∃x (PlateFromIstanbul(x) ∧ BelongsTo(x, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (BeginsWith35(x) ∧ BelongsTo(x, tom)) ::: Tom's license plate begins with the number 35.\n∀x (BeginsWith35(x) → ¬BeginsWith34(x)) ::: If a license plate begins with the number 35, then it does not begin with the number 34.\n∃x (VehicleRegistrationPlate(x) ∧ BelongsTo(x, joe)) ::: Joe's vehicle registration plate is from Istanbul.\n∃x (VehicleRegistrationPlate(x) ∧ BelongsTo(x, tom)) ::: Tom's license plate begins with the number 35."
+    }
+  ],
+  "validation": {
+    "id": "tc_deb9418f",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Joe's license plate begins with the number 34.",
+    "conclusions": "BeginsWith34(joe) ::: Joe's license plate begins with the number 34. true"
+  }
+}

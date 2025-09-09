@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_4",
+  "problem_text": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Employee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.",
+  "tests": [
+    {
+      "id": "tc_d3213017",
+      "questions": "Based on the above information, is the following statement true or false? James is a manager.",
+      "conclusions": "Manager(james) ::: James is a manager. FALSE"
+    },
+    {
+      "id": "tc_221aa1b1",
+      "questions": "Based on the above information, is the following statement true or false? James works remotely from home.",
+      "conclusions": "WorksRemotelyFromHome(james) ::: James works remotely from home. FALSE"
+    },
+    {
+      "id": "tc_f0d24ce4",
+      "questions": "Based on the above information, is the following statement true or false? James appears in the company today.",
+      "conclusions": "AppearsToday(james) ::: James appears in the company today. FALSE"
+    },
+    {
+      "id": "tc_bba10c97",
+      "questions": "Based on the above information, is the following statement true or false? If James is a manager, then James has lunch in the company.",
+      "conclusions": "Manager(james) → LunchInCompany(james) ::: FALSE"
+    },
+    {
+      "id": "tc_7a9573e8",
+      "questions": "Based on the above information, is the following statement true or false? If James works remotely from home, then James has lunch at home.",
+      "conclusions": "WorksRemotelyFromHome(james) → LunchAtHome(james) ::: FALSE"
+    },
+    {
+      "id": "tc_388b212a",
+      "questions": "Based on the above information, is the following statement true or false? If James is an employee and lunch at home, then James works remotely from home.",
+      "conclusions": "Employee(james) ∧ LunchAtHome(james) → WorksRemotelyFromHome(james) ::: TRUE"
+    },
+    {
+      "id": "tc_47ac83a8",
+      "questions": "Based on the above information, is the following statement true or false? If James appears in the company today, then James is a manager.",
+      "conclusions": "AppearsToday(james) → Manager(james) ::: FALSE"
+    },
+    {
+      "id": "tc_44cf0f9d",
+      "questions": "Based on the above information, is the following statement true or false? James is either an employee who has lunch at home or James is a manager who works remotely from home.",
+      "conclusions": "(LunchAtHome(james) ∧ Employee(james)) ⊕ (Manager(james) ∧ WorksRemotelyFromHome(james)) ::: FALSE"
+    },
+    {
+      "id": "tc_90db16e3",
+      "questions": "Based on the above information, is the following statement true or false? If James is a manager, then James does not work remotely from home.",
+      "conclusions": "Manager(james) → ¬WorksRemotelyFromHome(james) ::: TRUE"
+    },
+    {
+      "id": "tc_f414acbf",
+      "questions": "Based on the above information, is the following statement true or false? If James appears in the company today and James is a manager, then James schedules a meeting with a customer.",
+      "conclusions": "AppearsToday(james) ∧ Manager(james) → ∃y (Schedules(james, y) ∧ Customer(y)) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_f58d3e80",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ Schedules(x, y) ∧ Customer(y)) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → Schedules(x, y) ∧ Customer(y)) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ ¬(Manager(james) ∨ AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_f1f42bf7",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Schedules(x, y) ∧ Customer(y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Schedules(x, y) ∧ Customer(y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ ¬(Manager(james) ∨ AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_d8300927",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ ¬(Manager(james) ∨ AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_d7f08cff",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ ¬(Manager(james) ∨ AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_840b8e8a",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ∨ (¬Manager(james) ∧ ¬AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_329152b4",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ (¬Manager(james) ∧ ¬AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_1a54fd90",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ (¬Manager(james) ∧ ¬AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_f2131b20",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ∨ LunchAtHome(x))) ∧ ∀x (¬(LunchInCompany(x) ∧ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ⊕ (¬Manager(james) ∧ ¬AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    },
+    {
+      "id": "sol_f3f06757",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x (Employee(x) → (Schedules(x, m) → AppearsToday(x))) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ∨ LunchAtHome(x))) ∧ ∀x (¬(LunchInCompany(x) ∧ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ⊕ ¬Manager(james)) ∧ (AppearsToday(james) ⊕ ¬AppearsToday(james)) ::: James is either a manager or not, and appears in the company today or not."
+    },
+    {
+      "id": "sol_5518ecba",
+      "text": "# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n∀x ((Employee(x) ∧ ∃y (Customer(y) ∧ Schedules(x, y))) → AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n∀x (LunchInCompany(x) → ∃y (Customer(y) ∧ Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n∀x (Employee(x) → (LunchInCompany(x) ⊕ LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n∀x (LunchAtHome(x) → WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n∀x (InOtherCountries(x) → WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n∀x (Manager(x) → ¬WorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) ∧ AppearsToday(james)) ∨ (¬Manager(james) ∧ ¬AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today."
+    }
+  ],
+  "validation": {
+    "id": "tc_8f4211b2",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? James has lunch in the company.",
+    "conclusions": "LunchInCompany(james) ::: James has lunch in the company. unknown"
+  }
+}

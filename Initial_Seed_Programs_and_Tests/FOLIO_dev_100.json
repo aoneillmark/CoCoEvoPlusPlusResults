@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_100",
+  "problem_text": "A man is either kind or evil. No ugly person is handsome. All evil people are ugly. All gentlemen are handsome. All CEOs are gentlemen. Harry is a gentleman.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Man(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.",
+  "tests": [
+    {
+      "id": "tc_a2b2c454",
+      "questions": "Based on the above information, is the following statement true or false? Harry is not ugly.",
+      "conclusions": "¬Ugly(harry) ::: Harry is not ugly. TRUE"
+    },
+    {
+      "id": "tc_4a777807",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a CEO and handsome, then Harry is not evil.",
+      "conclusions": "CEO(harry) ∧ Handsome(harry) → ¬Evil(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_239e0df9",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a man and handsome, then Harry is not evil.",
+      "conclusions": "Man(harry) ∧ Handsome(harry) → ¬Evil(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_ff10a325",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a man and evil, then Harry is ugly.",
+      "conclusions": "Man(harry) ∧ Evil(harry) → Ugly(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_311f2de3",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a CEO and not ugly, then Harry is kind.",
+      "conclusions": "CEO(harry) ∧ ¬Ugly(harry) → Kind(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_1313ba01",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a man and kind, then Harry is not ugly.",
+      "conclusions": "Man(harry) ∧ Kind(harry) → ¬Ugly(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_c97ac540",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a CEO, then Harry is handsome.",
+      "conclusions": "CEO(harry) → Handsome(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_fa4aed8a",
+      "questions": "Based on the above information, is the following statement true or false? Harry is either a man and ugly, or neither a man nor ugly.",
+      "conclusions": "Harry is a man and a gentleman, and no gentleman is ugly. TRUE"
+    },
+    {
+      "id": "tc_fac09453",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a man and CEO, then Harry is handsome.",
+      "conclusions": "Man(harry) ∧ CEO(harry) → Handsome(harry) ::: TRUE"
+    },
+    {
+      "id": "tc_6f40376c",
+      "questions": "Based on the above information, is the following statement true or false? If Harry is a man and ugly, then Harry is evil.",
+      "conclusions": "Man(harry) ∧ Ugly(harry) → Evil(harry) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_c2fbae9e",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ∧ Gentleman(harry) ::: Harry is a gentleman.\n∀x (Kind(x) ⊕ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen."
+    },
+    {
+      "id": "sol_46b3f57a",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x (Kind(x) ⊕ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_abaefcb3",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x (Kind(x) ∨ Evil(x)) ∧ ¬(Kind(x) ∧ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_025514b3",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x ((Kind(x) ∨ Evil(x)) ∧ ¬(Kind(x) ∧ Evil(x))) ::: A man is either kind or evil.\n∀x (Ugly(x) ↔ ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_3a099ad8",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nGentleman(harry) ::: Harry is a gentleman.\n∀x (Kind(x) ⊕ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nMan(harry) ::: Harry is a man."
+    },
+    {
+      "id": "sol_3ffb43fa",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x (Kind(x) ∨ Evil(x)) ∧ ¬(Kind(x) ∧ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_95b28243",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x (Kind(x) ⊕ Evil(x)) ::: A man is either kind or evil.\n∀x ¬(Ugly(x) ∧ Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_28d1d890",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x ((Kind(x) ∨ Evil(x)) ∧ ¬(Kind(x) ∧ Evil(x))) ::: A man is either kind or evil.\n∀x ¬(Ugly(x) ∧ Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_9f2146d2",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x (Kind(x) ⊕ Evil(x)) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\nGentleman(harry) ::: Harry is a gentleman."
+    },
+    {
+      "id": "sol_3c41a719",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nKind(x) ::: x is kind.\nEvil(x) ::: x is evil.\nUgly(x) ::: x is ugly.\nHandsome(x) ::: x is handsome.\nGentleman(x) ::: x is a gentleman.\nCEO(x) ::: x is a CEO.\nHarry(x) ::: x is Harry.\n\n# Premises:\nMan(harry) ::: Harry is a man.\n∀x ((Kind(x) ∨ Evil(x)) ∧ ¬(Kind(x) ∧ Evil(x))) ::: A man is either kind or evil.\n∀x (Ugly(x) → ¬Handsome(x)) ::: No ugly person is handsome.\n∀x (Evil(x) → Ugly(x)) ::: All evil people are ugly.\n∀x (CEO(x) → Gentleman(x)) ::: All CEOs are gentlemen.\n∀x (Gentleman(x) → Handsome(x)) ::: All gentlemen are handsome.\nGentleman(harry) ::: Harry is a gentleman."
+    }
+  ],
+  "validation": {
+    "id": "tc_b89feea3",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Harry is a CEO.",
+    "conclusions": "CEO(harry) ::: Harry is a CEO. unknown"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_123",
+  "problem_text": "If something can transport multiple passengers, then they are not empty. All airlines can transport multiple passengers. All planes are empty. All Boeing 707s are planes. If Greyhound is not an airline, then there are no Greyhound planes.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "TransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.",
+  "tests": [
+    {
+      "id": "tc_43669422",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline and can transport multiple passengers, then Greyhound planes are not empty.",
+      "conclusions": "Airline(greyhound) ∧ TransportMultiplePassengers(greyhound) → ¬Empty(greyhound) ::: FALSE"
+    },
+    {
+      "id": "tc_b4a5449d",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline, then Greyhound planes can transport multiple passengers.",
+      "conclusions": "Greyhound(greyhound) → (GreyhoundPlane(greyhound) → TransportMultiplePassengers(greyhound)) ::: FALSE"
+    },
+    {
+      "id": "tc_c09ff085",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline and Greyhound planes can transport multiple passengers, then Greyhound planes are not empty.",
+      "conclusions": "Greyhound → ¬Empty(greyhound) ::: FALSE"
+    },
+    {
+      "id": "tc_d9d62ca6",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is not an airline, then all Greyhound planes are empty.",
+      "conclusions": "¬Airline(greyhound) → ∀x (GreyhoundPlane(x) → Empty(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_4ac914f7",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound planes can transport multiple passengers and are not empty, then Greyhound is an airline.",
+      "conclusions": "GreyhoundPlane(greyhound) ∧ ¬Empty(greyhound) → Airline(greyhound) ::: FALSE"
+    },
+    {
+      "id": "tc_4f88b445",
+      "questions": "Based on the above information, is the following statement true or false? All Boeing 707s are not empty.",
+      "conclusions": "∀x (Boeing707(x) → ¬Empty(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_2faf32d8",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline and Boeing 707s can transport multiple passengers, then Greyhound planes are not empty.",
+      "conclusions": "Greyhound(greyhound) ∧ ∀x (Boeing707(x) → TransportMultiplePassengers(x)) → ¬Empty(Greyhound) ::: FALSE"
+    },
+    {
+      "id": "tc_79e3045a",
+      "questions": "Based on the above information, is the following statement true or false? If all Boeing 707s are planes and planes are empty, then Boeing 707s cannot transport multiple passengers.",
+      "conclusions": "∀x ((Plane(x) ∧ Empty(x)) → ¬TransportMultiplePassengers(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_4309f787",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline, then Greyhound planes are not empty.",
+      "conclusions": "Greyhound(greyhound) → ¬Empty(greyhound) ::: FALSE"
+    },
+    {
+      "id": "tc_701fccfc",
+      "questions": "Based on the above information, is the following statement true or false? If Greyhound is an airline and Greyhound planes can transport multiple passengers, then Greyhound planes are not empty.",
+      "conclusions": "Airline(greyhound) ∧ TransportMultiplePassengers(greyhoundplane) → ¬Empty(greyhoundplane) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_140ff42c",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (∀y (GreyhoundPlane(y) → Plane(y))) ::: All Greyhound planes are planes.\n¬Airline(greyhound) → ∀x (GreyhoundPlane(x) → ¬Greyhound(x)) ::: If Greyhound is not an airline, then there are no Greyhound planes."
+    },
+    {
+      "id": "sol_80918443",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n¬Airline(greyhound) → ∀x (GreyhoundPlane(x) → ¬Greyhound(x)) ::: If Greyhound is not an airline, then there are no Greyhound planes."
+    },
+    {
+      "id": "sol_3d968f7b",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (∀y (Airline(y) → TransportMultiplePassengers(y))) ::: All airlines can transport multiple passengers.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n∀x (¬Airline(x) → ¬GreyhoundPlane(x)) ::: If something is not an airline, then it is not a Greyhound plane."
+    },
+    {
+      "id": "sol_3392fbd3",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then it is not empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (GreyhoundPlane(x) → Plane(x)) ::: All Greyhound planes are planes.\n¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then it is not a Greyhound plane."
+    },
+    {
+      "id": "sol_9860ddce",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then there are no Greyhound planes."
+    },
+    {
+      "id": "sol_b9b539df",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then it is not a Greyhound plane."
+    },
+    {
+      "id": "sol_76659585",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then it is not empty.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n∀x (GreyhoundPlane(x) → Plane(x)) ::: All Greyhound planes are planes.\n∀x (Greyhound(x) → GreyhoundPlane(x)) ::: All Greyhound are Greyhound planes.\n¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then it is not a Greyhound plane."
+    },
+    {
+      "id": "sol_6378756b",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then it is not empty.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\nGreyhound(greyhound) ∧ ¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then it is not a Greyhound plane."
+    },
+    {
+      "id": "sol_226dd3b2",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (Airline(x) → TransportMultiplePassengers(x)) ::: All airlines can transport multiple passengers.\n∀x (TransportMultiplePassengers(x) → ¬Empty(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (Plane(x) → Empty(x)) ::: All planes are empty.\n∀x (Boeing707(x) → Plane(x)) ::: All Boeing 707s are planes.\n¬Airline(greyhound) → ¬GreyhoundPlane(greyhound) ::: If Greyhound is not an airline, then there are no Greyhound planes."
+    },
+    {
+      "id": "sol_4d7096c4",
+      "text": "# Predicates:\nTransportMultiplePassengers(x) ::: x can transport multiple passengers.\nEmpty(x) ::: x is empty.\nAirline(x) ::: x is an airline.\nPlane(x) ::: x is a plane.\nGreyhoundPlane(x) ::: x is a Greyhound plane.\nGreyhound(x) ::: x is Greyhound.\n\n# Premises:\n∀x (¬Empty(x) ← TransportMultiplePassengers(x)) ::: If something can transport multiple passengers, then they are not empty.\n∀x (TransportMultiplePassengers(x) ← Airline(x)) ::: All airlines can transport multiple passengers.\n∀x (Empty(x) ← Plane(x)) ::: All planes are empty.\n∀x (Plane(x) ← Boeing707(x)) ::: All Boeing 707s are planes.\n∀x (Greyhound(x) → ¬Airline(x) → ¬GreyhoundPlane(x)) ::: If Greyhound is not an airline, then there are no Greyhound planes."
+    }
+  ],
+  "validation": {
+    "id": "tc_e8c71672",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Greyhound is an airline.",
+    "conclusions": "Airline(greyhound) ::: Greyhound is an airline. unknown"
+  }
+}

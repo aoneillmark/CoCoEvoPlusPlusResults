@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_40",
+  "problem_text": "All of Zaha Hadid's design styles are timeless. No mass product design is timeless. Either Zaha Hadid's design style or Kelly Wearstler's design style. All of Kelly Wearstler's design styles are evocative. All of Kelly Wearstler's design styles are dreamy. If a design by Max is timeless, then a design by Max is a mass product design and evocative.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "DesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.",
+  "tests": [
+    {
+      "id": "tc_e29de16b",
+      "questions": "Based on the above information, is the following statement true or false? If a design is a design style of Zaha Hadid and is also a design style of Kelly Wearstler, then that design is evocative.",
+      "conclusions": "∃x (DesignStyle(x) ∧ DesignStyleOfKellyWearstler(x)) → Evocative(x) ::: FALSE"
+    },
+    {
+      "id": "tc_97ae6e99",
+      "questions": "Based on the above information, is the following statement true or false? If a design is a design style of Zaha Hadid, then it is not a mass product design.",
+      "conclusions": "DesignStyle(x) → ¬MassProductDesign(x) ::: FALSE"
+    },
+    {
+      "id": "tc_70c8422f",
+      "questions": "Based on the above information, is the following statement true or false? A design by Max is evocative if and only if it is a design style of Zaha Hadid.",
+      "conclusions": "DesignByMax(x) ↔ DesignStyle(x) ::: A design by Max is evocative if and only if it is a design style of Zaha Hadid. FALSE"
+    },
+    {
+      "id": "tc_cc390d79",
+      "questions": "Based on the above information, is the following statement true or false? If a design is a design style of Zaha Hadid, then it is evocative.",
+      "conclusions": "DesignStyle(zaha Hadid's design style) → Evocative(zaha Hadid's design style) ::: FALSE"
+    },
+    {
+      "id": "tc_f351b4bd",
+      "questions": "Based on the above information, is the following statement true or false? A design by Max is either evocative or dreamy, or neither evocative nor dreamy.",
+      "conclusions": "Evocative(max) ⊕ Dreamy(max) ::: A design by Max is either evocative or dreamy. FALSE"
+    },
+    {
+      "id": "tc_ad35758a",
+      "questions": "Based on the above information, is the following statement true or false? If a design style of Zaha Hadid is a design style of Kelly Wearstler, then that design style is dreamy.",
+      "conclusions": "DesignStyle(x) ∧ DesignStyleOfKellyWearstler(x) → Dreamy(x) ::: FALSE"
+    },
+    {
+      "id": "tc_e5ac4eae",
+      "questions": "Based on the above information, is the following statement true or false? If a design is a design style of Zaha Hadid and is also a design style of Kelly Wearstler, then that design is a mass product design.",
+      "conclusions": "DesignStyle(x) ∧ DesignStyleOfKellyWearstler(x) → MassProductDesign(x) ::: FALSE"
+    },
+    {
+      "id": "tc_c2d271a7",
+      "questions": "Based on the above information, is the following statement true or false? A design by Max is a design style of Kelly Wearstler if and only if that design is evocative and dreamy.",
+      "conclusions": "DesignByMax(x) ↔ (Evocative(x) ∧ Dreamy(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_56442af2",
+      "questions": "Based on the above information, is the following statement true or false? A design style of Zaha Hadid is a mass product design if and only if it is not evocative.",
+      "conclusions": "DesignStyle(x) ∧ DesignByMax(x) ↔ (MassProductDesign(x) ∧ ¬Evocative(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_b34eacdb",
+      "questions": "Based on the above information, is the following statement true or false? If a design is a design style of Zaha Hadid, then it is not a mass product design.",
+      "conclusions": "∀x (DesignStyle(x) → ¬MassProductDesign(x)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_704f6ffa",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n∃x (DesignStyle(x) ∨ DesignStyleOfKellyWearstler(x)) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) → (Timeless(x) → (MassProductDesign(x) ∧ Evocative(x)))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_74a0173f",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\nDesignStyle(zahahadid) ∨ DesignStyleOfKellyWearstler(kellywearstler) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) → (Timeless(x) → (MassProductDesign(x) ∧ Evocative(x)))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_cb9c9fc8",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\nDesignStyle(zahahadid) ∨ DesignStyleOfKellyWearstler(kellywearstler) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (∃y (DesignByMax(y) ∧ Timeless(y)) → (MassProductDesign(x) ∧ Evocative(x))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_3d83d2de",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n(∃x DesignStyle(x)) ∨ (∃x DesignStyleOfKellyWearstler(x)) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) → (Timeless(x) → (MassProductDesign(x) ∧ Evocative(x)))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_dcc11a70",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n∃x DesignStyle(x) ∨ ∃x DesignStyleOfKellyWearstler(x) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) ∧ Timeless(x) → (MassProductDesign(x) ∧ Evocative(x))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_5d832228",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n∃x DesignStyle(x) ∨ ∃x DesignStyleOfKellyWearstler(x) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) → (Timeless(x) → (MassProductDesign(x) ∧ Evocative(x)))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_c832323a",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n(∃x DesignStyle(x)) ∨ (∃x DesignStyleOfKellyWearstler(x)) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (∃y (DesignByMax(y) ∧ Timeless(y)) → (MassProductDesign(x) ∧ Evocative(x))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_ec6346dd",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n(∃x DesignStyle(x)) ∨ (∃x DesignStyleOfKellyWearstler(x)) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) ∧ Timeless(x) → MassProductDesign(x)) ∧ ∀x (DesignByMax(x) ∧ Timeless(x) → Evocative(x)) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_b8334a88",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n∃z DesignStyle(z) ∨ ∃z DesignStyleOfKellyWearstler(z) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) ∧ Timeless(x) → (MassProductDesign(x) ∧ Evocative(x))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    },
+    {
+      "id": "sol_58605339",
+      "text": "# Predicates:\nDesignStyle(x) ::: x is a design style of Zaha Hadid.\nTimeless(x) ::: x is timeless.\nMassProductDesign(x) ::: x is a mass product design.\nDesignStyleOfKellyWearstler(x) ::: x is a design style of Kelly Wearstler.\nEvocative(x) ::: x is evocative.\nDreamy(x) ::: x is dreamy.\nDesignByMax(x) ::: x is a design by Max.\n\n# Premises:\n∀x (DesignStyle(x) → Timeless(x)) ::: All of Zaha Hadid's design styles are timeless.\n∀x (MassProductDesign(x) → ¬Timeless(x)) ::: No mass product design is timeless.\n∃x (DesignStyle(x) ∨ DesignStyleOfKellyWearstler(x)) ::: Either Zaha Hadid's design style or Kelly Wearstler's design style.\n∀x (DesignStyleOfKellyWearstler(x) → Evocative(x)) ::: All of Kelly Wearstler's design styles are evocative.\n∀x (DesignStyleOfKellyWearstler(x) → Dreamy(x)) ::: All of Kelly Wearstler's design styles are dreamy.\n∀x (DesignByMax(x) → (Timeless(x) → (MassProductDesign(x) ∧ Evocative(x)))) ::: If a design by Max is timeless, then a design by Max is a mass product design and evocative."
+    }
+  ],
+  "validation": {
+    "id": "tc_e562af16",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? A design by Max is a mass product design.",
+    "conclusions": "DesignByMax(max) → MassProductDesign(max) ::: A design by Max is a mass product design. unknown"
+  }
+}

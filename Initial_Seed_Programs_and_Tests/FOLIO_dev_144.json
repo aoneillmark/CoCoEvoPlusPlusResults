@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_144",
+  "problem_text": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "BreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.",
+  "tests": [
+    {
+      "id": "tc_93b90327",
+      "questions": "Based on the above information, is the following statement true or false? Heck cattle are a form of artificial selection and were bred back in the 1920s to resemble the aurochs, and all animals that are bred back are extinct.",
+      "conclusions": "ArtificialSelection(heckcattle) ∧ BredBack(heckcattle, year1920s) ∧ Resemble(heckcattle, aurochs) ∧ ∀x (ToBreedBack(x) → Extinct(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_39956542",
+      "questions": "Based on the above information, is the following statement true or false? Some domestic animals that are bred back are extinct.",
+      "conclusions": "∃x (SelectiveBreeding(x) ∧ Extinct(x)) ::: Some domestic animals that are bred back are extinct. FALSE"
+    },
+    {
+      "id": "tc_1406d399",
+      "questions": "Based on the above information, is the following statement true or false? Some animals that are bred back are not extinct, and Heck cattle were bred back to resemble the aurochs.",
+      "conclusions": "∃x (ToBreedBack(x) ∧ ¬Extinct(x)) ∧ ∃x ∃y (HeckCattle(x) ∧ BredBack(x, year1920s) ∧ Resemble(x, y) ∧ Aurochs(y)) ::: TRUE"
+    },
+    {
+      "id": "tc_b73a0ae6",
+      "questions": "Based on the above information, is the following statement true or false? Some animals to be bred back resemble animals that are extinct, and all Heck cattle are animals that were bred back in the 1920s.",
+      "conclusions": "∃x ∃y (Animal(x) ∧ Extinct(y) ∧ Resemble(x, y)) ∧ ∀x (HeckCattle(x) → BredBack(x, year1920s)) ::: FALSE"
+    },
+    {
+      "id": "tc_66738a93",
+      "questions": "Based on the above information, is the following statement true or false? Heck cattle are animals and are a form of artificial selection, and the aurochs are extinct.",
+      "conclusions": "HeckCattle(heckCattle) ∧ Animal(heckCattle) ∧ ArtificialSelection(breedingBack) ∧ Extinct(aurochs) ::: FALSE"
+    },
+    {
+      "id": "tc_e3a66701",
+      "questions": "Based on the above information, is the following statement true or false? Heck cattle were bred back in the 1920s to resemble the aurochs and are a form of artificial selection, and no Heck cattle are animals that are breeding back.",
+      "conclusions": "(HeckCattle(heck) ∧ BredBack(heck, year1920s) ∧ Resemble(heck, aurochs) ∧ ArtificialSelection(heck)) ∧ ∀x (HeckCattle(x) → ¬BreedingBack(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_6e7f04ca",
+      "questions": "Based on the above information, is the following statement true or false? Breeding back is a form of artificial selection, and some Heck cattle are animals that are bred back and are extinct.",
+      "conclusions": "BreedingBack(breedingBack) ∧ ArtificialSelection(breedingBack) ∧ ∃x (HeckCattle(x) ∧ Animal(x) ∧ Extinct(x) ∧ ToBreedBack(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_690c10e7",
+      "questions": "Based on the above information, is the following statement true or false? Breeding back is a form of artificial selection, and Heck cattle were bred back in the 1920s to resemble animals that are extinct.",
+      "conclusions": "ArtificialSelection(breedingBack) ∧ ∃x ∃y (HeckCattle(x) ∧ BredBack(x, year1920s) ∧ Resemble(x, y) ∧ Extinct(y)) ::: TRUE"
+    },
+    {
+      "id": "tc_16c33c25",
+      "questions": "Based on the above information, is the following statement true or false? Heck cattle are animals and are a form of artificial selection, and some animals to be bred back resemble extinct animals.",
+      "conclusions": "ArtificialSelection(heckCattle) ∧ Animal(heckCattle) ∧ ∃x (ToBreedBack(x) ∧ Resemble(x, aurochs)) ::: TRUE"
+    },
+    {
+      "id": "tc_101b4329",
+      "questions": "Based on the above information, is the following statement true or false? Heck cattle were bred back in the 1920s to resemble the aurochs, and no aurochs are animals that are extinct.",
+      "conclusions": "BredBack(heckcattle, year1920s) ∧ Resemble(heckcattle, aurochs) ∧ ∀x (Aurochs(x) → ¬Extinct(x)) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_30cd1bcc",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) → ArtificialSelection(x)\nArtificialSelection(x) → SelectiveBreeding(x)\nSelectiveBreeding(x) → ∀y (DomesticAnimals(y) → x is selective breeding of y)\nBredBack(heckCattle, year1920s) ∧ Resemble(heckCattle, aurochs)\nHeckCattle(x) → Animal(x)\nAurochs(x) → Animal(x)\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y)))"
+    },
+    {
+      "id": "sol_39569037",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) → ArtificialSelection(x)\nArtificialSelection(x) → SelectiveBreeding(x)\nSelectiveBreeding(x) → ∃y (DomesticAnimals(y) ∧ SelectiveBreeding(x, y))\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) → Animal(x)\nAurochs(x) → Animal(x)\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y)))"
+    },
+    {
+      "id": "sol_96173ca3",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) → ArtificialSelection(x)\nArtificialSelection(x) → SelectiveBreeding(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n∀x (HeckCattle(x) → Animal(x))\n∀x (Aurochs(x) → Animal(x))\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y)))"
+    },
+    {
+      "id": "sol_a22b250b",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (ToBreedBack(x) ∧ Animal(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_1d94c56f",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_9933e7e6",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n∀x (HeckCattle(x) → Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_81435544",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Artificial selection is a form of deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred back in the 1920s.\n∀x (HeckCattle(x) → ∃y (Resemble(x, y) ∧ Aurochs(y))) ::: Heck cattle were bred back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (ToBreedBack(x) ∧ Animal(x) ∧ ∃y (Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_edd45c57",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Artificial selection is a form of deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_4be8f803",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n∀x (HeckCattle(x) → Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (Animal(x) ∧ ToBreedBack(x) ∧ ∃y (Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred back resemble animals that are extinct."
+    },
+    {
+      "id": "sol_deae7545",
+      "text": "# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n∀x (BreedingBack(x) → ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n∀x (ArtificialSelection(x) → SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n∀x (HeckCattle(x) → Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n∀x (HeckCattle(x) → Animal(x)) ::: Heck cattle are animals.\n∀x (Aurochs(x) → Animal(x)) ::: Aurochs are animals.\n∃x (ToBreedBack(x) ∧ Animal(x) ∧ ∃y (Animal(y) ∧ Extinct(y) ∧ Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct."
+    }
+  ],
+  "validation": {
+    "id": "tc_54cc8155",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Some Heck cattle are artificially selected.",
+    "conclusions": "∃x (HeckCattle(x) ∧ ArtificialSelection(x)) ::: Some Heck cattle are artificially selected. true"
+  }
+}

@@ -1,0 +1,773 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94",
+  "dataset": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/temp_dataset_for_FOLIO_dev_94.json",
+  "solutions": [
+    {
+      "solution_name": "sol_1aaa9652.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_1aaa9652.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_23accc33.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0004/post/solutions/sol_23accc33.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_308a73db.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_308a73db.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_33e6a63b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_33e6a63b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3ab04037.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_3ab04037.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_479f6ade.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_479f6ade.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_50e684ca.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_50e684ca.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_616f9686.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_616f9686.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6be7dc47.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_6be7dc47.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7f480a7d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_7f480a7d.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203y ManagedBuilding(y) \u2227 AllowedPet(fluffy, y) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (Rent(tom, y) \u2192 (MoveIn(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203y ManagedBuilding(y) \u2227 AllowedPet(fluffy, y) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (Rent(tom, y) \u2192 (MoveIn(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_80944e90.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_80944e90.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8e0775c5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_8e0775c5.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8f90aca9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_8f90aca9.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ace212ce.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_ace212ce.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200y (ManagedBuilding(y) \u2192 (Rent(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 \u00acMoreThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200y (ManagedBuilding(y) \u2192 (Rent(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 \u00acMoreThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b9c35366.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0008/post/solutions/sol_b9c35366.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 \u00acMoreThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 \u00acMoreThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bd355e75.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0003/post/solutions/sol_bd355e75.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nOliveGarden(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c4a10811.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_c4a10811.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (ManagedBuilding(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c6802d51.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_c6802d51.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203y ManagedBuilding(y) \u2227 AllowedPet(fluffy, y) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (Rent(tom, y) \u2192 (MoveIn(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203y ManagedBuilding(y) \u2227 AllowedPet(fluffy, y) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nCat(fluffy) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (Rent(tom, y) \u2192 (MoveIn(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cdf94e53.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_cdf94e53.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200y (ManagedBuilding(y) \u2192 (Rent(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nAllowedPet(fluffy, oliveGarden) ::: Pets are allowed in some managed buildings.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200y (ManagedBuilding(y) \u2192 (Rent(tom, y) \u2194 (AllowedPet(fluffy, y) \u2227 LessThan(DepositAmount(y, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cff30f77.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_cff30f77.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nDepositRequired(oliveGarden) ::: A deposit is required to rent an apartment in a managed building.\nDepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d2a7c95c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_d2a7c95c.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) \u2227 Cat(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e0d251db.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0002/post/solutions/sol_e0d251db.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nOwns(tom, fluffy) \u2227 Cat(fluffy) \u2227 Fluffy(fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f83904c0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_8/benchmark_runs/FOLIO_dev_94/evo_gen_0001/post/solutions/sol_f83904c0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_94",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Tom is allowed to move in an apartment in The Olive Garden with Fluffy.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "AllowedPet(fluffy, oliveGarden)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\nAllowedPet(fluffy, oliveGarden)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_95",
+          "context": "Pets are allowed in some managed buildings. [BG] A deposit is required to rent an apartment in a managed building. The security deposit can be either equal to one month's rent or more. Fluffy is Tom's cat. Cats are pets. The Olive Garden is a managed building. The monthly rent at the Olive Garden is $2000. Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500. 2000$ is more than $1500.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The security deposit at the Olive Garden is either $2000 or more.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nAllowedPet(x, y) ::: Pet x is allowed in building y.\nManagedBuilding(x) ::: x is a managed building.\nDepositRequired(x) ::: A deposit is required to rent an apartment in building x.\nRentAmount(x, y) ::: The monthly rent for building x is y.\nDepositAmount(x, y) ::: The security deposit for building x is y.\nDepositGreaterThanOneMonthRent(x) ::: The security deposit for building x is more than one month's rent.\nDepositEqualToOneMonthRent(x) ::: The security deposit for building x is equal to one month's rent.\nCat(x) ::: x is a cat.\nPet(x) ::: x is a pet.\nOwns(x, y) ::: x owns pet y.\nApartment(x) ::: x is an apartment.\nRent(x, y) ::: Person x rents apartment y.\nMoveIn(x, y) ::: Person x moves into building y.\nFluffy(x) ::: x is Fluffy.\nTom(x) ::: x is Tom.\nOliveGarden(x) ::: x is the Olive Garden.\nMoreThan(x, y) ::: x is greater than y.\nLessThan(x, y) ::: x is less than y.\n\n# Premises:\n\u2203x \u2203y (ManagedBuilding(y) \u2227 AllowedPet(x, y)) ::: Pets are allowed in some managed buildings.\n\u2200x (ManagedBuilding(x) \u2192 DepositRequired(x)) ::: A deposit is required to rent an apartment in a managed building.\n\u2200x (DepositRequired(x) \u2192 (DepositEqualToOneMonthRent(x) \u2228 DepositGreaterThanOneMonthRent(x))) ::: The security deposit can be either equal to one month's rent or more.\nFluffy(fluffy) \u2227 Tom(tom) \u2227 Owns(tom, fluffy) ::: Fluffy is Tom's cat.\n\u2200x (Cat(x) \u2192 Pet(x)) ::: Cats are pets.\nManagedBuilding(oliveGarden) ::: The Olive Garden is a managed building.\nRentAmount(oliveGarden, 2000) ::: The monthly rent at the Olive Garden is $2000.\n\u2200x \u2200y (ManagedBuilding(x) \u2192 (Rent(tom, x) \u2194 (AllowedPet(fluffy, x) \u2227 LessThan(DepositAmount(x, 1500), 1500)))) ::: Tom will rent an apartment in a managed building if and only if he is allowed to move in with Fluffy, and the security deposit is no more than $1500.\nMoreThan(2000, 1500) ::: 2000$ is more than $1500.\n\n# Conclusion:\n(DepositEqualToOneMonthRent(oliveGarden) \u2228 DepositGreaterThanOneMonthRent(oliveGarden))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 0,
+    "total_questions": 46,
+    "overall_accuracy": 0.0
+  }
+}

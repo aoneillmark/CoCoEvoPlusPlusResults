@@ -1,0 +1,1202 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89",
+  "dataset": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/temp_dataset_for_FOLIO_dev_89.json",
+  "solutions": [
+    {
+      "solution_name": "sol_0dd0d963.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_0dd0d963.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0ef78f31.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_0ef78f31.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, walden)) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, walden)) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0faa0d3e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_0faa0d3e.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, waldenTitle) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, waldenTitle) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0fc8c6a3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0004/post/solutions/sol_0fc8c6a3.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_127da71e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_127da71e.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_148bab29.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0004/post/solutions/sol_148bab29.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_33786dab.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_33786dab.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3568bb81.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0006/post/solutions/sol_3568bb81.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4568b79b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_4568b79b.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_494362eb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_494362eb.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_59219d6f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0004/post/solutions/sol_59219d6f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_60e9f533.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0008/post/solutions/sol_60e9f533.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_69f03ee0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0004/post/solutions/sol_69f03ee0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6e23461d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0004/post/solutions/sol_6e23461d.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_74cac5bc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_74cac5bc.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_76c4b5f0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_76c4b5f0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7b5c5767.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_7b5c5767.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_80e5e28d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0007/post/solutions/sol_80e5e28d.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \"Walden\" by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \"Walden\" by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_82065adb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_82065adb.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_84df3bd2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_84df3bd2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_87f3c5d6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_87f3c5d6.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(y)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(y)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_90b71d31.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_90b71d31.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9b9017e4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_9b9017e4.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9ea5afc4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_9ea5afc4.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(harry)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a0cb79cd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_a0cb79cd.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, Walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a3da24e9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_a3da24e9.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(y)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(y)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b05cf0e4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_b05cf0e4.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bdfc1eca.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0006/post/solutions/sol_bdfc1eca.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \"Walden\" by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \"Walden\" by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c223b94c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0005/post/solutions/sol_c223b94c.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2227 Knowledge(y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c46febf5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0003/post/solutions/sol_c46febf5.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_caa7c7de.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_caa7c7de.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, Knowledge(x)) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_dedb73ea.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_dedb73ea.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y Knowledge(y) \u2227 Contains(x, y)) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y Knowledge(y) \u2227 Contains(x, y)) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e09cf71e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_e09cf71e.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, \"Walden\")) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, \"Walden\")) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f95f9cbe.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_f95f9cbe.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, walden)) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x ((Book(x) \u2227 Title(x, walden)) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y ((Person(x) \u2227 Reads(x, y)) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2200y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, walden) \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_fd79bece.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0002/post/solutions/sol_fd79bece.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, y)) ::: When a person reads a book, that person gains knowledge.\n\u2200x (Gains(x, z) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ffda6300.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_4/benchmark_runs/FOLIO_dev_89/evo_gen_0001/post/solutions/sol_ffda6300.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_89",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry is smarter than before.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "Smarter(harry)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\nSmarter(harry)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_90",
+          "context": "[BG] Books contain tons of knowledge. [BG] When a person reads a book, that person gains knowledge. [BG] If a person gains knowledge, they become smarter. Harry read the book \u201cWalden\u201d by Henry Thoreau.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? A person who is smarter has gained knowledge.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBook(x) ::: x is a book.\nKnowledge(x) ::: x is knowledge.\nContains(x, y) ::: x contains y.\nPerson(x) ::: x is a person.\nReads(x, y) ::: x reads y.\nGains(x, y) ::: x gains y.\nSmarter(x) ::: x becomes smarter.\nAuthor(x, y) ::: x is the author of y.\nTitle(x, y) ::: x has the title y.\n\n# Premises:\n\u2200x (Book(x) \u2192 \u2203y (Knowledge(y) \u2227 Contains(x, y))) ::: Books contain tons of knowledge.\n\u2200x \u2200y (Person(x) \u2227 Reads(x, y) \u2192 Gains(x, Knowledge(y))) ::: When a person reads a book, that person gains knowledge.\n\u2200x \u2203y (Gains(x, y) \u2192 Smarter(x)) ::: If a person gains knowledge, they become smarter.\nPerson(harry) \u2227 Book(walden) \u2227 Author(henrythoreau, walden) \u2227 Title(walden, \"Walden\") \u2227 Reads(harry, walden) ::: Harry read the book \u201cWalden\u201d by Henry Thoreau.\n\n# Conclusion:\n\u2200x (Smarter(x) \u2192 \u2203y (Gains(x, y)))\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 16,
+    "total_questions": 72,
+    "overall_accuracy": 0.2222222222222222
+  }
+}

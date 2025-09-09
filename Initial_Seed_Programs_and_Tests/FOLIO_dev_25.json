@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_25",
+  "problem_text": "Beijing is the capital of the People's Republic of China. Beijing is the world's most populous national capital city. Beijing is located in Northern China. Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games. Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics Many of Beijing's 91 universities consistently rank among the best in the Asia-Pacific and the world.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Capital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.",
+  "tests": [
+    {
+      "id": "tc_261e9aae",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a populous city and hosted an Olympic Games.",
+      "conclusions": "Populous(beijing) ∧ ∃x (Host(beijing, x) ∧ Olympics(x)) ::: Beijing is a populous city and hosted an Olympic Games. TRUE"
+    },
+    {
+      "id": "tc_ac534b4b",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a populous national capital and hosted both the Summer and Winter Olympics.",
+      "conclusions": "Populous(beijing) ∧ NationalCapital(beijing, peoplesrepublicofchina) ∧ Host(beijing, 2008SummerOlympics) ∧ Host(beijing, 2008SummerParalympics) ∧ (Host(beijing, summerOlympics) ∧ Host(beijing, winterOlympics)) ::: Beijing is a populous national capital and hosted both the Summer and Winter Olympics. TRUE"
+    },
+    {
+      "id": "tc_9d5f4340",
+      "questions": "Based on the above information, is the following statement true or false? Beijing hosted the 2008 Summer Olympics and is a populous city.",
+      "conclusions": "Host(beijing, olympics2008) ∧ Populous(beijing) ::: Beijing hosted the 2008 Summer Olympics and is a populous city. TRUE"
+    },
+    {
+      "id": "tc_be5505fd",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a capital city that is located in a region and hosted an event.",
+      "conclusions": "∃x ∃y (Capital(beijing) ∧ Location(beijing, y) ∧ Region(y) ∧ Host(beijing, x) ∧ Event(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_bc113c9b",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a populous university that is located in Asia.",
+      "conclusions": "∃x ∃y (University(x) ∧ Location(x, beijing) ∧ Populous(x) ∧ Part(x, y) ∧ Continent(y) ∧ Asia(y)) ::: FALSE"
+    },
+    {
+      "id": "tc_c850c9c4",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a university that is part of Asia and ranks among the best in the world.",
+      "conclusions": "∃x ∃y ∃z (University(x) ∧ Location(x, y) ∧ Part(y, z) ∧ Continent(z) ∧ Rank(x, world)) ::: Beijing is a university that is part of Asia and ranks among the best in the world. FALSE"
+    },
+    {
+      "id": "tc_4407b55c",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a capital city of a country and is located in a region.",
+      "conclusions": "Country(people'sRepublicOfChina) ∧ Capital(beijing) ∧ NationalCapital(beijing, people'sRepublicOfChina) ∧ Region(northernChina) ∧ Location(beijing, northernChina) ::: Beijing is a capital city of a country and is located in a region. TRUE"
+    },
+    {
+      "id": "tc_c7a0ccf8",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a capital city of the People's Republic of China and is a university.",
+      "conclusions": "NationalCapital(beijing, peopleRepublicChina) ∧ University(beijing) ::: FALSE"
+    },
+    {
+      "id": "tc_6a29e268",
+      "questions": "Based on the above information, is the following statement true or false? Beijing hosted both the Summer Olympics and the Winter Paralympics.",
+      "conclusions": "Host(beijing, olympics2008) ∧ Host(beijing, paralympics2008) ∧ (Summer(olympics2008) ∧ Winter(paralympics2008)) ::: Beijing hosted both the Summer Olympics and the Winter Paralympics. FALSE"
+    },
+    {
+      "id": "tc_282e0766",
+      "questions": "Based on the above information, is the following statement true or false? Beijing is a university that hosted both the Summer Olympics and the Summer Paralympics.",
+      "conclusions": "University(beijing) ∧ Host(beijing, summerOlympics2008) ∧ Host(beijing, summerParalympics2008) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_5a47afb1",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\nHost(beijing, gamesSummerOlympics) ∧ Host(beijing, gamesWinterOlympics) ∧ Host(beijing, gamesSummerParalympics) ∧ Host(beijing, gamesWinterParalympics) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∀x (University(x) ∧ Location(x, beijing)) → Rank(x, asiaPacific) ∧ Rank(x, world) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_805402ac",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\nHost(beijing, gamesSummerOlympics) ∧ Host(beijing, gamesWinterOlympics) ∧ Host(beijing, gamesSummerParalympics) ∧ Host(beijing, gamesWinterParalympics) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ Rank(x, asiaPacific) ∧ Rank(x, world)) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_473eb156",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\nHost(beijing, gamesSummerOlympics) ∧ Host(beijing, gamesWinterOlympics) ∧ Host(beijing, gamesSummerParalympics) ∧ Host(beijing, gamesWinterParalympics) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ (Rank(x, asiaPacific) ∨ Rank(x, world))) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_3ef66d91",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n∃x (Host(beijing, x) ∧ ((Olympics(x) ∧ Summer(x)) ∨ (Paralympics(x) ∧ Summer(x)))) ∧ ∃y (Host(beijing, y) ∧ ((Olympics(y) ∧ Winter(y)) ∨ (Paralympics(y) ∧ Winter(y)))) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∀x (University(x) ∧ Location(x, beijing)) → (Rank(x, asiaPacific) ∧ Rank(x, world)) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_309a327d",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n(Host(beijing, olympicsSummer) ∨ Host(beijing, paralympicsSummer)) ∧ (Host(beijing, olympicsWinter) ∨ Host(beijing, paralympicsWinter)) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ (Rank(x, asiaPacific) ∨ Rank(x, world))) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_2cc17959",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n(Host(beijing, gamesSummerOlympics) ∨ Host(beijing, gamesSummerParalympics)) ∧ (Host(beijing, gamesWinterOlympics) ∨ Host(beijing, gamesWinterParalympics)) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ (Rank(x, asiaPacific) ∨ Rank(x, world))) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_72d17033",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n(Host(beijing, gamesSummerOlympics) ∨ Host(beijing, gamesSummerParalympics)) ∧ (Host(beijing, gamesWinterOlympics) ∨ Host(beijing, gamesWinterParalympics)) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ Rank(x, asiaPacific)) ∧ ∃y (University(y) ∧ Location(y, beijing) ∧ Rank(y, world)) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_39e88ac5",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n∃x (Host(beijing, x) ∧ Olympics(x) ∧ Summer(x)) ∧ ∃y (Host(beijing, y) ∧ Olympics(y) ∧ Winter(y)) ∧ ∃z (Host(beijing, z) ∧ Paralympics(z) ∧ Summer(z)) ∧ ∃w (Host(beijing, w) ∧ Paralympics(w) ∧ Winter(w)) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃u (University(u) ∧ Location(u, beijing) ∧ (Rank(u, asiaPacific) ∨ Rank(u, world))) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_bc049b1b",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing, china) ::: Beijing is the capital of the People's Republic of China.\nPopulous(beijing) ::: Beijing is the world's most populous national capital city.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n(∃x (Host(beijing, x) ∧ Olympics(x) ∧ Summer(x)) ∨ ∃y (Host(beijing, y) ∧ Paralympics(y) ∧ Summer(y))) ∧ (∃z (Host(beijing, z) ∧ Olympics(z) ∧ Winter(z)) ∨ ∃w (Host(beijing, w) ∧ Paralympics(w) ∧ Winter(w))) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ (Rank(x, asiaPacific) ∨ Rank(x, world))) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    },
+    {
+      "id": "sol_88954ef6",
+      "text": "# Predicates:\nCapital(x) ::: x is a capital city.\nCountry(x) ::: x is a country.\nNationalCapital(x, y) ::: x is the national capital of country y.\nPopulous(x) ::: x is populous.\nLocation(x, y) ::: x is located in y.\nRegion(x) ::: x is a region.\nHost(x, y) ::: x hosted event y.\nEvent(x) ::: x is an event.\nOlympics(x) ::: x is an Olympic Games.\nParalympics(x) ::: x is a Paralympic Games.\nSummer(x) ::: x is a summer event.\nWinter(x) ::: x is a winter event.\nUniversity(x) ::: x is a university.\nRank(x, y) ::: x ranks among the best in y.\nContinent(x) ::: x is a continent.\nPart(x, y) ::: x is part of y.\n\n# Premises:\nNationalCapital(beijing) ::: Beijing is a capital city.\nNationalCapital(beijing, china) ::: Beijing is the national capital of country China.\nPopulous(beijing) ::: Beijing is populous.\nLocation(beijing, northernChina) ::: Beijing is located in Northern China.\nHost(beijing, games2008SummerOlympics) ∧ Host(beijing, games2008SummerParalympics) ::: Beijing hosted the 2008 Summer Olympics and 2008 Summer Paralympics Games.\n(∃x (Host(beijing, x) ∧ Olympics(x) ∧ Summer(x))) ∧ (∃y (Host(beijing, y) ∧ Olympics(y) ∧ Winter(y))) ∧ (∃z (Host(beijing, z) ∧ Paralympics(z) ∧ Summer(z))) ∧ (∃w (Host(beijing, w) ∧ Paralympics(w) ∧ Winter(w))) ::: Beijing has hosted both the Summer and Winter Olympics, along with the Summer and Winter Paralympics.\n∃x (University(x) ∧ Location(x, beijing) ∧ Rank(x, asiaPacific)) ∧ ∃y (University(y) ∧ Location(y, beijing) ∧ Rank(y, world)) ::: Many of Beijing's universities consistently rank among the best in the Asia-Pacific and the world."
+    }
+  ],
+  "validation": {
+    "id": "tc_0665818e",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Beijing has hosted both the 2008 Summer Olympics and a winter olympics.",
+    "conclusions": "Host(beijing, summerOlympics2008) ∧ Host(beijing, winterOlympics) ::: Beijing has hosted both the 2008 Summer Olympics and a winter olympics. true"
+  }
+}

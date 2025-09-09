@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_59",
+  "problem_text": "Billings is a city in Montana. Montana includes the cities of Butte, Helena, and Missoula. White Sulphur Springs and Butte are cities in the same state. The city of Pierre is not in Montana. Any city in Butte is not in Pierre.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "City(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.",
+  "tests": [
+    {
+      "id": "tc_bfe569c5",
+      "questions": "Based on the above information, is the following statement true or false? Billings and Butte are cities in the same state.",
+      "conclusions": "SameState(billings, butte) ::: Billings and Butte are cities in the same state. TRUE"
+    },
+    {
+      "id": "tc_dcbe5028",
+      "questions": "Based on the above information, is the following statement true or false? There exists a city that is in Montana but not in Pierre.",
+      "conclusions": "∃x (City(x) ∧ In(x, montana) ∧ ¬In(x, pierre)) ::: TRUE"
+    },
+    {
+      "id": "tc_a5deae42",
+      "questions": "Based on the above information, is the following statement true or false? Billings is a city in Montana and White Sulphur Springs is a city in Montana.",
+      "conclusions": "City(billings) ∧ In(billings, montana) ∧ City(white_sulphur_springs) ∧ In(white_sulphur_springs, montana) ::: FALSE"
+    },
+    {
+      "id": "tc_e0dbe861",
+      "questions": "Based on the above information, is the following statement true or false? There exists a city that is in Montana and is also in Pierre.",
+      "conclusions": "∃x (City(x) ∧ In(x, montana) ∧ In(x, pierre)) ::: There exists a city that is in Montana and is also in Pierre. FALSE"
+    },
+    {
+      "id": "tc_51fba421",
+      "questions": "Based on the above information, is the following statement true or false? There exists a city that is in Montana and is not in Pierre.",
+      "conclusions": "∃x (City(x) ∧ In(x, montana) ∧ ¬In(x, pierre)) ::: TRUE"
+    },
+    {
+      "id": "tc_b4a1f14e",
+      "questions": "Based on the above information, is the following statement true or false? Helena is in Montana and Pierre is in Montana.",
+      "conclusions": "In(helena, montana) ∧ In(pierre, montana) ::: FALSE"
+    },
+    {
+      "id": "tc_86ac49eb",
+      "questions": "Based on the above information, is the following statement true or false? Billings and Missoula are cities in the same state.",
+      "conclusions": "SameState(billings, missoula) ::: TRUE"
+    },
+    {
+      "id": "tc_56690c50",
+      "questions": "Based on the above information, is the following statement true or false? There exists a city that is in Montana and is not in Pierre, and Butte and White Sulphur Springs are cities in the same state.",
+      "conclusions": "∃x (City(x) ∧ In(x, montana) ∧ ¬In(x, pierre)) ∧ SameState(butte, white_sulphur_springs) ::: TRUE"
+    },
+    {
+      "id": "tc_da301100",
+      "questions": "Based on the above information, is the following statement true or false? White Sulphur Springs is in Montana.",
+      "conclusions": "In(white_sulphur_springs, montana) ::: FALSE"
+    },
+    {
+      "id": "tc_32434823",
+      "questions": "Based on the above information, is the following statement true or false? Any city in Montana is in the same state as Butte.",
+      "conclusions": "∀x (In(x, montana) → SameState(x, Butte)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_7e0209d2",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\nIn(butte, montana) ∧ In(helena, montana) ∧ In(missoula, montana) ::: Montana includes the cities of Butte, Helena, and Missoula.\nSameState(whiteSulphurSprings, butte) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x ∀y (City(x) ∧ City(y) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_8dba11f4",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∀x (In(x, montana) → (x = butte ∨ x = helena ∨ x = missoula)) ::: Montana includes the cities of Butte, Helena, and Missoula.\nSameState(whiteSulphurSprings, butte) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x ∀y ((City(x) ∧ City(y) ∧ In(x, butte)) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_37f5f6d4",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∀x (In(x, montana) → (x = butte ∨ x = helena ∨ x = missoula)) ::: Montana includes the cities of Butte, Helena, and Missoula.\nSameState(whiteSulphurSprings, butte) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_4f43d975",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(billings, x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\nSameState(whiteSulphurSprings, butte) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x ∀y ((City(x) ∧ City(y) ∧ In(x, butte) ∧ In(y, montana)) → ¬In(x, y)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_31984257",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∀x (In(x, montana) → (x = butte ∨ x = helena ∨ x = missoula)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x (City(x) ∧ City(y) ∧ SameState(x, y) ∧ In(y, montana) → In(x, montana)) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_c9149f3e",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x ∀y (SameState(x, y) ∧ City(x) ∧ City(y) ∧ In(y, montana) → In(x, montana)) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_d4f654de",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(montana, x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x ∀y (SameState(x, y) ∧ City(x) ∧ City(y) ∧ In(y, montana) → In(x, montana)) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_98266211",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(montana, x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x ∀y (SameState(x, y) ∧ City(x) ∧ City(y) → (In(x, montana) ↔ In(y, montana))) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_bc640804",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x ∀y ((City(x) ∧ City(y) ∧ SameState(x, y)) → (In(x, montana) ↔ In(y, montana))) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    },
+    {
+      "id": "sol_3d97d1e6",
+      "text": "# Predicates:\nCity(x) ::: x is a city.\nState(x) ::: x is a state.\nIn(x, y) ::: x is in y.\nSameState(x, y) ::: x and y are cities in the same state.\n\n# Premises:\nCity(billings) ∧ In(billings, montana) ::: Billings is a city in Montana.\n∃x (State(x) ∧ In(montana, x) ∧ In(butte, x) ∧ In(helena, x) ∧ In(missoula, x)) ::: Montana includes the cities of Butte, Helena, and Missoula.\n∀x ∀y ((City(x) ∧ City(y) ∧ SameState(x, y)) → (In(x, montana) ↔ In(y, montana))) ::: White Sulphur Springs and Butte are cities in the same state.\n¬In(pierre, montana) ::: The city of Pierre is not in Montana.\n∀x (City(x) ∧ In(x, butte) → ¬In(x, pierre)) ::: Any city in Butte is not in Pierre."
+    }
+  ],
+  "validation": {
+    "id": "tc_6faad5d5",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Butte and Pierre are in the same state.",
+    "conclusions": "SameState(butte, pierre) ::: Butte and Pierre are in the same state. false"
+  }
+}

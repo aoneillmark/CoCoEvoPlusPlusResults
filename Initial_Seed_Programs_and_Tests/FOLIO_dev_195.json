@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_195",
+  "problem_text": "The winner of the 1992 du Maurier Classic was Steinhauer. Steinhauer participated in the 1992 du Maurier Classic. There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium. Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic. All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Winner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.",
+  "tests": [
+    {
+      "id": "tc_2e549d98",
+      "questions": "Based on the above information, is the following statement true or false? Steinhauer is on the leaderboard of the 1992 du Maurier Classic.",
+      "conclusions": "OnLeaderboard(steinhauer, 1992duMaurierClassic) ::: Steinhauer is on the leaderboard of the 1992 du Maurier Classic. FALSE"
+    },
+    {
+      "id": "tc_917bd476",
+      "questions": "Based on the above information, is the following statement true or false? Descampe is the winner of the 1992 du Maurier Classic.",
+      "conclusions": "Winner(descampe, 1992duMaurierClassic) ::: Descampe is the winner of the 1992 du Maurier Classic. FALSE"
+    },
+    {
+      "id": "tc_332568ea",
+      "questions": "Based on the above information, is the following statement true or false? There is a person who participated in the 1992 du Maurier Classic and is from Belgium.",
+      "conclusions": "∃x ∃y (Participated(x, y) ∧ FromBelgium(x) ∧ y = \"1992 du Maurier Classic\") ::: TRUE"
+    },
+    {
+      "id": "tc_6a5c07bd",
+      "questions": "Based on the above information, is the following statement true or false? If Descampe is on the leaderboard of the 1992 du Maurier Classic, then Descampe is the winner of the 1992 du Maurier Classic.",
+      "conclusions": "OnLeaderboard(descampe, 1992duMaurierClassic) → Winner(descampe, 1992duMaurierClassic) ::: FALSE"
+    },
+    {
+      "id": "tc_3f0c8357",
+      "questions": "Based on the above information, is the following statement true or false? If Steinhauer is on the leaderboard of the 1992 du Maurier Classic, then Steinhauer participated in the 1992 du Maurier Classic.",
+      "conclusions": "Winner(steinhauer, duMaurierClassic1992) → Participated(steinhauer, duMaurierClassic1992) ::: FALSE"
+    },
+    {
+      "id": "tc_d2766a11",
+      "questions": "Based on the above information, is the following statement true or false? If there is a six-way tie on the leaderboard of the 1992 du Maurier Classic, then there is a person from Belgium on the leaderboard of the 1992 du Maurier Classic.",
+      "conclusions": "∃x ∃y (SixWayTie(x) ∧ Leaderboard(x, duMaurierClassic1992)) → ∃z (FromBelgium(z) ∧ OnLeaderboard(z, duMaurierClassic1992)) ::: TRUE"
+    },
+    {
+      "id": "tc_7f87ad11",
+      "questions": "Based on the above information, is the following statement true or false? If there is a six-way tie on the leaderboard of the 1992 du Maurier Classic, then Steinhauer is the winner of the 1992 du Maurier Classic.",
+      "conclusions": "SixWayTie(1992duMaurierClassic) → Winner(steinhauer, 1992duMaurierClassic) ::: FALSE"
+    },
+    {
+      "id": "tc_9b601730",
+      "questions": "Based on the above information, is the following statement true or false? If there is a person from Belgium who is on the leaderboard of the 1992 du Maurier Classic and Steinhauer is the winner of the 1992 du Maurier Classic, then Steinhauer participated in the 1992 du Maurier Classic.",
+      "conclusions": "(∃x (FromBelgium(x) ∧ OnLeaderboard(x, \"1992 du Maurier Classic\")) ∧ Winner(steinhauer, \"1992 du Maurier Classic\")) → Participated(steinhauer, \"1992 du Maurier Classic\") ::: TRUE"
+    },
+    {
+      "id": "tc_100e1a9c",
+      "questions": "Based on the above information, is the following statement true or false? If Descampe participated in the 1992 du Maurier Classic and is from Belgium, then Descampe is the winner of the 1992 du Maurier Classic.",
+      "conclusions": "Participated(descampe, 1992duMaurierClassic) ∧ FromBelgium(descampe) → Winner(descampe, 1992duMaurierClassic) ::: FALSE"
+    },
+    {
+      "id": "tc_33dda4c2",
+      "questions": "Based on the above information, is the following statement true or false? If Descampe participated in the 1992 du Maurier Classic and is from Belgium, then Steinhauer is the winner of the 1992 du Maurier Classic.",
+      "conclusions": "Participated(descampe, 1992duMaurierClassic) ∧ FromBelgium(descampe) → Winner(steinhauer, 1992duMaurierClassic) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_2e4433a7",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (SixWayTie(x) ∧ Leaderboard(x, 1992duMaurierClassic)) ∧ ∃y (SixWayTie(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ Leaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_0b24544e",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (OnLeaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (OnLeaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y) ∧ FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_f5901fb5",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y) ∧ FromBelgium(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_1ac01d15",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (FromBelgium(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ Leaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_5653729a",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (FromBelgium(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_afb49628",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (OnLeaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (FromBelgium(y) ∧ OnLeaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_a0f8ffe5",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x ∃y (Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x) ∧ FromBelgium(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_4cc7bc08",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ∧ ∃y (FromBelgium(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_5233d41a",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (FromBelgium(x) ∧ Leaderboard(x, 1992duMaurierClassic) ∧ SixWayTie(x)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (OnLeaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    },
+    {
+      "id": "sol_5acb6c5e",
+      "text": "# Predicates:\nWinner(x, y) ::: x is the winner of event y.\nParticipated(x, y) ::: x participated in event y.\nSixWayTie(x) ::: x is on the leaderboard in a six-way tie.\nLeaderboard(x, y) ::: x is on the leaderboard of event y.\nFromBelgium(x) ::: x is from Belgium.\nOnLeaderboard(x, y) ::: x is on the leaderboard of event y.\n\n# Premises:\nWinner(steinhauer, 1992duMaurierClassic) ::: The winner of the 1992 du Maurier Classic was Steinhauer.\nParticipated(steinhauer, 1992duMaurierClassic) ::: Steinhauer participated in the 1992 du Maurier Classic.\n∃x (SixWayTie(x) ∧ Leaderboard(x, 1992duMaurierClassic)) ∧ ∃y (FromBelgium(y) ∧ Leaderboard(y, 1992duMaurierClassic) ∧ SixWayTie(y)) ::: There was one six-way tie on the leaderboard and one person in the six-way tie was from Belgium.\nFromBelgium(descampe) ∧ OnLeaderboard(descampe, 1992duMaurierClassic) ::: Descampe is from Belgium and is on the leaderboard of the 1992 du Maurier Classic.\n∀x (Leaderboard(x, 1992duMaurierClassic) → Participated(x, 1992duMaurierClassic)) ::: All people on the leaderboard of the 1992 du Maurier Classic participated in the 1992 du Maurier Classic."
+    }
+  ],
+  "validation": {
+    "id": "tc_27fbe091",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Steinhauer was not the winner of the 1992 du Maurier Classic.",
+    "conclusions": "¬Winner(steinhauer, duMaurierClassic1992) ::: Steinhauer was not the winner of the 1992 du Maurier Classic. false"
+  }
+}

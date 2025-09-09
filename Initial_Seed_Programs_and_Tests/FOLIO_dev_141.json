@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_141",
+  "problem_text": "If a cartoon character is funny, then it is popular. If a cartoon character is ugly, then it is not popular. If a cartoon character is loved by children, then it is funny. If a cartoon character is from The Simpsons, then it is loved by children. If a cartoon character is yellow, then it is from The Simpsons. Ben is either from The Simpsons or funny.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Funny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.",
+  "tests": [
+    {
+      "id": "tc_435b3599",
+      "questions": "Based on the above information, is the following statement true or false? Ben is either a cartoon character that is loved by children or a funny cartoon character.",
+      "conclusions": "LovedByChildren(ben) ⊕ Funny(ben) ::: Ben is either a cartoon character that is loved by children or a funny cartoon character. TRUE"
+    },
+    {
+      "id": "tc_ae3668d8",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is a cartoon character that is loved by children, then Ben is a funny cartoon character.",
+      "conclusions": "LovedByChildren(ben) → Funny(ben) ::: TRUE"
+    },
+    {
+      "id": "tc_5041ccce",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is from The Simpsons, then Ben is not ugly.",
+      "conclusions": "FromSimpsons(ben) → ¬Ugly(ben) ::: TRUE"
+    },
+    {
+      "id": "tc_356e3ab8",
+      "questions": "Based on the above information, is the following statement true or false? Ben is a cartoon character that is not popular.",
+      "conclusions": "¬Popular(ben) ::: FALSE"
+    },
+    {
+      "id": "tc_bcce1326",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is funny, then Ben is loved by children.",
+      "conclusions": "Funny(ben) → LovedByChildren(ben) ::: TRUE"
+    },
+    {
+      "id": "tc_9238f032",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is a funny cartoon character and a cartoon character from The Simpsons, then Ben is ugly.",
+      "conclusions": "Funny(ben) ∧ FromSimpsons(ben) → ¬Ugly(ben) ::: FALSE"
+    },
+    {
+      "id": "tc_63b7cbf6",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is a cartoon character that is not popular, then Ben is not funny.",
+      "conclusions": "Popular(ben) → Funny(ben) ::: FALSE"
+    },
+    {
+      "id": "tc_c070f01d",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is a funny cartoon character and is loved by children, then Ben is not ugly.",
+      "conclusions": "Funny(ben) ∧ LovedByChildren(ben) → ¬Ugly(ben) ::: TRUE"
+    },
+    {
+      "id": "tc_28f26232",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is funny, then Ben is popular.",
+      "conclusions": "Funny(ben) → Popular(ben) ::: TRUE"
+    },
+    {
+      "id": "tc_1f8b6dcf",
+      "questions": "Based on the above information, is the following statement true or false? If Ben is a cartoon character that is loved by children, then Ben is popular.",
+      "conclusions": "LovedByChildren(ben) → Popular(ben) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_e4a4f45e",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\nFromSimpsons(ben) ∨ Funny(ben) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_b89dfba1",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Popular(x) → Funny(x)) ::: If a cartoon character is popular, then it is funny.\n∀x (¬Popular(x) → ¬Ugly(x)) ::: If a cartoon character is not popular, then it is not ugly.\n∀x (Funny(x) → LovedByChildren(x)) ::: If a cartoon character is funny, then it is loved by children.\n∀x (LovedByChildren(x) → FromSimpsons(x)) ::: If a cartoon character is loved by children, then it is from The Simpsons.\n∀x (FromSimpsons(x) → Yellow(x)) ::: If a cartoon character is from The Simpsons, then it is yellow.\nFunny(ben) ∨ FromSimpsons(ben) ::: Ben is either funny or from The Simpsons."
+    },
+    {
+      "id": "sol_045ed772",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x ((Funny(x) → Popular(x)) ∧ (Ugly(x) → ¬Popular(x)) ∧ (LovedByChildren(x) → Funny(x)) ∧ (FromSimpsons(x) → LovedByChildren(x)) ∧ (Yellow(x) → FromSimpsons(x))) ::: All implications about cartoon characters hold.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_83b714ca",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (¬Popular(x) → ¬Ugly(x)) ::: If a cartoon character is not popular, then it is not ugly.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_f9a9003d",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_82bf3aa3",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_0bbf5327",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_bae98492",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_0b289891",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x ((Funny(x) → Popular(x))) ::: If a cartoon character is funny, then it is popular.\n∀x ((Ugly(x) → ¬Popular(x))) ::: If a cartoon character is ugly, then it is not popular.\n∀x ((LovedByChildren(x) → Funny(x))) ::: If a cartoon character is loved by children, then it is funny.\n∀x ((FromSimpsons(x) → LovedByChildren(x))) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x ((Yellow(x) → FromSimpsons(x))) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny."
+    },
+    {
+      "id": "sol_9a9e4784",
+      "text": "# Predicates:\nFunny(x) ::: x is a funny cartoon character.\nPopular(x) ::: x is a popular cartoon character.\nUgly(x) ::: x is an ugly cartoon character.\nLovedByChildren(x) ::: x is loved by children.\nFromSimpsons(x) ::: x is from The Simpsons.\nBen(x) ::: x is Ben.\n\n# Premises:\n∀x (Funny(x) → Popular(x)) ::: If a cartoon character is funny, then it is popular.\n∀x (Ugly(x) → ¬Popular(x)) ::: If a cartoon character is ugly, then it is not popular.\n∀x (LovedByChildren(x) → Funny(x)) ::: If a cartoon character is loved by children, then it is funny.\n∀x (FromSimpsons(x) → LovedByChildren(x)) ::: If a cartoon character is from The Simpsons, then it is loved by children.\n∀x (Yellow(x) → FromSimpsons(x)) ::: If a cartoon character is yellow, then it is from The Simpsons.\n(FromSimpsons(ben) ∨ Funny(ben)) ::: Ben is either from The Simpsons or funny.\nBen(ben) ::: Ben is Ben."
+    }
+  ],
+  "validation": {
+    "id": "tc_572bfac7",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Ben is loved by children.",
+    "conclusions": "LovedByChildren(ben) ::: Ben is loved by children. unknown"
+  }
+}

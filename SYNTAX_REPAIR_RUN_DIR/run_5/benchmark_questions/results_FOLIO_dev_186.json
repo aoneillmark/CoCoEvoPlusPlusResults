@@ -1,0 +1,1235 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186",
+  "dataset": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/temp_dataset_for_FOLIO_dev_186.json",
+  "solutions": [
+    {
+      "solution_name": "sol_008f7340.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_008f7340.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2203z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2203z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_020518d3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0009/post/solutions/sol_020518d3.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_07ad28ac.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_07ad28ac.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0dc812b9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_0dc812b9.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_111927bd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_111927bd.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_20293d6d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0010/post/solutions/sol_20293d6d.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_204a958c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_204a958c.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_21541771.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_21541771.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_28bb6ba3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_28bb6ba3.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, \"Family Secrets\")) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, \"Family Secrets\")) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2cabfb2e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_2cabfb2e.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, z)) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, z)) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2df92804.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0005/post/solutions/sol_2df92804.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_42229c84.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_42229c84.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_45d605ad.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0004/post/solutions/sol_45d605ad.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_49fe6ced.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0009/post/solutions/sol_49fe6ced.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_60f418cf.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_60f418cf.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6525dcf0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0007/post/solutions/sol_6525dcf0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200z (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_668d91b7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0010/post/solutions/sol_668d91b7.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_67d3584e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_67d3584e.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_706be3ad.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_706be3ad.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_850ef5e2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_850ef5e2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x ((Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y))) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x ((Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y))) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8e4aef41.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_8e4aef41.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x ((Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y))) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00acPodcast(x) \u2228 \u00acNovel(x) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x ((Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y))) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_93bcdc58.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_93bcdc58.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (\u00acNovel(x) \u2228 \u00acWrittenBy(x, z) \u2228 NovelWriter(z)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_983cab4f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_983cab4f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9de8f5fd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_9de8f5fd.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a0c20045.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_a0c20045.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, z)) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 PodcastName(y, z)) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b23d9efd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0005/post/solutions/sol_b23d9efd.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b5375fed.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_b5375fed.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bab924a9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_bab924a9.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2203y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2203y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d6befff2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_d6befff2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_df8c1f54.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0003/post/solutions/sol_df8c1f54.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2203z (Created(x, z) \u2192 Podcast(z)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e584d1d5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0004/post/solutions/sol_e584d1d5.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, '2003') ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, '2003') ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e7ca37e0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0007/post/solutions/sol_e7ca37e0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory) \u2227 Year(FamilyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e9d861bf.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_e9d861bf.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x \u2200y (Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) \u2227 Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ecb56576.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_ecb56576.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, americanCity) \u2192 American(x)) ::: If a person is born in American City, the person is American.\n\u2200x (Novel(x) \u2227 WrittenBy(x, y) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n\u2200x (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f021bce0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_f021bce0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2203y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2203y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f36805a6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0002/post/solutions/sol_f36805a6.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x \u2200y ((Novel(x) \u2227 WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_fbbec163.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_5/benchmark_runs/FOLIO_dev_186/evo_gen_0001/post/solutions/sol_fbbec163.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_186",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Family Secrets is a novel.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acNovel(familySecrets)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2200y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\n\u00acNovel(familySecrets)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_187",
+          "context": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro was born in Boston.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "BornIn(daniShapiro, boston)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n\u00ac(Podcast(x) \u2227 Novel(x)) ::: A podcast is not a novel.\n\u2200x (BornIn(x, boston) \u2192 American(x)) ::: If a person is born in Boston, the person is American.\n\u2200x (Novel(x) \u2227 \u2200y (WrittenBy(x, y) \u2227 Person(y)) \u2192 NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) \u2227 American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) \u2227 Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n\u2200x \u2200y (Created(x, y) \u2192 Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston.\n\n# Conclusion:\nBornIn(daniShapiro, boston)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 0,
+    "total_questions": 74,
+    "overall_accuracy": 0.0
+  }
+}

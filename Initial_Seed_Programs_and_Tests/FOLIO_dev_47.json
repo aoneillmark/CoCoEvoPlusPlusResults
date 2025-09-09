@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_47",
+  "problem_text": "[BG] There are four seasons in a year: Spring, Summer, Fall, and Winter. All students who want to have a long vacation love summer the most. Emma's favorite season is summer. Mia's favorite season is not the same as Emma's. James wants to have a long vacation.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Season(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.",
+  "tests": [
+    {
+      "id": "tc_8e705cfb",
+      "questions": "Based on the above information, is the following statement true or false? If James is a student, then Mia loves summer.",
+      "conclusions": "Student(james) → Loves(mia, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_d5a7dafa",
+      "questions": "Based on the above information, is the following statement true or false? If Mia is a student and does not love summer, then James is a student.",
+      "conclusions": "Student(mia) ∧ ¬Loves(mia, summer) → Student(james) ::: FALSE"
+    },
+    {
+      "id": "tc_b1ae68dc",
+      "questions": "Based on the above information, is the following statement true or false? If Mia is a student, then James loves summer.",
+      "conclusions": "Student(mia) → Loves(james, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_064c6f2a",
+      "questions": "Based on the above information, is the following statement true or false? If Mia is a student, then James does not love summer.",
+      "conclusions": "Student(mia) → ¬Loves(james, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_30788a44",
+      "questions": "Based on the above information, is the following statement true or false? If James is a student and Mia's favorite season is Summer, then James loves summer.",
+      "conclusions": "Student(james) ∧ FavoriteSeason(mia, summer) → Loves(james, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_4df1b686",
+      "questions": "Based on the above information, is the following statement true or false? If James is a student, then Mia's favorite season is not summer.",
+      "conclusions": "Student(james) → ¬FavoriteSeason(mia, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_e8cf41b5",
+      "questions": "Based on the above information, is the following statement true or false? If Emma is a student, then James does not love summer.",
+      "conclusions": "Student(emma) → ¬Loves(james, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_ec64a1ba",
+      "questions": "Based on the above information, is the following statement true or false? If Emma is a student and Mia is a student, then James loves summer.",
+      "conclusions": "Student(emma) ∧ Student(mia) → Loves(james, summer) ::: FALSE"
+    },
+    {
+      "id": "tc_1e3caa2f",
+      "questions": "Based on the above information, is the following statement true or false? James wants to have a long vacation and Emma's favorite season is summer, therefore Mia's favorite season is not summer.",
+      "conclusions": "(WantsLongVacation(james) ∧ FavoriteSeason(emma, summer)) → ¬FavoriteSeason(mia, summer) ::: TRUE"
+    },
+    {
+      "id": "tc_8178ca07",
+      "questions": "Based on the above information, is the following statement true or false? If Emma is a student, then James loves Summer.",
+      "conclusions": "Student(emma) → Loves(james, summer) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_c1d04325",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ x ≠ y) ::: Mia's favorite season is not the same as Emma's.\nStudent(emma) ∧ Student(mia) ∧ Student(james) ::: Emma, Mia, and James are students.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_9e6f510d",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ x ≠ y) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student."
+    },
+    {
+      "id": "sol_66ef9176",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ x ≠ y) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_6c4c0e66",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) → (WantsLongVacation(x) → Loves(x, summer))) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ x ≠ y) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_761515b5",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) → (WantsLongVacation(x) → Loves(x, summer))) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x) ∧ x = summer) ∧ ∃y (FavoriteSeason(mia, y) ∧ y ≠ summer) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_2da80f04",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ ¬(y = summer)) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_fb4958b9",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x) ∧ x = summer) ∧ ∃y (FavoriteSeason(mia, y) ∧ y ≠ summer) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_3da3c605",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ x ≠ y) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_7e298725",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) ∧ WantsLongVacation(x) → Loves(x, summer)) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x)) ∧ ∃y (FavoriteSeason(mia, y) ∧ ¬(y = summer)) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons."
+    },
+    {
+      "id": "sol_4e818a08",
+      "text": "# Predicates:\nSeason(x) ::: x is a season.\nSpring() ::: The season is Spring.\nSummer() ::: The season is Summer.\nFall() ::: The season is Fall.\nWinter() ::: The season is Winter.\nStudent(x) ::: x is a student.\nWantsLongVacation(x) ::: x wants to have a long vacation.\nLoves(x, y) ::: x loves y.\nFavoriteSeason(x, y) ::: y is the favorite season of x.\nYear() ::: There is a year.\nHasSeason(x, y) ::: The year x has the season y.\n\n# Premises:\nSeason(spring) ∧ Season(summer) ∧ Season(fall) ∧ Season(winter) ::: There are four seasons in a year: Spring, Summer, Fall, and Winter.\n∀x (Student(x) → (WantsLongVacation(x) → Loves(x, summer))) ::: All students who want to have a long vacation love summer the most.\nFavoriteSeason(emma, summer) ::: Emma's favorite season is summer.\n∃x (FavoriteSeason(emma, x) ∧ x = summer) ∧ ∃y (FavoriteSeason(mia, y) ∧ y ≠ summer) ::: Mia's favorite season is not the same as Emma's.\nWantsLongVacation(james) ::: James wants to have a long vacation.\nStudent(emma) ::: Emma is a student.\nStudent(mia) ::: Mia is a student.\nStudent(james) ::: James is a student.\nYear() ∧ HasSeason(year, spring) ∧ HasSeason(year, summer) ∧ HasSeason(year, fall) ∧ HasSeason(year, winter) ::: The year has four seasons.\n∀x (∀y (FavoriteSeason(x, y) → Season(y))) ::: If y is the favorite season of x, then y is a season."
+    }
+  ],
+  "validation": {
+    "id": "tc_c7eaf7a3",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? James's favorite season is summer.",
+    "conclusions": "WantsLongVacation(james) → FavoriteSeason(james, Summer()) ::: James's favorite season is summer. true"
+  }
+}

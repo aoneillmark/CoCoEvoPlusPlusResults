@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_72",
+  "problem_text": "All growth companies’ stocks are volatile. If the stock price is volatile, then it is not suitable for a retirement fund. Some companies’ stocks are growth companies’ stocks. All mature companies’ stocks are suitable for a retirement fund. KO is a mature company’s stock.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Volatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.",
+  "tests": [
+    {
+      "id": "tc_a00d0384",
+      "questions": "Based on the above information, is the following statement true or false? KO is a volatile stock.",
+      "conclusions": "Volatile(KO) ::: KO is a volatile stock. FALSE"
+    },
+    {
+      "id": "tc_b72371f2",
+      "questions": "Based on the above information, is the following statement true or false? KO is a growth company's stock.",
+      "conclusions": "GrowthCompanyStock(KO) ::: KO is a growth company's stock. FALSE"
+    },
+    {
+      "id": "tc_37d947d3",
+      "questions": "Based on the above information, is the following statement true or false? KO is a stock of a company that is not a growth company.",
+      "conclusions": "¬GrowthCompanyStock(KO) ::: KO is a stock of a company that is not a growth company. TRUE"
+    },
+    {
+      "id": "tc_cb6a3aed",
+      "questions": "Based on the above information, is the following statement true or false? KO is a stock of a company that is suitable for a retirement fund.",
+      "conclusions": "SuitableForRetirementFund(KO) ::: KO is a stock of a company that is suitable for a retirement fund. TRUE"
+    },
+    {
+      "id": "tc_62a0b438",
+      "questions": "Based on the above information, is the following statement true or false? All mature company stocks are company stocks.",
+      "conclusions": "∀x (MatureCompanyStock(x) → CompanyStock(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_45285284",
+      "questions": "Based on the above information, is the following statement true or false? If KO is a stock of a company that is a growth company, then KO is not suitable for a retirement fund.",
+      "conclusions": "GrowthCompanyStock(KO) → ¬SuitableForRetirementFund(KO) ::: FALSE"
+    },
+    {
+      "id": "tc_1ab344f9",
+      "questions": "Based on the above information, is the following statement true or false? If KO is a company stock and is a stock of a mature company, then KO is not a volatile stock.",
+      "conclusions": "IsStockOf(KO, c) ∧ MatureCompanyStock(KO) → ¬Volatile(KO) ::: TRUE"
+    },
+    {
+      "id": "tc_cd5c1c79",
+      "questions": "Based on the above information, is the following statement true or false? Some company's stocks are volatile.",
+      "conclusions": "∃x (CompanyStock(x) ∧ Volatile(x)) ::: Some company's stocks are volatile. TRUE"
+    },
+    {
+      "id": "tc_242197e9",
+      "questions": "Based on the above information, is the following statement true or false? All companies' stocks that are suitable for a retirement fund are not volatile.",
+      "conclusions": "∀x ((CompanyStock(x) ∧ SuitableForRetirementFund(x)) → ¬Volatile(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_fdad2f0c",
+      "questions": "Based on the above information, is the following statement true or false? KO is a stock of a growth company.",
+      "conclusions": "GrowthCompanyStock(KO) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_cc914115",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_6a051722",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x ((IsStockOf(x, Company(y)) ∧ GrowthCompanyStock(x)) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_d222d851",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_fc8b2ac2",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_ebcfaa82",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_c0a38ca2",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_2d316b16",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (∃y (IsStockOf(x, Company(y)) ∧ GrowthCompanyStock(x)) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_812675c1",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_e18c6165",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x (GrowthCompanyStock(x) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    },
+    {
+      "id": "sol_ac83efc8",
+      "text": "# Predicates:\nVolatile(x) ::: x is a volatile stock.\nSuitableForRetirementFund(x) ::: x is suitable for a retirement fund.\nGrowthCompanyStock(x) ::: x is a growth company's stock.\nMatureCompanyStock(x) ::: x is a mature company's stock.\nCompanyStock(x) ::: x is a company's stock.\nCompany(x) ::: x is a company.\nStockPrice(x) ::: x is a stock price.\nIsStockOf(x, y) ::: x is a stock of company y.\nKO ::: The entity KO.\n\n# Premises:\n∀x ((IsStockOf(x, y) ∧ GrowthCompanyStock(x)) → Volatile(x)) ::: All growth companies’ stocks are volatile.\n∀x (Volatile(x) → ¬SuitableForRetirementFund(x)) ::: If the stock price is volatile, then it is not suitable for a retirement fund.\n∃x (CompanyStock(x) ∧ GrowthCompanyStock(x)) ::: Some companies’ stocks are growth companies’ stocks.\n∀x (MatureCompanyStock(x) → SuitableForRetirementFund(x)) ::: All mature companies’ stocks are suitable for a retirement fund.\nMatureCompanyStock(KO) ::: KO is a mature company’s stock."
+    }
+  ],
+  "validation": {
+    "id": "tc_d345ad7f",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? KO is a company stock.",
+    "conclusions": "CompanyStock(KO) ::: KO is a company stock. unknown"
+  }
+}

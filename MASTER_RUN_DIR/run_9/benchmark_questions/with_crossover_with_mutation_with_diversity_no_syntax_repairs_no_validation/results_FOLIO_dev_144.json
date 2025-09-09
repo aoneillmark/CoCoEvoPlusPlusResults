@@ -1,0 +1,1211 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144",
+  "dataset": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/temp_dataset_for_FOLIO_dev_144.json",
+  "solutions": [
+    {
+      "solution_name": "sol_027cd05c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0003/post/solutions/sol_027cd05c.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Breeding back definition and properties\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 IsSelectiveBreedingOf(x, y))\n\n# Heck cattle specifics\nHeckCattle(x) \u2192 Animal(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n\n# Aurochs and extinction\nAurochs(x) \u2192 Animal(x)\nExtinct(x) \u2192 Animal(x)\n\n# General breeding back scenario: Some animals to be bred back resemble extinct animals.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# The essence of breeding back: Animals that are bred back are themselves animals.\n\u2200x (BreedingBack(x) \u2192 Animal(x))\n\n# The 'heckCattle' constant is an instance of Heck cattle.\nHeckCattle(heckCattle)\n\n# The 'aurochs' constant is an instance of Aurochs.\nAurochs(aurochs)\n\n# The 'year1920s' constant represents the time period.\n# This predicate is a placeholder for the concept of a year.\n# If a more formal temporal representation is needed, this would be expanded.\nYear(year1920s)\n\n# Definition of ToBreedBack predicate: An animal to be bred back is an animal.\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\n# If something is bred back in a certain year, it implies it was a breeding back process.\n\u2200x, y (BredBack(x, y) \u2192 BreedingBack(x))\n\n# Clarification: Breeding back involves deliberate selective breeding of domestic animals.\n# This premise strengthens the connection between BreedingBack and SelectiveBreeding.\n\u2200x (BreedingBack(x) \u2192 SelectiveBreeding(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_08968af4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_08968af4.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBredBack(heckCattle, 1920s)\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_09310f4c.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0008/post/solutions/sol_09310f4c.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (BredBack(x, y)))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (Resemble(x, y) \u2192 ToBreedBack(x))\n\u2203x \u2203y (Animal(x) \u2227 Extinct(y) \u2227 Resemble(x, y))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_096507a1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0008/post/solutions/sol_096507a1.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0ed7b402.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0003/post/solutions/sol_0ed7b402.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Heck cattle are animals.\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\n# Heck cattle were bred back in the 1920s.\n# Assuming 'heckCattle' and 'year1920s' are specific instances.\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\n\n# Aurochs are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x))\nAurochs(aurochs)\n\n# Breeding back is a form of artificial selection.\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\n# Artificial selection is a deliberate selective breeding of domestic animals.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Heck cattle were bred back to resemble aurochs.\nResemble(heckCattle, aurochs)\n\n# Some animals to be bred back resemble extinct animals.\n# This rule states that if an animal is a candidate for breeding back, then it resembles *some* extinct animal.\n\u2200x (ToBreedBack(x) \u2192 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\n# If an animal is to be bred back, it must be an animal.\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\n# The process of breeding back in the context of Heck cattle and aurochs implies that Heck cattle are the subject of the breeding back, and the intention is to achieve a resemblance to aurochs.\n# Therefore, Heck cattle themselves can be considered as \"animals to be bred back\" in this specific context, or at least the process applies to them.\n# This premise establishes that Heck cattle are the entities that underwent or are undergoing the 'breeding back' process.\nHeckCattle(heckCattle) \u2192 ToBreedBack(heckCattle)\n\n# The year 1920s is a specific year.\nYear(year1920s)\n\n# The concept of 'breeding back' applies to a process or an action, not an entity directly like Heck cattle or aurochs.\n# So, we should define a predicate for the action of breeding back that Heck cattle underwent.\n# Let's assume a predicate 'ProcessOfBreedingBack(p)' and 'SubjectOfBreedingBack(p, s)'.\n# However, to align with the existing predicates, we can interpret 'BreedingBack(x)' as a property of the entity 'x' being involved in breeding back.\n# The original premise 'BredBack(heckCattle, year1920s)' implies 'heckCattle' is the subject.\n# We can infer that Heck cattle are subjects of 'breeding back' as a concept.\n# Thus, if Heck Cattle are bred back, they are involved in 'breeding back'.\n\u2200x, y (BredBack(x, y) \u2192 BreedingBack(x))\n\n# Assuming the goal of breeding back Heck cattle was to make them resemble aurochs.\n# This implies that aurochs are the *target* or *model* for the resemblance.\n# The premise \"Heck cattle were bred back to resemble aurochs\" already captures this.\n\n# Edge case: What if an animal is to be bred back, but it's not a domestic animal?\n# The definition of ArtificialSelection(x) \u2192 SelectiveBreeding(x) and the existence of DomesticAnimal(y) in SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y)) imply that artificial selection/selective breeding inherently involves domestic animals.\n# If 'BreedingBack(x)' implies 'ArtificialSelection(x)', then 'x' must ultimately be related to domestic animals as the subject of the breeding.\n# However, the 'ToBreedBack(x)' predicate applies to any animal. The scenario states \"deliberate selective breeding of *domestic animals*\".\n# This creates a potential ambiguity: are the animals *to be bred back* domestic animals? Or are the animals *from which they are bred* domestic animals?\n# The most common interpretation is that the *subject* of selective breeding is typically a domestic animal.\n# Let's add a premise to clarify that animals to be bred back are themselves domestic animals, aligning with the 'domestic animals' part of the definition.\n\u2200x (ToBreedBack(x) \u2192 DomesticAnimal(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_110d54c6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0004/post/solutions/sol_110d54c6.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_123b8d1f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_123b8d1f.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# General definitions and relationships\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 \u2203y (Animal(y) \u2227 DomesticAnimal(y))) # Selective breeding is of domestic animals.\n\n# Specific information about Heck cattle and Aurochs\nHeckCattle(HeckCattleInstance) # Assuming HeckCattle is a type, and we have an instance.\nAurochs(AurochsInstance) # Assuming Aurochs is a type, and we have an instance.\nBredBack(HeckCattleInstance, Year1920s) # Heck cattle were bred back in the 1920s.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) # Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) # Aurochs are animals.\n\u2200x (HeckCattle(x) \u2192 \u2203y (Resemble(x, y) \u2227 Aurochs(y))) # Heck cattle were bred back to resemble aurochs.\n\n# Relationships derived from the breeding process\n\u2200x (BredBack(x, y) \u2192 BreedingBack(x)) # If something was bred back, it is an instance of breeding back.\n\u2200x (BreedingBack(x) \u2192 ToBreedBack(x)) # Anything being bred back is an animal to be bred back.\n\n# General characteristics of animals to be bred back\n\u2200x (ToBreedBack(x) \u2192 Animal(x)) # Animals to be bred back are animals.\n\n# The scenario of breeding back involving extinct animals\n# This premise now states that there exists at least one instance of an animal to be bred back that resembles an extinct animal.\n\u2203x (ToBreedBack(x) \u2227 Animal(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n# This implies that the HeckCattleInstance, being an instance of ToBreedBack, must resemble an extinct animal (AurochsInstance in this case, if Aurochs are extinct).\n\n# Additional premise to explicitly state Aurochs are extinct, as implied by the scenario description.\nExtinct(AurochsInstance)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_148dafd2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_148dafd2.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Heck cattle are animals and were bred back.\nHeckCattle(x) \u2192 Animal(x)\nHeckCattle(x) \u2192 \u2203y (BredBack(x, y))\nBredBack(heckCattle, year1920s)\n\n# Aurochs are animals.\nAurochs(x) \u2192 Animal(x)\n\n# Breeding back is a form of artificial selection, which is a deliberate selective breeding of domestic animals.\n# Rephrased to clarify the relationship between the concepts.\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))\nSelectiveBreedingOf(x, y) ::: x is a selective breeding of y.\n\n# Heck cattle were bred back to resemble aurochs.\nResemble(heckCattle, aurochs)\n\n# Some animals to be bred back resemble extinct animals.\n# This is a general rule applicable to any animal that is intended to be bred back.\n\u2200x (ToBreedBack(x) \u2192 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\n# If an animal is to be bred back, it must be an animal.\nToBreedBack(x) \u2192 Animal(x)\n\n# Explicitly state that Heck cattle are animals that are bred back, and that aurochs are animals.\n# This simplifies reasoning by making explicit the types of entities involved.\nHeckCattle(heckCattle)\nAurochs(aurochs)\nAnimal(heckCattle)\nAnimal(aurochs)\n\n# Define the year 1920s as a specific year.\nYear(year1920s)\n\n# Define domestic animals.\nDomesticAnimal(x) ::: x is a domestic animal.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_18cca3ed.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0009/post/solutions/sol_18cca3ed.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_19a8d4ee.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0008/post/solutions/sol_19a8d4ee.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1d94c56f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_1d94c56f.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_26df7906.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0010/post/solutions/sol_26df7906.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 BredBack(x, year1920s))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(x) \u2227 Extinct(y) \u2227 Resemble(x, y))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_30cd1bcc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_30cd1bcc.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2200y (DomesticAnimals(y) \u2192 x is selective breeding of y)\nBredBack(heckCattle, year1920s) \u2227 Resemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3500f010.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_3500f010.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (BreedingBack(x) \u2192 \u2203y (SelectiveBreeding(y) \u2227 Forms(y, x)))\n\u2200x (SelectiveBreeding(x) \u2192 \u2203y (Deliberate(y) \u2227 ActsOn(x, y) \u2227 DomesticAnimals(y)))\n\u2200x (BredBack(x, 1920s) \u2192 HeckCattle(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (Aurochs(y) \u2227 Resemble(x, y)))\n\u2200x (Resemble(x, y) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\n# New Predicates (introduced for simplification/clarity):\nForms(x, y) ::: x forms y.\nDeliberate(x) ::: x is deliberate.\nActsOn(x, y) ::: x acts on y.\nDomesticAnimals(x) ::: x are domestic animals.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_362268bc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0004/post/solutions/sol_362268bc.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Heck cattle are a specific type of animal.\nHeckCattle(x) \u2192 Animal(x)\n\n# Heck cattle were bred back in the 1920s.\nBredBack(heckCattle, year1920s)\n\n# The 'BredBack' predicate implies a temporal aspect, and 'year1920s' is a specific year.\n# We can assert that 'year1920s' is indeed a year.\nBredBack(x, y) \u2192 Year(y)\n\n# Aurochs are also animals.\nAurochs(x) \u2192 Animal(x)\n\n# The concept of 'BreedingBack' is a form of 'ArtificialSelection'.\nBreedingBack(x) \u2192 ArtificialSelection(x)\n\n# 'ArtificialSelection' is a type of 'SelectiveBreeding'.\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\n\n# 'SelectiveBreeding' is of 'DomesticAnimal's.\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))\n\n# The specific example of Heck cattle being bred back to resemble Aurochs.\n# This implies that Heck cattle are 'ToBreedBack'.\nHeckCattle(x) \u2192 ToBreedBack(x)\nResemble(heckCattle, aurochs)\n\n# Animals that are to be bred back resemble extinct animals.\n# This premise applies to any animal that is targeted for breeding back.\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 \u2203y (Extinct(y) \u2227 Animal(y) \u2227 Resemble(x, y)))\n\n# We know Aurochs are animals, and the context implies Aurochs are extinct.\nAurochs(x) \u2192 Extinct(x)\n\n# Added a missing predicate definition for clarity, although not strictly required by task.\nDomesticAnimal(x) ::: x is a domestic animal.\nYear(x) ::: x is a year.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_39569037.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_39569037.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: SelectiveBreeding/2, SelectiveBreeding/1.\n\n\nFatal error:  The following symbols are used with multiple arities: SelectiveBreeding/2, SelectiveBreeding/1",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3e321147.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_3e321147.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (BredBack(x, 1920s) \u2192 HeckCattle(x))\n\u2200x (Resemble(x, aurochs) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_44abdeda.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0004/post/solutions/sol_44abdeda.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definition of BreedingBack\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\n\n# Specific information about Heck Cattle and Aurochs\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\n# Generalization about animals to be bred back\n# This premise states: There exists an animal (x) that is intended to be bred back, and this animal (x)\n# resembles some animal (y) which is extinct.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Explicitly link Heck Cattle to the concept of BreedingBack.\n# If something is Heck Cattle, then it is an instance of something that is BreedingBack.\nHeckCattle(x) \u2192 BreedingBack(x)\n\n# Explicitly link Heck Cattle to the category of animals that are to be bred back.\n# If something is Heck Cattle, then it is an animal to be bred back.\nHeckCattle(x) \u2192 ToBreedBack(x)\n\n# Explicitly state that Aurochs are extinct, based on the scenario description.\nExtinct(aurochs)\n\n# Clarify the nature of selective breeding in relation to domestic animals.\n# The definition of SelectiveBreeding(x) states it's \"of domestic animals\".\n# This implies that if x is SelectiveBreeding, then it involves domestic animals.\n# To make this explicit and address potential missing edge cases where the connection to \"domestic animals\" might be overlooked, we can state that any selective breeding involves at least one domestic animal.\n# We can interpret `SelectiveBreeding(x)` as the process, and this process inherently involves domestic animals.\n# If SelectiveBreeding(x) is true, then there must exist some domestic animal 'y' such that 'x' is a selective breeding involving 'y'.\n# We can use the existing `SelectiveBreeding(x)` predicate and infer the involvement of domestic animals.\n# Since the definition of `SelectiveBreeding(x)` already states it is \"of domestic animals\", we can assert that if x is `SelectiveBreeding`, then there exists a `DomesticAnimal(y)` involved in this process.\n# The most direct way to represent this without introducing new relation predicates is to assert that the existence of a selective breeding process implies the existence of a domestic animal.\n# However, a more robust representation might be to link the selective breeding process to domestic animals.\n# Based on the definition `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.`, it's implied that the *process* of selective breeding involves domestic animals.\n# We can add a premise that if something is a SelectiveBreeding process, then there exists a DomesticAnimal that is part of this process.\n# The definition itself implies this. To avoid redundancy or over-specification that might not be directly supported by the given predicates and context, we can strengthen the connection by stating that if `SelectiveBreeding(x)` is true, then `x` is a process that inherently involves `DomesticAnimal`.\n# A simplified approach, given the existing predicates, is to ensure that the definition is correctly interpreted as implying the existence of domestic animals.\n# The simplest way to ensure this connection is made explicit for any `x` that is `SelectiveBreeding(x)` is to state that such a `y` (a domestic animal) exists.\n# We can rephrase the implication to be more direct: If x is a selective breeding process, then there exists a domestic animal y which is subject to or involved in this selective breeding.\n# The definition `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.` already contains this information.\n# To be absolutely explicit and address potential interpretations where this is missed, we can assert that if `SelectiveBreeding(x)` holds, then there exists a `DomesticAnimal(y)` that is involved in the selective breeding `x`.\n# However, without a predicate like `Involves(x, y)` or `BreedingOf(x, y)`, directly stating `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))` is difficult.\n# A compromise is to ensure the definition implies this: `SelectiveBreeding(x)` means it *is* of domestic animals.\n# The initial premise `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))` from the context was removed for simplification.\n# The current definition `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.` already captures that domestic animals are involved.\n# To make this connection more explicit in the logic, we can add a premise that links any selective breeding process to the existence of a domestic animal.\n# If `SelectiveBreeding(x)` is true, then there must exist a `DomesticAnimal(y)` such that `x` pertains to it.\n# Let's assume the intention was to ensure `SelectiveBreeding(x)` implies the existence of a `DomesticAnimal`.\n# A premise connecting the process to the existence of domestic animals is logical.\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y))\n# This premise ensures that if a process is classified as selective breeding, it inherently involves domestic animals.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4ae77477.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0010/post/solutions/sol_4ae77477.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 BredBack(x, year1920s))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4be8f803.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_4be8f803.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_50f0d76d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_50f0d76d.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBredBack(HeckCattle, Year1920s)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (Resemble(x, y) \u2227 Aurochs(y)))\n\u2200x (BredBack(x, y) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ToBreedBack(x))\n\u2203x (ToBreedBack(x) \u2227 Animal(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: HeckCattle/1, HeckCattle/0.\n\n\nFatal error:  The following symbols are used with multiple arities: HeckCattle/1, HeckCattle/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_56d206c5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_56d206c5.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5a877db6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_5a877db6.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5d2d73b5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0009/post/solutions/sol_5d2d73b5.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_64f96f57.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0009/post/solutions/sol_64f96f57.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 BredBack(x, year1920s))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(x) \u2227 Extinct(y) \u2227 Resemble(x, y))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7b212435.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_7b212435.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2203x (Animal(x) \u2227 Extinct(x) \u2227 \u2203y (ToBreedBack(y) \u2227 Resemble(y, x)))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_81435544.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_81435544.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Artificial selection is a form of deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred back in the 1920s.\n\u2200x (HeckCattle(x) \u2192 \u2203y (Resemble(x, y) \u2227 Aurochs(y))) ::: Heck cattle were bred back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (ToBreedBack(x) \u2227 Animal(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_838a55fb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0009/post/solutions/sol_838a55fb.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (BredBack(x, y)))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (Resemble(x, y) \u2192 ToBreedBack(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(x) \u2227 Extinct(y) \u2227 Resemble(x, y))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_84e35c0e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_84e35c0e.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definition of BreedingBack\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))\n\n# Specific information about Heck Cattle and Aurochs\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\n# Generalization about animals to be bred back\n# This premise was slightly ambiguous. It's clarified to mean:\n# There exists an animal (x) that is intended to be bred back, and this animal (x)\n# resembles some animal (y) which is extinct.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Implicit relationships and edge cases that might be missing:\n# 1. What does \"DomesticAnimal(y)\" mean in the context of SelectiveBreedingOf(x, y)?\n#    It implies that y are domestic animals.\n#    Let's make this explicit.\nSelectiveBreedingOf(x, y) \u2192 DomesticAnimal(y)\n\n# 2. The current premises imply that Heck Cattle were bred back, but don't explicitly state\n#    that Heck Cattle ARE a form of BreedingBack. This is a key connection.\n#    We can infer this from the prompt's description of Heck cattle.\n#    \"Heck cattle were bred-back in the 1920s to resemble the aurochs.\"\n#    This implies Heck Cattle is an instance of something that was bred back.\n#    We can link HeckCattle to the concept of BreedingBack directly.\n#    However, the current structure uses x for generic concepts.\n#    Let's stick to the structure and assume 'heckCattle' is an instance.\n#    The most direct way to connect is that the process of creating Heck cattle\n#    is an instance of BreedingBack.\n#    Since BredBack(heckCattle, year1920s) exists, and HeckCattle is an animal,\n#    and the prompt says \"Heck cattle were bred-back\", this suggests that\n#    HeckCattle *is* an instance of something that is BreedingBack.\n#    We can add a premise stating that Heck Cattle are a type of animal that is bred back.\nHeckCattle(x) \u2192 ToBreedBack(x)\n\n# 3. What if an animal to be bred back doesn't resemble an *extinct* animal, but just another animal?\n#    The prompt states: \"Some animals to be bred-back resemble animals that are extinct.\"\n#    This is captured by the existing premise.\n\n# 4. Are there other types of animals bred back? The premise about 'some' implies yes.\n#    No change needed, as the premise already covers 'some'.\n\n# 5. The prompt states \"Heck cattle were bred-back in the 1920s\".\n#    The existing premise `BredBack(heckCattle, year1920s)` is good.\n#    However, `BredBack(x, y)` means \"x was bred back in year y\".\n#    This implies `x` is an entity that underwent breeding back.\n#    And `BreedingBack(x)` means \"x is breeding back\" (as a concept/process).\n#    The current premises don't explicitly link an *instance* of something being bred back (`BredBack`)\n#    to the *concept* of breeding back (`BreedingBack`).\n#    Let's add a premise to connect this.\n#    If something (x) was bred back (in any year y), then the concept/process of BreedingBack applies to it.\n#    But the current `BreedingBack(x)` is a bit vague. Is it a process, or an entity?\n#    The prompt says \"Breeding back is a form of artificial selection.\" suggesting it's a concept/process.\n#    Let's re-interpret `BreedingBack(x)` to mean \"x is an instance of breeding back\".\n#    And `BredBack(x, y)` means \"x was the result of breeding back done in year y\".\n#    This implies if `BredBack(x, y)` then `BreedingBack(x)` (as in, x is an outcome of breeding back).\n#    Let's assume `heckCattle` is the *type* of animal that was bred back.\n#    So `BredBack(heckCattle, year1920s)` means the `heckCattle` *type* was the target of this breeding.\n#    This implies that the definition of `HeckCattle` is tied to the process of `BreedingBack`.\n#    Given `HeckCattle(x) \u2192 Animal(x)` and `BredBack(heckCattle, year1920s)`,\n#    it's reasonable to state that Heck Cattle *are* a result of breeding back.\n#    So, if x is Heck Cattle, then x is an instance of BreedingBack.\nHeckCattle(x) \u2192 BreedingBack(x)\n\n# 6. The predicate `SelectiveBreeding(x, y)` seems to be introduced but then `SelectiveBreedingOf(x, y)` is used.\n#    Let's align the predicates for consistency and clarity.\n#    Assuming `SelectiveBreedingOf(x, y)` means 'x is a selective breeding of y'.\n#    Let's update the premise:\n#    SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))\n#    This implies that 'x' itself is a form of selective breeding, and 'y' are the domestic animals involved.\n#    This might be confusing. Let's simplify:\n#    `SelectiveBreeding(x)` means 'x is a process of selective breeding'.\n#    `DomesticAnimal(y)` means 'y are domestic animals'.\n#    The original premise: `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`\n#    This implies `SelectiveBreeding(x, y)` is a relation. Let's rename it.\n#    Let's use `InvolvesDomesticAnimals(x, y)` where x is the selective breeding and y are domestic animals.\n#    And `SelectiveBreeding(x)` means 'x is a process of selective breeding'.\n#    Then the premise is: `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 InvolvesDomesticAnimals(x, y))`\n#    However, the prompt gives `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`.\n#    This suggests `SelectiveBreeding(x,y)` implies that `x` is a selective breeding and `y` are domestic animals.\n#    This is a good representation. Let's stick to this formulation with corrected predicate names if needed.\n#    The provided initial program has `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`.\n#    This means that if x is a form of Artificial Selection, then there exists a DomesticAnimal(y) such that\n#    SelectiveBreeding(x, y). This implies x is a selective breeding involving y.\n#    Let's adjust the definition of `SelectiveBreeding(x)` slightly.\n#    It's more natural for `SelectiveBreeding(x)` to imply that `x` is the *process* or *act* of selective breeding.\n#    And `SelectiveBreeding(x, y)` to mean `x` is a selective breeding *of* `y` (where y are domestic animals).\n#    The prompt says \"SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\"\n#    This means the predicate itself already encapsulates the involvement of domestic animals.\n#    So, `SelectiveBreeding(x)` is the predicate for the act of selective breeding, which by definition involves domestic animals.\n#    The premise `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))` is redundant if `SelectiveBreeding(x)` already implies it.\n#    Let's remove the existential quantification if the definition of `SelectiveBreeding(x)` is sufficient.\n#    However, the prompt implies `SelectiveBreeding(x)` is a general form, and `SelectiveBreeding(x, y)` is a more specific relation.\n#    Let's assume `SelectiveBreeding(x, y)` means \"x is a selective breeding of y\".\n#    And `SelectiveBreeding(x)` is perhaps a higher-level concept.\n#    Let's stick to the original premise's intent: `SelectiveBreeding(x)` implies that the process `x` involves some domestic animals.\n#    The predicate `DomesticAnimals(y)` is singular in the provided program, but plural in the description. Let's assume it's a type.\n#    Let's assume `DomesticAnimal(y)` is the correct predicate name for a single domestic animal.\n\n# Revised approach based on prompt's constraints: keep same vocabulary, fix bugs, add edges.\n\n# Re-evaluating the premise: `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`\n# This premise implies that if something is a SelectiveBreeding (as a concept/process 'x'), then there exists a DomesticAnimal 'y' such that 'SelectiveBreeding(x, y)' holds.\n# This seems to define a relationship where a general SelectiveBreeding process 'x' is linked to specific domestic animals 'y'.\n# The initial predicate `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.` already implies this.\n# So, the existential quantification might be redundant.\n# Let's consider the possibility that `SelectiveBreeding(x)` refers to the abstract concept, and `SelectiveBreeding(x,y)` refers to a specific instance where `x` is the breeding action and `y` is the set of domestic animals.\n# Given the prompt to simplify logic, if `SelectiveBreeding(x)` already implies it involves domestic animals, the existential premise is not strictly necessary for the logic flow if the definition is robust.\n# However, often in logic encoding, explicit statements of relationships are preferred.\n\n# Let's assume the predicate `DomesticAnimals(y)` should be `DomesticAnimal(y)`.\n# And `SelectiveBreeding(x, y)` means \"x is a selective breeding of y\".\n# So if `x` is a `SelectiveBreeding`, then there is *some* `y` that is a `DomesticAnimal` and `x` is a selective breeding of `y`.\n\n# Consider the term \"domestic animals\". It implies a type or set.\n# The predicate `DomesticAnimals(y)` uses 'y' as an individual.\n# If 'y' represents a *set* of domestic animals, the predicate might be `IsDomesticAnimal(y)` for an individual `y`.\n# Or, `DomesticAnimals(S)` where `S` is a set.\n# Assuming `DomesticAnimal(y)` for an individual animal `y`.\n\n# Let's consider the possibility that `DomesticAnimals(y)` means 'y is a *type* of domestic animal'.\n# If so, then `SelectiveBreeding(x, y)` could mean 'x is a selective breeding of domestic animals of type y'.\n\n# Let's go with the interpretation that `DomesticAnimal(y)` is for an individual animal.\n# And the original premise is intended to ensure that a 'SelectiveBreeding' instance 'x' must be linked to at least one domestic animal 'y'.\n\n# Simplified premise for SelectiveBreeding:\n# If x is a form of artificial selection, then x is a deliberate selective breeding of domestic animals.\n# The original premise: `ArtificialSelection(x) \u2192 SelectiveBreeding(x)`\n# Then: `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))`\n# Let's assume `SelectiveBreeding(x)` directly means \"x is a deliberate selective breeding of domestic animals\".\n# This definition is powerful. It implies that `x` is a process that inherently involves domestic animals.\n# Therefore, the existential premise `\u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))` might be redundant if `SelectiveBreeding(x)` is defined as such.\n# If `SelectiveBreeding(x)` is defined as \"x is a deliberate selective breeding of domestic animals\", then it implies that for any such `x`, there must exist domestic animals that it involves.\n# Let's simplify by removing the redundant existential premise and rely on the definition of `SelectiveBreeding(x)`.\n\n# Updated set of premises:\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_89e068c1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0005/post/solutions/sol_89e068c1.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definitions of the concepts involved in breeding back.\n# BreedingBack(x) represents that x is a process of breeding back.\n# ArtificialSelection(x) represents that x is a form of artificial selection.\n# SelectiveBreeding(x) represents that x is a deliberate selective breeding of domestic animals.\n# HeckCattle(x) represents that x is Heck cattle.\n# Aurochs(x) represents that x is an aurochs.\n# Animal(x) represents that x is an animal.\n# Extinct(x) represents that x is extinct.\n# ToBreedBack(x) represents that x is an animal that is intended to be bred back.\n# Resemble(x, y) represents that x resembles y.\n# BredBackInYear(x, y) represents that x was bred back in year y.\n\n# Heck cattle are animals.\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\n# Aurochs are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\n# Breeding back is a form of artificial selection.\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\n# Artificial selection is a form of deliberate selective breeding of domestic animals.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Heck cattle were bred back.\n# Assuming 'heckCattle' is a specific instance or a class that was bred back.\n# If 'heckCattle' refers to the species/type, then it means instances of HeckCattle were bred back.\n# The premise 'HeckCattle(x) \u2192 BreedingBack(x)' implies that the *process* of breeding Heck Cattle is breeding back.\n# To be more precise about Heck Cattle being *bred back*, we can say:\n# \u2200x (HeckCattle(x) \u2192 \u2203y (BredBackInYear(x, y)))\n# However, the original premise 'BredBack(heckCattle, year1920s)' suggests 'heckCattle' is a specific entity or class name used as an argument.\n# Let's infer that Heck cattle as a group were bred back.\nBredBackInYear(heckCattle, year1920s)\n\n# Heck cattle were bred back in the 1920s.\n# This is covered by the above premise.\n\n# Heck cattle are animals to be bred back.\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\n# Heck cattle were bred back to resemble aurochs.\n# This implies the *process* of breeding Heck cattle involved resemblance to aurochs.\n# If 'heckCattle' and 'aurochs' are specific entities:\n# Resemble(heckCattle, aurochs)\n# If they are classes, it's about instances:\n\u2200x (HeckCattle(x) \u2192 \u2203y (Aurochs(y) \u2227 Resemble(x, y)))\n# Given the original 'Resemble(heckCattle, aurochs)', we'll stick to specific entities or class names used as arguments for simplicity.\nResemble(heckCattle, aurochs)\n\n# Aurochs are extinct.\nExtinct(aurochs)\n\n# Some animals to be bred back resemble animals that are extinct.\n# This is a general statement that can be derived or explicitly stated.\n# The original premise states: \u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n# This can be rephrased as: There exists an animal that is to be bred back, and this animal resembles some extinct animal.\n\u2203x (ToBreedBack(x) \u2227 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n# We also know from HeckCattle(x) \u2192 ToBreedBack(x) and Resemble(heckCattle, aurochs) and Extinct(aurochs) that this condition is met.\n\n# A more general relationship: any animal bred back resembles some extinct animal.\n# This is not explicitly stated but implied by the Heck cattle example.\n# Let's add a premise that connects 'BredBack' and 'Resemble extinct'.\n\u2200x (BreedingBack(x) \u2192 \u2203y (Extinct(y) \u2227 Resemble(x, y)))\n# Note: The original context mentioned \"Some animals to be bred back resemble animals that are extinct.\"\n# The premise \"\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\" directly captures this.\n# The premise \"HeckCattle(x) \u2192 BreedingBack(x)\" implies Heck Cattle are a type of BreedingBack.\n# The premise \"HeckCattle(x) \u2192 ToBreedBack(x)\" implies Heck Cattle are ToBreedBack.\n# The premise \"Resemble(heckCattle, aurochs)\" and \"Extinct(aurochs)\" shows an instance of the general rule.\n\n# Simplifying the chain of implications:\n# BreedingBack(x) implies ArtificialSelection(x) implies SelectiveBreeding(x).\n# HeckCattle(x) implies Animal(x).\n# HeckCattle(x) implies BreedingBack(x).\n# HeckCattle(x) implies ToBreedBack(x).\n# If Heck Cattle are bred back, they resemble Aurochs.\n# Aurochs are extinct.\n# Therefore, Heck Cattle are an example of animals that are bred back and resemble extinct animals.\n\n# Let's refine the relationship between BredBack and BreedingBack.\n# BredBack(x, y) suggests an event of being bred back. BreedingBack(x) could refer to the process or the fact that something is a subject of breeding back.\n# The original premise \u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x)) is a good logical connection.\n# Let's assume 'heckCattle' is an instance for BredBack.\nBredBack(heckCattle, year1920s) \u2192 BreedingBack(heckCattle)\n# Combining with the specific premise:\n# BredBack(heckCattle, year1920s) is true.\n# This implies BreedingBack(heckCattle) is true.\n# And from BreedingBack(heckCattle) \u2192 ArtificialSelection(heckCattle) \u2192 SelectiveBreeding(heckCattle).\n# This means Heck cattle are a form of artificial selection and selective breeding.\n\n# The premise 'SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y))' seems a bit misplaced, as the scenario doesn't explicitly talk about domestic animals in general, only Heck cattle being a form of selective breeding.\n# However, SelectiveBreeding is defined as \"deliberate selective breeding of domestic animals\", so the existence of domestic animals is implicit in the definition of the predicate.\n# If we define SelectiveBreeding(x) as a predicate that holds for a *process* or *method*, then it implying existence of domestic animals makes sense.\n# If we interpret SelectiveBreeding(x) where x is a specific breeding event, then it implies that event *involved* domestic animals.\n# Let's remove the explicit premise about existence of domestic animals and rely on the predicate definition implicitly.\n# If SelectiveBreeding(x) holds for a breeding event of Heck cattle (which are domestic animals), this is satisfied.\n\n# Revised set of premises focusing on clarity and direct representation of the scenario:\n\n# 1. Heck cattle are animals.\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\n# 2. Aurochs are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\n# 3. Aurochs are extinct.\nExtinct(aurochs)\n\n# 4. The process of breeding back is a form of artificial selection.\n\u2200process (BreedingBack(process) \u2192 ArtificialSelection(process))\n\n# 5. Artificial selection is a form of deliberate selective breeding of domestic animals.\n\u2200process (ArtificialSelection(process) \u2192 SelectiveBreeding(process))\n\n# 6. Heck cattle were subjected to a process of breeding back.\n# Representing 'heckCattle' as a type/group that was bred back.\n# Let's use a predicate for the specific instance of breeding.\n\u2200animal (HeckCattle(animal) \u2192 AnimalWasBredBack(animal))\n\n# 7. The breeding back of Heck cattle occurred in the 1920s.\n# This implies a specific instance or period for the breeding process.\n# Let's refine BredBack(x, y) to 'AnimalWasBredBackInYear(x, y)'\nAnimalWasBredBackInYear(heckCattle, year1920s)\n\n# 8. The breeding back of Heck cattle was done to resemble Aurochs.\n# This implies a goal of the breeding process.\n\u2200animal (HeckCattle(animal) \u2192 ResemblesGoal(animal, aurochs))\n# Or, relating the specific breeding event to the resemblance.\nResemblesGoal(heckCattle, aurochs)\n\n# 9. Heck cattle are animals to be bred back (i.e., they are targets for breeding back).\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\n# 10. A key characteristic of animals to be bred back is that they resemble extinct animals.\n# This is the general rule illustrated by Heck cattle.\n\u2203animal (ToBreedBack(animal) \u2227 \u2203extinctAnimal (Extinct(extinctAnimal) \u2227 Resemble(animal, extinctAnimal)))\n# This premise directly captures \"Some animals to be bred back resemble animals that are extinct.\"\n\n# Let's connect the process and instances more cleanly.\n# If an animal 'x' is Heck Cattle, then 'x' is an Animal and 'x' is ToBreedBack.\n# The *process* of breeding back Heck cattle resulted in 'x' resembling Aurochs.\n# The *process* of breeding back Heck cattle happened in year1920s.\n\n# Revisiting the original premises and trying to simplify/fix:\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "'process' is an illegal variable name.  Constants may not be quantified.\nall process.((BreedingBack(process)) -> (ArtificialSelection(process)))\n    ^",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8f47a930.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0009/post/solutions/sol_8f47a930.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2203z (ToBreedBack(z) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(z, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_96173ca3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_96173ca3.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9933e7e6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_9933e7e6.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9d4bd857.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0007/post/solutions/sol_9d4bd857.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a22b250b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_a22b250b.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (ToBreedBack(x) \u2227 Animal(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b1f604c0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_b1f604c0.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# The definition of breeding back.\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n# BreedingBack is a form of artificial selection.\n# ArtificialSelection is a form of deliberate selective breeding of domestic animals.\n\u2200x (SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreedingOf(x, y)))\n\n# Information about Heck cattle and Aurochs.\nHeckCattle(heckCattle)\nAurochs(aurochs)\nAnimal(heckCattle)\nAnimal(aurochs)\n\n# Heck cattle were bred back in the 1920s to resemble Aurochs.\nBredBack(heckCattle, 1920s)\nResemble(heckCattle, aurochs)\n\n# Some animals to be bred back resemble extinct animals.\n# There exists an animal 'a' that is to be bred back.\n# This animal 'a' resembles an animal 'e' which is extinct.\n\u2203a (Animal(a) \u2227 ToBreedBack(a) \u2227 \u2203e (Animal(e) \u2227 Extinct(e) \u2227 Resemble(a, e)))\n\n# Adding a possible interpretation for the \"domestic animals\" part.\n# If something is HeckCattle, it is a DomesticAnimal.\nHeckCattle(x) \u2192 DomesticAnimals(x)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b3602108.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0007/post/solutions/sol_b3602108.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c0614fad.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_c0614fad.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBredBack(heckCattle, 1920s)\n\u2200x (HeckCattle(x) \u2192 (Animal(x) \u2227 \u2203y (Aurochs(y) \u2227 Resemble(x, y))))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2203x (ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c0bf7f0e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_c0bf7f0e.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBreedingBack(heckCattle)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2203y (Animal(y) \u2227 Extinct(y) \u2227 \u2203x (ToBreedBack(x) \u2227 Resemble(x, y)))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c1108786.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_c1108786.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c6410a56.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_c6410a56.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c82a4038.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0003/post/solutions/sol_c82a4038.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definitions of breeding processes\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Properties of Heck Cattle\nHeckCattle(HeckCattleInstance)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (BredBack(x, y))) # All Heck Cattle have been bred back at some point.\n\u2200x (HeckCattle(x) \u2192 \u2203y (Resemble(x, y) \u2227 Aurochs(y))) # Heck cattle were bred to resemble aurochs.\n\n# Properties of Aurochs\n\u2200x (Aurochs(x) \u2192 Animal(x))\nExtinct(AurochsInstance) # The Aurochs are extinct.\n\n# Relationship between breeding and animals\n\u2200x, y (BredBack(x, y) \u2192 BreedingBack(x)) # If an animal was bred back, it is an instance of breeding back.\n\u2200x (BreedingBack(x) \u2192 \u2203z (Animal(z) \u2227 DomesticAnimal(z))) # Breeding back involves domestic animals. This is a slight reinterpretation of the original, making it clearer that the *object* of breeding back is a domestic animal type.\n\n# Scenario description\n# Heck cattle were bred-back in the 1920s to resemble the aurochs.\nBredBack(HeckCattleInstance, Year1920s)\nResemble(HeckCattleInstance, AurochsInstance)\n\n# Some animals to be bred-back resemble animals that are extinct.\n# This is now satisfied by HeckCattleInstance resembling AurochsInstance, and AurochsInstance being extinct.\n# We can explicitly state that Heck cattle are considered \"animals to be bred back\" by implication.\n# If an animal is an instance of breeding back, it is also an animal being bred back.\n# So, BreedingBack(HeckCattleInstance) implies HeckCattleInstance is an animal to be bred back.\n# And HeckCattleInstance resembles AurochsInstance, which is extinct.\n\u2200x (BreedingBack(x) \u2192 \u2203y (Resemble(x, y) \u2227 Extinct(y)))\n# This last premise is derived from the specific example and the general statement about breeding back involving extinct animals, and is now more generally stated.\n# The problem statement says \"Some animals to be bred-back resemble animals that are extinct.\"\n# This implies the existence of at least one such case.\n\u2203x (BreedingBack(x) \u2227 \u2203y (Resemble(x, y) \u2227 Extinct(y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c8601ad7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_c8601ad7.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Define what Heck cattle are and their relation to breeding back\nHeckCattle(x) \u2192 Animal(x)\nHeckCattle(x) \u2192 \u2203y (BredBack(x, y) \u2227 Year(y))\nBredBack(heckCattle, year1920s)\n\n# Define Aurochs and their relation to animals\nAurochs(x) \u2192 Animal(x)\n\n# Relationship between BreedingBack, ArtificialSelection, and SelectiveBreeding\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\n\n# Selective breeding involves domestic animals, but the original definition was slightly off.\n# It should state that selective breeding is *of* domestic animals, not *with* them.\n# We can infer that if something is a form of selective breeding, it involves domestic animals.\nArtificialSelection(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))\nSelectiveBreedingOf(x, y) ::: x is a selective breeding of y.\n\n# The specific case of Heck cattle being bred back to resemble Aurochs\nResemble(heckCattle, aurochs)\n\n# General statement about animals being bred back and resembling extinct animals\n\u2200x (Animal(x) \u2227 ToBreedBack(x) \u2192 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n# Added a missing predicate definition for clarity, although not strictly required by task.\nDomesticAnimal(x) ::: x is a domestic animal.\nYear(x) ::: x is a year.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cc383e59.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0005/post/solutions/sol_cc383e59.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\nExtinct(aurochs)\nHeckCattle(x) \u2192 BreedingBack(x)\nHeckCattle(x) \u2192 ToBreedBack(x)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cdb2ee2a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_cdb2ee2a.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Breeding back definition and properties\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 IsSelectiveBreedingOf(x, y))\n\n# Heck cattle specifics\nHeckCattle(x) \u2192 Animal(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n\n# Aurochs and extinction\nAurochs(x) \u2192 Animal(x)\nExtinct(x) \u2192 Animal(x)\n\n# General breeding back scenario\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Additional definitions for clarity (optional but good practice)\n# ToBreedBack(x) is an animal that is being bred back.\n# IsSelectiveBreedingOf(x, y) means x is a selective breeding of y.\n# Note: The original prompt implied SelectiveBreeding(x) implies it's of domestic animals,\n# but didn't explicitly define DomesticAnimals. If DomesticAnimals is a given predicate,\n# it should be used. For this revision, assuming DomesticAnimals is a known concept.\n# If not, the implication within SelectiveBreeding(x) might need to be rephrased\n# or a premise added to define what SelectiveBreeding entails.\n# For this fix, assuming DomesticAnimals is a relevant category.\n\n# Missing edge-case/clarification: The statement \"SelectiveBreeding(x) \u2192 \u2200y (DomesticAnimals(y) \u2192 x is selective breeding of y)\"\n# in the original is a bit ambiguous. It implies that any selective breeding is of ALL domestic animals, which is unlikely.\n# The corrected version uses \"IsSelectiveBreedingOf(x, y)\" to link a specific selective breeding event 'x'\n# to the domestic animals 'y' it is breeding.\n# The term 'heckCattle' and 'aurochs' are treated as constants representing those concepts.\n# If they are meant to be classes, then predicates like `IsHeckCattle(x)` and `IsAurochs(x)`\n# would be more appropriate, with instances of those classes. For this fix, we maintain them as constants\n# as per the original structure.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ceec466e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0003/post/solutions/sol_ceec466e.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definition of BreedingBack\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\n\n# Specific information about Heck Cattle and Aurochs\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\n# Generalization about animals to be bred back\n# This premise states: There exists an animal (x) that is intended to be bred back, and this animal (x)\n# resembles some animal (y) which is extinct.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Explicitly link Heck Cattle to the concept of BreedingBack.\n# If something is Heck Cattle, then it is an instance of something that is BreedingBack.\nHeckCattle(x) \u2192 BreedingBack(x)\n\n# Explicitly link Heck Cattle to the category of animals that are to be bred back.\n# If something is Heck Cattle, then it is an animal to be bred back.\nHeckCattle(x) \u2192 ToBreedBack(x)\n\n# Clarify the nature of selective breeding.\n# If something is a form of selective breeding, it inherently involves domestic animals.\n# The original premise `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`\n# is simplified by leveraging the definition of SelectiveBreeding(x) which already states it's \"of domestic animals\".\n# This implies that for any x that is SelectiveBreeding, there must exist domestic animals involved, so the existential clause is implicitly covered by the definition.\n# If we assume 'y' in the original premise represented a single domestic animal, and that `DomesticAnimals` was a typo for `DomesticAnimal`, then `SelectiveBreeding(x)` implies that such domestic animals exist.\n# For clarity and to ensure the presence of domestic animals is captured, we can add a premise linking the *process* of selective breeding to domestic animals.\n# Let's assume `SelectiveBreeding(x)` means `x` is the process. And we need to ensure that `x` involves domestic animals.\n# The definition of `SelectiveBreeding(x)` is \"x is a deliberate selective breeding of domestic animals\".\n# This implies that if `SelectiveBreeding(x)` is true, then `x` involves domestic animals.\n# However, to be more explicit about the type of animal involved, we can infer that if x is a selective breeding, then there exists a y which is a domestic animal, and x is a selective breeding *of* y.\n# Let's consider that the original premise intended to use a predicate `SelectiveBreedingOf(x,y)` meaning \"x is a selective breeding of y\".\n# Given the current predicates, and aiming for simplification and bug fixing:\n# The premise `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))` from the context was intended to be part of the reasoning.\n# Let's assume `SelectiveBreeding(x, y)` means \"x is a selective breeding of y\".\n# And `DomesticAnimal(y)` means \"y is a domestic animal\".\n# The definition of `SelectiveBreeding(x)` already implies it's \"of domestic animals\".\n# To ensure that this \"of domestic animals\" is explicitly represented in the logic, we can connect it to the `DomesticAnimal` predicate.\n# If `SelectiveBreeding(x)` holds, then `x` is a process of selective breeding, and it must have involved some domestic animals.\n# The premise can be rephrased to make this explicit: If x is a form of selective breeding, then x involves some domestic animal.\n# Let's assume the original context's `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))` was meant to express this, and `DomesticAnimals` was a typo for `DomesticAnimal`.\n# And let's interpret `SelectiveBreeding(x, y)` as a specific relation between the breeding process `x` and a domestic animal `y`.\n# However, the provided program does not have `SelectiveBreedingOf` or `SelectiveBreeding(x,y)`. It only has `SelectiveBreeding(x)`.\n# The prompt says \"Make edits that fix bugs, add missing edge-cases, or simplify logic.\"\n# The definition `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.` is self-contained.\n# If `SelectiveBreeding(x)` is true, it *means* it is a selective breeding of domestic animals.\n# Therefore, any explicit existential statement about `y` being a `DomesticAnimal` that `x` is a breeding of, might be redundant if `SelectiveBreeding(x)` is assumed to fully capture this.\n# To simplify and avoid potential redundancy based on the given predicates, we can remove the existential premise if the definition is sufficient.\n# The definition itself implies the existence of domestic animals for any `x` that is `SelectiveBreeding`.\n\n# Re-evaluation of potential missing edge cases and bugs:\n# 1. Domestic Animal Predicate: Added `DomesticAnimal(x)`.\n# 2. Heck Cattle Connection: Explicitly connected Heck Cattle to `BreedingBack` and `ToBreedBack`.\n# 3. Selective Breeding Clarity: Removed potentially redundant existential premise for `SelectiveBreeding(x)` based on its definition, simplifying logic. The definition itself implies the involvement of domestic animals.\n\n# Let's refine the premises to be more explicit about what \"Heck cattle were bred-back\" means in relation to the predicates.\n# `BredBack(heckCattle, year1920s)` implies that `heckCattle` (as an entity or type) was the subject of a breeding back event.\n# The premise `HeckCattle(x) \u2192 BreedingBack(x)` links the type `HeckCattle` to the general concept `BreedingBack`. This is a strong interpretation connecting the definition of Heck Cattle to the process.\n# The premise `HeckCattle(x) \u2192 ToBreedBack(x)` ensures that Heck Cattle fall into the category of animals that are intended for breeding back, aligning with the description \"Heck cattle were bred-back\".\n\n# Final check on the logic flow:\n# BreedingBack -> ArtificialSelection -> SelectiveBreeding.\n# HeckCattle implies BreedingBack. So HeckCattle implies ArtificialSelection and SelectiveBreeding.\n# HeckCattle implies ToBreedBack.\n# `BredBack(heckCattle, year1920s)` provides a specific instance of the past event.\n# `Resemble(heckCattle, aurochs)` links Heck Cattle to Aurochs.\n# `Animal(heckCattle)` and `Animal(aurochs)` are established.\n# The general statement `\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))` is also present.\n# Since HeckCattle implies ToBreedBack, and HeckCattle implies Resemble(heckCattle, aurochs), and Aurochs implies Animal and Extinct (implicitly from context, though Extinct(aurochs) is not explicitly stated, the general premise makes it applicable if Aurochs are indeed extinct), this specific case aligns with the general statement. However, the general statement's `Extinct(y)` needs to be considered. The prompt states \"Some animals to be bred-back resemble animals that are extinct.\" This implies that the `y` that is resembled *is* extinct. If Aurochs are considered extinct in this context, then it fits.\n\n# Let's add Extinct(aurochs) to make the connection to the general premise explicit if Aurochs are indeed meant to be extinct in this scenario.\n# The prompt states: \"Some animals to be bred-back resemble animals that are extinct.\"\n# The example given is \"Heck cattle were bred-back in the 1920s to resemble the aurochs.\"\n# This strongly implies that Aurochs are the extinct animals in this context.\nExtinct(aurochs)\n# Now, the general premise `\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))`\n# can be instantiated with `x = heckCattle` and `y = aurochs`.\n# `Animal(heckCattle)` is true. `ToBreedBack(heckCattle)` is true. `Animal(aurochs)` is true. `Extinct(aurochs)` is true. `Resemble(heckCattle, aurochs)` is true.\n# This makes the specific case of Heck Cattle a concrete example of the general rule.\n\n# Reconsidering the `SelectiveBreeding` definition and premise.\n# `SelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.`\n# This definition inherently means that for any `x` where `SelectiveBreeding(x)` is true, there must exist domestic animals involved in `x`.\n# The original premise in the prompt context was:\n# `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`\n# This was interpreted as needing a predicate `SelectiveBreeding(x,y)` which is not in the current program.\n# To fix bugs and simplify, and given the existing predicates, the most direct interpretation is that the definition of `SelectiveBreeding(x)` is sufficient and implies the involvement of domestic animals without needing an explicit existential premise that refers to a missing relation predicate.\n# Therefore, the simplification is to rely on the definition. No additional premise is strictly needed for `SelectiveBreeding(x)` if the definition is taken as is.\n\n# Final list of premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\nExtinct(aurochs) # Inferred as necessary from the problem description and the general premise.\nHeckCattle(x) \u2192 BreedingBack(x)\nHeckCattle(x) \u2192 ToBreedBack(x)\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cf737950.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0007/post/solutions/sol_cf737950.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203z (ToBreedBack(z) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(z, y)))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d58b2855.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0001/post/solutions/sol_d58b2855.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2203x (Animal(x) \u2227 Extinct(x) \u2227 \u2203y (ToBreedBack(y) \u2227 Resemble(y, x)))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d9e15827.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0006/post/solutions/sol_d9e15827.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 \u2203y (BredBack(x, y)))\n\u2200x (BredBack(x, year1920s) \u2192 HeckCattle(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (SelectiveBreeding(x) \u2192 Animal(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (Resemble(x, y) \u2192 ToBreedBack(x))\n\u2203x \u2203y (Animal(x) \u2227 Extinct(y) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_dcc741da.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0010/post/solutions/sol_dcc741da.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203z \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(z) \u2227 Resemble(z, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\nBreedingBack(heckCattle)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_deae7545.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_deae7545.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs)) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (ToBreedBack(x) \u2227 Animal(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e1036c88.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0007/post/solutions/sol_e1036c88.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2200x (BredBack(x, y) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e6d731ff.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0005/post/solutions/sol_e6d731ff.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Definition of BreedingBack\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\n# Removed redundant existential: definition of SelectiveBreeding(x) implies involvement of domestic animals.\n\n# Specific information about Heck Cattle and Aurochs\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\n# Generalization about animals to be bred back\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Explicitly link Heck Cattle to the concept of BreedingBack.\n# If something is Heck Cattle, it is an instance of BreedingBack.\nHeckCattle(x) \u2192 BreedingBack(x)\n\n# Explicitly state that Heck Cattle are an animal to be bred back.\n# This addresses the interpretation of \"Heck cattle were bred-back... to resemble the aurochs.\"\nHeckCattle(x) \u2192 ToBreedBack(x)\n\n# Explicitly state that domestic animals are animals.\n# This clarifies the domain of domestic animals involved in selective breeding.\nDomesticAnimal(x) \u2192 Animal(x)\n\n# If an animal (x) was bred back in a specific year (y), then the process/concept of BreedingBack applies to it.\n# This links the specific instance of being bred back to the general concept.\nBredBack(x, y) \u2192 BreedingBack(x)\n\n# Clarification: If x is a form of SelectiveBreeding, it implies x is a process of deliberate selective breeding of domestic animals.\n# The original program had `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))`.\n# If `SelectiveBreeding(x)` already means \"x is a deliberate selective breeding of domestic animals\",\n# then the existential quantification is implicitly covered by the definition.\n# Let's rely on the definition of `SelectiveBreeding(x)`.\n# If the intent was `SelectiveBreeding(x, y)` meaning \"x is a selective breeding of y\", and `DomesticAnimal(y)` is a predicate for y,\n# then the original formulation was `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreeding(x, y))`.\n# Given the instruction to simplify logic, if `SelectiveBreeding(x)` is understood to mean 'x is a deliberate selective breeding of domestic animals',\n# then the explicit existential clause might be removed.\n# However, to be explicit and ensure `y` is a `DomesticAnimal`, and `x` is a selective breeding of `y`, we can keep a modified version.\n# Let's assume the original `SelectiveBreeding(x, y)` was a typo and it should be `SelectiveBreedingOf(x, y)`.\n# And `SelectiveBreeding(x)` means `x` is a process of selective breeding.\n# `SelectiveBreedingOf(x, y)` means `x` is a selective breeding *of* `y` (where `y` are domestic animals).\n# `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreedingOf(x, y))` is a reasonable way to state this.\n# Let's stick to the original predicate names and interpretation to minimize deviation.\n# The original program has `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimals(y) \u2227 SelectiveBreeding(x, y))`.\n# Assuming `DomesticAnimals(y)` should be `DomesticAnimal(y)` for consistency with `Animal(x)` etc.\n# And `SelectiveBreeding(x, y)` means `x` is a selective breeding *involving* domestic animal `y`.\n# The premise `SelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreeding(x, y))` makes explicit that any selective breeding process 'x' must involve at least one domestic animal 'y'.\n# Let's assume `DomesticAnimals` was a typo for `DomesticAnimal`.\n\n# Revised premise for clarity and consistency:\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 SelectiveBreeding(x, y))\n\n# Explicitly state that Heck Cattle are a type of domestic animal.\n# This is implied by \"deliberate selective breeding of domestic animals\" in the definition of SelectiveBreeding,\n# and Heck cattle are a result of this.\nHeckCattle(x) \u2192 DomesticAnimal(x)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: SelectiveBreeding/2, SelectiveBreeding/1.\n\n\nFatal error:  The following symbols are used with multiple arities: SelectiveBreeding/2, SelectiveBreeding/1",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e85d7aa5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0002/post/solutions/sol_e85d7aa5.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n# Breeding back definition and properties\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y) \u2227 IsSelectiveBreedingOf(x, y))\nBreedingBack(x) \u2192 ArtificialSelection(x)\n\n# Heck cattle specifics\nHeckCattle(heck)\nAnimal(heck)\nBredBack(heck, year1920s)\nResemble(heck, aurochs)\n\n# Aurochs and extinction\nAurochs(aurochs)\nAnimal(aurochs)\nExtinct(aurochs)\nAnimal(x) \u2192 \u00acExtinct(x) \u2228 Animal(x) # Every animal is either extinct or not\n\n# General breeding back scenario\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\n\n# Relations and types\nDomesticAnimal(x) \u2192 Animal(x)\nToBreedBack(x) \u2192 Animal(x)\nBredBack(x, y) \u2192 Animal(x)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ecd77a40.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0005/post/solutions/sol_ecd77a40.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\nBreedingBack(x) \u2192 ArtificialSelection(x)\nArtificialSelection(x) \u2192 SelectiveBreeding(x)\nBredBack(heckCattle, year1920s)\nResemble(heckCattle, aurochs)\nHeckCattle(x) \u2192 Animal(x)\nAurochs(x) \u2192 Animal(x)\nExtinct(aurochs)\nHeckCattle(x) \u2192 BreedingBack(x)\nHeckCattle(x) \u2192 ToBreedBack(x)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y)))\nSelectiveBreeding(x) \u2192 \u2203y (DomesticAnimal(y))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_edd45c57.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/initial/solutions/sol_edd45c57.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x)) ::: Breeding back is a form of artificial selection.\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x)) ::: Artificial selection is a form of deliberate selective breeding of domestic animals.\nBredBack(heckCattle, year1920s) ::: Heck cattle were bred-back in the 1920s.\nResemble(heckCattle, aurochs) ::: Heck cattle were bred-back to resemble the aurochs.\n\u2200x (HeckCattle(x) \u2192 Animal(x)) ::: Heck cattle are animals.\n\u2200x (Aurochs(x) \u2192 Animal(x)) ::: Aurochs are animals.\n\u2203x (Animal(x) \u2227 ToBreedBack(x) \u2227 \u2203y (Animal(y) \u2227 Extinct(y) \u2227 Resemble(x, y))) ::: Some animals to be bred-back resemble animals that are extinct.\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_eff8cfe5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_9/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_144/run_20250904T204513Z_f15165/run_20250904T214513_92cfb2/evo_gen_0007/post/solutions/sol_eff8cfe5.sol.fol",
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_144",
+          "context": "Breeding back is a form of artificial selection by the deliberate selective breeding of domestic animals. Heck cattle were bred-back in the 1920s to resemble the aurochs. [BG] Heck cattle are animals. [BG] Aurochs are animals. Some animals to be bred-back resemble animals that are extinct.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Aurochs are extinct.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Aurochs(x)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nBreedingBack(x) ::: x is breeding back.\nArtificialSelection(x) ::: x is a form of artificial selection.\nSelectiveBreeding(x) ::: x is a deliberate selective breeding of domestic animals.\nHeckCattle(x) ::: x is Heck cattle.\nBredBack(x, y) ::: x was bred back in year y.\nResemble(x, y) ::: x resembles y.\nAurochs(x) ::: x is an aurochs.\nAnimal(x) ::: x is an animal.\nExtinct(x) ::: x is extinct.\nToBreedBack(x) ::: x is an animal to be bred back.\n\n# Premises:\n\u2200x (HeckCattle(x) \u2192 Animal(x))\n\u2200x (Aurochs(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 ToBreedBack(x))\n\u2200x (ToBreedBack(x) \u2192 Animal(x))\n\u2200x (HeckCattle(x) \u2192 Resemble(x, aurochs))\n\u2203x \u2203y (Animal(y) \u2227 Extinct(y) \u2227 ToBreedBack(x) \u2227 Resemble(x, y))\nBredBack(heckCattle, year1920s)\nHeckCattle(heckCattle)\nAurochs(aurochs)\n\u2200x (BredBack(x, year1920s) \u2192 BreedingBack(x))\n\u2200x (BreedingBack(x) \u2192 ArtificialSelection(x))\n\u2200x (ArtificialSelection(x) \u2192 SelectiveBreeding(x))\n\n# Conclusion:\nAurochs(x)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 41,
+    "total_questions": 57,
+    "overall_accuracy": 0.7192982456140351
+  }
+}

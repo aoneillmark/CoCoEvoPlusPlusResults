@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_85",
+  "problem_text": "If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews. All restaurants with a rating greater than 9 are listed in Yelp’s recommendations. Some restaurants that do not provide take-out service receive many negative reviews. All restaurants that are popular among local residents have ratings greater than 9. Subway has a rating greater than 9 or is popular among local residents.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "ListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.",
+  "tests": [
+    {
+      "id": "tc_bd63a262",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is popular among local residents and provides take-out service, then Subway is not listed in Yelp’s recommendations.",
+      "conclusions": "PopularLocal(subway) ∧ TakeOut(subway) → ¬YelpRecommendations(subway) ::: FALSE"
+    },
+    {
+      "id": "tc_0949a4cc",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is not popular among local residents, then Subway does not have a rating greater than 9.",
+      "conclusions": "¬PopularLocal(Subway) → ¬RatingGreaterThan9(Subway) ::: FALSE"
+    },
+    {
+      "id": "tc_b626b472",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is not popular among local residents, then Subway does not provide take-out service.",
+      "conclusions": "PopularLocal(subway) ⊕ RatingGreaterThan9(subway) ::: Subway has a rating greater than 9 or is popular among local residents. FALSE"
+    },
+    {
+      "id": "tc_b0c3b67d",
+      "questions": "Based on the above information, is the following statement true or false? If Subway does not provide take-out service, then Subway does not receive many negative reviews.",
+      "conclusions": "¬TakeOut(subway) → ¬ManyNegativeReviews(subway) ::: FALSE"
+    },
+    {
+      "id": "tc_95cde01d",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is listed in Yelp’s recommendations, then Subway is not popular among local residents.",
+      "conclusions": "ListedInYelp(subway) → ¬PopularLocal(subway) ::: FALSE"
+    },
+    {
+      "id": "tc_b63c1853",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is a restaurant and popular among local residents, then Subway is listed in Yelp’s recommendations.",
+      "conclusions": "Restaurant(subway) ∧ PopularLocal(subway) → YelpRecommendations(subway) ::: TRUE"
+    },
+    {
+      "id": "tc_847c78c3",
+      "questions": "Based on the above information, is the following statement true or false? Subway is a restaurant and does not provide take-out service.",
+      "conclusions": "Restaurant(Subway) ∧ ¬TakeOut(Subway) ::: FALSE"
+    },
+    {
+      "id": "tc_031e3212",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is popular among local residents, then Subway is listed in Yelp’s recommendations.",
+      "conclusions": "PopularLocal(subway) → ListedInYelp(subway) ::: TRUE"
+    },
+    {
+      "id": "tc_ba090537",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is a restaurant and does not receive many negative reviews, then Subway provides take-out service.",
+      "conclusions": "Restaurant(subway) ∧ ¬ManyNegativeReviews(subway) → TakeOut(subway) ::: FALSE"
+    },
+    {
+      "id": "tc_51c76a38",
+      "questions": "Based on the above information, is the following statement true or false? If Subway is a restaurant that is listed in Yelp’s recommendations, then Subway provides take-out service.",
+      "conclusions": "Restaurant(subway) ∧ ListedInYelp(subway) → TakeOut(subway) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_5e1dbd52",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\nListedInYelp(x) → ¬ManyNegativeReviews(x) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\nRatingGreaterThan9(x) → ListedInYelp(x) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\nPopularLocal(x) → RatingGreaterThan9(x) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_12e7f31b",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\nYelpRecommendations(x) → ¬ManyNegativeReviews(x) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\nRatingGreaterThan9(x) → ListedInYelp(x) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\nPopularLocal(x) → RatingGreaterThan9(x) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_f7d46cf2",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\nListedInYelp(x) → ¬ManyNegativeReviews(x) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∀x (RatingGreaterThan9(x) → ListedInYelp(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_0917afb2",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x (RatingGreaterThan9(x) → ListedInYelp(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∀x (ListedInYelp(x) → ¬ManyNegativeReviews(x)) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\n(RatingGreaterThan9(Subway) ∨ PopularLocal(Subway)) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_0fbb4407",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x (RatingGreaterThan9(x) → ListedInYelp(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∀x (ListedInYelp(x) → ¬ManyNegativeReviews(x)) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\n(RatingGreaterThan9(Subway) ∨ PopularLocal(Subway)) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_ecc2afd7",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x ((RatingGreaterThan9(x) → ListedInYelp(x)) ∧ (ListedInYelp(x) → ¬ManyNegativeReviews(x))) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews. All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_248aceef",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x (YelpRecommendations(x) → ¬ManyNegativeReviews(x)) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∀x (RatingGreaterThan9(x) → YelpRecommendations(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_f5743369",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x (RatingGreaterThan9(x) → ListedInYelp(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∀x (ListedInYelp(x) → ¬ManyNegativeReviews(x)) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nPopularLocal(Subway) ∨ RatingGreaterThan9(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_edb28535",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x (ListedInYelp(x) → ¬ManyNegativeReviews(x)) ::: If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∀x (RatingGreaterThan9(x) → ListedInYelp(x)) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nPopularLocal(Subway) ∨ RatingGreaterThan9(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    },
+    {
+      "id": "sol_fefb8b00",
+      "text": "# Predicates:\nListedInYelp(x) ::: x is listed in Yelp’s recommendations.\nManyNegativeReviews(x) ::: x receives many negative reviews.\nRatingGreaterThan9(x) ::: x has a rating greater than 9.\nYelpRecommendations(x) ::: x is a Yelp recommendation.\nTakeOut(x) ::: x provides take-out service.\nPopularLocal(x) ::: x is popular among local residents.\nRestaurant(x) ::: x is a restaurant.\nSubway ::: Subway.\n\n# Premises:\n∀x ((RatingGreaterThan9(x) → ListedInYelp(x)) ∧ (ListedInYelp(x) → ¬ManyNegativeReviews(x))) ::: All restaurants with a rating greater than 9 are listed in Yelp’s recommendations. If the restaurant is listed in Yelp’s recommendations, then the restaurant does not receive many negative reviews.\n∃x (¬TakeOut(x) ∧ ManyNegativeReviews(x)) ::: Some restaurants that do not provide take-out service receive many negative reviews.\n∀x (PopularLocal(x) → RatingGreaterThan9(x)) ::: All restaurants that are popular among local residents have ratings greater than 9.\nRatingGreaterThan9(Subway) ∨ PopularLocal(Subway) ::: Subway has a rating greater than 9 or is popular among local residents."
+    }
+  ],
+  "validation": {
+    "id": "tc_a07b3b64",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? If Subway provides take-out service and receives many negative reviews, then its rating is greater than 9 and it does not provide take-out service.",
+    "conclusions": "(TakeOut(subway) ∧ ManyNegativeReviews(subway)) → (RatingGreaterThan9(subway) ∧ ¬TakeOut(subway)) ::: If Subway provides take-out service and receives many negative reviews, then its rating is greater than 9 and it does not provide take-out service. unknown"
+  }
+}

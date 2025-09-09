@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_183",
+  "problem_text": "No one nice to animals is mean to animals. Some grumpy people are mean to animals. All animal lovers are nice to animals. If someone owns a pet, then they love animals. Tom is a pet owner.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "NiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.",
+  "tests": [
+    {
+      "id": "tc_415f3836",
+      "questions": "Based on the above information, is the following statement true or false? Tom is a grumpy person and loves animals.",
+      "conclusions": "Person(tom) ∧ OwnsPet(tom) ∧ LoveAnimals(tom) ::: Tom is a pet owner and loves animals. TRUE"
+    },
+    {
+      "id": "tc_c3e28678",
+      "questions": "Based on the above information, is the following statement true or false? Tom is an animal lover.",
+      "conclusions": "AnimalLover(tom) ::: Tom is an animal lover. TRUE"
+    },
+    {
+      "id": "tc_94b14a21",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is grumpy, then Tom is mean to animals.",
+      "conclusions": "Grumpy(tom) → MeanToAnimals(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_a05b6fa0",
+      "questions": "Based on the above information, is the following statement true or false? If Tom loves animals, then Tom is nice to animals.",
+      "conclusions": "LoveAnimals(tom) → NiceToAnimals(tom) ::: TRUE"
+    },
+    {
+      "id": "tc_950033f8",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is mean to animals, then Tom is a grumpy person.",
+      "conclusions": "MeanToAnimals(tom) → Grumpy(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_8eba1823",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is nice to animals, then Tom is an animal lover.",
+      "conclusions": "NiceToAnimals(tom) → AnimalLover(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_2e0229a0",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is mean to animals, then Tom is grumpy and owns a pet.",
+      "conclusions": "MeanToAnimals(tom) → (Grumpy(tom) ∧ OwnsPet(tom)) ::: FALSE"
+    },
+    {
+      "id": "tc_2c0d308d",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is a grumpy person, then Tom is not nice to animals.",
+      "conclusions": "Grumpy(tom) → ¬NiceToAnimals(tom) ::: FALSE"
+    },
+    {
+      "id": "tc_74fa4415",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is nice to animals, then Tom is not mean to animals.",
+      "conclusions": "NiceToAnimals(tom) → ¬MeanToAnimals(tom) ::: TRUE"
+    },
+    {
+      "id": "tc_efbccc66",
+      "questions": "Based on the above information, is the following statement true or false? If Tom is a grumpy person, then Tom is either mean to animals or does not love animals.",
+      "conclusions": "Grumpy(tom) → (MeanToAnimals(tom) ∨ ¬LoveAnimals(tom)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_5e567d16",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) → ¬MeanToAnimals(x)) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_260c5f20",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) ∧ MeanToAnimals(x) → False) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_08dfbc5a",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x ((NiceToAnimals(x) ∧ MeanToAnimals(x)) → False) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_59edc363",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (Person(x) ∧ NiceToAnimals(x) → ¬MeanToAnimals(x)) ::: No one nice to animals is mean to animals.\n∃x (Person(x) ∧ Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (Person(x) ∧ AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (Person(x) ∧ OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ∧ Person(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_4d699120",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) ⊕ MeanToAnimals(x)) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_b08c2333",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (¬(NiceToAnimals(x) ∧ MeanToAnimals(x))) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_c1e7d912",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) → ¬MeanToAnimals(x)) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_0f09eabc",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) ∧ MeanToAnimals(x) → False) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nOwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_1908ee58",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (¬(NiceToAnimals(x) ∧ MeanToAnimals(x))) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x) ∧ Person(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nPerson(tom) ∧ OwnsPet(tom) ::: Tom is a pet owner."
+    },
+    {
+      "id": "sol_295fa972",
+      "text": "# Predicates:\nNiceToAnimals(x) ::: x is nice to animals.\nMeanToAnimals(x) ::: x is mean to animals.\nGrumpy(x) ::: x is a grumpy person.\nAnimalLover(x) ::: x is an animal lover.\nOwnsPet(x) ::: x owns a pet.\nLoveAnimals(x) ::: x loves animals.\nPerson(x) ::: x is a person.\n\n# Premises:\n∀x (NiceToAnimals(x) → ¬MeanToAnimals(x)) ::: No one nice to animals is mean to animals.\n∃x (Grumpy(x) ∧ MeanToAnimals(x) ∧ Person(x)) ::: Some grumpy people are mean to animals.\n∀x (AnimalLover(x) → NiceToAnimals(x)) ::: All animal lovers are nice to animals.\n∀x (OwnsPet(x) → LoveAnimals(x)) ::: If someone owns a pet, then they love animals.\nPerson(tom) ∧ OwnsPet(tom) ::: Tom is a pet owner."
+    }
+  ],
+  "validation": {
+    "id": "tc_109f6305",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Tom is a grumpy person.",
+    "conclusions": "Grumpy(tom) ::: Tom is a grumpy person. unknown"
+  }
+}

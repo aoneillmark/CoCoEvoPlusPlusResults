@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_50",
+  "problem_text": "No digital media are analog. Every printed text is analog. All streaming services are digital. If an object is a hardcover book then it is printed text. If 1984 is a streaming service, then 1984 is a hardcover book.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Digital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.",
+  "tests": [
+    {
+      "id": "tc_4e3daa70",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a hardcover book, then 1984 is analog.",
+      "conclusions": "HardcoverBook(year1984) → Analog(year1984) ::: TRUE"
+    },
+    {
+      "id": "tc_3bd8e3e2",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is not analog.",
+      "conclusions": "StreamingService(1984) → ¬Analog(1984) ::: TRUE"
+    },
+    {
+      "id": "tc_4c44f1db",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a hardcover book and is not analog, then 1984 is a streaming service.",
+      "conclusions": "HardcoverBook(1984) ∧ ¬Analog(1984) → StreamingService(1984) ::: FALSE"
+    },
+    {
+      "id": "tc_a12ac88d",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a hardcover book, then 1984 is digital media.",
+      "conclusions": "HardcoverBook(1984) → Digital(1984) ::: FALSE"
+    },
+    {
+      "id": "tc_b950fa93",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is digital media.",
+      "conclusions": "StreamingService(1984) → Digital(1984) ::: TRUE"
+    },
+    {
+      "id": "tc_695f669c",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is not a hardcover book.",
+      "conclusions": "StreamingService(1984) → ¬HardcoverBook(1984) ::: TRUE"
+    },
+    {
+      "id": "tc_380e1c58",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is not a printed text.",
+      "conclusions": "StreamingService(1984) → ¬PrintedText(1984) ::: TRUE"
+    },
+    {
+      "id": "tc_102d6b93",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is analog.",
+      "conclusions": "StreamingService(1984) → Analog(1984) ::: FALSE"
+    },
+    {
+      "id": "tc_d21da242",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is analog and is a printed text, then 1984 is not a streaming service.",
+      "conclusions": "Analog(1984) ∧ PrintedText(1984) → ¬StreamingService(1984) ::: TRUE"
+    },
+    {
+      "id": "tc_a09d4262",
+      "questions": "Based on the above information, is the following statement true or false? If 1984 is a streaming service, then 1984 is a printed text.",
+      "conclusions": "StreamingService(1984) → PrintedText(1984) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_d5e4a17f",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (Digital(x) → ¬Analog(x)) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_25d43a99",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n¬∃x (Digital(x) ∧ Analog(x)) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\n∃x (StreamingService(x) ∧ HardcoverBook(x)) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_a8aaaf47",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (Analog(x) → ¬Digital(x)) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_a6d719ea",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (Digital(x) ∧ Analog(x) → False) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\n∃x (StreamingService(x) ∧ HardcoverBook(x)) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_7b33de3c",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (Digital(x) → ¬Analog(x)) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\n∀x ((StreamingService(x) ∧ HardcoverBook(x)) ∨ (¬StreamingService(x) ∧ ¬HardcoverBook(x))) ::: 1984 is a streaming service if and only if 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_a0265b25",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (¬(Digital(x) ∧ Analog(x))) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_9a62a5c3",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (¬Digital(x) ∨ ¬Analog(x)) ::: No digital media are analog.\n∀x (¬PrintedText(x) ∨ Analog(x)) ::: Every printed text is analog.\n∀x (¬StreamingService(x) ∨ Digital(x)) ::: All streaming services are digital.\n∀x (¬HardcoverBook(x) ∨ PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_c8a79cfa",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (¬(Digital(x) ∧ Analog(x))) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\n∀x (StreamingService(x) → HardcoverBook(x)) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_fb6d62ff",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (Digital(x) → ¬Analog(x)) ::: No digital media are analog.\n∀x (PrintedText(x) → Analog(x)) ::: Every printed text is analog.\n∀x (StreamingService(x) → Digital(x)) ::: All streaming services are digital.\n∀x (HardcoverBook(x) → PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    },
+    {
+      "id": "sol_4b206c55",
+      "text": "# Predicates:\nDigital(x) ::: x is digital media.\nAnalog(x) ::: x is analog.\nPrintedText(x) ::: x is a printed text.\nStreamingService(x) ::: x is a streaming service.\nHardcoverBook(x) ::: x is a hardcover book.\n\n# Premises:\n∀x (¬Analog(x) ∨ ¬Digital(x)) ::: No digital media are analog.\n∀x (¬PrintedText(x) ∨ Analog(x)) ::: Every printed text is analog.\n∀x (¬StreamingService(x) ∨ Digital(x)) ::: All streaming services are digital.\n∀x (¬HardcoverBook(x) ∨ PrintedText(x)) ::: If an object is a hardcover book then it is printed text.\nStreamingService(1984) → HardcoverBook(1984) ::: If 1984 is a streaming service, then 1984 is a hardcover book."
+    }
+  ],
+  "validation": {
+    "id": "tc_c9c1ae61",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? 1984 is printed text.",
+    "conclusions": "PrintedText(1984) ::: 1984 is printed text. unknown"
+  }
+}

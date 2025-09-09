@@ -1,0 +1,1037 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151",
+  "dataset": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/temp_dataset_for_FOLIO_dev_151.json",
+  "solutions": [
+    {
+      "solution_name": "sol_003c3bd6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0002/post/solutions/sol_003c3bd6.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nTargetLanguageOfTranslation(newVesselPress, English)\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Implicit Premises:\n# All books published by New Vessel Press are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n# If a publishing house specializes in translating foreign literature and their target language is English,\n# then any book they publish that is a translation must be of foreign literature translated into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2227 TranslatedFrom(x, y) \u2192 ForeignLiterature(x) \u2227 TranslatedInto(x, English))\n# Italian is a foreign literature for translation into English.\nForeignLiterature(Italian)\n# Since Neapolitan Chronicles was translated from Italian, and Italian is foreign literature, it is translated from foreign literature.\nTranslatedFrom(neapolitanChronicles, Italian) \u2192 ForeignLiterature(Italian)\n# Since Neapolitan Chronicles is published by New Vessel Press, it must be in English.\nEnglish(neapolitanChronicles)\n# Since Palace of Flies is published by New Vessel Press, it must be in English.\nEnglish(palaceOfFlies)\n# Neapolitan Chronicles is a book published by New Vessel Press and was translated from Italian, therefore it is foreign literature translated into English.\nForeignLiterature(neapolitanChronicles) \u2227 TranslatedInto(neapolitanChronicles, English)\n# Palace of Flies is a book published by New Vessel Press.\n# The current premises do not state it's a translation, but it's implied by the specialization of New Vessel Press.\n# We assume all books published by them are translations of foreign literature into English.\nForeignLiterature(palaceOfFlies) \u2227 TranslatedInto(palaceOfFlies, English)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: English/1, English/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: English/1, English/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nTargetLanguageOfTranslation(newVesselPress, English)\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Implicit Premises:\n# All books published by New Vessel Press are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n# If a publishing house specializes in translating foreign literature and their target language is English,\n# then any book they publish that is a translation must be of foreign literature translated into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2227 TranslatedFrom(x, y) \u2192 ForeignLiterature(x) \u2227 TranslatedInto(x, English))\n# Italian is a foreign literature for translation into English.\nForeignLiterature(Italian)\n# Since Neapolitan Chronicles was translated from Italian, and Italian is foreign literature, it is translated from foreign literature.\nTranslatedFrom(neapolitanChronicles, Italian) \u2192 ForeignLiterature(Italian)\n# Since Neapolitan Chronicles is published by New Vessel Press, it must be in English.\nEnglish(neapolitanChronicles)\n# Since Palace of Flies is published by New Vessel Press, it must be in English.\nEnglish(palaceOfFlies)\n# Neapolitan Chronicles is a book published by New Vessel Press and was translated from Italian, therefore it is foreign literature translated into English.\nForeignLiterature(neapolitanChronicles) \u2227 TranslatedInto(neapolitanChronicles, English)\n# Palace of Flies is a book published by New Vessel Press.\n# The current premises do not state it's a translation, but it's implied by the specialization of New Vessel Press.\n# We assume all books published by them are translations of foreign literature into English.\nForeignLiterature(palaceOfFlies) \u2227 TranslatedInto(palaceOfFlies, English)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: English/1, English/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: English/1, English/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_04781eb1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0003/post/solutions/sol_04781eb1.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 ForeignLanguage(x))\n\u2200x (Specializes(newVesselPress, ForeignLiterature) \u2192 \u2200y (ForeignLiterature(y) \u2192 TranslatedLiterature(y, newVesselPress)))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Assuming Italian is a language\n\u2200x (TranslatedFrom(x, Italian) \u2192 ForeignLiterature(x)) # If translated from Italian, it's foreign literature\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 ForeignLanguage(x))\n\u2200x (Specializes(newVesselPress, ForeignLiterature) \u2192 \u2200y (ForeignLiterature(y) \u2192 TranslatedLiterature(y, newVesselPress)))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Assuming Italian is a language\n\u2200x (TranslatedFrom(x, Italian) \u2192 ForeignLiterature(x)) # If translated from Italian, it's foreign literature\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0523dfd6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0005/post/solutions/sol_0523dfd6.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\n\u2200l (TranslatedFrom(neapolitanChronicles, l) \u2192 ForeignLiterature(l))\nItalian(italian)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\u2200x (TranslatedFrom(x, italian) \u2192 ForeignLiterature(x))\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\n\u2200l (TranslatedFrom(neapolitanChronicles, l) \u2192 ForeignLiterature(l))\nItalian(italian)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\u2200x (TranslatedFrom(x, italian) \u2192 ForeignLiterature(x))\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0d79b3b2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0005/post/solutions/sol_0d79b3b2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n# All published books are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\n# Neapolitan Chronicles was translated from Italian.\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n# Representing \"Italian\" as a language.\nLanguage(Italian)\n# Foreign literature can be translated from various languages.\nForeignLiterature(x) \u2194 \u2203y Language(y) \u2227 TranslatedFrom(x, y)\n# A book published by New Vessel Press is foreign literature if it was translated from a foreign language.\n# The original encoding implicitly assumed Italian is a foreign language. Let's make this explicit.\n# Since the context states \"foreign literature into English\", we assume all translated languages are foreign.\n# Therefore, any book translated from a language is a piece of foreign literature.\n# This implies that ForeignLiterature(x) is true if x is translated from any language y.\n# The problem states \"New Vessel Press specializes in translating foreign literature into English\".\n# This implies that if a book is published by New Vessel Press, it must be foreign literature.\n# Let's re-evaluate the ForeignLiterature predicate.\n# \"Foreign Literature\" refers to the *genre* or *origin* of the literature, not necessarily the language it is *currently* in.\n# \"Neapolitan Chronicles was translated from Italian.\" - This implies the *original* work was Italian literature.\n# \"All of New Vessel Press's published books are in English.\" - This is a property of the *published* books.\n# Let's refine the interpretation of ForeignLiterature. It seems to refer to literature originating from a foreign country/culture.\n# The specialization means they handle such works.\n# The fact that it's translated *into* English is handled by the English(x) predicate.\n# The origin of the translation is handled by TranslatedFrom.\n# Revised approach:\n# 1. Books published by New Vessel Press are in English.\n# 2. Books published by New Vessel Press are translations of foreign literature.\n# 3. Foreign literature is literature that originates from a foreign country/culture.\n# 4. The language of origin can be specified.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n# All published books are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\n# Neapolitan Chronicles was translated from Italian.\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n# Representing \"Italian\" as a language.\nLanguage(Italian)\n# Foreign literature can be translated from various languages.\nForeignLiterature(x) \u2194 \u2203y Language(y) \u2227 TranslatedFrom(x, y)\n# A book published by New Vessel Press is foreign literature if it was translated from a foreign language.\n# The original encoding implicitly assumed Italian is a foreign language. Let's make this explicit.\n# Since the context states \"foreign literature into English\", we assume all translated languages are foreign.\n# Therefore, any book translated from a language is a piece of foreign literature.\n# This implies that ForeignLiterature(x) is true if x is translated from any language y.\n# The problem states \"New Vessel Press specializes in translating foreign literature into English\".\n# This implies that if a book is published by New Vessel Press, it must be foreign literature.\n# Let's re-evaluate the ForeignLiterature predicate.\n# \"Foreign Literature\" refers to the *genre* or *origin* of the literature, not necessarily the language it is *currently* in.\n# \"Neapolitan Chronicles was translated from Italian.\" - This implies the *original* work was Italian literature.\n# \"All of New Vessel Press's published books are in English.\" - This is a property of the *published* books.\n# Let's refine the interpretation of ForeignLiterature. It seems to refer to literature originating from a foreign country/culture.\n# The specialization means they handle such works.\n# The fact that it's translated *into* English is handled by the English(x) predicate.\n# The origin of the translation is handled by TranslatedFrom.\n# Revised approach:\n# 1. Books published by New Vessel Press are in English.\n# 2. Books published by New Vessel Press are translations of foreign literature.\n# 3. Foreign literature is literature that originates from a foreign country/culture.\n# 4. The language of origin can be specified.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1276ec3f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0005/post/solutions/sol_1276ec3f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nEnglish(ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nEnglish(ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_25569171.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0003/post/solutions/sol_25569171.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Additional Premises for clarity and completeness:\n# A book translated from a foreign language is an instance of foreign literature.\n\u2200x, y (TranslatedFrom(x, y) \u2192 ForeignLiterature(x))\n# Foreign literature is not English.\n\u2200x (ForeignLiterature(x) \u2192 \u00acEnglish(x))\n# Italian is a foreign language.\nItalian(Italian) # Assuming 'Italian' can represent the language itself.\n\n# Inferred properties based on the scenario:\n# Neapolitan Chronicles is foreign literature because it was translated.\nForeignLiterature(neapolitanChronicles)\n# Neapolitan Chronicles is not English because it is foreign literature (and the publishing house only publishes foreign literature in English, implying a translation process).\n\u00acEnglish(neapolitanChronicles)\n# However, the original premise states \"All of New Vessel Press's published books are in English.\" This creates a contradiction if we strictly interpret \"ForeignLiterature\" as \"not English\".\n# Let's refine the interpretation: \"ForeignLiterature\" refers to the origin of the literature, not its publication language.\n# The premise \"Specializes(newVesselPress, ForeignLiterature)\" implies they translate foreign literature *into* English.\n# Therefore, a book published by New Vessel Press, even if translated from a foreign language, *is* in English.\n\n# Revised premises to resolve potential contradictions and capture nuances:\n\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) # All published books are in English.\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian) # The book was translated FROM Italian.\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Implicit relationships and refinements:\n# The act of specializing in \"translating foreign literature into English\" implies that books published by New Vessel Press *are* in English, even if they were originally foreign.\n# Thus, the fact that Neapolitan Chronicles was translated from Italian does not mean it is *not* English when published by New Vessel Press.\n# It's more about the *source* of the original work.\n\n# Simplified premises by removing redundancy and potential contradictions:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationIntoEnglish(newVesselPress)\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# A new predicate to capture the specialization more precisely:\nSpecializesInTranslationIntoEnglish(x) ::: x specializes in translating foreign literature into English.\n\n# Premises using the refined predicate:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationIntoEnglish(newVesselPress)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n# Italian(Italian) # Assuming 'Italian' refers to the language itself and is a type of foreign language.\n# ForeignLiterature(Italian) # If we want to explicitly state Italian is foreign literature.\n# However, the predicate \"TranslatedFrom(x, y)\" implies 'y' is a foreign language.\n\n# Final simplified and corrected premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature) # The specialization is in the *process* of dealing with foreign literature.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) # All books published are in English.\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian) # Neapolitan Chronicles' original language was Italian.\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Italian is a language, often considered foreign in the context of English publishing.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Additional Premises for clarity and completeness:\n# A book translated from a foreign language is an instance of foreign literature.\n\u2200x, y (TranslatedFrom(x, y) \u2192 ForeignLiterature(x))\n# Foreign literature is not English.\n\u2200x (ForeignLiterature(x) \u2192 \u00acEnglish(x))\n# Italian is a foreign language.\nItalian(Italian) # Assuming 'Italian' can represent the language itself.\n\n# Inferred properties based on the scenario:\n# Neapolitan Chronicles is foreign literature because it was translated.\nForeignLiterature(neapolitanChronicles)\n# Neapolitan Chronicles is not English because it is foreign literature (and the publishing house only publishes foreign literature in English, implying a translation process).\n\u00acEnglish(neapolitanChronicles)\n# However, the original premise states \"All of New Vessel Press's published books are in English.\" This creates a contradiction if we strictly interpret \"ForeignLiterature\" as \"not English\".\n# Let's refine the interpretation: \"ForeignLiterature\" refers to the origin of the literature, not its publication language.\n# The premise \"Specializes(newVesselPress, ForeignLiterature)\" implies they translate foreign literature *into* English.\n# Therefore, a book published by New Vessel Press, even if translated from a foreign language, *is* in English.\n\n# Revised premises to resolve potential contradictions and capture nuances:\n\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) # All published books are in English.\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian) # The book was translated FROM Italian.\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Implicit relationships and refinements:\n# The act of specializing in \"translating foreign literature into English\" implies that books published by New Vessel Press *are* in English, even if they were originally foreign.\n# Thus, the fact that Neapolitan Chronicles was translated from Italian does not mean it is *not* English when published by New Vessel Press.\n# It's more about the *source* of the original work.\n\n# Simplified premises by removing redundancy and potential contradictions:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationIntoEnglish(newVesselPress)\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# A new predicate to capture the specialization more precisely:\nSpecializesInTranslationIntoEnglish(x) ::: x specializes in translating foreign literature into English.\n\n# Premises using the refined predicate:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationIntoEnglish(newVesselPress)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n# Italian(Italian) # Assuming 'Italian' refers to the language itself and is a type of foreign language.\n# ForeignLiterature(Italian) # If we want to explicitly state Italian is foreign literature.\n# However, the predicate \"TranslatedFrom(x, y)\" implies 'y' is a foreign language.\n\n# Final simplified and corrected premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature) # The specialization is in the *process* of dealing with foreign literature.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) # All books published are in English.\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian) # Neapolitan Chronicles' original language was Italian.\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Italian is a language, often considered foreign in the context of English publishing.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2aa2a8a0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_2aa2a8a0.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_34788f87.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_34788f87.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x ((Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x ((Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_38c3db8f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0003/post/solutions/sol_38c3db8f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress).\nSpecializes(newVesselPress, ForeignLiterature).\n# NewVesselPress publishes foreign literature, and it publishes it into English.\n# We can infer that the specialization is in \"translating foreign literature into English\".\n# This implies that anything specializing in ForeignLiterature, if it is a publishing house,\n# publishes in English.\n\n# Premise 2 implies that any book published by newVesselPress is in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)).\n\n# Premises about Neapolitan Chronicles\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\n\n# Premises about Palace of Flies\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress).\nSpecializes(newVesselPress, ForeignLiterature).\n# NewVesselPress publishes foreign literature, and it publishes it into English.\n# We can infer that the specialization is in \"translating foreign literature into English\".\n# This implies that anything specializing in ForeignLiterature, if it is a publishing house,\n# publishes in English.\n\n# Premise 2 implies that any book published by newVesselPress is in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)).\n\n# Premises about Neapolitan Chronicles\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\n\n# Premises about Palace of Flies\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3ab18e0b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_3ab18e0b.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\n\u2203x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2227 TranslatedFrom(x, Italian))\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\n\u2203x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2227 TranslatedFrom(x, Italian))\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5266bef4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_5266bef4.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_66a9cb5f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_66a9cb5f.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6950b6af.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0005/post/solutions/sol_6950b6af.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, y) :- ForeignLiterature(y).\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)).\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\nItalian(italianLanguage).\nForeignLiterature(italianLanguage).\nEnglish(englishLanguage).\nSpecializes(newVesselPress, englishLanguage).\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, y) :- ForeignLiterature(y).\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)).\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\nItalian(italianLanguage).\nForeignLiterature(italianLanguage).\nEnglish(englishLanguage).\nSpecializes(newVesselPress, englishLanguage).\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_78f73c2b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0001/post/solutions/sol_78f73c2b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializesInTranslation(newVesselPress) ::: New Vessel Press specializes in translation.\nTargetLanguageOfTranslation(newVesselPress, English) ::: The target language for New Vessel Press's translations is English.\nIsForeignLiterature(x) \u2227 IsTranslatedInto(x, English) ::: x is foreign literature translated into English.\nBook(neapolitanChronicles) ::: Neapolitan Chronicles is a book.\nPublishedBy(neapolitanChronicles, newVesselPress) ::: Neapolitan Chronicles is published by New Vessel Press.\nTranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) ::: Palace of Flies is a book.\nPublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is published by New Vessel Press.\n\n# Implicit Premises (derived from the stated premises and common sense):\n# If a publishing house specializes in translating foreign literature into English,\n# then any book they publish that is a translation must be of foreign literature\n# and translated into English.\n\u2200x (SpecializesInTranslation(x) \u2227 TargetLanguageOfTranslation(x, English) \u2227 Book(y) \u2227 PublishedBy(y, x) \u2227 TranslatedFrom(y, z) \u2192 IsForeignLiterature(y) \u2227 TranslatedInto(y, English))\n# All books published by New Vessel Press are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n# Since Neapolitan Chronicles is published by New Vessel Press, it must be in English.\nEnglish(neapolitanChronicles)\n# Since Palace of Flies is published by New Vessel Press, it must be in English.\nEnglish(palaceOfFlies)\n# Italian is a foreign language relative to English.\nIsForeignLanguage(Italian)\n# If something is translated from Italian, it is translated from a foreign language.\n\u2200x (TranslatedFrom(x, Italian) \u2192 TranslatedFromForeignLanguage(x))\n# Neapolitan Chronicles was translated from Italian, so it was translated from a foreign language.\nTranslatedFromForeignLanguage(neapolitanChronicles)\n# The specialization of New Vessel Press implies that they translate foreign literature.\nSpecializes(newVesselPress, ForeignLiterature)\n# If New Vessel Press specializes in translating foreign literature into English,\n# and a book is published by them, then that book is a translation of foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 IsForeignLiterature(x) \u2227 TranslatedInto(x, English))\n# Neapolitan Chronicles is a book and is published by New Vessel Press, therefore it is foreign literature translated into English.\nIsForeignLiterature(neapolitanChronicles) \u2227 TranslatedInto(neapolitanChronicles, English)\n# Palace of Flies is a book and is published by New Vessel Press, therefore it is foreign literature translated into English.\nIsForeignLiterature(palaceOfFlies) \u2227 TranslatedInto(palaceOfFlies, English)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: English/1, English/0.\n\n\nFatal error:  The following symbols are used with multiple arities: English/1, English/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializesInTranslation(newVesselPress) ::: New Vessel Press specializes in translation.\nTargetLanguageOfTranslation(newVesselPress, English) ::: The target language for New Vessel Press's translations is English.\nIsForeignLiterature(x) \u2227 IsTranslatedInto(x, English) ::: x is foreign literature translated into English.\nBook(neapolitanChronicles) ::: Neapolitan Chronicles is a book.\nPublishedBy(neapolitanChronicles, newVesselPress) ::: Neapolitan Chronicles is published by New Vessel Press.\nTranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) ::: Palace of Flies is a book.\nPublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is published by New Vessel Press.\n\n# Implicit Premises (derived from the stated premises and common sense):\n# If a publishing house specializes in translating foreign literature into English,\n# then any book they publish that is a translation must be of foreign literature\n# and translated into English.\n\u2200x (SpecializesInTranslation(x) \u2227 TargetLanguageOfTranslation(x, English) \u2227 Book(y) \u2227 PublishedBy(y, x) \u2227 TranslatedFrom(y, z) \u2192 IsForeignLiterature(y) \u2227 TranslatedInto(y, English))\n# All books published by New Vessel Press are in English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n# Since Neapolitan Chronicles is published by New Vessel Press, it must be in English.\nEnglish(neapolitanChronicles)\n# Since Palace of Flies is published by New Vessel Press, it must be in English.\nEnglish(palaceOfFlies)\n# Italian is a foreign language relative to English.\nIsForeignLanguage(Italian)\n# If something is translated from Italian, it is translated from a foreign language.\n\u2200x (TranslatedFrom(x, Italian) \u2192 TranslatedFromForeignLanguage(x))\n# Neapolitan Chronicles was translated from Italian, so it was translated from a foreign language.\nTranslatedFromForeignLanguage(neapolitanChronicles)\n# The specialization of New Vessel Press implies that they translate foreign literature.\nSpecializes(newVesselPress, ForeignLiterature)\n# If New Vessel Press specializes in translating foreign literature into English,\n# and a book is published by them, then that book is a translation of foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 IsForeignLiterature(x) \u2227 TranslatedInto(x, English))\n# Neapolitan Chronicles is a book and is published by New Vessel Press, therefore it is foreign literature translated into English.\nIsForeignLiterature(neapolitanChronicles) \u2227 TranslatedInto(neapolitanChronicles, English)\n# Palace of Flies is a book and is published by New Vessel Press, therefore it is foreign literature translated into English.\nIsForeignLiterature(palaceOfFlies) \u2227 TranslatedInto(palaceOfFlies, English)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: English/1, English/0.\n\n\nFatal error:  The following symbols are used with multiple arities: English/1, English/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7c3c44b0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_7c3c44b0.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_81174688.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0002/post/solutions/sol_81174688.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, foreignLiterature)\nForeignLiterature(italian)\nEnglish(english)\nBook(neapolitanChronicles)\nBook(palaceOfFlies)\nPublishedBy(neapolitanChronicles, newVesselPress)\nPublishedBy(palaceOfFlies, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\n\n# Rules:\n\u2200x (PublishedBy(x, newVesselPress) \u2192 Book(x))\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n\u2200x (Specializes(newVesselPress, x) \u2192 ForeignLiterature(x))\n\u2200x (Italian(x) \u2192 ForeignLiterature(x))\n\u2200x (ForeignLiterature(x) \u2192 TranslatedFrom(x, Italian))\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, foreignLiterature)\nForeignLiterature(italian)\nEnglish(english)\nBook(neapolitanChronicles)\nBook(palaceOfFlies)\nPublishedBy(neapolitanChronicles, newVesselPress)\nPublishedBy(palaceOfFlies, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\n\n# Rules:\n\u2200x (PublishedBy(x, newVesselPress) \u2192 Book(x))\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\n\u2200x (Specializes(newVesselPress, x) \u2192 ForeignLiterature(x))\n\u2200x (Italian(x) \u2192 ForeignLiterature(x))\n\u2200x (ForeignLiterature(x) \u2192 TranslatedFrom(x, Italian))\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8497b9f2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0006/post/solutions/sol_8497b9f2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 Specializes(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nIsLanguage(Italian)\nIsLanguage(English)\nForeignLanguage(Italian)\nForeignLanguage(English)\nTranslatedFrom(neapolitanChronicles, Italian)\nForeignLiterature(Italian)\n\n# The previous logic had a flaw in assuming that `Italian` itself was `ForeignLiterature`.\n# It's more precise to state that `Italian` is a `ForeignLanguage` and `ForeignLiterature` is a type of literature from a foreign language.\n# Also, `English` should be considered a language, not necessarily foreign literature.\n\n# Revised Premises:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationOf(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 SpecializesInTranslationOf(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 IsWrittenIn(x, English))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nIsLanguage(Italian)\nIsLanguage(English)\nForeignLanguage(Italian)\nForeignLiterature(Italian)\nIsWrittenIn(neapolitanChronicles, English) # Implicit from the general rule, but good to state if the translation is complete.\nIsWrittenIn(palaceOfFlies, English) # Implicit from the general rule.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 Specializes(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nIsLanguage(Italian)\nIsLanguage(English)\nForeignLanguage(Italian)\nForeignLanguage(English)\nTranslatedFrom(neapolitanChronicles, Italian)\nForeignLiterature(Italian)\n\n# The previous logic had a flaw in assuming that `Italian` itself was `ForeignLiterature`.\n# It's more precise to state that `Italian` is a `ForeignLanguage` and `ForeignLiterature` is a type of literature from a foreign language.\n# Also, `English` should be considered a language, not necessarily foreign literature.\n\n# Revised Premises:\nPublishingHouse(newVesselPress)\nSpecializesInTranslationOf(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 SpecializesInTranslationOf(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 IsWrittenIn(x, English))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nIsLanguage(Italian)\nIsLanguage(English)\nForeignLanguage(Italian)\nForeignLiterature(Italian)\nIsWrittenIn(neapolitanChronicles, English) # Implicit from the general rule, but good to state if the translation is complete.\nIsWrittenIn(palaceOfFlies, English) # Implicit from the general rule.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8ef6e28b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0007/post/solutions/sol_8ef6e28b.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9cfa2bed.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_9cfa2bed.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress)\nItalian(neapolitanChronicles)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress)\nItalian(neapolitanChronicles)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_aad13d2f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0004/post/solutions/sol_aad13d2f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress).\nSpecializes(newVesselPress, ForeignLiterature).\nEnglish(translatedForeignLiterature).\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\n\n# If a publishing house specializes in ForeignLiterature and publishes books,\n# those books must be in English.\n\u2200x, y, z (PublishingHouse(x) \u2227 Specializes(x, y) \u2227 Book(z) \u2227 PublishedBy(z, x) \u2192 English(z)).\n\n# All books published by newVesselPress are in English because it specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)).\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress).\nSpecializes(newVesselPress, ForeignLiterature).\nEnglish(translatedForeignLiterature).\nBook(neapolitanChronicles).\nPublishedBy(neapolitanChronicles, newVesselPress).\nTranslatedFrom(neapolitanChronicles, Italian).\nBook(palaceOfFlies).\nPublishedBy(palaceOfFlies, newVesselPress).\n\n# If a publishing house specializes in ForeignLiterature and publishes books,\n# those books must be in English.\n\u2200x, y, z (PublishingHouse(x) \u2227 Specializes(x, y) \u2227 Book(z) \u2227 PublishedBy(z, x) \u2192 English(z)).\n\n# All books published by newVesselPress are in English because it specializes in translating foreign literature into English.\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x)).\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b0ab77e5.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0001/post/solutions/sol_b0ab77e5.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nForeignLiterature(neapolitanChronicles)\nForeignLiterature(palaceOfFlies)\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Representing \"Italian\" as a language or nationality\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\nForeignLiterature(neapolitanChronicles)\nForeignLiterature(palaceOfFlies)\n\u2200x (PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian) # Representing \"Italian\" as a language or nationality\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c6d05a55.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0007/post/solutions/sol_c6d05a55.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italianLanguage)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italianLanguage)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c9a802c2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0006/post/solutions/sol_c9a802c2.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cdcb1216.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0001/post/solutions/sol_cdcb1216.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nForeignLiterature(italian)\nItalian(italian)\nEnglish(english)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nForeignLiterature(italian)\nItalian(italian)\nEnglish(english)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d5b64184.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0007/post/solutions/sol_d5b64184.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, Language)\nForeignLiterature(Language)\nEnglish(Language)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italianLanguage)\nItalian(italianLanguage)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, Language)\nForeignLiterature(Language)\nEnglish(Language)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italianLanguage)\nItalian(italianLanguage)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d8c59993.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0002/post/solutions/sol_d8c59993.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\nForeignLiterature(Italian)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\nForeignLiterature(Italian)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e4aea74d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_e4aea74d.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\nSpecializes(newVesselPress, ForeignLiterature) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f1fdd559.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0004/post/solutions/sol_f1fdd559.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 Specializes(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x (ForeignLiterature(x) \u2192 Specializes(newVesselPress, x))\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x))\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, Italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(Italian)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0, ForeignLiterature/1, ForeignLiterature/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f4a05b97.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_f4a05b97.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\n\u2200x (Specializes(newVesselPress, x) \u2192 ForeignLiterature(x)) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x ((Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) ::: New Vessel Press is a publishing house.\n\u2200x (Specializes(newVesselPress, x) \u2192 ForeignLiterature(x)) ::: New Vessel Press specializes in translating foreign literature into English.\n\u2200x ((Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\nItalian(neapolitanChronicles) ::: Neapolitan Chronicles is Italian.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: Italian/1, Italian/0.\n\n\nFatal error:  The following symbols are used with multiple arities: Italian/1, Italian/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f699208d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/evo_gen_0006/post/solutions/sol_f699208d.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x ( (Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x) )\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(italian)\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress)\nSpecializes(newVesselPress, ForeignLiterature)\n\u2200x ( (Book(x) \u2227 PublishedBy(x, newVesselPress)) \u2192 English(x) )\nBook(neapolitanChronicles)\nPublishedBy(neapolitanChronicles, newVesselPress)\nTranslatedFrom(neapolitanChronicles, italian)\nBook(palaceOfFlies)\nPublishedBy(palaceOfFlies, newVesselPress)\nItalian(italian)\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_fd33b8fa.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_9/benchmark_runs/no_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_151/run_20250904T203503Z_73b2c7/run_20250904T213503_698f49/initial/solutions/sol_fd33b8fa.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_151",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Harry Potter was published by New Vessel Press.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "PublishedBy(harryPotter, newVesselPress)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nPublishedBy(harryPotter, newVesselPress)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_152",
+          "context": "New Vessel Press is a publishing house which specializes in translating foreign literature into English. All of New Vessel Press's published books are in English. Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian. Palace of Flies is a book published by New Vessel Press.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Palace of Flies was translated from Italian.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "TranslatedFrom(palaceOfFlies, italian)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nPublishingHouse(x) ::: x is a publishing house.\nSpecializes(x, y) ::: x specializes in y.\nForeignLiterature(x) ::: x is foreign literature.\nEnglish(x) ::: x is in English.\nBook(x) ::: x is a book.\nPublishedBy(x, y) ::: x is published by y.\nTranslatedFrom(x, y) ::: x was translated from y.\nItalian(x) ::: x is Italian.\nName(x, y) ::: x is named y.\n\n# Premises:\nPublishingHouse(newVesselPress) \u2227 Specializes(newVesselPress, ForeignLiterature) ::: New Vessel Press is a publishing house which specializes in translating foreign literature into English.\n\u2200x (Book(x) \u2227 PublishedBy(x, newVesselPress) \u2192 English(x)) ::: All of New Vessel Press's published books are in English.\nBook(neapolitanChronicles) \u2227 PublishedBy(neapolitanChronicles, newVesselPress) \u2227 TranslatedFrom(neapolitanChronicles, Italian) ::: Neapolitan Chronicles is a book published by New Vessel Press. Neapolitan Chronicles was translated from Italian.\nBook(palaceOfFlies) \u2227 PublishedBy(palaceOfFlies, newVesselPress) ::: Palace of Flies is a book published by New Vessel Press.\n\n# Conclusion:\nTranslatedFrom(palaceOfFlies, italian)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 20,
+    "total_questions": 62,
+    "overall_accuracy": 0.3225806451612903
+  }
+}

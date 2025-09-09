@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_28",
+  "problem_text": "All aliens are extraterrestrial. If someone is from Mars, then they are aliens. No extraterrestrial is human. Everyone from Earth is a human. Marvin cannot be from Earth and from Mars. If Marvin is not from Earth, then Marvin is an extraterrestrial.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Alien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.",
+  "tests": [
+    {
+      "id": "tc_85bbde80",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is an alien, then Marvin is from Mars.",
+      "conclusions": "Alien(marvin) → FromMars(marvin) ::: FALSE"
+    },
+    {
+      "id": "tc_b1ea434f",
+      "questions": "Based on the above information, is the following statement true or false? Marvin is either an alien or human.",
+      "conclusions": "Alien(marvin) ∨ Human(marvin) ::: FALSE"
+    },
+    {
+      "id": "tc_8ae0ed73",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is an alien, then Marvin is not human.",
+      "conclusions": "Alien(marvin) → ¬Human(marvin) ::: TRUE"
+    },
+    {
+      "id": "tc_a286a06e",
+      "questions": "Based on the above information, is the following statement true or false? Marvin is an alien and is not from Earth.",
+      "conclusions": "Alien(marvin) ∧ NotFromEarth(marvin) ::: TRUE"
+    },
+    {
+      "id": "tc_ecec2c67",
+      "questions": "Based on the above information, is the following statement true or false? Marvin is extraterrestrial and Marvin is not human.",
+      "conclusions": "Extraterrestrial(marvin) ∧ ¬Human(marvin) ::: TRUE"
+    },
+    {
+      "id": "tc_9be0a907",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is from Mars, then Marvin is an alien and not human.",
+      "conclusions": "FromMars(marvin) → (Alien(marvin) ∧ ¬Human(marvin)) ::: TRUE"
+    },
+    {
+      "id": "tc_2a9caf3d",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is from Mars, then Marvin is not human.",
+      "conclusions": "FromMars(marvin) → ¬Human(marvin) ::: TRUE"
+    },
+    {
+      "id": "tc_60d8f73c",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is from Earth, then Marvin is not an alien.",
+      "conclusions": "Human(marvin) → ¬Alien(marvin) ::: If Marvin is from Earth, then Marvin is not an alien. FALSE"
+    },
+    {
+      "id": "tc_045523b3",
+      "questions": "Based on the above information, is the following statement true or false? If Marvin is from Mars, then Marvin is an alien.",
+      "conclusions": "FromMars(marvin) → Alien(marvin) ::: TRUE"
+    },
+    {
+      "id": "tc_4ddf7e00",
+      "questions": "Based on the above information, is the following statement true or false? Marvin is human and is from Earth.",
+      "conclusions": "Human(marvin) ∧ FromEarth(marvin) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_d551005b",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\nNotFromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_c1d4fddd",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_023d5cf7",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\n∀x (¬(FromEarth(x) ∧ FromMars(x))) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_d3ed82cb",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_a55c25d7",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\n∀x (¬(FromEarth(x) ∧ FromMars(x))) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_4ab2aecd",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_68a10ffb",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\nNotFromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_eb5290af",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_f9406f68",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\n∀x (¬(FromEarth(x) ∧ FromMars(x))) ::: No one can be from Earth and from Mars.\n¬FromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    },
+    {
+      "id": "sol_82b9836f",
+      "text": "# Predicates:\nAlien(x) ::: x is an alien.\nExtraterrestrial(x) ::: x is extraterrestrial.\nFromMars(x) ::: x is from Mars.\nHuman(x) ::: x is human.\nFromEarth(x) ::: x is from Earth.\nCannotBeFromEarthAndFromMars(x) ::: x cannot be from Earth and from Mars.\nNotFromEarth(x) ::: x is not from Earth.\n\n# Premises:\n∀x (Alien(x) → Extraterrestrial(x)) ::: All aliens are extraterrestrial.\n∀x (FromMars(x) → Alien(x)) ::: If someone is from Mars, then they are aliens.\n∀x (Extraterrestrial(x) → ¬Human(x)) ::: No extraterrestrial is human.\n∀x (FromEarth(x) → Human(x)) ::: Everyone from Earth is a human.\nCannotBeFromEarthAndFromMars(marvin) ::: Marvin cannot be from Earth and from Mars.\nNotFromEarth(marvin) → Extraterrestrial(marvin) ::: If Marvin is not from Earth, then Marvin is an extraterrestrial."
+    }
+  ],
+  "validation": {
+    "id": "tc_8f7812fa",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Marvin is an alien.",
+    "conclusions": "Alien(marvin) ::: Marvin is an alien. false"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_177",
+  "problem_text": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "OlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.",
+  "tests": [
+    {
+      "id": "tc_f99aa4dd",
+      "questions": "Based on the above information, is the following statement true or false? The United States won medals in the last Olympic games.",
+      "conclusions": "WonMedals(UnitedStates, Tokyo) ::: The United States won medals in the last Olympic games. TRUE"
+    },
+    {
+      "id": "tc_564a288b",
+      "questions": "Based on the above information, is the following statement true or false? The last Olympic games was located in the United States.",
+      "conclusions": "Location(lastOlympicGames, UnitedStates) ::: The last Olympic games was located in the United States. FALSE"
+    },
+    {
+      "id": "tc_fdea2744",
+      "questions": "Based on the above information, is the following statement true or false? The United States won the most medals in the last Olympic games.",
+      "conclusions": "MostMedals(UnitedStates, lastOlympicGames) ::: The United States won the most medals in the last Olympic games. TRUE"
+    },
+    {
+      "id": "tc_145d59d6",
+      "questions": "Based on the above information, is the following statement true or false? The Olympic games is a sporting event that took place in Tokyo and in which the United States won the most medals.",
+      "conclusions": "SportingEvent(olympicGames) ∧ Location(olympicGames, tokyo) ∧ MostMedals(unitedStates, olympicGames) ::: The Olympic games is a sporting event that took place in Tokyo and in which the United States won the most medals. FALSE"
+    },
+    {
+      "id": "tc_959605cf",
+      "questions": "Based on the above information, is the following statement true or false? Some sporting events are Olympic games and are located in Tokyo.",
+      "conclusions": "∃x (SportingEvent(x) ∧ OlympicGames(x) ∧ Location(x, tokyo)) ::: Some sporting events are Olympic games and are located in Tokyo. TRUE"
+    },
+    {
+      "id": "tc_f92126fb",
+      "questions": "Based on the above information, is the following statement true or false? The Olympic games were in Tokyo and the United States won medals there.",
+      "conclusions": "(∃x ∃y (OlympicGames(x) ∧ SportingEvent(x) ∧ Location(x, y) ∧ Tokyo(y))) ∧ (∃z ∃w (OlympicGames(z) ∧ Location(z, w) ∧ UnitedStates(w) ∧ WonMedals(w, z))) ::: The Olympic games were in Tokyo and the United States won medals there. TRUE"
+    },
+    {
+      "id": "tc_a4c28c81",
+      "questions": "Based on the above information, is the following statement true or false? The Olympic games are sporting events, and the United States won the most medals in Tokyo.",
+      "conclusions": "OlympicGames(olympicGames) ∧ SportingEvent(olympicGames) ∧ Location(olympicGames, tokyo) ∧ MostMedals(unitedStates, tokyo) ::: The Olympic games are sporting events, and the United States won the most medals in Tokyo. TRUE"
+    },
+    {
+      "id": "tc_d4fe5b30",
+      "questions": "Based on the above information, is the following statement true or false? The Olympic games were located in Tokyo and the United States won the most medals in those games.",
+      "conclusions": "Location(olympicgames, tokyo) ∧ MostMedals(unitedstates, olympicgames) ::: TRUE"
+    },
+    {
+      "id": "tc_4ef5cadf",
+      "questions": "Based on the above information, is the following statement true or false? The United States won medals in the last Olympic games which were located in Tokyo.",
+      "conclusions": "∃x ∃y ∃z (OlympicGames(x) ∧ SportingEvent(x) ∧ Location(x, y) ∧ Tokyo(y) ∧ UnitedStates(z) ∧ WonMedals(z, x)) ::: TRUE"
+    },
+    {
+      "id": "tc_2c181555",
+      "questions": "Based on the above information, is the following statement true or false? The United States won the most medals in the last Olympic games, and those games were sporting events located in Tokyo.",
+      "conclusions": "MostMedals(unitedstates, olympicgames) ∧ Location(olympicgames, tokyo) ∧ SportingEvent(olympicgames) ::: The United States won the most medals in the last Olympic games, and those games were sporting events located in Tokyo. TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_ad7168f1",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_f4596eb6",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\n∃x (MostMedals(UnitedStates, olympics)) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_0e666740",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_8981ce15",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, tokyo) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_5efd47c6",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, olympic_games) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_85a96750",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_d0cb62cb",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_games) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_12aa12aa",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_58c6f0d2",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nTokyo(tokyo_city) ::: The last Olympic games was in Tokyo.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nUnitedStates(usa) ::: The United States won the most medals in Tokyo.\nMostMedals(usa, tokyo_city) ::: The United States won the most medals in Tokyo."
+    },
+    {
+      "id": "sol_e73eae84",
+      "text": "# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n∀x (OlympicGames(x) → SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo."
+    }
+  ],
+  "validation": {
+    "id": "tc_fd709d7e",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? The world championships is a sporting event.",
+    "conclusions": "SportingEvent(worldChampionships) ::: The world championships is a sporting event. unknown"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_22",
+  "problem_text": "\"Stranger Things\" is a popular Netflix show. If a Netflix show is popular, Karen will binge-watch it. If and only if Karen binge-watches a Netflix show, she will download it. Karen does not download \"Black Mirror\". \"Black Mirror\" is a Netflix show. If Karen binge-watches a Netflix show, she will share it to Lisa.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Show(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.",
+  "tests": [
+    {
+      "id": "tc_fcecbcd3",
+      "questions": "Based on the above information, is the following statement true or false? Karen binge-watches \"Stranger Things\" and shares it to Lisa.",
+      "conclusions": "BingeWatch(karen, strangerThings) ∧ Share(karen, strangerThings, lisa) ::: Karen binge-watches \"Stranger Things\" and shares it to Lisa. FALSE"
+    },
+    {
+      "id": "tc_282d2e70",
+      "questions": "Based on the above information, is the following statement true or false? Karen shares \"Stranger Things\" to Lisa and downloads \"Stranger Things\".",
+      "conclusions": "Share(karen, stranger_things, lisa) ∧ Download(karen, stranger_things) ::: Karen shares \"Stranger Things\" to Lisa and downloads \"Stranger Things\". FALSE"
+    },
+    {
+      "id": "tc_a1787fee",
+      "questions": "Based on the above information, is the following statement true or false? Karen downloads \"Stranger Things\" if and only if she shares \"Stranger Things\" to Lisa.",
+      "conclusions": "Download(karen, strangerThings) ↔ Share(karen, strangerThings, lisa) ::: FALSE"
+    },
+    {
+      "id": "tc_a0e808f2",
+      "questions": "Based on the above information, is the following statement true or false? Karen downloads a Netflix show if and only if she shares it to Lisa.",
+      "conclusions": "Download(karen, strangerThings) ↔ Share(karen, strangerThings, lisa) ::: Karen downloads \"Stranger Things\" if and only if she shares \"Stranger Things\" to Lisa. FALSE"
+    },
+    {
+      "id": "tc_6ab4d723",
+      "questions": "Based on the above information, is the following statement true or false? Karen binge-watches \"Black Mirror\" and downloads \"Black Mirror\".",
+      "conclusions": "BingeWatch(karen, blackMirror) ∧ Download(karen, blackMirror) ::: Karen binge-watches \"Black Mirror\" and downloads \"Black Mirror\". FALSE"
+    },
+    {
+      "id": "tc_64f33a64",
+      "questions": "Based on the above information, is the following statement true or false? Karen downloads \"Stranger Things\" or Karen binge-watches \"Black Mirror\".",
+      "conclusions": "Download(karen, strangerThings) ∨ BingeWatch(karen, blackMirror) ::: FALSE"
+    },
+    {
+      "id": "tc_711692b5",
+      "questions": "Based on the above information, is the following statement true or false? Karen shares \"Stranger Things\" to Lisa.",
+      "conclusions": "Share(karen, stranger_things, lisa) ::: TRUE"
+    },
+    {
+      "id": "tc_505198aa",
+      "questions": "Based on the above information, is the following statement true or false? Karen binge-watches \"Stranger Things\" and Karen shares \"Stranger Things\" to Lisa.",
+      "conclusions": "BingeWatch(karen, strangerThings) ∧ Share(karen, strangerThings, lisa) ::: TRUE"
+    },
+    {
+      "id": "tc_4f011df2",
+      "questions": "Based on the above information, is the following statement true or false? If Karen downloads \"Stranger Things\", then Karen binge-watches \"Stranger Things\".",
+      "conclusions": "Download(karen, strangerThings) → BingeWatch(karen, strangerThings) ::: TRUE"
+    },
+    {
+      "id": "tc_4788ebbd",
+      "questions": "Based on the above information, is the following statement true or false? Karen shares \"Stranger Things\" to Lisa if and only if Karen downloads \"Stranger Things\".",
+      "conclusions": "Share(karen, stranger_things, lisa) ↔ Download(karen, stranger_things) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_b338baf5",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\nPopular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show.\n∀x (NetflixShow(x) ∧ Popular(x) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x ∀y (NetflixShow(y) → Share(karen, y, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_7b10105c",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\nPopular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (NetflixShow(x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_e341c37b",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (BingeWatch(karen, x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_b4b191ee",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\nPopular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (BingeWatch(karen, x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_592bedff",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (NetflixShow(x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_a00bf691",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x (Popular(x) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (NetflixShow(x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_c53d4ffb",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ::: \"Stranger Things\" is a Netflix show. \"Black Mirror\" is a Netflix show.\nPopular(strangerThings) ::: \"Stranger Things\" is popular.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (NetflixShow(x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_dabbbb3e",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x ((NetflixShow(x) ∧ Popular(x)) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x ((NetflixShow(x) ∧ BingeWatch(karen, x)) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_bd7d17d8",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x (NetflixShow(x) ∧ Popular(x) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x (NetflixShow(x) → (BingeWatch(karen, x) ↔ Download(karen, x))) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x (NetflixShow(x) ∧ BingeWatch(karen, x) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    },
+    {
+      "id": "sol_59703081",
+      "text": "# Predicates:\nShow(x) ::: x is a show.\nNetflixShow(x) ::: x is a Netflix show.\nPopular(x) ::: x is popular.\nBingeWatch(x, y) ::: x binge-watches y.\nDownload(x, y) ::: x downloads y.\nShare(x, y, z) ::: x shares y to z.\nIs(x, y) ::: x is y.\n\n# Premises:\nNetflixShow(strangerThings) ∧ NetflixShow(blackMirror) ∧ Popular(strangerThings) ::: \"Stranger Things\" is a popular Netflix show. \"Black Mirror\" is a Netflix show.\n∀x (Popular(x) → BingeWatch(karen, x)) ::: If a Netflix show is popular, Karen will binge-watch it.\n∀x ((NetflixShow(x) ∧ BingeWatch(karen, x)) ↔ Download(karen, x)) ::: If and only if Karen binge-watches a Netflix show, she will download it.\n¬Download(karen, blackMirror) ::: Karen does not download \"Black Mirror\".\n∀x ((NetflixShow(x) ∧ BingeWatch(karen, x)) → Share(karen, x, lisa)) ::: If Karen binge-watches a Netflix show, she will share it to Lisa."
+    }
+  ],
+  "validation": {
+    "id": "tc_f5e678b2",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Karen will share \"Stranger Things\" to Lisa.",
+    "conclusions": "BingeWatch(karen, strangerThings) → Share(karen, strangerThings, lisa) ::: Karen will share \"Stranger Things\" to Lisa. true"
+  }
+}

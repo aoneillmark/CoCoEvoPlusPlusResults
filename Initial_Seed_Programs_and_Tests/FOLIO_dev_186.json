@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_186",
+  "problem_text": "A podcast is not a novel. [BG] If a person is born in American City, the person is American. [BG] If a book is novel and it is written by a person, then the person is a novel writer. Dani Shapiro is an American writer. Family History is written by Dani Shapiro. Family History is a novel written in 2003. Dani Shapiro created a podcast called Family Secrets. [BG] Boston is an American city.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Podcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.",
+  "tests": [
+    {
+      "id": "tc_02a3d7c7",
+      "questions": "Based on the above information, is the following statement true or false? Dani Shapiro is a novel writer.",
+      "conclusions": "NovelWriter(dani) ::: Dani Shapiro is a novel writer. TRUE"
+    },
+    {
+      "id": "tc_32b9f94f",
+      "questions": "Based on the above information, is the following statement true or false? The podcast Family Secrets was created by Dani Shapiro, who is an American writer and wrote Family History in 2003.",
+      "conclusions": "(American(dani) ∧ Writer(dani) ∧ Year(familyHistory, year2003) ∧ Created(familySecrets, podcast) ∧ PodcastName(familySecrets, \"Family Secrets\") ∧ WrittenBy(familyHistory, dani)) → American(dani) ::: TRUE"
+    },
+    {
+      "id": "tc_a9225ec4",
+      "questions": "Based on the above information, is the following statement true or false? Dani Shapiro, who created the podcast Family Secrets, is also the writer of a novel called Family History.",
+      "conclusions": "NovelWriter(dani) ∧ Novel(familyHistory) ∧ WrittenBy(familyHistory, dani) ∧ Created(dani, familySecrets) ∧ PodcastName(familySecrets, \"Family Secrets\") ::: TRUE"
+    },
+    {
+      "id": "tc_eb267133",
+      "questions": "Based on the above information, is the following statement true or false? If Dani Shapiro is a writer and created the podcast Family Secrets, then Dani Shapiro is American.",
+      "conclusions": "Writer(dani) ∧ Created(dani, familySecrets) → American(dani) ::: TRUE"
+    },
+    {
+      "id": "tc_3da699a8",
+      "questions": "Based on the above information, is the following statement true or false? Dani Shapiro is a novel writer and created a podcast named Family Secrets.",
+      "conclusions": "NovelWriter(daniShapiro) ∧ Created(daniShapiro, podcastFamilySecrets) ::: TRUE"
+    },
+    {
+      "id": "tc_0e098388",
+      "questions": "Based on the above information, is the following statement true or false? A novel written in 2003 by Dani Shapiro is Family History and Dani Shapiro is a novel writer.",
+      "conclusions": "(Novel(familyHistory) ∧ Year(familyHistory, year2003) ∧ WrittenBy(familyHistory, dani) ∧ NovelWriter(dani)) ::: TRUE"
+    },
+    {
+      "id": "tc_12dceb6e",
+      "questions": "Based on the above information, is the following statement true or false? Dani Shapiro created a podcast called Family Secrets and is a novel writer.",
+      "conclusions": "Created(daniShapiro, familySecrets) ∧ NovelWriter(daniShapiro) ::: TRUE"
+    },
+    {
+      "id": "tc_04ecd61a",
+      "questions": "Based on the above information, is the following statement true or false? If Dani Shapiro is a writer and Family History is a novel written in 2003, then Dani Shapiro created a podcast called Family Secrets.",
+      "conclusions": "Writer(dani) ∧ Novel(familyHistory) ∧ Year(familyHistory, year2003) → Created(dani, familySecrets) ::: FALSE"
+    },
+    {
+      "id": "tc_4f63d6bd",
+      "questions": "Based on the above information, is the following statement true or false? If Dani Shapiro is a writer and Family History is a novel written in 2003, then Dani Shapiro is a novel writer.",
+      "conclusions": "Writer(dani) ∧ Year(familyHistory, 2003) → NovelWriter(dani) ::: TRUE"
+    },
+    {
+      "id": "tc_cb6bd299",
+      "questions": "Based on the above information, is the following statement true or false? If a book is a novel and written by a person, then that person is a novel writer, and Dani Shapiro is an American novel writer.",
+      "conclusions": "(∀x (Novel(x) ∧ ∃y (WrittenBy(x, y)))) → ∃z (Writer(y) ∧ NovelWriter(y))) ∧ American(dani) ∧ NovelWriter(dani) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_0dc812b9",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x (Novel(x) ∧ WrittenBy(x, y) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(americanCity) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_ecb56576",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x (Novel(x) ∧ WrittenBy(x, y) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is an American city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_111927bd",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬Podcast(x) ∨ ¬Novel(x) ::: A podcast is not a novel.\n∀x (BornIn(x, boston) → American(x)) ::: If a person is born in Boston, the person is American.\n∀x (Novel(x) ∧ ∃y (WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is a novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_d6befff2",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, boston) → American(x)) ::: If a person is born in Boston, the person is American.\n∀x (Novel(x) ∧ ∃y (WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_204a958c",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x ∀y ((Novel(x) ∧ WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_fbbec163",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, boston) → American(x)) ::: If a person is born in Boston, the person is American.\n∀x (Novel(x) ∧ ∀y (WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_e9d861bf",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x ∀y (Novel(x) ∧ WrittenBy(x, y) ∧ Person(y) → NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) ∧ Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_67d3584e",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x ∀y ((Novel(x) ∧ WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(FamilyHistory(x), daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(FamilyHistory(x)) ∧ Year(FamilyHistory(x), 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, FamilySecrets(x)) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_2cabfb2e",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x ∀y ((Novel(x) ∧ WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is novel and it is written by a person, then the person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created a podcast called Family Secrets.\n∀x ∀y (Created(x, y) → PodcastName(y, z)) ::: Dani Shapiro created a podcast called Family Secrets.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    },
+    {
+      "id": "sol_21541771",
+      "text": "# Predicates:\nPodcast(x) ::: x is a podcast.\nNovel(x) ::: x is a novel.\nPerson(x) ::: x is a person.\nBornIn(x, y) ::: x is born in y.\nAmerican(x) ::: x is American.\nCity(x) ::: x is a city.\nBook(x) ::: x is a book.\nWrittenBy(x, y) ::: x is written by y.\nNovelWriter(x) ::: x is a novel writer.\nWriter(x) ::: x is a writer.\nFamilyHistory(x) ::: x is Family History.\nFamilySecrets(x) ::: x is Family Secrets.\nPodcastName(x, y) ::: x is a podcast named y.\nYear(x, y) ::: x was written in year y.\nCreated(x, y) ::: x created y.\n\n# Premises:\n¬(Podcast(x) ∧ Novel(x)) ::: A podcast is not a novel.\n∀x (BornIn(x, americanCity) → American(x)) ::: If a person is born in American City, the person is American.\n∀x ∀y ((Novel(x) ∧ WrittenBy(x, y) ∧ Person(y)) → NovelWriter(y)) ::: If a book is a novel and it is written by a person, then that person is a novel writer.\nWriter(daniShapiro) ∧ American(daniShapiro) ::: Dani Shapiro is an American writer.\nWrittenBy(familyHistory, daniShapiro) ::: Family History is written by Dani Shapiro.\nNovel(familyHistory) ∧ Year(familyHistory, 2003) ::: Family History is a novel written in 2003.\nCreated(daniShapiro, familySecrets) ::: Dani Shapiro created Family Secrets.\n∀x ∀y (Created(x, y) → Podcast(y)) ::: If x created y, then y is a podcast.\nCity(boston) ::: Boston is a city.\nBornIn(daniShapiro, boston) ::: Dani Shapiro was born in Boston."
+    }
+  ],
+  "validation": {
+    "id": "tc_a455be9e",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Dani Shapiro is a novel writer.",
+    "conclusions": "NovelWriter(dani_shapiro) ::: Dani Shapiro is a novel writer. true"
+  }
+}

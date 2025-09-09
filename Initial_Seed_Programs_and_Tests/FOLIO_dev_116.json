@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_116",
+  "problem_text": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Man(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.",
+  "tests": [
+    {
+      "id": "tc_2b5b12a0",
+      "questions": "Based on the above information, is the following statement true or false? Peter can block Michael's shooting.",
+      "conclusions": "Block(peter, shooting_from_michael) ::: Peter can block Michael's shooting. FALSE"
+    },
+    {
+      "id": "tc_717b3d3a",
+      "questions": "Based on the above information, is the following statement true or false? Michael is a great shooter.",
+      "conclusions": "GreatShooter(michael) ::: Michael is a great shooter. FALSE"
+    },
+    {
+      "id": "tc_385185c8",
+      "questions": "Based on the above information, is the following statement true or false? If Peter is a shooter and jumps when shooting, then Peter is a great shooter.",
+      "conclusions": "Shooter(peter) ∧ Jump(peter) → GreatShooter(peter) ::: TRUE"
+    },
+    {
+      "id": "tc_ba12ddd5",
+      "questions": "Based on the above information, is the following statement true or false? Michael can block Windy's shooting if Windy does not jump when shooting.",
+      "conclusions": "Block(michael, shooting_of_windy) → ¬Jump(windy) ::: Michael can block Windy's shooting if Windy does not jump when shooting. FALSE"
+    },
+    {
+      "id": "tc_9e8e865a",
+      "questions": "Based on the above information, is the following statement true or false? If Peter is a great shooter, then Peter can block Michael's shooting.",
+      "conclusions": "Shooter(peter) ∧ Jump(peter) → Block(peter, shooting1) ∧ Shooting(shooting1) ::: Peter can block Michael's shooting. FALSE"
+    },
+    {
+      "id": "tc_e65b4847",
+      "questions": "Based on the above information, is the following statement true or false? If Peter is a man and a shooter, and Michael is a man and a shooter, and Peter is taller than Michael, then Michael can block Peter's shooting.",
+      "conclusions": "∀x (Man(x) ∧ Shooter(x) ∧ Taller(peter, x)) → Block(x, Shooting(peter)) ::: FALSE"
+    },
+    {
+      "id": "tc_4abcb08d",
+      "questions": "Based on the above information, is the following statement true or false? Peter is a great shooter.",
+      "conclusions": "GreatShooter(peter) ::: FALSE"
+    },
+    {
+      "id": "tc_a90e330b",
+      "questions": "Based on the above information, is the following statement true or false? If Michael can block Peter's shooting, then Peter is a shooter and Peter is not jumping when shooting.",
+      "conclusions": "Block(michael, shooting_peter) → (Shooter(peter) ∧ ¬Jump(shooting_peter)) ::: FALSE"
+    },
+    {
+      "id": "tc_613fd7a2",
+      "questions": "Based on the above information, is the following statement true or false? If Michael can block Windy's shooting, then Windy jumps when shooting.",
+      "conclusions": "Block(michael, shooting_of_windy) → Jump(windy) ::: FALSE"
+    },
+    {
+      "id": "tc_2bc23d38",
+      "questions": "Based on the above information, is the following statement true or false? If Michael is a man and Peter is a man, and Michael is taller than Peter, then Michael can block Peter's shooting.",
+      "conclusions": "Man(michael) ∧ Man(peter) ∧ Taller(michael, peter) → Block(michael, Shooting(peter)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_8f8bf47b",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x ((Man(x) ∧ Man(michael)) ∧ Taller(michael, x)) → Class(x) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Man(x) → Person(x)) ::: Michael is a man.\n∀x (Man(x) → Person(x)) ::: Peter is a man.\n∀x (Man(x) → Person(x)) ::: Windy is a man.\n∀x ((Man(michael) ∧ Shooter(x)) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_be380832",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x (Man(x) ∧ ¬∃y (Man(y) ∧ Taller(y, x))) → Class(x) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_6ebf5d94",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x ((Man(michael) ∧ ∀y (Man(y) ∧ Taller(michael, y))) → Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_9f40cc2b",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x (Man(x) ∧ Taller(michael, x) → Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Man(x) → Person(x)) ::: Michael is a man.\n∀x (Man(x) → Person(x)) ::: Peter is a man.\n∀x (Man(x) → Person(x)) ::: Windy is a man.\n∀x ((Man(x) ∧ Shooter(x)) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_d4b36efa",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x (Man(x) ∧ Taller(michael, x) → Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Man(x) → Person(x)) ::: Michael is a man.\n∀x (Man(x) → Person(x)) ::: Peter is a man.\n∀x (Man(x) → Person(x)) ::: Windy is a man.\n∀x ((Man(michael) ∧ Shooter(x)) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_1338a7c7",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n∀x (Man(michael) ∧ Taller(michael, x) → Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) ∧ Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x ((Man(x) ∧ Shooter(x)) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter."
+    },
+    {
+      "id": "sol_d95a631f",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) ∧ ∀y (Man(y) ∧ Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) ∧ Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) ∧ Shooter(windy) ∧ ¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_f300eaa2",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) ∧ ∀y (Man(y) ∧ Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) ∧ Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) ∧ Shooter(windy) ∧ ¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_b8be91f9",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) ∧ ∀y (Man(y) ∧ Taller(michael, y) → Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) ∧ Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) ∧ Shooter(windy) ∧ ¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    },
+    {
+      "id": "sol_97583c67",
+      "text": "# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n∀x ∀y ((Man(x) ∧ Man(y) ∧ Taller(x, y)) → Block(michael, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) ∧ ∀y (Taller(michael, y) → Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n∀x ∀y ∀z (Taller(x, y) ∧ Taller(y, z) → Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) ∧ Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n∀x (Shooter(x) ∧ ¬Jump(x) → Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nWindy(windy) ∧ Shooter(windy) ∧ ¬Block(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n∀x (Shooter(x) ∧ Jump(x) → GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter."
+    }
+  ],
+  "validation": {
+    "id": "tc_8926eab9",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Peter is shorter than a man in Michael's class.",
+    "conclusions": "¬∃x (Man(x) ∧ Taller(peter, x) ∧ Class(x)) ::: Peter is shorter than a man in Michael's class. false"
+  }
+}

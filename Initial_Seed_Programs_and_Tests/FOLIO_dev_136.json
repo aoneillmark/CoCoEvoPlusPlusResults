@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_136",
+  "problem_text": "Plungers suck. Vacuums suck. Vampires suck. Space is a vacuum. A duster is a household appliance that doesn't suck.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Suck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.",
+  "tests": [
+    {
+      "id": "tc_5014cacb",
+      "questions": "Based on the above information, is the following statement true or false? If a duster is a household appliance, then it does not suck.",
+      "conclusions": "∀x (Duster(x) → (HouseholdAppliance(x) → ¬Suck(x))) ::: TRUE"
+    },
+    {
+      "id": "tc_1e76cff8",
+      "questions": "Based on the above information, is the following statement true or false? If something is a vacuum, then it sucks.",
+      "conclusions": "Vacuum(x) → Suck(x) ::: If something is a vacuum, then it sucks. TRUE"
+    },
+    {
+      "id": "tc_4bb8b823",
+      "questions": "Based on the above information, is the following statement true or false? If something is a vampire and a household appliance, then it sucks.",
+      "conclusions": "∀x ((Vampire(x) ∧ HouseholdAppliance(x)) → Suck(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_f600d393",
+      "questions": "Based on the above information, is the following statement true or false? If something is a vacuum and also a household appliance, then it sucks.",
+      "conclusions": "∀x ((Vacuum(x) ∧ HouseholdAppliance(x)) → Suck(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_8f6849aa",
+      "questions": "Based on the above information, is the following statement true or false? If something is a plunger, then it is a household appliance and it sucks.",
+      "conclusions": "Plunger(x) → (HouseholdAppliance(x) ∧ Suck(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_8e13dd1b",
+      "questions": "Based on the above information, is the following statement true or false? If something is a vampire, then it is a household appliance and it sucks.",
+      "conclusions": "Vampire(x) → (HouseholdAppliance(x) ∧ Suck(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_9a6bb34b",
+      "questions": "Based on the above information, is the following statement true or false? If something is a plunger, then it sucks and it is a household appliance.",
+      "conclusions": "Plunger(plunger) → (Suck(plunger) ∧ HouseholdAppliance(plunger)) ::: FALSE"
+    },
+    {
+      "id": "tc_dd1b8108",
+      "questions": "Based on the above information, is the following statement true or false? If something is a duster, then it is a household appliance and it does not suck.",
+      "conclusions": "∀x (Duster(x) → (HouseholdAppliance(x) ∧ ¬Suck(x))) ::: TRUE"
+    },
+    {
+      "id": "tc_502db429",
+      "questions": "Based on the above information, is the following statement true or false? If something is a vacuum and sucks, then it is a household appliance.",
+      "conclusions": "Vacuum(x) ∧ Suck(x) → HouseholdAppliance(x) ::: FALSE"
+    },
+    {
+      "id": "tc_d5816242",
+      "questions": "Based on the above information, is the following statement true or false? If something is a household appliance and sucks, then it is either a plunger or a vampire.",
+      "conclusions": "(∃x (HouseholdAppliance(x) ∧ Suck(x))) → (∃x (Plunger(x) ∨ Vampire(x))) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_26af4540",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers) ::: Plungers suck.\nSuck(vacuums) ::: Vacuums suck.\nSuck(vampires) ::: Vampires suck.\nVacuum(space) ::: Space is a vacuum.\nHouseholdAppliance(duster) ∧ ¬Suck(duster) ::: A duster is a household appliance that doesn't suck."
+    },
+    {
+      "id": "sol_48401a6d",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers)\nSuck(vacuums)\nSuck(vampires)\nVacuum(space)\n∀x (Duster(x) → (HouseholdAppliance(x) ∧ ¬Suck(x)))"
+    },
+    {
+      "id": "sol_d5e69196",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers) ::: Plungers suck.\nSuck(vacuums) ::: Vacuums suck.\nSuck(vampires) ::: Vampires suck.\nVacuum(space) ::: Space is a vacuum.\n∀x (Duster(x) → HouseholdAppliance(x)) ::: A duster is a household appliance.\n∀x (Duster(x) → ¬Suck(x)) ::: A duster doesn't suck."
+    },
+    {
+      "id": "sol_8edbf45c",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers) ::: Plungers suck.\nSuck(vacuums) ::: Vacuums suck.\nSuck(vampires) ::: Vampires suck.\nVacuum(space) ::: Space is a vacuum.\n∀x (Duster(x) → (HouseholdAppliance(x) ∧ ¬Suck(x))) ::: A duster is a household appliance that doesn't suck."
+    },
+    {
+      "id": "sol_3144463f",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers) ::: Plungers suck.\nSuck(vacuums) ::: Vacuums suck.\nSuck(vampires) ::: Vampires suck.\n∀x (Space(x) → Vacuum(x)) ::: Space is a vacuum.\n∀x (Duster(x) → HouseholdAppliance(x)) ∧ ∀x (Duster(x) → ¬Suck(x)) ::: A duster is a household appliance that doesn't suck."
+    },
+    {
+      "id": "sol_97d34983",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers) ::: Plungers suck.\nSuck(vacuums) ::: Vacuums suck.\nSuck(vampires) ::: Vampires suck.\n∀x (Space(x) → Vacuum(x)) ::: Space is a vacuum.\n∀x (Duster(x) → (HouseholdAppliance(x) ∧ ¬Suck(x))) ::: A duster is a household appliance that doesn't suck."
+    },
+    {
+      "id": "sol_e0ea2a72",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers)\nSuck(vacuums)\nSuck(vampires)\n∀x (Space(x) → Vacuum(x))\n∀x (Duster(x) → HouseholdAppliance(x))\n∀x (Duster(x) → ¬Suck(x))"
+    },
+    {
+      "id": "sol_1d741757",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers)\nSuck(vacuums)\nSuck(vampires)\n∀x (Space(x) → Vacuum(x))\n∀x (Duster(x) → (HouseholdAppliance(x) ∧ ¬Suck(x)))"
+    },
+    {
+      "id": "sol_f50becad",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers)\nSuck(vacuums)\nSuck(vampires)\n∀x (Space(x) → Vacuum(x))\n∀x (Duster(x) → HouseholdAppliance(x))\n∀x (HouseholdAppliance(x) ∧ Duster(x) → ¬Suck(x))"
+    },
+    {
+      "id": "sol_1b1a4e15",
+      "text": "# Predicates:\nSuck(x) ::: x sucks.\nVacuum(x) ::: x is a vacuum.\nVampire(x) ::: x is a vampire.\nSpace(x) ::: x is space.\nDuster(x) ::: x is a duster.\nHouseholdAppliance(x) ::: x is a household appliance.\n\n# Premises:\nSuck(plungers)\nSuck(vacuums)\nSuck(vampires)\n∀x (Space(x) → Vacuum(x))\n∀x (Duster(x) → HouseholdAppliance(x))\n∀x ((Duster(x) ∧ HouseholdAppliance(x)) → ¬Suck(x))"
+    }
+  ],
+  "validation": {
+    "id": "tc_47663c1b",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Space sucks.",
+    "conclusions": "Space(space) ∧ Suck(space) ::: Space sucks. true"
+  }
+}

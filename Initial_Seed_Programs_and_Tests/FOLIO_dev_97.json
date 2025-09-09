@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_97",
+  "problem_text": "If animals are loved by tourists, then they are Max's favorite animals. All animals from Australia are loved by tourists. All quokka are animals from Australia. All of Max's favorite animals are very fluffy. All of Max's favorite animals love to sleep. If a koala is very fluffy, then the koala is not a quokka.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "LovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.",
+  "tests": [
+    {
+      "id": "tc_f59d364d",
+      "questions": "Based on the above information, is the following statement true or false? All quokkas are very fluffy.",
+      "conclusions": "∀x (Quokka(x) → VeryFluffy(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_db651766",
+      "questions": "Based on the above information, is the following statement true or false? If a koala is a quokka, then it is Max's favorite animal.",
+      "conclusions": "Quokka(x) → MaxsFavorite(x) ::: If a koala is a quokka, then it is Max's favorite animal. FALSE"
+    },
+    {
+      "id": "tc_fed1d5dd",
+      "questions": "Based on the above information, is the following statement true or false? If an animal loves to sleep and is from Australia, then it is Max's favorite animal.",
+      "conclusions": "LovesToSleep(x) ∧ FromAustralia(x) → MaxsFavorite(x) ::: FALSE"
+    },
+    {
+      "id": "tc_4e409736",
+      "questions": "Based on the above information, is the following statement true or false? If a koala loves to sleep, then it is from Australia.",
+      "conclusions": "∀x (Koala(x) ∧ LovesToSleep(x) → FromAustralia(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_d932ff6e",
+      "questions": "Based on the above information, is the following statement true or false? If an animal is a quokka, then it loves to sleep.",
+      "conclusions": "Quokka(x) → LovesToSleep(x) ::: TRUE"
+    },
+    {
+      "id": "tc_dbc448a0",
+      "questions": "Based on the above information, is the following statement true or false? If an animal is a quokka, then it loves to sleep and is Max's favorite animal.",
+      "conclusions": "Quokka(x) → (LovesToSleep(x) ∧ MaxsFavorite(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_71be8d63",
+      "questions": "Based on the above information, is the following statement true or false? If a quokka is an animal from Australia, then it is very fluffy.",
+      "conclusions": "Quokka(x) → (FromAustralia(x) → VeryFluffy(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_aa1b2ed9",
+      "questions": "Based on the above information, is the following statement true or false? If an animal is a quokka, then it is very fluffy and loves to sleep.",
+      "conclusions": "Quokka(x) → (VeryFluffy(x) ∧ LovesToSleep(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_ba127097",
+      "questions": "Based on the above information, is the following statement true or false? If an animal is a koala, then it is loved by tourists and is from Australia.",
+      "conclusions": "Koala(x) → LovedByTourists(x) ∧ FromAustralia(x) ::: FALSE"
+    },
+    {
+      "id": "tc_73101c6a",
+      "questions": "Based on the above information, is the following statement true or false? If an animal is from Australia and is a koala, then it is Max's favorite animal.",
+      "conclusions": "FromAustralia(x) ∧ Koala(x) → MaxsFavorite(x) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_5ec8a6b3",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((LovedByTourists(x) ∧ Animal(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_b6bca1ad",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((Animal(x) ∧ LovedByTourists(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_df8ebe44",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x (Animal(x) → (LovedByTourists(x) → MaxsFavorite(x))) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) ∧ Animal(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x (Koala(x) ∧ VeryFluffy(x) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_fe60d687",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((Animal(x) ∧ LovedByTourists(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_5c3f4ae5",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((Animal(x) ∧ LovedByTourists(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) ∧ Animal(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_082b4893",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((Animal(x) ∧ LovedByTourists(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x ((Animal(x) ∧ FromAustralia(x)) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_e6b67c91",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x (Animal(x) → (LovedByTourists(x) → MaxsFavorite(x))) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) ∧ Animal(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x ((Koala(x) ∧ VeryFluffy(x)) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_ca70623b",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x ((Animal(x) ∧ LovedByTourists(x)) → MaxsFavorite(x)) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x (Koala(x) → (VeryFluffy(x) → ¬Quokka(x))) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_cc69fdaa",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x (Animal(x) → (LovedByTourists(x) → MaxsFavorite(x))) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (Animal(x) ∧ FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x (Koala(x) ∧ VeryFluffy(x) → ¬Quokka(x)) ::: If a koala is very fluffy, then the koala is not a quokka."
+    },
+    {
+      "id": "sol_f637b733",
+      "text": "# Predicates:\nLovedByTourists(x) ::: x is loved by tourists.\nMaxsFavorite(x) ::: x is Max's favorite animal.\nFromAustralia(x) ::: x is an animal from Australia.\nQuokka(x) ::: x is a quokka.\nVeryFluffy(x) ::: x is very fluffy.\nLovesToSleep(x) ::: x loves to sleep.\nKoala(x) ::: x is a koala.\nAnimal(x) ::: x is an animal.\n\n# Premises:\n∀x (Animal(x) → (LovedByTourists(x) → MaxsFavorite(x))) ::: If animals are loved by tourists, then they are Max's favorite animals.\n∀x (FromAustralia(x) → LovedByTourists(x)) ::: All animals from Australia are loved by tourists.\n∀x (Quokka(x) → FromAustralia(x)) ::: All quokka are animals from Australia.\n∀x (MaxsFavorite(x) → VeryFluffy(x)) ::: All of Max's favorite animals are very fluffy.\n∀x (MaxsFavorite(x) → LovesToSleep(x)) ::: All of Max's favorite animals love to sleep.\n∀x (Koala(x) → (VeryFluffy(x) → ¬Quokka(x))) ::: If a koala is very fluffy, then the koala is not a quokka."
+    }
+  ],
+  "validation": {
+    "id": "tc_e94acb69",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Koalas love to sleep.",
+    "conclusions": "∀x (Koala(x) → LovesToSleep(x)) ::: Koalas love to sleep. unknown"
+  }
+}

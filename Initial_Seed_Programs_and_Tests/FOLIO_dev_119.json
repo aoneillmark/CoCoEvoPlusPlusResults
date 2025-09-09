@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_119",
+  "problem_text": "Barutin Cove is named after the Bulgarian settlement of Barutin. Barutin Cove is on the southwest coast of Snow Island. The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island. The South Shetland Islands are considered part of Antarctica. If A is located in B and B is located in C, then A is located in C.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "NamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.",
+  "tests": [
+    {
+      "id": "tc_f4f6f279",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is located in Antarctica.",
+      "conclusions": "∃x ∃y ∃z (NamedAfter(barutinCove, x) ∧ Settlement(x) ∧ Bulgarian(x) ∧ Location(barutinCove, y) ∧ Island(y) ∧ PartOf(y, z) ∧ Antarctica(z)) ::: Barutin Cove is located in Antarctica. TRUE"
+    },
+    {
+      "id": "tc_7de3c1d0",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is an island in Antarctica.",
+      "conclusions": "Island(barutinCove) ∧ Location(barutinCove, antarctica) ::: Barutin Cove is an island in Antarctica. FALSE"
+    },
+    {
+      "id": "tc_e58c7d6f",
+      "questions": "Based on the above information, is the following statement true or false? If Barutin Cove is named after a Bulgarian settlement, and that settlement is located in Bulgaria, then Barutin Cove is located in Bulgaria.",
+      "conclusions": "NamedAfter(barutinCove, barutin) ∧ Settlement(barutin) ∧ Bulgarian(barutin) → ¬Bulgarian(barutinCove) ::: FALSE"
+    },
+    {
+      "id": "tc_9bf85400",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is named after a settlement that is located in Antarctica.",
+      "conclusions": "NamedAfter(barutinCove, barutin) ∧ Settlement(barutin) ∧ Bulgarian(barutin) ∧ Location(barutinCove, snowIsland) ∧ PartOf(snowIsland, southShetlandIslands) ∧ PartOf(southShetlandIslands, antarctica) ∧ Location(barutin, bulgaria) → Location(barutin, antarctica) FALSE"
+    },
+    {
+      "id": "tc_6e40089a",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is located in the South Shetland Islands.",
+      "conclusions": "Location(barutincove, southshetlandislands) ::: TRUE"
+    },
+    {
+      "id": "tc_536d9eb9",
+      "questions": "Based on the above information, is the following statement true or false? If Barutin Cove is located on Snow Island, and Snow Island is part of the South Shetland Islands, then Barutin Cove is located in Antarctica.",
+      "conclusions": "Location(barutinCove, snowIsland) ∧ PartOf(snowIsland, southShetlandIslands) → Location(barutinCove, antarctica) ::: TRUE"
+    },
+    {
+      "id": "tc_9ae941ab",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is named after a Bulgarian settlement and is located on Snow Island.",
+      "conclusions": "NamedAfter(barutinCove, barutin) ∧ Settlement(barutin) ∧ Bulgarian(barutin) ∧ Location(barutinCove, snowIsland) ::: TRUE"
+    },
+    {
+      "id": "tc_99cf1ad6",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is named after a Bulgarian settlement and is located in Antarctica.",
+      "conclusions": "NamedAfter(barutinCove, barutin) ∧ Bulgarian(barutin) ∧ Location(barutinCove, snowIsland) ∧ Island(snowIsland) ∧ PartOf(snowIsland, southShetlandIslands) ∧ PartOf(southShetlandIslands, antarctica) → (NamedAfter(barutinCove, barutin) ∧ Bulgarian(barutin) ∧ Location(barutinCove, antarctica)) FALSE"
+    },
+    {
+      "id": "tc_5ab31f48",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is named after a Bulgarian settlement, and this settlement is located on an island that is part of Antarctica.",
+      "conclusions": "NamedAfter(barutinCove, barutin) ∧ Settlement(barutin) ∧ Bulgarian(barutin) ∧ Location(barutin, snowIsland) ∧ Island(snowIsland) ∧ PartOf(snowIsland, southShetlandIslands) ∧ PartOf(southShetlandIslands, antarctica) ∧ Antarctica(antarctica) ::: TRUE"
+    },
+    {
+      "id": "tc_6b1a953f",
+      "questions": "Based on the above information, is the following statement true or false? Barutin Cove is located on an island that is part of Antarctica and is named after a Bulgarian settlement.",
+      "conclusions": "(Location(barutinCove, snowIsland) ∧ PartOf(snowIsland, antarctica)) ∧ NamedAfter(barutinCove, barutin) ∧ Bulgarian(barutin) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_8bfd713f",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, southwestCoastOfSnowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(greenwichIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(deceptionIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(greenwichIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(deceptionIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island."
+    },
+    {
+      "id": "sol_7f710311",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, southwestCoastOfSnowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(greenwichIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(deceptionIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(greenwichIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(deceptionIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island."
+    },
+    {
+      "id": "sol_a69176cd",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    },
+    {
+      "id": "sol_49081e64",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    },
+    {
+      "id": "sol_1dfa5688",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C.\n∃x (Island(x) ∧ Location(barutinCove, x)) ::: Barutin Cove is on the southwest coast of Snow Island.\n∃x (Location(snowIsland, x) ∧ Antarctica(x)) ::: The South Shetland Islands are considered part of Antarctica."
+    },
+    {
+      "id": "sol_36c0451b",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C.\n∃x (Island(x) ∧ Location(barutinCove, x)) ::: Barutin Cove is on the southwest coast of Snow Island.\n∃x (Island(x) ∧ Location(x, southShetlandIslands)) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\n∃x (Location(southShetlandIslands, x) ∧ Antarctica(x)) ::: The South Shetland Islands are considered part of Antarctica."
+    },
+    {
+      "id": "sol_be073f43",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: Snow Island is one of the South Shetland Islands.\nLocation(snowIsland, southShetlandIslands) ::: Snow Island is part of the South Shetland Islands.\nIsland(greenwichIsland) ::: Greenwich Island is one of the South Shetland Islands.\nLocation(greenwichIsland, southShetlandIslands) ::: Greenwich Island is part of the South Shetland Islands.\nIsland(deceptionIsland) ::: Deception Island is one of the South Shetland Islands.\nLocation(deceptionIsland, southShetlandIslands) ::: Deception Island is part of the South Shetland Islands.\nPartOf(southShetlandIslands, antarctica) ::: The South Shetland Islands are part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    },
+    {
+      "id": "sol_7340fd07",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: Snow Island is one of the South Shetland Islands.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(greenwichIsland) ::: Greenwich Island is one of the South Shetland Islands.\nLocation(greenwichIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(deceptionIsland) ::: Deception Island is one of the South Shetland Islands.\nLocation(deceptionIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    },
+    {
+      "id": "sol_51d0dcca",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(greenwichIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(greenwichIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(deceptionIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(deceptionIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    },
+    {
+      "id": "sol_5c07ce6f",
+      "text": "# Predicates:\nNamedAfter(x, y) ::: x is named after y.\nSettlement(x) ::: x is a settlement.\nBulgarian(x) ::: x is Bulgarian.\nLocation(x, y) ::: x is located in y.\nIsland(x) ::: x is an island.\nPartOf(x, y) ::: x is part of y.\nAntarctica(x) ::: x is Antarctica.\n\n# Premises:\nNamedAfter(barutinCove, barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nSettlement(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nBulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin.\nLocation(barutinCove, snowIsland) ::: Barutin Cove is on the southwest coast of Snow Island.\nIsland(snowIsland) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nLocation(snowIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(greenwichIsland) ::: Greenwich Island is one of the South Shetland Islands.\nLocation(greenwichIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nIsland(deceptionIsland) ::: Deception Island is one of the South Shetland Islands.\nLocation(deceptionIsland, southShetlandIslands) ::: The South Shetland Islands include Snow Island, Greenwich Island, and Deception Island.\nPartOf(southShetlandIslands, antarctica) ::: The South Shetland Islands are considered part of Antarctica.\n∀x ∀y ∀z (Location(x, y) ∧ Location(y, z) → Location(x, z)) ::: If A is located in B and B is located in C, then A is located in C."
+    }
+  ],
+  "validation": {
+    "id": "tc_12591581",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Barutin is named after all islands in Antarctica.",
+    "conclusions": "NamedAfter(barutinCove, barutin) ∧ Settlement(barutin) ∧ Bulgarian(barutin) ::: Barutin Cove is named after the Bulgarian settlement of Barutin."
+  }
+}

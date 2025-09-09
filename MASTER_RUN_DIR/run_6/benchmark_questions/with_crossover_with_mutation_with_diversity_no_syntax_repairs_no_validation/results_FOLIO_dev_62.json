@@ -1,0 +1,770 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62",
+  "dataset": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/temp_dataset_for_FOLIO_dev_62.json",
+  "solutions": [
+    {
+      "solution_name": "sol_02968fdd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_02968fdd.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\n# Mike is an international student in the US.\nInternationalStudent(mike)\nUS(mike)\n\n# An international student in the US has either an F1 visa or a J1 visa.\n\u2200x ( (InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)) )\n\n# An international student in the US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ( (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())) )\n\n# Mike needs to apply for CPT if he wants to work in the US.\n\u2200x ( (InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()) )\n\n# Mike is a person.\nPerson(mike)\n\n# Mike wants to work in the US.\nWork(mike)\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_04419808.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0004/post/solutions/sol_04419808.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# An international student in US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike needs to apply for CPT if he wants to work in the US. This is a more specific rule for Mike.\n# This rule implies that if Mike wants to work, he needs CPT.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# It's important to ensure that CPT or OPT is a prerequisite for working.\n# If a student wants to work, they must be applying for CPT or OPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# If Mike has an F1 visa and wants to work, he needs to apply for CPT or OPT.\n# The existing rule already covers this.\n# The specific rule for Mike ensures CPT is prioritized or is a sufficient option.\n# For Mike, if he wants to work, he needs CPT (from the specific rule).\n# If he has an F1 and wants to work, he needs CPT or OPT (from the general rule).\n# The specific rule for Mike subsumes the general rule's outcome for CPT.\n# We can add a rule that if Mike wants to work and has an F1 visa, he needs CPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0618893b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_0618893b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike) \u2227 InternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0d0b6840.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_0d0b6840.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\nWork(mike) \u2192 NeedsToApply(mike, CPT()) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0f8108a0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_0f8108a0.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_128bb2ba.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_128bb2ba.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2295 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_129a8d14.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_129a8d14.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\n\n# Rules:\n# Every international student in the US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in the US with an F1 visa needs to apply for CPT or OPT if they want to work.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This rule should apply to any international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# A student who wants to work in the US must either have a J1 visa or apply for CPT/OPT.\n# This is a more general rule that can be derived from the others.\n# This is not strictly necessary given the existing rules but can be added for completeness or as a simplification if desired.\n# It's removed here to keep the focus on fixing/simplifying the original logic.\n# \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 (J1Visa(x) \u2228 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Add a rule for Mike specifically, as stated in the scenario.\n# This is redundant if the general rule above applies to Mike, but can be kept for direct representation of the statement.\n# However, since Mike is an InternationalStudent and US(mike), the general rule above covers him.\n# The original program already has a rule specific to Mike. Let's ensure it is consistent.\n# The original program had: \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n# This general rule is more powerful than the specific statement about Mike if Mike has F1.\n# The scenario states: \"Mike needs to apply for CPT if he wants to work in the US.\"\n# This implies that CPT is a necessary application if Mike wants to work.\n# The rule \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) already covers Mike.\n# We will simplify by removing the redundant rule for Mike and rely on the general rule.\n\n# Let's refine the rules based on the scenario description and potential issues.\n\n# Rule 1: International students in US have F1 or J1.\n# This is good.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# Rule 2: F1 student in US wants to work -> needs CPT or OPT.\n# This is good.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Rule 3: Mike needs CPT if he wants to work.\n# The original had: \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n# This rule is strong. It implies that *any* international student in the US who wants to work must apply for CPT, regardless of visa type.\n# This might contradict or simplify the F1 rule. If Mike has F1, then Rule 2 says he needs CPT *or* OPT.\n# The statement \"Mike needs to apply for CPT if he wants to work\" suggests CPT is always required for Mike.\n# This implies that the CPT application is mandatory for Mike if he wants to work.\n# Let's consider the case where Mike has an F1 visa.\n# If Mike has F1 and wants to work, Rule 2 says NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()).\n# The scenario states Mike needs to apply for CPT if he wants to work. This implies NeedsToApply(mike, CPT()) is a requirement.\n# This means CPT is a *sufficient* requirement for Mike to work, or the statement is stronger and implies CPT is *necessary*.\n# Assuming the statement implies CPT is a necessary step for Mike to work:\n# \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) is consistent with this.\n# This rule would mean that even if Mike had a J1, he would still need to apply for CPT to work. This might be an unintended consequence.\n\n# Let's re-evaluate the intent.\n# \"International students in US have either an F1 visa or a J1 visa.\" - Covered.\n# \"An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\" - Covered.\n# \"Mike is an international student.\" - Covered.\n# \"Mike needs to apply for CPT if he wants to work in the US.\"\n\n# The critical part is how \"Mike needs to apply for CPT if he wants to work\" relates to his visa status.\n# If Mike has F1: Rule 2 applies (CPT or OPT). The statement about Mike needing CPT implies CPT is a valid path.\n# If Mike has J1: The scenario doesn't explicitly state what J1 students need to do to work, other than the very general rule in the original program:\n# \u2200x (Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()) \u2228 J1Visa(x))\n# This last rule in the original program is quite loose. It states that if someone works, they must either apply for CPT/OPT OR have a J1 visa.\n# This is also confusing. It implies that having a J1 visa might be an *alternative* to applying for CPT/OPT for working, which is not how visas and work permits typically function.\n\n# Let's simplify and focus on the direct statements.\n# We know:\n# 1. Mike is an international student in the US.\n# 2. If an international student in the US wants to work AND has an F1 visa, they need CPT or OPT.\n# 3. Mike needs CPT if he wants to work.\n\n# The statement \"Mike needs to apply for CPT if he wants to work\" should take precedence for Mike.\n# It's a direct requirement for Mike.\n\n# Let's assume the original last rule:\n# \u2200x (Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()) \u2228 J1Visa(x))\n# is intended to cover cases where we don't know the F1 status, or for J1 students.\n# However, the scenario doesn't provide specific rules for J1 students wanting to work.\n\n# A cleaner approach:\n# Focus on what is explicitly stated and simplify redundant/confusing rules.\n\n# The original premises:\n# Person(mike)\n# InternationalStudent(mike)\n# US(mike)\n# \u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))  -- Covered.\n\n# \u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) -- Covered.\n\n# \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) -- This rule makes CPT mandatory for *any* international student in US who wants to work. This might be too strong and override the F1/OPT choice if Mike has F1.\n\n# \u2200x (Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()) \u2228 J1Visa(x)) -- This is confusing and likely not intended to mean J1 is an alternative to CPT/OPT *application*. It's usually a visa type that *enables* work, possibly with its own authorization process.\n\n# Let's refine based on common understanding of these terms.\n# If you have F1 and want to work, you need CPT *or* OPT.\n# If you have J1 and want to work, you likely need a separate work authorization under the J1 program. The scenario does not provide details for J1 work.\n\n# The statement \"Mike needs to apply for CPT if he wants to work\" is a specific constraint for Mike.\n# This implies that if Mike works, CPT is a required action for him.\n\n# Let's redefine the rules to avoid ambiguity and ensure they capture the specific scenario for Mike.\n\n# Revised Program:\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_14ea9e80.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_14ea9e80.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_15df1384.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_15df1384.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_16beb45a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_16beb45a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_174f2a24.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0008/post/solutions/sol_174f2a24.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This statement can be directly encoded for Mike.\n# The problem statement establishes that Mike is an international student in the US.\n# Therefore, if Mike wants to work, he needs to apply for CPT.\n# This is a specific instance of a requirement for Mike.\n# We can represent this directly for Mike, assuming Work(mike) is a condition.\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# Consideration for potential simplification:\n# The statement \"Mike needs to apply for CPT if he wants to work in the US\" can be interpreted\n# as a direct rule for Mike. Since Mike is an international student in the US (given by premises),\n# this rule directly applies to his situation.\n# The phrasing \"needs to apply for CPT if he wants to work\" suggests that CPT is a *necessary* step\n# for Mike to work.\n# The current direct implication `Work(mike) \u2192 NeedsToApply(mike, CPT())` is the most straightforward\n# and accurate representation of this specific statement about Mike.\n\n# It is important to note that the problem statement does not imply that CPT is the *only*\n# option for Mike to work, nor does it state that he *must* work. It only defines a condition\n# under which he *needs* to apply for CPT.\n\n# An alternative interpretation could be to infer that if Mike wants to work and is an international student in the US,\n# then he needs to apply for CPT, *if* he has an F1 visa. However, the problem statement about Mike\n# is unconditional with respect to his visa type, implying that for him, CPT is a requirement regardless\n# of whether he has F1 or J1 (although the general rule for international students with F1 is given).\n# Given the specific statement about Mike, we should prioritize its direct encoding.\n# The statement is specific to Mike and does not require further conditions like visa type.\n# Therefore, the direct implication `Work(mike) \u2192 NeedsToApply(mike, CPT())` is the most appropriate.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3887e754.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0005/post/solutions/sol_3887e754.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\n\n# Rules:\n# Rule 1: Every international student in the US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# Rule 2: An international student in the US with an F1 visa needs to apply for CPT or OPT if they want to work.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Rule 3: Mike needs to apply for CPT if he wants to work in the US.\n# This statement implies a direct requirement for Mike, independent of other potential options.\n# It can be represented as a specific rule for Mike.\n# Alternatively, if we assume it implies CPT is a mandatory step for *any* international student in the US who wants to work,\n# we can generalize it. Given the direct statement about Mike, we represent it specifically for Mike first.\n# However, a more robust representation that covers Mike and potentially others, based on the phrasing,\n# is to make CPT a requirement for working international students in the US.\n# This simplifies the logic by ensuring CPT is always an option if working is desired.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Edge case consideration: What if Mike has a J1 visa?\n# The scenario does not specify the requirements for J1 visa holders to work in the US.\n# The existing rules (Rule 1, Rule 2, Rule 3) do not provide explicit guidance for J1 students wanting to work.\n# Rule 3, as generalized above, covers this: if Mike has a J1 visa and wants to work, he still needs to apply for CPT.\n# This interpretation aligns with \"Mike needs to apply for CPT if he wants to work,\" making it a universal requirement for Mike when working.\n# This is a simplification and might imply CPT is a requirement even for J1 students wanting to work, which might not be entirely accurate in reality but adheres to the given text.\n\n# Removal of ambiguous rules:\n# The original program had: \u2200x (Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()) \u2228 J1Visa(x))\n# This rule is problematic because it suggests J1Visa(x) can be a *substitute* for applying for CPT/OPT when working.\n# This is generally not how these programs work. J1 is a visa type, and work authorization under J1 is a separate process.\n# Therefore, this rule is removed for clarity and to avoid misinterpretation.\n# The current rules (especially the generalized Rule 3) focus on the explicit requirements stated.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3d7fda92.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_3d7fda92.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\u2200x (Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()) \u2228 J1Visa(x))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3ffc48d7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_3ffc48d7.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2227 (\u00acF1Visa(x))) \u2192 NeedsToApply(x, CPT())) ::: An international student in US without an F1 visa (implying J1 visa given the previous rule) needs to apply for CPT if they want to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4f3862e9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_4f3862e9.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5cb570b4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0004/post/solutions/sol_5cb570b4.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# An international student in US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike needs to apply for CPT if he wants to work in the US. This is a specific requirement for Mike.\n# This can be interpreted as a direct consequence of wanting to work, regardless of visa type.\n# However, given the context of international students and visas, it's more likely a rule associated with working.\n# Let's rephrase the original rule \"Mike needs to apply for CPT if he wants to work in the US\" to be more general for any international student who wants to work and has an F1 visa.\n# This is redundant with the rule above if Mike has an F1 visa.\n# If Mike is an international student and wants to work, he needs to apply for CPT.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# If Mike is an international student and wants to work, he needs to apply for CPT.\n# This is directly implied by the rule above.\n\n# The problem states \"Mike is an international student.\" and \"Mike needs to apply for CPT if he wants to work in the US.\"\n# The premise `Work(mike)` is given.\n# From `InternationalStudent(mike)` and `Work(mike)`, the rule `\u2200x (InternationalStudent(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))` implies `NeedsToApply(mike, CPT())`.\n# The premise `F1Visa(mike)` and `US(mike)` are also given.\n# The rule `\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))` applied to mike implies:\n# `NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT())`.\n# This is consistent with `NeedsToApply(mike, CPT())` being true.\n\n# To simplify, we can make the rule about Mike's CPT application more specific to his situation as an international student with an F1 visa, or more general.\n# The current wording \"Mike needs to apply for CPT if he wants to work in the US\" strongly suggests a specific rule for Mike.\n# Let's keep it as a specific rule for Mike as an international student.\n\n# Simplified rule set focusing on Mike:\n# If Mike wants to work, he needs to apply for CPT. (This is a strong specific statement for Mike)\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# The other rules establish context and consistency.\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Given that Mike is an international student, US, has F1 visa and wants to work,\n# the second rule implies NeedsToApply(mike, CPT()) or NeedsToApply(mike, OPT()).\n# The first simplified rule Work(mike) \u2192 NeedsToApply(mike, CPT()) directly implies NeedsToApply(mike, CPT()).\n# This makes the derivation of NeedsToApply(mike, CPT()) more direct and robust.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6487b2b0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0006/post/solutions/sol_6487b2b0.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\nF1Visa(mike)\nWork(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This premise is a specific instance of the general rule and is redundant if Mike satisfies all the conditions of the general rule.\n# However, the original prompt includes it, so we will keep it.\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# Note: The original premise \"Mike needs to apply for CPT if he wants to work in the US.\" is already covered by the second general premise\n# if Mike has an F1 visa. Since F1Visa(mike) is stated as a premise, the specific rule is logically implied.\n# If the intention was for Mike to need CPT even without an F1 visa, that would require a different premise.\n# Assuming the intent is consistency with the F1 visa rule:\n# The premise \"Work(mike) \u2192 NeedsToApply(mike, CPT())\" could be considered redundant given\n# InternationalStudent(mike), US(mike), F1Visa(mike), and Work(mike) are all true.\n# The second general rule then implies:\n# (InternationalStudent(mike) \u2227 US(mike) \u2227 F1Visa(mike) \u2227 Work(mike)) \u2192 (NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()))\n# which simplifies to:\n# True \u2192 (NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()))\n# This means NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()) is true.\n# The specific rule Work(mike) \u2192 NeedsToApply(mike, CPT()) implies NeedsToApply(mike, CPT()) is true.\n# This is consistent and doesn't create a contradiction.\n\n# To simplify logic and ensure no redundancy, we could remove the third premise if Mike is always assumed to have an F1 visa when he's an international student in the US.\n# However, following the instruction to keep the same vocabulary and address missing edge-cases or bugs:\n# There isn't a clear bug. The edge-case is that the specific rule for Mike is redundant given the general rule and Mike's properties.\n# We can make the rules more explicit or add a premise that might have been implied.\n\n# A potential simplification or clarification would be to ensure the implication of 'CPT' specifically is handled.\n# The current logic implies Mike needs CPT *or* OPT. The third premise states he needs CPT.\n# If the requirement is *only* CPT for Mike when he wants to work (regardless of visa, but the prompt implies F1), the third rule is key.\n# However, the prompt states \"Mike needs to apply for CPT if he wants to work in the US\", which is a direct implication.\n\n# Let's re-evaluate the rules for clarity and minimal redundancy.\n# Rule 1: International students in US have either an F1 visa or a J1 visa. (Good)\n# Rule 2: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. (Good)\n# Rule 3: Mike needs to apply for CPT if he wants to work in the US. (Specific instance, potentially redundant with Rule 2 and premises)\n\n# If the intent is that Mike, as an international student in the US with an F1 visa who wants to work,\n# has a *choice* between CPT and OPT (from Rule 2), but the specific rule for him states he *needs* CPT,\n# this implies that *at least* CPT is required. It doesn't exclude OPT unless specified.\n\n# Revised approach focusing on explicit logic and handling the specific case of Mike.\n# We keep the original premises and rules as they are not demonstrably \"buggy\" but can be re-ordered or rephrased slightly for clarity.\n# The phrasing of the third rule is a direct implication, and its presence is consistent with the general rule, even if redundant.\n\n# Let's keep the original rules and premises as they are, as no clear bugs or missing edge-cases are present that invalidate the current logic.\n# The existing structure is sound for the given information.\n# If we were to add something, it would be to make the implication of \"needs CPT\" more direct for Mike.\n\n# No changes needed to fix bugs or add missing edge-cases to the provided premises and rules given the problem description.\n# The existing rules logically derive conclusions about Mike.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_691e0b7b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0005/post/solutions/sol_691e0b7b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This statement implies that if Mike wants to work, a CPT application is a necessary step for him.\n# Since Mike is an international student in the US, this applies to his situation.\n# We can represent this directly for Mike, or generalize it to all international students in the US.\n# Given the specific mention of Mike, we can assert this directly for him if Work(mike) is true.\n# However, the instruction is to state the *rule*.\n# The rule can be interpreted as: if Mike works, he needs CPT.\n# Since Mike is an international student in the US, this is a specific instance of a broader rule.\n# The problem states \"Mike needs to apply for CPT if he wants to work in the US.\"\n# This is a direct implication for Mike.\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# To ensure completeness and address potential implicit assumptions, we can also state that\n# any individual in the US wanting to work might need to apply for something, but the specifics\n# are tied to visa and student status. The statement about Mike is specific.\n\n# Alternative interpretation for generalization:\n# If Mike wants to work, and he is an international student in the US, he needs CPT.\n# \u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2227 Person(x) \u2227 x = mike) \u2192 NeedsToApply(x, CPT()))\n# However, a more general and direct rule is often preferred unless specifically asked to constrain to 'mike'.\n# The current formulation Work(mike) \u2192 NeedsToApply(mike, CPT()) directly translates the given sentence.\n# If we want to make it general for any person who wants to work in the US, and assume CPT is an option for them,\n# then the original general rule \u2200x (Work(x) \u2192 NeedsToApply(x, CPT())) could be used,\n# but this may be too broad given the context is about international students.\n\n# The most direct translation of \"Mike needs to apply for CPT if he wants to work in the US\"\n# is indeed the implication for Mike.\n\n# Let's consider the edge case where Mike might not be an international student in the US.\n# However, the premises already establish InternationalStudent(mike) and US(mike).\n# The statement about CPT is specific to Mike.\n\n# Final decision: The most accurate and direct representation of the statement \"Mike needs to apply for CPT if he wants to work in the US\"\n# given Mike's context as an international student in the US is to use an implication specific to Mike.\n# This avoids overgeneralization that might not be supported by the specific phrasing.\n# The premise already establishes Mike's status.\n# Therefore, the rule is:\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_694398d7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0003/post/solutions/sol_694398d7.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# Given Mike is an international student in the US, this condition is already satisfied.\n# So, if Mike wants to work, he needs to apply for CPT.\n\u2200x (Work(x) \u2192 NeedsToApply(x, CPT()))\n# This rule is a direct translation of \"Mike needs to apply for CPT if he wants to work in the US.\"\n# Since Mike is already established as an InternationalStudent and US(mike) is true,\n# the condition \"InternationalStudent(x) \u2227 US(x)\" is implicitly met for Mike.\n# Therefore, the simplified rule Work(mike) \u2192 NeedsToApply(mike, CPT()) is encoded.\n# To make this rule general for any individual who wants to work in the US, regardless of their international student status or visa type,\n# we can broaden it. However, the context implies this is for individuals in the US.\n# The most direct and accurate representation given the provided context about Mike is that\n# if Mike wants to work, he needs CPT. The original problem statement doesn't mandate that *only* international students need CPT.\n# Thus, the simplest and most accurate formulation for Mike's specific requirement is:\n\u2200x (Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Clarification: The rule \"Mike needs to apply for CPT if he wants to work in the US\" is a direct implication.\n# Given that Mike is an international student in the US, this rule can be expressed more broadly\n# as \"Any international student in the US who wants to work needs to apply for CPT\".\n# However, the problem statement focuses specifically on Mike's case.\n# The most faithful representation of \"Mike needs to apply for CPT if he wants to work in the US\"\n# given Mike's established status as an international student in the US is:\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n# This makes the rule applicable to any international student in the US.\n\n# Final choice for the rule concerning Mike and CPT, making it general for any international student in the US:\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_70a69f22.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_70a69f22.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) \u2227 Person(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Simplifications and Corrections:\n\n# Original Premise 4 was redundant given Premise 3 and the fact that Mike has an F1 visa is implied by the scenario.\n# The original premise 4 uses 'x' as a universally quantified variable but then immediately states a specific property of 'Mike'.\n# This implies that the intention was to state a rule specifically for Mike, or that Mike is an instance of a general rule.\n# Since Mike is an international student in the US and has an F1 visa (implied by the scenario and premise 3),\n# the rule for F1 visa holders already covers him.\n# However, the prompt states \"Mike needs to apply for CPT if he wants to work in the US.\" as a separate piece of information.\n# To accurately represent this, we can make the last premise more specific to Mike.\n\n# Revised Premise:\nMikeNeedsToApplyCPTIfWork ::: Work(mike) \u2192 NeedsToApply(mike, CPT()) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_73f79550.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_73f79550.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 J1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, OPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7cf3a877.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_7cf3a877.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 J1Visa(x) \u2192 \u00acWork(x)) ::: An international student in US with a J1 visa does not want to work in the US.\n\u2200x (Person(x) \u2192 InternationalStudent(x) \u2228 \u00acInternationalStudent(x)) ::: Every person is either an international student or not.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_81fa37ec.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_81fa37ec.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_837b2ef4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_837b2ef4.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# An international student in US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike is an international student.\n# Mike needs to apply for CPT if he wants to work in the US.\n# This implies that if Mike works, he needs CPT.\n# The general rule above (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n# combined with F1Visa(mike) implies that if Work(mike) then NeedsToApply(mike, CPT()) or NeedsToApply(mike, OPT()).\n# The specific rule \"Mike needs to apply for CPT if he wants to work in the US\"\n# suggests a stronger conclusion for Mike than the general rule.\n# We can model this as a specific fact or a more specific rule.\n# Let's assume the problem statement implies that CPT is a sufficient condition to work for Mike.\n# If Mike wants to work, he needs CPT.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_86b733b4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_86b733b4.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike) \u2228 J1Visa(mike)\nWork(mike)\n\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8f0a2ff9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0003/post/solutions/sol_8f0a2ff9.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\n\n# Rules:\n# Every international student in the US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in the US with an F1 visa needs to apply for CPT or OPT if they want to work.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This rule directly reflects the scenario statement for Mike.\n# Given Mike is an international student in the US, if he wants to work, he *must* apply for CPT.\n# This implies CPT is a mandatory application for Mike to work, regardless of his visa type.\n# If Mike has F1, the previous rule states he needs CPT *or* OPT. This new rule makes CPT a specific requirement for Mike.\n\u2200x (Person(x) \u2227 x = mike \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9e486dbe.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0006/post/solutions/sol_9e486dbe.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# An international student in US has either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# If a student wants to work and is in the US, they must apply for CPT or OPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# If Mike wants to work in the US, he needs to apply for CPT. This is a refinement of the above rule for Mike.\n# The previous rule about Mike needing CPT if he wants to work is sufficient and already covers this.\n# The existence of F1Visa(mike) and Work(mike) combined with the second rule implies NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()).\n# The third rule for Mike specifically states NeedsToApply(mike, CPT()) if Work(mike). This is more specific and is satisfied.\n# Therefore, the existing rules adequately capture the requirements for Mike.\n# We can simplify by removing redundant or subsumed rules if they don't add new constraints or specific cases.\n# The rule \"Mike needs to apply for CPT if he wants to work in the US.\" is the most specific and directly applicable for Mike.\n# The rule \"An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\"\n# combined with \"Mike needs to apply for CPT if he wants to work in the US.\" implies that if Mike has an F1 visa and wants to work,\n# he needs CPT. The more general rule is satisfied by the more specific one.\n\n# Simplified approach:\n# 1. General rule for international students in US having one of the two visas.\n# 2. Specific rule for Mike needing CPT to work.\n# 3. General rule for any international student in US wanting to work needing CPT or OPT.\n\n# The previous rules are sufficient.\n# Let's ensure the premises align with the intention.\n# The premise F1Visa(mike) is important.\n# The premise Work(mike) is important.\n# The rule that states \"Mike needs to apply for CPT if he wants to work in the US.\" is the most crucial for Mike's direct requirement.\n# The rule \"An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\"\n# applies to Mike, and given F1Visa(mike) and Work(mike), it leads to NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()).\n# The rule for Mike specifically states NeedsToApply(mike, CPT()). This is a stronger constraint that is consistent with the general rule.\n\n# The rules provided are logically sound and cover the scenario.\n# No significant simplification or bug fixing is needed based on the provided context.\n# The rules are:\n# 1. InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x)\n# 2. InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())\n# 3. InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT())\n# 4. InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())\n\n# Rule 3 for Mike implies NeedsToApply(mike, CPT()) if Work(mike).\n# Given Work(mike), we can infer NeedsToApply(mike, CPT()).\n# Rule 2 for Mike implies NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()) since InternationalStudent(mike), US(mike), F1Visa(mike), Work(mike) are true.\n# Rule 4 for Mike implies NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()) since InternationalStudent(mike), US(mike), Work(mike) are true.\n# The most direct and specific conclusion for Mike is derived from Rule 3.\n\n# The current rules are sufficient.\n# To provide a *different* program, we can rephrase or reorder the rules while maintaining logical equivalence.\n# One way to simplify is to focus on the direct implications rather than necessarily including all intermediate conditions if they are implied by other premises.\n\n# Rephrased Program:\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# All international students in the US have either an F1 or J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# If an international student in the US wants to work, they must apply for CPT or OPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike, as an international student who wants to work, requires CPT. This is a specific requirement for Mike.\n# This rule is more specific than the general rule above for Mike.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# If Mike has an F1 visa and wants to work, he needs to apply for CPT or OPT.\n# This is already covered by the second rule, and the third rule provides a more specific requirement for Mike.\n# Given that Mike has an F1 visa and wants to work, and the third rule states he needs CPT,\n# the condition \"NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())\" is satisfied because \"NeedsToApply(x, CPT())\" is true.\n# No further rule is strictly needed here as the specific rule for Mike is stronger.\n\n# We can consolidate the idea that to work in the US as an international student, an application is necessary.\n\n# Final Program:\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# An international student in the US has either an F1 or J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# If an international student in the US wants to work, they must apply for CPT or OPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike must apply for CPT if he wants to work in the US. This is a specific obligation for Mike.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# The rule \"An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\"\n# is implicitly satisfied. If Mike has an F1 visa and wants to work, the rule above says he needs CPT.\n# This satisfies the condition of needing CPT or OPT.\n# The specific rule for Mike (NeedsToApply(mike, CPT())) is more constraining and takes precedence or is the direct requirement.\n\n# We can simplify by removing redundant rules if they are fully implied by others.\n# The rule \"InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())\"\n# for Mike, given F1Visa(mike) and Work(mike), implies NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()).\n# The rule \"InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT())\" implies NeedsToApply(mike, CPT()).\n# If NeedsToApply(mike, CPT()) is true, then NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()) is also true.\n# So, the rule with F1Visa(x) is implied by the specific rule for Mike and the general work rule.\n\n# Here is a program with simplified logic:\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# International students in the US must have either an F1 or J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# To work in the US, an international student must apply for CPT or OPT.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike specifically needs to apply for CPT if he wants to work.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# The rule about F1 visa holders needing CPT or OPT is covered.\n# If Mike has an F1 visa and wants to work, the third rule states he needs CPT.\n# This satisfies the second rule's requirement that he needs CPT or OPT.\n# The specific rule for Mike is the most direct obligation.\n# No additional rules are required to infer his need for CPT.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a28fdf8e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0008/post/solutions/sol_a28fdf8e.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This implies that if Mike wants to work, he must apply for CPT.\n# Since Mike is an international student in the US and wants to work, this is a specific instance.\n# The general rule that covers this specific instance is:\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n# This is a more general form that covers the specific case of Mike.\n# The rule from Parent B: \u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n# is a specific instance of the general rule above.\n# To merge and improve, we will keep the most general logically correct rules.\n# The rule from Parent B, \"Mike needs to apply for CPT if he wants to work in the US,\"\n# can be considered an implication that holds true for Mike.\n# The rule \u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n# derived in Parent A as a final choice, is also a good generalization.\n# However, Parent B explicitly states `F1Visa(mike)` and `Work(mike)` as premises,\n# which are used in the second rule.\n# The third rule from Parent B, `\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))`,\n# is a direct encoding of \"Mike needs to apply for CPT if he wants to work in the US.\"\n# Given the other rules and premises, this specific rule is valid.\n# To avoid redundancy and capture the essence, we can keep the premises and the most encompassing rules.\n# The rule \"An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US\"\n# combined with the premise `F1Visa(mike)` and `Work(mike)` already implies that Mike needs to apply for CPT or OPT.\n# The statement \"Mike needs to apply for CPT if he wants to work in the US\" is a stronger statement than\n# \"Mike needs to apply for CPT OR OPT if he wants to work in the US.\"\n# Therefore, we should include the specific rule for Mike and CPT.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n# This rule directly reflects the specific requirement for Mike as stated in the scenario.\n# The general rules cover the broader context for international students.\n# The rule from Parent A `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))` is also valid,\n# but the rule from Parent B is more direct in its encoding of \"Mike needs to apply for CPT\".\n# We keep the premises from Parent B as they provide more specific information about Mike.\n# The rule `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))`\n# is retained.\n# The first rule `\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))` is also retained.\n# The most specific rule for Mike concerning CPT is the one from Parent B.\n# Combining, we keep the premises from B, and the general rules from A which are also present in B.\n# We also include the specific rule for Mike from B as it is more precise about CPT.\n# The rule `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))` from Parent A's final choice\n# is a generalization. The rule from Parent B `\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))`\n# is more specific to Mike.\n# Since the scenario states \"Mike needs to apply for CPT if he wants to work in the US,\"\n# this specific rule is crucial.\n# Therefore, the chosen rules and premises are:\n# Premises from Parent B.\n# Rule 1 from Parent A (also in Parent B).\n# Rule 2 from Parent A (also in Parent B).\n# Rule 3 from Parent B, which is specific to Mike and CPT.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2227 x = mike \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b40e6cbc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_b40e6cbc.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x)) ::: International students in the US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())) ::: An international student in the US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) ::: If an international student in the US wants to work, they need to apply for CPT.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bcabe09a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0003/post/solutions/sol_bcabe09a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\nF1Visa(mike)\nWork(mike)\n\n# Rules:\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2192 F1Visa(x) \u2228 J1Visa(x))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This implies that CPT is a necessary application for Mike to work.\n# We can represent this as a conditional rule.\n\u2200x (InternationalStudent(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Mike is an international student and wants to work.\n# This implies Mike needs to apply for CPT.\n# Since Mike is an international student and wants to work, the rule above implies Mike needs to apply for CPT.\n# We can also state this directly, as Mike is an international student and wants to work.\nInternationalStudent(mike) \u2227 Work(mike) \u2192 NeedsToApply(mike, CPT())\n\n# Mike is an international student and has an F1 visa.\n# If Mike wants to work, he needs to apply for CPT or OPT.\n# Since Mike also needs to apply for CPT (as per the specific rule above), this general rule is consistent.\n# The general rule is:\n# \u2200x (InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))\n# Applying this to Mike:\n# InternationalStudent(mike) \u2227 US(mike) \u2227 F1Visa(mike) \u2227 Work(mike) \u2192 NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT())\n# This rule is satisfied because the more specific rule states NeedsToApply(mike, CPT()), which implies NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()).\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c9f7820b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_c9f7820b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\nF1Visa(mike)\nWork(mike)\n\n# These rules capture the logic from the scenario description.\n# An international student in the US must have either an F1 or J1 visa.\n# This is implied by the F1Visa(mike) and InternationalStudent(mike) and US(mike) premises.\n# We can explicitly state that if someone is an international student in the US, they have one of these visas.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in the US with an F1 visa needs to apply for CPT or OPT if they want to work.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This is a more specific rule that applies to Mike. It implies that for Mike, CPT is the required application if he wants to work,\n# overriding or being more specific than the general rule for F1 visa holders.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2227 x = mike) \u2192 NeedsToApply(x, CPT()))\n\n# Note: The original program had two rules that were partially redundant or could be made more precise.\n# The rule `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))`\n# implies that F1 visa holders can apply for either CPT or OPT.\n# The rule `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))` seems to imply that *any* international student in the US\n# who wants to work must apply for CPT. This rule is problematic because it doesn't consider the visa type.\n# The scenario explicitly states that F1 visa holders *need* to apply for CPT or OPT.\n# The scenario also states that Mike *needs* to apply for CPT if he wants to work. This is a stronger constraint for Mike.\n\n# Revised logic:\n# 1. International students in the US have either F1 or J1 visa. (Added for completeness, though implied by Mike's premises)\n# 2. If an international student in the US has an F1 visa AND wants to work, they need to apply for CPT OR OPT.\n# 3. If Mike is an international student in the US AND wants to work, he NEEDS to apply for CPT. This is a more specific requirement for Mike.\n\n# Therefore, we can simplify and clarify:\n# The rule `\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))` from the original program\n# is problematic as it doesn't specify the visa type. The scenario implies that F1 visa holders have options.\n# The new rules are structured to reflect this more accurately.\n# Rule for Mike is kept as the most specific.\n# The general rule for F1 visa holders requiring CPT or OPT is also kept.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cb00ee1a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0002/post/solutions/sol_cb00ee1a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# Additional Premises to represent the scenario:\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n# This rule is specific to Mike. Since Mike is already established as an InternationalStudent and in the US,\n# the condition can be simplified.\n\u2200x ((Person(x) \u2227 Work(x) \u2227 (x = mike)) \u2192 NeedsToApply(x, CPT()))\n# Alternatively, and more directly reflecting the phrasing for Mike:\n# Work(mike) \u2192 NeedsToApply(mike, CPT())\n# However, to keep it within a universally quantified form and avoid explicit instantiation for Mike unless necessary for inference,\n# the above formulation using equality is more precise while still being a distinct rule from the general F1 case.\n# A simpler form assuming the rule directly applies to Mike's known status:\n# Work(mike) \u2192 NeedsToApply(mike, CPT())\n# We will use the most direct interpretation as a conditional specific to Mike.\n\n# Revised Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# International students in US have either an F1 visa or a J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\nWork(mike) \u2192 NeedsToApply(mike, CPT())\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cffdb3a2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/initial/solutions/sol_cffdb3a2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) \u2227 US(mike) ::: Mike is an international student in US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US.\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e4526cbc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_e4526cbc.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# Additional Premises to represent the scenario:\n# International students in US have either an F1 visa or a J1 visa.\n# This is implicitly handled by the subsequent rules focusing on F1 visas.\n# If we wanted to explicitly state this, it would be:\n# \u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work in the US.\n\u2200x (InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2192 NeedsToApply(x, CPT()))\n\n# Mike is an international student. (Already stated as a fact above, but for completeness if it wasn't a direct fact)\n# InternationalStudent(mike)\n\n# Mike has an F1 visa (an assumption to explore implications, not stated in the original scenario)\n# F1Visa(mike)\n\n# Mike wants to work in the US (an assumption to explore implications, not stated in the original scenario)\n# Work(mike)\n\n# Example of a derived fact based on the rules and assumptions:\n# If Mike is an international student, is in the US, has an F1 visa, and wants to work:\n# (InternationalStudent(mike) \u2227 US(mike) \u2227 F1Visa(mike) \u2227 Work(mike)) \u2192 (NeedsToApply(mike, CPT()) \u2228 NeedsToApply(mike, OPT()))\n# And from the second rule specific to Mike:\n# (InternationalStudent(mike) \u2227 US(mike) \u2227 Work(mike)) \u2192 NeedsToApply(mike, CPT())\n\n# Simplifying the second rule for Mike: since Mike is an international student in the US (given),\n# the rule can be simplified to:\n# Work(mike) \u2192 NeedsToApply(mike, CPT())\n# This is a more direct representation of \"Mike needs to apply for CPT if he wants to work in the US.\"\n# Let's use this simplified form for Mike.\n\n# Simplified rule for Mike:\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n\n# Revised Premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# International students in US with an F1 visa need to apply for CPT or OPT if they want to work.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike needs to apply for CPT if he wants to work. (This rule is specific to Mike, given he is an international student in the US)\n\u2200x (Work(x) \u2192 NeedsToApply(x, CPT()))\n# This final rule is a simplification. Since the problem statement establishes Mike is an InternationalStudent and in the US,\n# the original statement \"Mike needs to apply for CPT if he wants to work in the US\" can be interpreted as\n# a specific instance or a general rule applicable to Mike's status.\n# The most direct translation is that IF Mike wants to work, THEN he needs to apply for CPT.\n# This implies the condition \"InternationalStudent(mike) \u2227 US(mike)\" is already met.\n# Therefore, the rule can be simply: Work(mike) \u2192 NeedsToApply(mike, CPT())\n# For a general student in the US, it would be:\n# \u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n# The problem statement specifies \"Mike needs to apply for CPT if he wants to work in the US.\"\n# This can be directly encoded as:\n# \u2200x (Work(x) \u2192 NeedsToApply(x, CPT()))\n# assuming that the context for applying for CPT is within the US and for international students.\n# Given that Mike is an international student in the US, this rule effectively applies to him.\n# Let's use the most general formulation that covers the scenario described and implies Mike's situation.\n\n# Final refined premises:\nInternationalStudent(mike)\nUS(mike)\nPerson(mike)\n\n# An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# For any international student in the US, if they want to work, they need to apply for CPT.\n# This is a more general statement derived from \"Mike needs to apply for CPT if he wants to work in the US.\"\n# and given Mike's status. This ensures that the rule is not *only* for Mike but for all international students in the US.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e9a9347b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0003/post/solutions/sol_e9a9347b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\nF1Visa(mike)\nWork(mike)\n\n# These rules capture the logic from the scenario description.\n\n# An international student in the US must have either an F1 or J1 visa.\n\u2200x ((InternationalStudent(x) \u2227 US(x)) \u2192 (F1Visa(x) \u2228 J1Visa(x)))\n\n# An international student in the US with an F1 visa needs to apply for CPT or OPT if they want to work.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\n# Mike, specifically, needs to apply for CPT if he wants to work in the US.\n# This rule takes precedence for Mike, ensuring he applies for CPT as stated.\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x) \u2227 x = mike) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f32b20ff.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_6/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_62/run_20250904T171143Z_eefd67/run_20250904T181143_cb6949/evo_gen_0001/post/solutions/sol_f32b20ff.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_62",
+          "context": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Mike has a J1 visa.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "J1Visa(mike)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike)\nInternationalStudent(mike)\nUS(mike)\nF1Visa(mike)\nWork(mike)\n\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 F1Visa(x) \u2227 Work(x)) \u2192 (NeedsToApply(x, CPT()) \u2228 NeedsToApply(x, OPT())))\n\u2200x ((InternationalStudent(x) \u2227 US(x) \u2227 Work(x)) \u2192 NeedsToApply(x, CPT()))\n\n# Conclusion:\nJ1Visa(mike)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 0,
+    "total_questions": 36,
+    "overall_accuracy": 0.0
+  }
+}

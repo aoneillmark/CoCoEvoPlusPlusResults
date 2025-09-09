@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_64",
+  "problem_text": "All cows are bovines. Some pets are cows. If something is a bovine, then it is domesticated. No domesticated animals are alligators. Ted is an aligator.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Bovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.",
+  "tests": [
+    {
+      "id": "tc_eb28d3f0",
+      "questions": "Based on the above information, is the following statement true or false? No pet is a domesticated animal.",
+      "conclusions": "¬∃x (Pet(x) ∧ Domesticated(x)) ::: No pet is a domesticated animal. FALSE"
+    },
+    {
+      "id": "tc_5ae485ee",
+      "questions": "Based on the above information, is the following statement true or false? Ted is a domesticated animal.",
+      "conclusions": "Domesticated(ted) ::: Ted is a domesticated animal. FALSE"
+    },
+    {
+      "id": "tc_ae337612",
+      "questions": "Based on the above information, is the following statement true or false? Ted is a bovine.",
+      "conclusions": "Bovine(ted) ::: Ted is a bovine. FALSE"
+    },
+    {
+      "id": "tc_650861e2",
+      "questions": "Based on the above information, is the following statement true or false? Some pets are domesticated animals.",
+      "conclusions": "∃x (Pet(x) ∧ Domesticated(x)) ::: Some pets are domesticated animals. TRUE"
+    },
+    {
+      "id": "tc_9809b14c",
+      "questions": "Based on the above information, is the following statement true or false? Some pets are domesticated animals and Ted is a bovine.",
+      "conclusions": "∃x (Pet(x) ∧ Domesticated(x)) ∧ Bovine(ted) ::: Some pets are domesticated animals and Ted is a bovine. FALSE"
+    },
+    {
+      "id": "tc_3d86b84b",
+      "questions": "Based on the above information, is the following statement true or false? Some pets are alligators.",
+      "conclusions": "∃x (Pet(x) ∧ Alligator(x)) ::: Some pets are alligators. FALSE"
+    },
+    {
+      "id": "tc_9020a117",
+      "questions": "Based on the above information, is the following statement true or false? Some pets are not alligators.",
+      "conclusions": "∃x (Pet(x) ∧ ¬Alligator(x)) ::: Some pets are not alligators. TRUE"
+    },
+    {
+      "id": "tc_2e861475",
+      "questions": "Based on the above information, is the following statement true or false? Ted is a pet.",
+      "conclusions": "Pet(ted) ::: Ted is a pet. FALSE"
+    },
+    {
+      "id": "tc_850bd043",
+      "questions": "Based on the above information, is the following statement true or false? If Ted is a bovine, then Ted is domesticated.",
+      "conclusions": "Ted(ted) ∧ Alligator(ted) → ¬Domesticated(ted) ::: If Ted is a bovine, then Ted is domesticated. FALSE"
+    },
+    {
+      "id": "tc_730e1d96",
+      "questions": "Based on the above information, is the following statement true or false? All pets are domesticated.",
+      "conclusions": "∀x (Pet(x) → Domesticated(x)) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_f72af997",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nAlligator(ted) ::: Ted is an aligator."
+    },
+    {
+      "id": "sol_74c7f71f",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\n∀x (Ted(x) → Alligator(x)) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_74c01703",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_a8ca2460",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an aligator."
+    },
+    {
+      "id": "sol_9873fc9c",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃y (Pet(y) ∧ Cow(y)) ::: Some pets are cows.\n∀z (Bovine(z) → Domesticated(z)) ::: If something is a bovine, then it is domesticated.\n∀w (Domesticated(w) → ¬Alligator(w)) ::: No domesticated animals are alligators.\n∃x (Ted(x)) ::: Ted is a person.\n∀x (Ted(x) → Alligator(x)) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_b50b4cad",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃y (Pet(y) ∧ Cow(y)) ::: Some pets are cows.\n∀z (Bovine(z) → Domesticated(z)) ::: If something is a bovine, then it is domesticated.\n∀w (Domesticated(w) → ¬Alligator(w)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_29e68cc4",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃y (Pet(y) ∧ Cow(y)) ::: Some pets are cows.\n∀z (Bovine(z) → Domesticated(z)) ::: If something is a bovine, then it is domesticated.\n∀w (Domesticated(w) → ¬Alligator(w)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_c39cd29a",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃y (Pet(y) ∧ Cow(y)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_0e20b58b",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nAlligator(ted) ::: Ted is an alligator."
+    },
+    {
+      "id": "sol_b4f02cb4",
+      "text": "# Predicates:\nBovine(x) ::: x is a bovine.\nCow(x) ::: x is a cow.\nPet(x) ::: x is a pet.\nDomesticated(x) ::: x is domesticated.\nAlligator(x) ::: x is an alligator.\nTed(x) ::: x is Ted.\n\n# Premises:\n∀x (Cow(x) → Bovine(x)) ::: All cows are bovines.\n∃x (Pet(x) ∧ Cow(x)) ::: Some pets are cows.\n∀x (Bovine(x) → Domesticated(x)) ::: If something is a bovine, then it is domesticated.\n∀x (Domesticated(x) → ¬Alligator(x)) ::: No domesticated animals are alligators.\nTed(ted) ∧ Alligator(ted) ::: Ted is an alligator."
+    }
+  ],
+  "validation": {
+    "id": "tc_88ba04dd",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Ted is a pet.",
+    "conclusions": "Pet(ted) ::: Ted is a pet. unknown"
+  }
+}

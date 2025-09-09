@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_133",
+  "problem_text": "[BG] Some mammals have teeth. Platypus have no teeth. Platypus are mammals. Humans have teeth.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Mammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.",
+  "tests": [
+    {
+      "id": "tc_d1217474",
+      "questions": "Based on the above information, is the following statement true or false? All humans have teeth.",
+      "conclusions": "∀x Human(x) → HasTeeth(x) ::: TRUE"
+    },
+    {
+      "id": "tc_a8c8ad0f",
+      "questions": "Based on the above information, is the following statement true or false? No platypus is a human.",
+      "conclusions": "¬∃x (Platypus(x) ∧ Human(x)) ::: No platypus is a human. TRUE"
+    },
+    {
+      "id": "tc_ea35eddc",
+      "questions": "Based on the above information, is the following statement true or false? Some mammals are platypuses that do not have teeth.",
+      "conclusions": "∃x (Mammal(x) ∧ Platypus(x) ∧ ¬HasTeeth(x)) ::: Some mammals are platypuses that do not have teeth. TRUE"
+    },
+    {
+      "id": "tc_998c87a4",
+      "questions": "Based on the above information, is the following statement true or false? All mammals are humans or platypuses.",
+      "conclusions": "∀x (Mammal(x) → (Human(x) ∨ Platypus(x))) ::: FALSE"
+    },
+    {
+      "id": "tc_f301eceb",
+      "questions": "Based on the above information, is the following statement true or false? If a mammal has teeth, then it is not a platypus.",
+      "conclusions": "∀x (Mammal(x) ∧ HasTeeth(x) → ¬Platypus(x)) ::: FALSE"
+    },
+    {
+      "id": "tc_bcd10db7",
+      "questions": "Based on the above information, is the following statement true or false? Some mammals are humans that have teeth.",
+      "conclusions": "∃x (Mammal(x) ∧ Human(x) ∧ HasTeeth(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_2177e6b9",
+      "questions": "Based on the above information, is the following statement true or false? All mammals that do not have teeth are platypuses.",
+      "conclusions": "∀x (Mammal(x) ∧ ¬HasTeeth(x) → Platypus(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_226d8377",
+      "questions": "Based on the above information, is the following statement true or false? If a mammal is a human, then it has teeth.",
+      "conclusions": "∀x (Mammal(x) ∧ Human(x) → HasTeeth(x)) ::: TRUE"
+    },
+    {
+      "id": "tc_bce98ba8",
+      "questions": "Based on the above information, is the following statement true or false? All humans are mammals that have teeth.",
+      "conclusions": "∀x (Human(x) → (Mammal(x) ∧ HasTeeth(x))) ::: TRUE"
+    },
+    {
+      "id": "tc_d47be3d9",
+      "questions": "Based on the above information, is the following statement true or false? If a mammal is a platypus, then it does not have teeth.",
+      "conclusions": "∀x (Mammal(x) ∧ Platypus(x) → ¬HasTeeth(x)) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_02f35a2c",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∀x (Human(x) → HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_c01f84d8",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\nHuman(human) ∧ HasTeeth(human) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_1e8205d6",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) ∧ HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_db825c9d",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃y (Human(y) ∧ HasTeeth(y)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_0f52b20d",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) → HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_22bb9818",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) ∧ HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_cd2286b7",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) ∧ HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_03279466",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) ∧ HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_fe46e6de",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∃x (Human(x) ∧ HasTeeth(x)) ::: Humans have teeth."
+    },
+    {
+      "id": "sol_17542a80",
+      "text": "# Predicates:\nMammal(x) ::: x is a mammal.\nHasTeeth(x) ::: x has teeth.\nPlatypus(x) ::: x is a platypus.\nHuman(x) ::: x is a human.\n\n# Premises:\n∃x (Mammal(x) ∧ HasTeeth(x)) ::: Some mammals have teeth.\n∀x (Platypus(x) → ¬HasTeeth(x)) ::: Platypus have no teeth.\n∀x (Platypus(x) → Mammal(x)) ::: Platypus are mammals.\n∀x (Human(x) → HasTeeth(x)) ::: Humans have teeth."
+    }
+  ],
+  "validation": {
+    "id": "tc_3e99d33d",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Platypus are mammals with no teeth.",
+    "conclusions": "Platypus(platypus) ∧ Mammal(platypus) ∧ ¬HasTeeth(platypus) ::: Platypus are mammals with no teeth. true"
+  }
+}

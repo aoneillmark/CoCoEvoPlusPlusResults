@@ -1,0 +1,872 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116",
+  "dataset": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/temp_dataset_for_FOLIO_dev_116.json",
+  "solutions": [
+    {
+      "solution_name": "sol_0c9c008f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_0c9c008f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1338a7c7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_1338a7c7.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1e0d7718.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_1e0d7718.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1e4dcc05.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_1e4dcc05.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x ((Shooter(x) \u2227 Jump(x)) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x ((Shooter(x) \u2227 Jump(x)) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2a12d228.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_2a12d228.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x)) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x)) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2a340b95.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_2a340b95.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_47720035.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0003/post/solutions/sol_47720035.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Class(y) \u2192 (Man(y) \u2227 Taller(michael, y))) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Class(y) \u2192 (Man(y) \u2227 Taller(michael, y))) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_496d8689.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0003/post/solutions/sol_496d8689.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_50b81860.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0003/post/solutions/sol_50b81860.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6ea163b1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0006/post/solutions/sol_6ea163b1.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(michael) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\nMan(michael) ::: Michael is a man.\nMan(peter) ::: Peter is a man.\nMan(windy) ::: Windy is a man.\nShooter(windy) ::: Windy is a shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6ebf5d94.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_6ebf5d94.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7eaf0170.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0003/post/solutions/sol_7eaf0170.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8f8bf47b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_8f8bf47b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x)) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x)) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_97583c67.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_97583c67.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(michael, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nWindy(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(michael, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nWindy(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9f40cc2b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_9f40cc2b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a94b87c2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_a94b87c2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nWindy(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nWindy(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a9c1755a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_a9c1755a.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b8be91f9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_b8be91f9.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y) \u2192 Class(y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_be380832.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_be380832.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 \u00ac\u2203y (Man(y) \u2227 Taller(y, x))) \u2192 Class(x) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c5c2ce24.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_c5c2ce24.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x) \u2227 \u00acJump(x)) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_cc82fe63.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0004/post/solutions/sol_cc82fe63.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x ((Man(x) \u2227 Man(michael)) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d4b36efa.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_d4b36efa.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(michael) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d845fd21.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_d845fd21.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d95a631f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_d95a631f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_eaf5a9fd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0002/post/solutions/sol_eaf5a9fd.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, y)) ::: If a man is taller than another man, the taller one can block the other's shooting.\n\u2200x (Man(x) \u2227 Taller(michael, x) \u2192 Class(x)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nTaller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Man(x) \u2192 Person(x)) ::: Michael is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Peter is a man.\n\u2200x (Man(x) \u2192 Person(x)) ::: Windy is a man.\n\u2200x ((Man(x) \u2227 Shooter(x)) \u2227 \u00acJump(x) \u2192 Block(michael, x)) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\n\u00acBlock(michael, Windy) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f300eaa2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_10/benchmark_runs/FOLIO_dev_116/evo_gen_0001/post/solutions/sol_f300eaa2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_116",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Windy is a great shooter.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "GreatShooter(windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nGreatShooter(windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_117",
+          "context": "If a man is taller than another man, the taller one can block the other's shooting. Michael is a man who is taller than everyone else in his class. If person x is taller than person y, and person y is taller than person z, than x is taller than z Peter is a man who is taller than Michael. Michael can block any shooting from a person as long as the person does not jump when shooting. Michael cannot block Windy's shooting. Every shooter who can jump when shooting is a great shooter.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Peter can block Windy's shooting.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "Block(peter, windy)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nMan(x) ::: x is a man.\nTaller(x, y) ::: x is taller than y.\nBlock(x, y) ::: x can block y's shooting.\nShooting(y) ::: y is a shooting.\nClass(x) ::: x is in Michael's class.\nPerson(x) ::: x is a person.\nJump(x) ::: x jumps when shooting.\nGreatShooter(x) ::: x is a great shooter.\nShooter(x) ::: x is a shooter.\nMichael(x) ::: x is Michael.\nPeter(x) ::: x is Peter.\nWindy(x) ::: x is Windy.\n\n# Premises:\n\u2200x \u2200y ((Man(x) \u2227 Man(y) \u2227 Taller(x, y)) \u2192 Block(x, Shooting(y))) ::: If a man is taller than another man, the taller one can block the other's shooting.\nMan(michael) \u2227 \u2200y (Man(y) \u2227 Taller(michael, y)) ::: Michael is a man who is taller than everyone else in his class.\n\u2200x \u2200y \u2200z (Taller(x, y) \u2227 Taller(y, z) \u2192 Taller(x, z)) ::: If person x is taller than person y, and person y is taller than person z, than x is taller than z\nMan(peter) \u2227 Taller(peter, michael) ::: Peter is a man who is taller than Michael.\n\u2200x (Shooter(x) \u2227 \u00acJump(x) \u2192 Block(michael, Shooting(x))) ::: Michael can block any shooting from a person as long as the person does not jump when shooting.\nMan(windy) \u2227 Shooter(windy) \u2227 \u00acBlock(michael, Shooting(windy)) ::: Michael cannot block Windy's shooting.\n\u2200x (Shooter(x) \u2227 Jump(x) \u2192 GreatShooter(x)) ::: Every shooter who can jump when shooting is a great shooter.\n\n# Conclusion:\nBlock(peter, windy)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 11,
+    "total_questions": 52,
+    "overall_accuracy": 0.21153846153846154
+  }
+}

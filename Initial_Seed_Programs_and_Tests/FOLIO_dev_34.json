@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_34",
+  "problem_text": "Diamond Mine is a professional wrestling stable, formed in WWE. Roderick Strong leads Diamond Mine. Diamond Mine includes the Creed Brothers, and Ivy Nile. Imperium has a feud with Diamond Mine.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "ProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.",
+  "tests": [
+    {
+      "id": "tc_854254fb",
+      "questions": "Based on the above information, is the following statement true or false? Roderick Strong leads a professional wrestling stable that was formed in WWE.",
+      "conclusions": "Leads(roderickStrong, diamondMine) ∧ FormedIn(diamondMine, wwe) ::: Roderick Strong leads a professional wrestling stable that was formed in WWE. TRUE"
+    },
+    {
+      "id": "tc_a0fe18de",
+      "questions": "Based on the above information, is the following statement true or false? The Creed Brothers are part of a professional wrestling stable that has a feud with Imperium.",
+      "conclusions": "∃x ∃y (Includes(x, creedbrothers) ∧ Feud(x, imperium)) ::: The Creed Brothers are part of a professional wrestling stable that has a feud with Imperium. TRUE"
+    },
+    {
+      "id": "tc_91e86c20",
+      "questions": "Based on the above information, is the following statement true or false? Ivy Nile is part of a professional wrestling stable that has a feud with Imperium.",
+      "conclusions": "∃x ∃y (IvyNile(x) ∧ Includes(y, x) ∧ Feud(y, Imperium)) ::: Ivy Nile is part of a professional wrestling stable that has a feud with Imperium. FALSE"
+    },
+    {
+      "id": "tc_edab0c53",
+      "questions": "Based on the above information, is the following statement true or false? Imperium has a feud with a professional wrestling stable that includes the Creed Brothers and Ivy Nile.",
+      "conclusions": "∃x ∃y ∃z (ProfessionalWrestlingStable(x) ∧ Feud(Imperium, x) ∧ Includes(x, y) ∧ Includes(x, z) ∧ CreedBrothers(y) ∧ IvyNile(z)) ::: TRUE"
+    },
+    {
+      "id": "tc_25ca2179",
+      "questions": "Based on the above information, is the following statement true or false? Diamond Mine is a professional wrestling stable that includes the Creed Brothers and Ivy Nile and has a feud with Imperium.",
+      "conclusions": "DiamondMine(x) ∧ FormedIn(x, WWE) ∧ Includes(x, CreedBrothers) ∧ Includes(x, IvyNile) ∧ Feud(Imperium, x) ::: Diamond Mine is a professional wrestling stable that includes the Creed Brothers and Ivy Nile and has a feud with Imperium. FALSE"
+    },
+    {
+      "id": "tc_9fcb991c",
+      "questions": "Based on the above information, is the following statement true or false? Diamond Mine is a professional wrestling stable that is led by Roderick Strong and has a feud with Imperium.",
+      "conclusions": "(DiamondMine(x) ∧ ProfessionalWrestlingStable(x) ∧ Leads(x, roderickstrong) ∧ Feud(x, imperium)) ::: Diamond Mine is a professional wrestling stable that is led by Roderick Strong and has a feud with Imperium. FALSE"
+    },
+    {
+      "id": "tc_5c915b04",
+      "questions": "Based on the above information, is the following statement true or false? Roderick Strong leads Diamond Mine, and Diamond Mine includes Ivy Nile.",
+      "conclusions": "Leads(roderickStrong, diamondMine) ∧ Includes(diamondMine, ivyNile) ::: Roderick Strong leads Diamond Mine, and Diamond Mine includes Ivy Nile. TRUE"
+    },
+    {
+      "id": "tc_9dfb68df",
+      "questions": "Based on the above information, is the following statement true or false? Roderick Strong leads a professional wrestling stable that was formed in WWE and has a feud with Imperium.",
+      "conclusions": "Leads(roderickstrong, diamondmine) ∧ FormedIn(diamondmine, wwe) ∧ Feud(imperium, diamondmine) ::: Roderick Strong leads a professional wrestling stable that was formed in WWE and has a feud with Imperium. TRUE"
+    },
+    {
+      "id": "tc_1f270c34",
+      "questions": "Based on the above information, is the following statement true or false? Roderick Strong leads a professional wrestling stable that is formed in WWE.",
+      "conclusions": "Leads(roderickStrong, diamondMine) ∧ FormedIn(diamondMine, wwe) ::: Roderick Strong leads a professional wrestling stable that is formed in WWE. TRUE"
+    },
+    {
+      "id": "tc_ea2f3d17",
+      "questions": "Based on the above information, is the following statement true or false? Diamond Mine is a professional wrestling stable formed in WWE, and Roderick Strong leads Diamond Mine, which includes the Creed Brothers and Ivy Nile.",
+      "conclusions": "DiamondMine(x) ∧ FormedIn(x, WWE) ∧ Leads(RoderickStrong, x) ∧ Includes(x, CreedBrothers) ∧ Includes(x, IvyNile) ::: TRUE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_ebb3d2af",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nProfessionalWrestlingStable(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine is formed in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong leads Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine includes the Creed Brothers.\nIncludes(diamondmine, ivynile) ::: Diamond Mine includes Ivy Nile.\nFeud(imperium, diamondmine) ::: Imperium has a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_c4c256e7",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nProfessionalWrestlingStable(diamondmine)\nFormedIn(diamondmine, wwe)\nLeads(roderickstrong, diamondmine)\nIncludes(diamondmine, creedbrothers)\nIncludes(diamondmine, ivynile)\nFeud(imperium, diamondmine)"
+    },
+    {
+      "id": "sol_45f15a01",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nProfessionalWrestlingStable(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine was formed in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong is the leader of Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: The Creed Brothers are part of Diamond Mine.\nIncludes(diamondmine, ivynile) ::: Ivy Nile is part of Diamond Mine.\nFeud(imperium, diamondmine) ::: Imperium is in a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_5694f650",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine)\nProfessionalWrestlingStable(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine is formed in WWE.\nRoderickStrong(roderickstrong)\nLeads(roderickstrong, diamondmine) ::: Roderick Strong leads Diamond Mine.\nCreedBrothers(creedbrothers)\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine includes the Creed Brothers.\nIvyNile(ivynile)\nIncludes(diamondmine, ivynile) ::: Diamond Mine includes Ivy Nile.\nImperium(imperium)\nFeud(imperium, diamondmine) ::: Imperium has a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_17ba82cc",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine was established in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong is the leader of Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine has the Creed Brothers as members.\nIncludes(diamondmine, ivynile) ::: Diamond Mine also has Ivy Nile as a member.\nFeud(imperium, diamondmine) ::: Imperium is in conflict with Diamond Mine."
+    },
+    {
+      "id": "sol_702cfaf9",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, WWE(wwe)) ::: Diamond Mine is formed in WWE.\nLeads(RoderickStrong(roderickstrong), diamondmine) ::: Roderick Strong leads Diamond Mine.\nIncludes(diamondmine, CreedBrothers(creedbrothers)) ::: Diamond Mine includes the Creed Brothers.\nIncludes(diamondmine, IvyNile(ivynile)) ::: Diamond Mine includes Ivy Nile.\nFeud(Imperium(imperium), diamondmine) ::: Imperium has a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_f56501fc",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nProfessionalWrestlingStable(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine is formed in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong leads Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine includes the Creed Brothers.\nIncludes(diamondmine, ivynile) ::: Diamond Mine includes Ivy Nile.\nFeud(imperium, diamondmine) ::: Imperium has a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_9dc03224",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine was formed in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong leads Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine includes the Creed Brothers.\nIncludes(diamondmine, ivynile) ::: Diamond Mine includes Ivy Nile.\nFeud(imperium, diamondmine) ::: Imperium has a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_9c492a85",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: WWE is where Diamond Mine was formed.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong is the leader of Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: The Creed Brothers are part of Diamond Mine.\nIncludes(diamondmine, ivynile) ::: Ivy Nile is a member of Diamond Mine.\nFeud(imperium, diamondmine) ::: Imperium is in a feud with Diamond Mine."
+    },
+    {
+      "id": "sol_8bc2786c",
+      "text": "# Predicates:\nProfessionalWrestlingStable(x) ::: x is a professional wrestling stable.\nFormedIn(x, y) ::: x is formed in y.\nLeads(x, y) ::: x leads y.\nIncludes(x, y) ::: x includes y.\nFeud(x, y) ::: x has a feud with y.\nDiamondMine(x) ::: x is Diamond Mine.\nRoderickStrong(x) ::: x is Roderick Strong.\nWWE(x) ::: x is WWE.\nCreedBrothers(x) ::: x is the Creed Brothers.\nIvyNile(x) ::: x is Ivy Nile.\nImperium(x) ::: x is Imperium.\n\n# Premises:\nDiamondMine(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nProfessionalWrestlingStable(diamondmine) ::: Diamond Mine is a professional wrestling stable.\nFormedIn(diamondmine, wwe) ::: Diamond Mine was formed in WWE.\nLeads(roderickstrong, diamondmine) ::: Roderick Strong leads Diamond Mine.\nIncludes(diamondmine, creedbrothers) ::: Diamond Mine includes the Creed Brothers.\nIncludes(diamondmine, ivynile) ::: Diamond Mine includes Ivy Nile.\nFeud(imperium, diamondmine) ::: Imperium has a feud with Diamond Mine."
+    }
+  ],
+  "validation": {
+    "id": "tc_d132f25d",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Roderick strong leads a professional wrestling stable.",
+    "conclusions": "Leads(roderick, diamondmine) ∧ ProfessionalWrestlingStable(diamondmine) ::: Roderick Strong leads a professional wrestling stable. true"
+  }
+}

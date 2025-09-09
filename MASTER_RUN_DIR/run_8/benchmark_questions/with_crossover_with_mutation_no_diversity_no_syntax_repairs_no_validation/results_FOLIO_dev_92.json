@@ -1,0 +1,1106 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92",
+  "dataset": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/temp_dataset_for_FOLIO_dev_92.json",
+  "solutions": [
+    {
+      "solution_name": "sol_09644774.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0002/post/solutions/sol_09644774.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nMachineTranslation(machinetranslation)\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0c4774d2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0003/post/solutions/sol_0c4774d2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n# Natural language processing tasks are categorized as either language generation or language understanding.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n# A task cannot be both generation and understanding.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(CategorizedAs(x, LanguageGenerationTask) \u2227 CategorizedAs(x, LanguageUnderstandingTask)))\n# If the output of a natural language processing task is a text sequence, then it is a language generation task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 CategorizedAs(x, LanguageGenerationTask))\n# Machine translation is a natural language processing task.\nNaturalLanguageProcessingTask(machinetranslation)\n# The output of machine translation is a text sequence.\nOutputIsTextSequence(machinetranslation)\n# Explicitly state that machine translation is a type of NLP task (redundant given the above, but can be useful for clarity or if premises are changed).\n# This also makes the relationship between MachineTranslation and NaturalLanguageProcessingTask more direct.\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n# Machine translation has a text sequence output.\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_12f6acd2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0002/post/solutions/sol_12f6acd2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_16a86292.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_16a86292.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\n\u2200x (CategorizedAs(x, LanguageGenerationTask) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_16af5196.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0010/post/solutions/sol_16af5196.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_19efb27f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0008/post/solutions/sol_19efb27f.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1b05d112.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0003/post/solutions/sol_1b05d112.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x ((OutputIsTextSequence(x) \u2227 NaturalLanguageProcessingTask(x)) \u2192 LanguageGenerationTask(x))\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (LanguageGenerationTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\n\u2200x (LanguageUnderstandingTask(x) \u2192 CategorizedAs(x, LanguageUnderstandingTask))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0, LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0, LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_24b017bd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_24b017bd.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2611f7ec.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0009/post/solutions/sol_2611f7ec.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_27b817fd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0006/post/solutions/sol_27b817fd.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nLanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x)\nOutputIsTextSequence(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)\nMachineTranslation(machinetranslation)\n\u2200x MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x)\n\u2200x MachineTranslation(x) \u2192 OutputIsTextSequence(x)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2e982875.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_2e982875.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2ed103ee.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0004/post/solutions/sol_2ed103ee.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\n\u2200x (CategorizedAs(x, LanguageGenerationTask) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2f615a19.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_2f615a19.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2f804dca.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0007/post/solutions/sol_2f804dca.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nLanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)\nMachineTranslation(machinetranslation)\n\u2200x MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x)\n\u2200x MachineTranslation(x) \u2192 OutputIsTextSequence(x)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3705cc2b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_3705cc2b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3b5a6acc.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_3b5a6acc.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4bbb5395.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0007/post/solutions/sol_4bbb5395.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_53f7705b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0008/post/solutions/sol_53f7705b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6034b9e7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_6034b9e7.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_609c98dd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0004/post/solutions/sol_609c98dd.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\n\u2200x (CategorizedAs(x, LanguageGenerationTask) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6793ff60.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0005/post/solutions/sol_6793ff60.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_67efb241.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_67efb241.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7248e755.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0008/post/solutions/sol_7248e755.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_73477660.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_73477660.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7f7d1d74.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0004/post/solutions/sol_7f7d1d74.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n# Natural language processing tasks are categorized as either language generation or language understanding.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n# A task cannot be both generation and understanding.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(CategorizedAs(x, LanguageGenerationTask) \u2227 CategorizedAs(x, LanguageUnderstandingTask)))\n# If the output of a natural language processing task is a text sequence, then it is a language generation task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 CategorizedAs(x, LanguageGenerationTask))\n# Machine translation is a natural language processing task.\nNaturalLanguageProcessingTask(machinetranslation)\n# The output of machine translation is a text sequence.\nOutputIsTextSequence(machinetranslation)\n# Machine translation is a language generation task.\n\u2200x (MachineTranslation(x) \u2192 LanguageGenerationTask(x))\n# If a task is a language generation task, it is categorized as such.\n\u2200x (LanguageGenerationTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\n# If a task is a language understanding task, it is categorized as such.\n\u2200x (LanguageUnderstandingTask(x) \u2192 CategorizedAs(x, LanguageUnderstandingTask))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0, LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0, LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_80898a8a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0004/post/solutions/sol_80898a8a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_86ad3c16.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0009/post/solutions/sol_86ad3c16.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8a8d44ce.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0004/post/solutions/sol_8a8d44ce.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\n\u2200x (CategorizedAs(x, LanguageGenerationTask) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8d7d47f0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_8d7d47f0.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8ee119e0.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0002/post/solutions/sol_8ee119e0.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nIsLanguageGenerationTask(x) ::: x is a language generation task.\nIsLanguageUnderstandingTask(x) ::: x is a language understanding task.\nHasOutputTextSequence(x) ::: The output of x is a text sequence.\nIsMachineTranslation(x) ::: x is machine translation.\n\n# Axioms:\nIsMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (IsLanguageGenerationTask(x) \u2228 IsLanguageUnderstandingTask(x))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 HasOutputTextSequence(x)) \u2192 IsLanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nHasOutputTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_99e40429.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_99e40429.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9b30fbad.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0010/post/solutions/sol_9b30fbad.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9c722441.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0003/post/solutions/sol_9c722441.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 CategorizedAs(x, LanguageGenerationTask) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_9e4b5802.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0002/post/solutions/sol_9e4b5802.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 CategorizedAs(x, LanguageGenerationTask))\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a2fb2674.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_a2fb2674.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\nOutputIsTextSequence(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a3c92b7b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_a3c92b7b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ac44a8f9.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0005/post/solutions/sol_ac44a8f9.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x))\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b17ed291.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0010/post/solutions/sol_b17ed291.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b1f0370f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0003/post/solutions/sol_b1f0370f.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bcb0fa6d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0006/post/solutions/sol_bcb0fa6d.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_be497cd8.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0001/post/solutions/sol_be497cd8.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_c6be9ce1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_c6be9ce1.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x))) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task.\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: If the output of a natural language processing task is a text sequence, then it is a language generation task.\nMachineTranslation(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d6f237e3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0005/post/solutions/sol_d6f237e3.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 CategorizedAs(x, LanguageGenerationTask))\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d8d03b5f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0010/post/solutions/sol_d8d03b5f.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e269fc82.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/initial/solutions/sol_e269fc82.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x)) ::: Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task.\nNaturalLanguageProcessingTask(machinetranslation) ::: Machine translation is a natural language processing task.\nOutputIsTextSequence(machinetranslation) ::: The output of machine translation is a text sequence.\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e4730f3d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0005/post/solutions/sol_e4730f3d.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask))\n\u2200x (OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 CategorizedAs(x, LanguageGenerationTask))\nOutputIsTextSequence(machinetranslation)\nCategorizedAs(machinetranslation, LanguageGenerationTask)\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e69b288a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0007/post/solutions/sol_e69b288a.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x ((LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x ((LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)) \u2192 \u00acNaturalLanguageProcessingTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e77e919d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0010/post/solutions/sol_e77e919d.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ef370df8.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0002/post/solutions/sol_ef370df8.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (CategorizedAs(x, LanguageGenerationTask) \u2228 CategorizedAs(x, LanguageUnderstandingTask)))\n\u2200x (OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageGenerationTask/1, LanguageGenerationTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f32def7b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0007/post/solutions/sol_f32def7b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\nOutputIsTextSequence(machinetranslation)\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f5aa8fa2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0009/post/solutions/sol_f5aa8fa2.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nNaturalLanguageProcessingTask(machinetranslation)\nOutputIsTextSequence(machinetranslation)\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 (LanguageGenerationTask(x) \u2228 LanguageUnderstandingTask(x)))\n\u2200x ((NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x)) \u2192 LanguageGenerationTask(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2192 \u00ac(LanguageGenerationTask(x) \u2227 LanguageUnderstandingTask(x)))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_fe18988b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_8/benchmark_runs/with_crossover_with_mutation_no_diversity_no_syntax_repairs_no_validation/FOLIO_dev_92/run_20250904T185728Z_7417e9/run_20250904T195728_453cb4/evo_gen_0007/post/solutions/sol_fe18988b.sol.fol",
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_92",
+          "context": "Natural language processing tasks can be categorized as either language generation task or language understanding task. If the output of a natural language processing task is a text sequence, then it is a language generation task. Machine translation is a natural language processing task. The output of machine translation is a text sequence.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? Machine translation is a language understanding task.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "CategorizedAs(machinetranslation, LanguageUnderstandingTask)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nNaturalLanguageProcessingTask(x) ::: x is a natural language processing task.\nLanguageGenerationTask(x) ::: x is a language generation task.\nLanguageUnderstandingTask(x) ::: x is a language understanding task.\nOutputIsTextSequence(x) ::: The output of x is a text sequence.\nMachineTranslation(x) ::: x is machine translation.\nCategorizedAs(x, y) ::: x is categorized as y.\n\n# Premises:\nMachineTranslation(machinetranslation)\n\u2200x (MachineTranslation(x) \u2192 NaturalLanguageProcessingTask(x))\n\u2200x (MachineTranslation(x) \u2192 OutputIsTextSequence(x))\n\u2200x (NaturalLanguageProcessingTask(x) \u2227 OutputIsTextSequence(x) \u2192 LanguageGenerationTask(x))\n\u2200x (LanguageGenerationTask(x) \u2192 \u00acLanguageUnderstandingTask(x))\n\n# Conclusion:\nCategorizedAs(machinetranslation, LanguageUnderstandingTask)\n",
+          "prover9_answer": null,
+          "error_message": "(FATAL)\n%%ERROR: The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0.\n\n\nFatal error:  The following symbols are used with multiple arities: LanguageUnderstandingTask/1, LanguageUnderstandingTask/0",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 0,
+    "total_questions": 52,
+    "overall_accuracy": 0.0
+  }
+}

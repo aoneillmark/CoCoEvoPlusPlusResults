@@ -1,0 +1,1697 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177",
+  "dataset": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/temp_dataset_for_FOLIO_dev_177.json",
+  "solutions": [
+    {
+      "solution_name": "sol_0a1d11cd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_0a1d11cd.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics2020)\nSportingEvent(olympics2020)\nLocation(olympics2020, tokyo)\nMostMedals(UnitedStates, tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics2020)\nSportingEvent(olympics2020)\nLocation(olympics2020, tokyo)\nMostMedals(UnitedStates, tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0bfaf30f.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0005/post/solutions/sol_0bfaf30f.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\n# The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# The last Olympic games was in Tokyo.\n# This implies there exists a specific Olympic games, let's call it tokyo_games, and it is located in Tokyo.\n\u2203 tokyo_games . (OlympicGames(tokyo_games) \u2227 Location(tokyo_games, tokyo))\n\n# The United States won the most medals in Tokyo.\n# This means there exists an entity representing the United States and it won the most medals in Tokyo.\n\u2203 united_states . MostMedals(united_states, tokyo)\n\n# We also need to ensure that an entity can win medals in an Olympic Games.\n# And that if someone won the most medals, they must have won medals.\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# The scenario mentions \"the last Olympic games\". This suggests a specific instance.\n# We can represent \"tokyo_games\" as a constant to refer to this specific event.\n# And \"united_states\" as a constant to refer to the country.\n# Let's define these constants and relate them to the general predicates.\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nUnitedStates(united_states)\nMostMedals(united_states, tokyo)\n\n# Combining the general rules with specific instances for clarity and to ensure they are not lost.\n# If an event is an Olympic Games, it's a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# If an event is an Olympic Games, it has a location.\n# Since tokyo_games is an OlympicGames, it must have a location. We already state Location(tokyo_games, tokyo).\n# This rule might be redundant if we assume all specific instances are covered.\n# However, for completeness of the general rule:\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\n# If an event is an Olympic Games, someone won medals in it.\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\n# If someone won the most medals in an Olympic Games, they won medals in that event.\n\u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# If someone won the most medals in an Olympic Games, this implies a comparison of medals won.\n# This rule is complex and potentially incorrect as stated.\n# A simpler and more direct representation of \"MostMedals\" is usually sufficient.\n# The original rule: \u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n# This can be interpreted as: For any Olympic game x, and any entity z that won medals in x, if there exists an entity w that also won medals in x, then z won the most medals in x. This is logically flawed as it implies everyone who won medals is the winner of the most medals if anyone else also won medals.\n# A better approach is to define MostMedals directly or as a comparison.\n# However, sticking to the vocabulary and trying to fix the logic:\n# Let's rephrase the intent: If a country won the most medals in an Olympic Games, then it did win medals. This is already covered by \u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y)).\n# The original rule seems to try to express that 'most' is a comparative property.\n# A more accurate logical representation of 'MostMedals(z, x)' would be:\n# \u2203z (WonMedals(z, x) \u2227 \u2200y (WonMedals(y, x) \u2192 y = z \u2228 MedalsCount(z, x) > MedalsCount(y, x)))\n# However, we don't have MedalsCount.\n# Given the constraints, and focusing on the scenario, the core facts are:\n# 1. Tokyo Games is an Olympic Games.\n# 2. Tokyo Games is in Tokyo.\n# 3. United States won most medals in Tokyo.\n# And general rules about Olympic Games and winning medals.\n# The original rule seems to imply that 'most medals' implies competition.\n# Let's refine the rule for 'MostMedals' to be more sound, assuming 'MostMedals(z, x)' already implies z is a winner and has the highest count.\n# A potential interpretation of the original rule to make it sound:\n# For an OlympicGames 'x', if 'z' won medals in 'x', and there is at least one other entity 'w' that won medals in 'x' and 'z' won more medals than 'w', then 'z' won the most medals. This requires a way to count medals, which we don't have.\n# Given the provided predicates, the simplest fix is to remove the problematic rule, as the scenario information implies specific facts that don't require this complex derivable rule.\n# The scenario is stated as factual background.\n# If we must keep a rule related to 'MostMedals', and assuming 'MostMedals(x,y)' is a base fact or a directly stated property:\n# We can assert that if someone won the most medals, they are a participant who won medals.\n# This is already covered by \u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y)).\n# The original rule appears to be an attempt to infer 'MostMedals' from simpler conditions, but it is flawed.\n# Therefore, we omit the faulty rule and rely on the direct assertions and simpler general rules.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\n# The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# The last Olympic games was in Tokyo.\n# This implies there exists a specific Olympic games, let's call it tokyo_games, and it is located in Tokyo.\n\u2203 tokyo_games . (OlympicGames(tokyo_games) \u2227 Location(tokyo_games, tokyo))\n\n# The United States won the most medals in Tokyo.\n# This means there exists an entity representing the United States and it won the most medals in Tokyo.\n\u2203 united_states . MostMedals(united_states, tokyo)\n\n# We also need to ensure that an entity can win medals in an Olympic Games.\n# And that if someone won the most medals, they must have won medals.\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# The scenario mentions \"the last Olympic games\". This suggests a specific instance.\n# We can represent \"tokyo_games\" as a constant to refer to this specific event.\n# And \"united_states\" as a constant to refer to the country.\n# Let's define these constants and relate them to the general predicates.\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nUnitedStates(united_states)\nMostMedals(united_states, tokyo)\n\n# Combining the general rules with specific instances for clarity and to ensure they are not lost.\n# If an event is an Olympic Games, it's a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# If an event is an Olympic Games, it has a location.\n# Since tokyo_games is an OlympicGames, it must have a location. We already state Location(tokyo_games, tokyo).\n# This rule might be redundant if we assume all specific instances are covered.\n# However, for completeness of the general rule:\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\n# If an event is an Olympic Games, someone won medals in it.\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\n# If someone won the most medals in an Olympic Games, they won medals in that event.\n\u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# If someone won the most medals in an Olympic Games, this implies a comparison of medals won.\n# This rule is complex and potentially incorrect as stated.\n# A simpler and more direct representation of \"MostMedals\" is usually sufficient.\n# The original rule: \u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n# This can be interpreted as: For any Olympic game x, and any entity z that won medals in x, if there exists an entity w that also won medals in x, then z won the most medals in x. This is logically flawed as it implies everyone who won medals is the winner of the most medals if anyone else also won medals.\n# A better approach is to define MostMedals directly or as a comparison.\n# However, sticking to the vocabulary and trying to fix the logic:\n# Let's rephrase the intent: If a country won the most medals in an Olympic Games, then it did win medals. This is already covered by \u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y)).\n# The original rule seems to try to express that 'most' is a comparative property.\n# A more accurate logical representation of 'MostMedals(z, x)' would be:\n# \u2203z (WonMedals(z, x) \u2227 \u2200y (WonMedals(y, x) \u2192 y = z \u2228 MedalsCount(z, x) > MedalsCount(y, x)))\n# However, we don't have MedalsCount.\n# Given the constraints, and focusing on the scenario, the core facts are:\n# 1. Tokyo Games is an Olympic Games.\n# 2. Tokyo Games is in Tokyo.\n# 3. United States won most medals in Tokyo.\n# And general rules about Olympic Games and winning medals.\n# The original rule seems to imply that 'most medals' implies competition.\n# Let's refine the rule for 'MostMedals' to be more sound, assuming 'MostMedals(z, x)' already implies z is a winner and has the highest count.\n# A potential interpretation of the original rule to make it sound:\n# For an OlympicGames 'x', if 'z' won medals in 'x', and there is at least one other entity 'w' that won medals in 'x' and 'z' won more medals than 'w', then 'z' won the most medals. This requires a way to count medals, which we don't have.\n# Given the provided predicates, the simplest fix is to remove the problematic rule, as the scenario information implies specific facts that don't require this complex derivable rule.\n# The scenario is stated as factual background.\n# If we must keep a rule related to 'MostMedals', and assuming 'MostMedals(x,y)' is a base fact or a directly stated property:\n# We can assert that if someone won the most medals, they are a participant who won medals.\n# This is already covered by \u2200x \u2200y (MostMedals(x, y) \u2192 WonMedals(x, y)).\n# The original rule appears to be an attempt to infer 'MostMedals' from simpler conditions, but it is flawed.\n# Therefore, we omit the faulty rule and rely on the direct assertions and simpler general rules.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": null,
+          "error_message": "EXCEPTION: RuntimeError(None)",
+          "predicted_answer": "D",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_0e666740.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_0e666740.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_103907dd.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0006/post/solutions/sol_103907dd.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_12aa12aa.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_12aa12aa.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_1fa18bfb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0008/post/solutions/sol_1fa18bfb.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_2f4d2243.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0009/post/solutions/sol_2f4d2243.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_320a4d48.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0006/post/solutions/sol_320a4d48.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_35944146.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_35944146.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\nOlympicGames(olympic_games_tokyo)\nLocation(olympic_games_tokyo, tokyo)\nMostMedals(united_states, olympic_games_tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\nOlympicGames(olympic_games_tokyo)\nLocation(olympic_games_tokyo, tokyo)\nMostMedals(united_states, olympic_games_tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3816bf96.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0010/post/solutions/sol_3816bf96.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (MostMedals(z, x))))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (MostMedals(z, x))))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_3f8a6786.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0005/post/solutions/sol_3f8a6786.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_41847b0b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0009/post/solutions/sol_41847b0b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_425e4cfa.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0006/post/solutions/sol_425e4cfa.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_44ad811b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0010/post/solutions/sol_44ad811b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_4721b947.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0005/post/solutions/sol_4721b947.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_54aff001.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0002/post/solutions/sol_54aff001.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nWonMostMedals(usa, olympics)\nCountry(usa)\nCity(tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 Location(x, tokyo))\n\u2200x (OlympicGames(x) \u2192 WonMostMedals(usa, x))\nCountry(usa)\nCity(tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nWonMostMedals(usa, olympics)\nCountry(usa)\nCity(tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 Location(x, tokyo))\n\u2200x (OlympicGames(x) \u2192 WonMostMedals(usa, x))\nCountry(usa)\nCity(tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_58c6f0d2.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_58c6f0d2.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nTokyo(tokyo_city) ::: The last Olympic games was in Tokyo.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nUnitedStates(usa) ::: The United States won the most medals in Tokyo.\nMostMedals(usa, tokyo_city) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nTokyo(tokyo_city) ::: The last Olympic games was in Tokyo.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nUnitedStates(usa) ::: The United States won the most medals in Tokyo.\nMostMedals(usa, tokyo_city) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5efd47c6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_5efd47c6.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, olympic_games) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo_city) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, olympic_games) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_61c21ab7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0003/post/solutions/sol_61c21ab7.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nCountry(united_states)\nWonMostMedals(united_states, olympics_2020)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nCountry(united_states)\nWonMostMedals(united_states, olympics_2020)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_625b90d7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0002/post/solutions/sol_625b90d7.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games)\nSportingEvent(olympic_games)\nLocation(olympic_games, tokyo)\nIsCity(tokyo)\nMostMedals(united_states, tokyo)\nIsCountry(united_states)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games)\nSportingEvent(olympic_games)\nLocation(olympic_games, tokyo)\nIsCity(tokyo)\nMostMedals(united_states, tokyo)\nIsCountry(united_states)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_6b5e7422.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0005/post/solutions/sol_6b5e7422.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_71f8d069.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_71f8d069.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nUnitedStates(usa)\nMostMedals(usa, olympics)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nUnitedStates(usa)\nMostMedals(usa, olympics)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_72455304.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0009/post/solutions/sol_72455304.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_77c8c584.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0007/post/solutions/sol_77c8c584.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_7a77b42b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0007/post/solutions/sol_7a77b42b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_85a96750.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_85a96750.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_86f7978b.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0008/post/solutions/sol_86f7978b.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_89119817.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0009/post/solutions/sol_89119817.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2203y (MostMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200y (MostMedals(y, x) \u2192 WonMedals(y, x)))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 MostMedals(z, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8981ce15.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_8981ce15.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8cf51052.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_8cf51052.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nMostMedals(UnitedStates, tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nMostMedals(UnitedStates, tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_8de128ea.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_8de128ea.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_games)\nSportingEvent(olympics_games)\nLocation(olympics_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_games)\nSportingEvent(olympics_games)\nLocation(olympics_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_907af8de.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0007/post/solutions/sol_907af8de.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_a58ef05e.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0003/post/solutions/sol_a58ef05e.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ab22fe22.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0008/post/solutions/sol_ab22fe22.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ad7168f1.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_ad7168f1.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(UnitedStates, olympics) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b0308f52.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0003/post/solutions/sol_b0308f52.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_tokyo)\nLocation(olympics_tokyo, tokyo)\nSportingEvent(olympics_tokyo)\nMostMedals(united_states, olympics_tokyo)\nUnitedStates(united_states)\nTokyo(tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_tokyo)\nLocation(olympics_tokyo, tokyo)\nSportingEvent(olympics_tokyo)\nMostMedals(united_states, olympics_tokyo)\nUnitedStates(united_states)\nTokyo(tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b31f1cb3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0007/post/solutions/sol_b31f1cb3.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\nSportingEvent(tokyo_games)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203y WonMedals(y, x))\n\u2200x (OlympicGames(x) \u2192 \u2200y (WonMedals(y, x) \u2192 \u2203z (MostMedals(y, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_b5b982b8.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0008/post/solutions/sol_b5b982b8.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_bec6e70d.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0002/post/solutions/sol_bec6e70d.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d0cb62cb.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_d0cb62cb.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d1273601.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0008/post/solutions/sol_d1273601.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2203z (MostMedals(z, x) \u2192 WonMedals(z, x)))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d1448c90.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0006/post/solutions/sol_d1448c90.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\nSportingEvent(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games) ::: The Olympic games is a sporting event.\nSportingEvent(tokyo_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(tokyo_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d2ba32ec.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_d2ba32ec.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nMostMedals(united_states, olympics)\nUnitedStates(united_states)\nTokyo(tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics)\nSportingEvent(olympics)\nLocation(olympics, tokyo)\nMostMedals(united_states, olympics)\nUnitedStates(united_states)\nTokyo(tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d5ea6590.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0004/post/solutions/sol_d5ea6590.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d95cbc36.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0002/post/solutions/sol_d95cbc36.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nUnitedStates(usa)\nMostMedals(usa, tokyo)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nUnitedStates(usa)\nMostMedals(usa, tokyo)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_e73eae84.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_e73eae84.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympic_games, tokyo) ::: The last Olympic games was in Tokyo.\nMostMedals(united_states, tokyo) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_eb229036.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_eb229036.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nCountry(united_states)\nMostMedals(united_states, olympics_2020)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (Location(x, tokyo) \u2192 IsCity(tokyo))\n\u2200x (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics_2020)\nSportingEvent(olympics_2020)\nLocation(olympics_2020, tokyo)\nCountry(united_states)\nMostMedals(united_states, olympics_2020)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (Location(x, tokyo) \u2192 IsCity(tokyo))\n\u2200x (MostMedals(x, y) \u2192 WonMedals(x, y))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f4596eb6.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/initial/solutions/sol_f4596eb6.sol.fol",
+      "correct": 1,
+      "total": 2,
+      "accuracy": 0.5,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\n\u2203x (MostMedals(UnitedStates, olympics)) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "False",
+          "error_message": "",
+          "predicted_answer": "B",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympics) ::: The Olympic games is a sporting event.\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x)) ::: The Olympic games is a sporting event.\nLocation(olympics, tokyo) ::: The last Olympic games was in Tokyo.\n\u2203x (MostMedals(UnitedStates, olympics)) ::: The United States won the most medals in Tokyo.\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f9e23ad3.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_f9e23ad3.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_olympics)\nSportingEvent(tokyo_olympics)\nLocation(tokyo_olympics, tokyo)\nMostMedals(united_states, tokyo_olympics)\nUnitedStates(united_states)\nTokyo(tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_olympics)\nSportingEvent(tokyo_olympics)\nLocation(tokyo_olympics, tokyo)\nMostMedals(united_states, tokyo_olympics)\nUnitedStates(united_states)\nTokyo(tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_fe573e04.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0004/post/solutions/sol_fe573e04.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(tokyo_games)\nSportingEvent(tokyo_games)\nLocation(tokyo_games, tokyo)\nMostMedals(united_states, tokyo)\n\u2200x (OlympicGames(x) \u2192 SportingEvent(x))\n\u2200x (OlympicGames(x) \u2192 \u2203y Location(x, y))\n\u2200x (OlympicGames(x) \u2192 \u2203z WonMedals(z, x))\n\u2200x (OlympicGames(x) \u2192 \u2200z (WonMedals(z, x) \u2192 \u2203w (WonMedals(w, x) \u2192 MostMedals(z, x))))\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_ff2a35ed.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/B_MASTER_RUN_DIR/run_10/benchmark_runs/with_crossover_with_mutation_with_diversity_no_syntax_repairs_no_validation/FOLIO_dev_177/run_20250904T215025Z_d0b504/run_20250904T225025_6c7b5f/evo_gen_0001/post/solutions/sol_ff2a35ed.sol.fol",
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_177",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The last Olympic games were not in Tokyo.",
+          "expected_answer": "B",
+          "generated_fol_conclusion": "\u00acLocation(olympics, tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games)\nSportingEvent(olympic_games)\nLocation(olympic_games, tokyo)\nTokyo(tokyo)\nMostMedals(united_states, tokyo)\nUnitedStates(united_states)\n\n# Conclusion:\n\u00acLocation(olympics, tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        },
+        {
+          "question_id": "FOLIO_dev_178",
+          "context": "[BG] The Olympic games is a sporting event. The last Olympic games was in Tokyo. The United States won the most medals in Tokyo.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? The United States won the most medals in the last Olympic games.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "MostMedals(united_states, olympics_tokyo)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nOlympicGames(x) ::: x is an Olympic game.\nSportingEvent(x) ::: x is a sporting event.\nLocation(x, y) ::: x is located in y.\nWonMedals(x, y) ::: x won medals in y.\nMostMedals(x, y) ::: x won the most medals in y.\nTokyo(x) ::: x is Tokyo.\nUnitedStates(x) ::: x is the United States.\n\n# Premises:\nOlympicGames(olympic_games)\nSportingEvent(olympic_games)\nLocation(olympic_games, tokyo)\nTokyo(tokyo)\nMostMedals(united_states, tokyo)\nUnitedStates(united_states)\n\n# Conclusion:\nMostMedals(united_states, olympics_tokyo)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 10,
+    "total_questions": 102,
+    "overall_accuracy": 0.09803921568627451
+  }
+}

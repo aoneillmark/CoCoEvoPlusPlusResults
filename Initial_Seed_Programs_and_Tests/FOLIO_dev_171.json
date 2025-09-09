@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_171",
+  "problem_text": "If something is a deadly disease, then its survival rate is low. All severe cancers are deadly diseases. Bile duct cancer is a severe cancer. All Cholangiocarcinoma is bile duct cancer. No one with mild flu has a low survival rate. If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "DeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.",
+  "tests": [
+    {
+      "id": "tc_b7b48a99",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a deadly disease, then Cholangiocarcinoma has a low survival rate.",
+      "conclusions": "Cholangiocarcinoma → LowSurvivalRate(x) ::: Cholangiocarcinoma is a deadly disease, then Cholangiocarcinoma has a low survival rate. TRUE"
+    },
+    {
+      "id": "tc_2d4af097",
+      "questions": "Based on the above information, is the following statement true or false? If Bile duct cancer has a low survival rate, then Bile duct cancer is a severe cancer.",
+      "conclusions": "LowSurvivalRate(bileductcancer) → SevereCancer(bileductcancer) ::: Bile duct cancer has a low survival rate if and only if it is a severe cancer. FALSE"
+    },
+    {
+      "id": "tc_9e46b85f",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a bile duct cancer and has a low survival rate, then it is a deadly disease.",
+      "conclusions": "IsA(cholangiocarcinoma, BileDuctCancer(cholangiocarcinoma)) ∧ LowSurvivalRate(cholangiocarcinoma) → DeadlyDisease(cholangiocarcinoma) ::: FALSE"
+    },
+    {
+      "id": "tc_687eb031",
+      "questions": "Based on the above information, is the following statement true or false? If Colorectal cancer is a bile duct cancer and has a low survival rate, then Colorectal cancer is a severe cancer.",
+      "conclusions": "IsA(colorectalCancer, SevereCancer) ::: Colorectal cancer is a severe cancer. FALSE"
+    },
+    {
+      "id": "tc_c1840b61",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a severe cancer and it has a low survival rate, then Cholangiocarcinoma is a deadly disease.",
+      "conclusions": "IsA(cholangiocarcinoma, SevereCancer) ∧ LowSurvivalRate(cholangiocarcinoma) → DeadlyDisease(cholangiocarcinoma) ::: TRUE"
+    },
+    {
+      "id": "tc_0f52306d",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a bile duct cancer, then it is a deadly disease.",
+      "conclusions": "IsA(cholangiocarcinoma, BileDuctCancer(cholangiocarcinoma)) → DeadlyDisease(cholangiocarcinoma) ::: TRUE"
+    },
+    {
+      "id": "tc_4d1ec79d",
+      "questions": "Based on the above information, is the following statement true or false? If Bile duct cancer is a deadly disease, then Bile duct cancer is a severe cancer.",
+      "conclusions": "IsA(bileDuctCancer, DeadlyDisease) → IsA(bileDuctCancer, SevereCancer) ::: FALSE"
+    },
+    {
+      "id": "tc_2c8998ac",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a severe cancer and has a low survival rate, then it is a deadly disease.",
+      "conclusions": "IsA(cholangiocarcinoma, DeadlyDisease) ::: Cholangiocarcinoma is a deadly disease. FALSE"
+    },
+    {
+      "id": "tc_b7be6ebc",
+      "questions": "Based on the above information, is the following statement true or false? If Bile duct cancer is a deadly disease, then Cholangiocarcinoma is a severe cancer.",
+      "conclusions": "IsA(bileDuctCancer, DeadlyDisease) → IsA(cholangiocarcinoma, SevereCancer) ::: FALSE"
+    },
+    {
+      "id": "tc_f399e1fa",
+      "questions": "Based on the above information, is the following statement true or false? If Cholangiocarcinoma is a deadly disease and is also a severe cancer, then Cholangiocarcinoma is a bile duct cancer.",
+      "conclusions": "(IsA(cholangiocarcinoma, deadlydisease) ∧ IsA(cholangiocarcinoma, severecancer)) → IsA(cholangiocarcinoma, bileductcancer) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_f4056458",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, BileDuctCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\nIsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_d36989c0",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\nIsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_3e140df1",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\nIsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer) → ¬BileDuctCancer(colorectalCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_53a66e60",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_7988349a",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬BileDuctCancer(colorectalCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_14a82133",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬BileDuctCancer(colorectalCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_67fa69bf",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\n∀x (Cholangiocarcinoma(x) → SevereCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\nIsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer) → ¬BileDuctCancer(colorectalCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_f98e83e1",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer."
+    },
+    {
+      "id": "sol_f0e9d033",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer.\nIsA(colorectalCancer, SevereCancer) ::: Colorectal cancer is a severe cancer."
+    },
+    {
+      "id": "sol_5fd96706",
+      "text": "# Predicates:\nDeadlyDisease(x) ::: x is a deadly disease.\nLowSurvivalRate(x) ::: x has a low survival rate.\nSevereCancer(x) ::: x is a severe cancer.\nBileDuctCancer(x) ::: x is a bile duct cancer.\nCholangiocarcinoma(x) ::: x is Cholangiocarcinoma.\nMildFlu(x) ::: x is mild flu.\nColorectalCancer(x) ::: x is colorectal cancer.\nIsA(x, y) ::: x is a y.\n\n# Premises:\n∀x (DeadlyDisease(x) → LowSurvivalRate(x)) ::: If something is a deadly disease, then its survival rate is low.\n∀x (SevereCancer(x) → DeadlyDisease(x)) ::: All severe cancers are deadly diseases.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer.\n∀x (Cholangiocarcinoma(x) → BileDuctCancer(x)) ::: All Cholangiocarcinoma is bile duct cancer.\n∀x (MildFlu(x) → ¬LowSurvivalRate(x)) ::: No one with mild flu has a low survival rate.\n(IsA(colorectalCancer, BileDuctCancer) ∧ LowSurvivalRate(colorectalCancer)) → ¬IsA(colorectalCancer, BileDuctCancer) ::: If colorectal cancer is a bile duct cancer and the survival rate is low, then colorectal cancer is not a bile duct cancer.\nIsA(bileDuctCancer, SevereCancer) ::: Bile duct cancer is a severe cancer."
+    }
+  ],
+  "validation": {
+    "id": "tc_cee60d90",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Colorectal cancer is a severe cancer",
+    "conclusions": "SevereCancer(colorectal) ::: Colorectal cancer is a severe cancer. unknown"
+  }
+}

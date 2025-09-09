@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_181",
+  "problem_text": "Susan flies to LGA airport. The departure and arrival can not be the same airport. John flies from LGA airport.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "FliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.",
+  "tests": [
+    {
+      "id": "tc_0cd57d09",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to an airport, and that airport is not the same as the airport John flies from.",
+      "conclusions": "∃x ∃y (FliesTo(susan, x) ∧ Departure(y) ∧ FliesFrom(john, y) ∧ ¬SameAirport(x, y)) ::: Susan flies to an airport, and that airport is not the same as the airport John flies from. TRUE"
+    },
+    {
+      "id": "tc_4bcb3bc1",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to LGA airport, and John also flies from LGA airport.",
+      "conclusions": "FliesTo(susan, lga) ∧ FliesFrom(john, lga) ::: TRUE"
+    },
+    {
+      "id": "tc_29e60ff9",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to LGA airport, and there exists an airport that John flies from, and that airport is not LGA.",
+      "conclusions": "∃x (FliesTo(susan, x) ∧ Airport(x) ∧ SameAirport(x, lga) ∧ ∃y (FliesFrom(john, y) ∧ ¬SameAirport(x, y))) ::: Susan flies to LGA airport, and there exists an airport that John flies from, and that airport is not LGA. FALSE"
+    },
+    {
+      "id": "tc_7623ed1f",
+      "questions": "Based on the above information, is the following statement true or false? There exists an airport that Susan flies to, and that airport is LGA, and John flies from LGA.",
+      "conclusions": "∃x (FliesTo(susan, x) ∧ SameAirport(x, lga) ∧ FliesFrom(john, lga)) ::: TRUE"
+    },
+    {
+      "id": "tc_16d015ac",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to LGA airport, and LGA is an arrival airport, and John flies from an airport that is not LGA.",
+      "conclusions": "FliesTo(susan, lga) ∧ Arrival(lga) ∧ ∃x (FliesFrom(john, x) ∧ ¬SameAirport(lga, x)) ::: TRUE"
+    },
+    {
+      "id": "tc_8ef62bf2",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to LGA, and LGA is an arrival airport, and John flies from LGA, and the departure and arrival airports are not the same.",
+      "conclusions": "FliesTo(susan, lga) ∧ Airport(lga) ∧ Arrival(lga) ∧ FliesFrom(john, lga) ∧ ¬SameAirport(lga, lga) ::: FALSE"
+    },
+    {
+      "id": "tc_819df114",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to an airport, and John flies from an airport, and these two airports are the same.",
+      "conclusions": "∃x ∃y (FliesTo(susan, x) ∧ FliesFrom(john, y) ∧ SameAirport(x, y)) ::: Susan flies to an airport, and John flies from an airport, and these two airports are the same. FALSE"
+    },
+    {
+      "id": "tc_69440f47",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to an airport, and John flies from that same airport.",
+      "conclusions": "∃x (FliesTo(susan, x) ∧ FliesFrom(john, x)) ::: TRUE"
+    },
+    {
+      "id": "tc_a2ee2651",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to an airport, and that airport is LGA, and John flies from an airport that is not LGA.",
+      "conclusions": "∃x ∃y (FliesTo(susan, x) ∧ SameAirport(x, lga) ∧ FliesFrom(john, y) ∧ ¬SameAirport(x, y)) ::: TRUE"
+    },
+    {
+      "id": "tc_dab572e8",
+      "questions": "Based on the above information, is the following statement true or false? Susan flies to LGA airport, and John flies from LGA airport, and the departure and arrival airports are not the same.",
+      "conclusions": "FliesTo(susan, lga) ∧ FliesFrom(john, lga) ∧ ¬SameAirport(lga, lga) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_9110beb0",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(x, y)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_285e2139",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(y, y)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_7809236f",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬(Departure(y) ∧ Arrival(y))) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_0387fc1f",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x (FliesTo(x, lga) → ¬SameAirport(lga, lga)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_af14a851",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(y, y)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_dbaab87f",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x (Airport(x) → ¬SameAirport(x, x)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_9b5e80e7",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(DepartureAirport(x,y), ArrivalAirport(x,y))) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_c9aa7d40",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x (Airport(x) → ¬SameAirport(x, x)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_224f3b80",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(y, y)) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    },
+    {
+      "id": "sol_b6579245",
+      "text": "# Predicates:\nFliesTo(x, y) ::: x flies to airport y.\nAirport(x) ::: x is an airport.\nDeparture(x) ::: x is a departure airport.\nArrival(x) ::: x is an arrival airport.\nSameAirport(x, y) ::: airport x is the same as airport y.\nFliesFrom(x, y) ::: x flies from airport y.\n\n# Premises:\nFliesTo(susan, lga) ::: Susan flies to LGA airport.\n∀x ∀y (FliesTo(x, y) → ¬SameAirport(DepartureAirport(x, y), ArrivalAirport(x, y))) ::: The departure and arrival can not be the same airport.\nFliesFrom(john, lga) ::: John flies from LGA airport."
+    }
+  ],
+  "validation": {
+    "id": "tc_45faa293",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Susan flies from LGA airport.",
+    "conclusions": "FliesFrom(susan, lga) ::: Susan flies from LGA airport. false"
+  }
+}

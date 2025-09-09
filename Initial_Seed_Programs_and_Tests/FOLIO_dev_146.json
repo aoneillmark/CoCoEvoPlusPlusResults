@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_146",
+  "problem_text": "All students are humans. If someone studies, then they are a student. A person either studys or teaches. No young person teaches. Jerry neither teaches nor is a manager. Rose is young or a student.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Human(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.",
+  "tests": [
+    {
+      "id": "tc_e31da911",
+      "questions": "Based on the above information, is the following statement true or false? Jerry is a student and Rose studies.",
+      "conclusions": "Student(jerry) ∧ Studies(rose) ::: Jerry is a student and Rose studies. FALSE"
+    },
+    {
+      "id": "tc_ff9c7176",
+      "questions": "Based on the above information, is the following statement true or false? If Jerry studies, then Rose is a student.",
+      "conclusions": "Studies(jerry) → Student(rose) ::: FALSE"
+    },
+    {
+      "id": "tc_c89fddda",
+      "questions": "Based on the above information, is the following statement true or false? If Rose is a student, then Jerry studies.",
+      "conclusions": "Student(rose) → Studies(jerry) ::: FALSE"
+    },
+    {
+      "id": "tc_e0de9c6e",
+      "questions": "Based on the above information, is the following statement true or false? Jerry studies and Rose is a student.",
+      "conclusions": "Studies(jerry) ∧ Student(rose) ::: FALSE"
+    },
+    {
+      "id": "tc_b57bfa96",
+      "questions": "Based on the above information, is the following statement true or false? If Rose is young, then Jerry studies.",
+      "conclusions": "Young(rose) → Studies(jerry) ::: FALSE"
+    },
+    {
+      "id": "tc_9e4ece0e",
+      "questions": "Based on the above information, is the following statement true or false? If Jerry is a student, then Rose studies.",
+      "conclusions": "Student(jerry) → Studies(rose) ::: FALSE"
+    },
+    {
+      "id": "tc_ffe8554f",
+      "questions": "Based on the above information, is the following statement true or false? If Rose is a student and Jerry studies, then Jerry is a student.",
+      "conclusions": "Student(rose) ∧ Studies(jerry) → Student(jerry) ::: FALSE"
+    },
+    {
+      "id": "tc_c4c06cd6",
+      "questions": "Based on the above information, is the following statement true or false? Jerry is a student and Rose is young.",
+      "conclusions": "Student(jerry) ∧ Young(rose) ::: Jerry is a student and Rose is young. FALSE"
+    },
+    {
+      "id": "tc_b0ab61ae",
+      "questions": "Based on the above information, is the following statement true or false? If Jerry is not a student, then Rose teaches.",
+      "conclusions": "¬Student(jerry) → Teaches(rose) ::: FALSE"
+    },
+    {
+      "id": "tc_3c9d0388",
+      "questions": "Based on the above information, is the following statement true or false? If Jerry studies, then Rose is not a student.",
+      "conclusions": "Studies(jerry) → ¬Student(rose) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_3873ab0b",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studys or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nYoung(rose) ∨ Student(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_d76aa35f",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ∨ Teaches(x)) ∧ ¬(Studies(x) ∧ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬(Teaches(jerry) ∨ Manager(jerry)) ∧ ¬(Teaches(jerry) ∧ Manager(jerry)) ::: Jerry neither teaches nor is a manager.\nStudent(rose) ∨ Young(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_95537454",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x ((Studies(x) ∧ ¬Teaches(x)) ∨ (¬Studies(x) ∧ Teaches(x))) ::: A person either studies or teaches exclusively.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nYoung(rose) ∨ Student(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_4bb9343a",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nStudent(rose) ∨ Young(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_5b7b1aac",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nRose ∨ Student(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_eeb06fb6",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x ((Young(x) ∧ Teaches(x)) → False) ::: No young person teaches.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\nStudent(rose) ∨ Young(rose) ::: Rose is young or a student.\n∀x (Student(x) → Human(x)) ::: All students are humans.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches."
+    },
+    {
+      "id": "sol_848ee1ba",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nYoung(rose) ∨ Student(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_664b826e",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n(¬Teaches(jerry) ∧ ¬Manager(jerry)) ::: Jerry neither teaches nor is a manager.\n(Young(rose) ∨ Student(rose)) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_7fb0a847",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n¬Teaches(jerry) ∧ ¬Manager(jerry) ::: Jerry neither teaches nor is a manager.\nYoung(rose) ∨ Student(rose) ::: Rose is young or a student."
+    },
+    {
+      "id": "sol_61ae37ed",
+      "text": "# Predicates:\nHuman(x) ::: x is a human.\nStudent(x) ::: x is a student.\nStudies(x) ::: x studies.\nTeaches(x) ::: x teaches.\nYoung(x) ::: x is young.\nManager(x) ::: x is a manager.\nJerry ::: Jerry.\nRose ::: Rose.\n\n# Premises:\n∀x (Student(x) → Human(x)) ::: All students are humans.\n∀x (Studies(x) → Student(x)) ::: If someone studies, then they are a student.\n∀x (Studies(x) ⊕ Teaches(x)) ::: A person either studies or teaches.\n∀x (Young(x) → ¬Teaches(x)) ::: No young person teaches.\n(¬Teaches(jerry) ∧ ¬Manager(jerry)) ::: Jerry neither teaches nor is a manager.\n(Young(rose) ∨ Student(rose)) ::: Rose is young or a student."
+    }
+  ],
+  "validation": {
+    "id": "tc_cb4188ca",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Jerry is young.",
+    "conclusions": "Young(jerry) ::: Jerry is young. unknown"
+  }
+}

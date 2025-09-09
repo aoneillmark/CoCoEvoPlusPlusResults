@@ -1,0 +1,344 @@
+{
+  "run_dir": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4",
+  "dataset": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/temp_dataset_for_FOLIO_dev_4.json",
+  "solutions": [
+    {
+      "solution_name": "sol_1a54fd90.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_1a54fd90.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_329152b4.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_329152b4.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_5518ecba.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_5518ecba.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2228 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2228 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_840b8e8a.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_840b8e8a.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2228 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2228 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d7f08cff.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_d7f08cff.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_d8300927.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_d8300927.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f1f42bf7.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_f1f42bf7.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Schedules(x, y) \u2227 Customer(y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Schedules(x, y) \u2227 Customer(y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Schedules(x, y) \u2227 Customer(y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Schedules(x, y) \u2227 Customer(y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f2131b20.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_f2131b20.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2228 LunchAtHome(x))) \u2227 \u2200x (\u00ac(LunchInCompany(x) \u2227 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 \u2203y (Customer(y) \u2227 Schedules(x, y))) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2228 LunchAtHome(x))) \u2227 \u2200x (\u00ac(LunchInCompany(x) \u2227 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 (\u00acManager(james) \u2227 \u00acAppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f3f06757.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_f3f06757.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x (Employee(x) \u2192 (Schedules(x, m) \u2192 AppearsToday(x))) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2228 LunchAtHome(x))) \u2227 \u2200x (\u00ac(LunchInCompany(x) \u2227 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2295 \u00acManager(james)) \u2227 (AppearsToday(james) \u2295 \u00acAppearsToday(james)) ::: James is either a manager or not, and appears in the company today or not.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x (Employee(x) \u2192 (Schedules(x, m) \u2192 AppearsToday(x))) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 \u2203y (Customer(y) \u2227 Schedules(x, y))) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2228 LunchAtHome(x))) \u2227 \u2200x (\u00ac(LunchInCompany(x) \u2227 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home, but not both.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2295 \u00acManager(james)) \u2227 (AppearsToday(james) \u2295 \u00acAppearsToday(james)) ::: James is either a manager or not, and appears in the company today or not.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "solution_name": "sol_f58d3e80.sol.fol",
+      "solution_path": "/vol/bitbucket/mo1024/SYNTAX_REPAIR/run_2/benchmark_runs/FOLIO_dev_4/evo_gen_0001/post/solutions/sol_f58d3e80.sol.fol",
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0,
+      "question_results": [
+        {
+          "question_id": "FOLIO_dev_4",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? James does not have lunch in the company.",
+          "expected_answer": "C",
+          "generated_fol_conclusion": "\u00acLunchInCompany(james)",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 Schedules(x, y) \u2227 Customer(y)) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 Schedules(x, y) \u2227 Customer(y)) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n\u00acLunchInCompany(james)\n",
+          "prover9_answer": "Unknown",
+          "error_message": "",
+          "predicted_answer": "C",
+          "is_correct": true
+        },
+        {
+          "question_id": "FOLIO_dev_5",
+          "context": "All employees who schedule a meeting with their customers will appear in the company today. Everyone who has lunch in the company schedules meetings with their customers. Employees will either have lunch in the company or have lunch at home. If an employee has lunch at home, then he/she is working remotely from home. All employees who are in other countries work remotely from home. No managers work remotely from home. James is either a manager and appears in the company today or neither a manager nor appears in the company today.",
+          "question": "Based on the above information, is the following statement true, false, or uncertain? If James is either a manager or in other countries,  then James either has lunch at home and works remotely from home, or neither has lunch at home nor works remotely from home.",
+          "expected_answer": "A",
+          "generated_fol_conclusion": "( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )",
+          "combined_program": "set(auto).\nassign(max_seconds, 5).\nassign(max_mem, 1024).\n# Predicates:\nEmployee(x) ::: x is an employee.\nSchedules(x, y) ::: x schedules a meeting with y.\nMeeting(y) ::: y is a meeting.\nCustomer(y) ::: y is a customer.\nAppearsToday(x) ::: x appears in the company today.\nLunchInCompany(x) ::: x has lunch in the company.\nLunchAtHome(x) ::: x has lunch at home.\nWorksRemotelyFromHome(x) ::: x is working remotely from home.\nInOtherCountries(x) ::: x is in other countries.\nManager(x) ::: x is a manager.\nJames(x) ::: x is James.\n\n# Premises:\n\u2200x ((Employee(x) \u2227 Schedules(x, y) \u2227 Customer(y)) \u2192 AppearsToday(x)) ::: All employees who schedule a meeting with their customers will appear in the company today.\n\u2200x (LunchInCompany(x) \u2192 Schedules(x, y) \u2227 Customer(y)) ::: Everyone who has lunch in the company schedules meetings with their customers.\n\u2200x (Employee(x) \u2192 (LunchInCompany(x) \u2295 LunchAtHome(x))) ::: Employees will either have lunch in the company or have lunch at home.\n\u2200x (LunchAtHome(x) \u2192 WorksRemotelyFromHome(x)) ::: If an employee has lunch at home, then he/she is working remotely from home.\n\u2200x (InOtherCountries(x) \u2192 WorksRemotelyFromHome(x)) ::: All employees who are in other countries work remotely from home.\n\u2200x (Manager(x) \u2192 \u00acWorksRemotelyFromHome(x)) ::: No managers work remotely from home.\n(Manager(james) \u2227 AppearsToday(james)) \u2295 \u00ac(Manager(james) \u2228 AppearsToday(james)) ::: James is either a manager and appears in the company today or neither a manager nor appears in the company today.\n\n# Conclusion:\n( ( Manager(james) \u2228 InOtherCountries(james) ) \u2192 ( ( LunchAtHome(james) \u2227 WorksRemotelyFromHome(james) ) \u2228 ( \u00acLunchAtHome(james) \u2227 \u00acWorksRemotelyFromHome(james) ) ) )\n",
+          "prover9_answer": "True",
+          "error_message": "",
+          "predicted_answer": "A",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "pick_mode": "prefer_correct",
+    "require_vocab_match": false,
+    "conclusions_source": "/vol/bitbucket/mo1024/A_MASTER_RUN_DIR/run_1/benchmark_questions/with_crossover_with_mutation_no_diversity_with_both_syntax_no_validation",
+    "total_correct": 20,
+    "total_questions": 20,
+    "overall_accuracy": 1.0
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_162",
+  "problem_text": "If George likes music, he wants to compose. If George has access to a program, he can compose. If George can compose and wants to compose, he will compose.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "LikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.",
+  "tests": [
+    {
+      "id": "tc_d3331151",
+      "questions": "Based on the above information, is the following statement true or false? If George wants to compose, then he will compose.",
+      "conclusions": "WantsToCompose(george) → Composes(george) ::: FALSE"
+    },
+    {
+      "id": "tc_5de8b76e",
+      "questions": "Based on the above information, is the following statement true or false? George wants to compose and George has access to a program, therefore George will compose.",
+      "conclusions": "LikesMusic(george) → WantsToCompose(george) ∧ HasAccess(george, program1) → Composes(george) ::: FALSE"
+    },
+    {
+      "id": "tc_0d6a31f1",
+      "questions": "Based on the above information, is the following statement true or false? If George likes music and has access to a program, then George will compose.",
+      "conclusions": "LikesMusic(george) ∧ HasAccess(george, program) → Composes(george) ::: TRUE"
+    },
+    {
+      "id": "tc_44ad96e5",
+      "questions": "Based on the above information, is the following statement true or false? If George likes music, he can compose.",
+      "conclusions": "LikesMusic(george) → CanCompose(george) ::: FALSE"
+    },
+    {
+      "id": "tc_08b89f04",
+      "questions": "Based on the above information, is the following statement true or false? If George has access to a program, then George wants to compose.",
+      "conclusions": "HasAccess(george, program) → WantsToCompose(george) ::: FALSE"
+    },
+    {
+      "id": "tc_a81221bf",
+      "questions": "Based on the above information, is the following statement true or false? George likes music and George can compose.",
+      "conclusions": "LikesMusic(george) ∧ CanCompose(george) ::: George likes music and George can compose. FALSE"
+    },
+    {
+      "id": "tc_31554490",
+      "questions": "Based on the above information, is the following statement true or false? If George likes music, then George wants to compose and George will compose.",
+      "conclusions": "LikesMusic(george) → (WantsToCompose(george) ∧ Composes(george)) ::: FALSE"
+    },
+    {
+      "id": "tc_2f3b00f4",
+      "questions": "Based on the above information, is the following statement true or false? If George does not like music, then George does not want to compose.",
+      "conclusions": "¬LikesMusic(george) → ¬WantsToCompose(george) ::: TRUE"
+    },
+    {
+      "id": "tc_44047f8b",
+      "questions": "Based on the above information, is the following statement true or false? If George can compose and George likes music, then George will compose.",
+      "conclusions": "(CanCompose(george) ∧ LikesMusic(george)) → Composes(george) ::: TRUE"
+    },
+    {
+      "id": "tc_87ba614e",
+      "questions": "Based on the above information, is the following statement true or false? If George wants to compose and George has access to a program, then George will compose.",
+      "conclusions": "WantsToCompose(george) ∧ HasAccess(george, program) → Composes(george) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_e9b1f8e3",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\nHasAccess(george, program) → CanCompose(george) ::: If George has access to a program, he can compose.\nCanCompose(george) ∧ WantsToCompose(george) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_0065062c",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\nHasAccess(george, program) → CanCompose(george) ::: If George has access to a program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose.\n∀x (CanCompose(x) → ¬WantsToCompose(x)) ::: It is not the case that George can compose and wants to compose."
+    },
+    {
+      "id": "sol_fcafd439",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\nHasAccess(george, program) → CanCompose(george) ::: If George has access to a program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose.\n∃x Program(x) ::: There exists something that is a program."
+    },
+    {
+      "id": "sol_66122f7f",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\n∀x (HasAccess(george, x) → CanCompose(george)) ::: If George has access to any program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose.\n∃x (Program(x) ∧ HasAccess(george, x)) ::: George has access to some program."
+    },
+    {
+      "id": "sol_20eeba65",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\n∀x (HasAccess(george, x) → CanCompose(george)) ::: If George has access to any program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_8cb032c8",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\n∃x (Program(x) ∧ HasAccess(george, x)) → CanCompose(george) ::: If George has access to some program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_4c4a2bcd",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\nHasAccess(george, program) → CanCompose(george) ::: If George has access to a program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_3d0b2099",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\n∀x (Program(x) ∧ HasAccess(george, x)) → CanCompose(george) ::: If George has access to some program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_a42d8b71",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\n∀x (Program(x) ∧ HasAccess(george, x)) → CanCompose(george) ::: If George has access to a program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    },
+    {
+      "id": "sol_c9dea0c8",
+      "text": "# Predicates:\nLikesMusic(x) ::: x likes music.\nWantsToCompose(x) ::: x wants to compose.\nHasAccess(x, y) ::: x has access to y.\nProgram(x) ::: x is a program.\nCanCompose(x) ::: x can compose.\nComposes(x) ::: x will compose.\n\n# Premises:\nLikesMusic(george) → WantsToCompose(george) ::: If George likes music, he wants to compose.\nHasAccess(george, x) ∧ Program(x) → CanCompose(george) ::: If George has access to a program, he can compose.\n(CanCompose(george) ∧ WantsToCompose(george)) → Composes(george) ::: If George can compose and wants to compose, he will compose."
+    }
+  ],
+  "validation": {
+    "id": "tc_e74d2bab",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? If George likes music and has access to a program, he will compose.",
+    "conclusions": "(LikesMusic(george) ∧ HasAccess(george, Program(x))) → Composes(george) ::: If George likes music and has access to a program, he will compose. true"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_62",
+  "problem_text": "International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US. Mike is an international student. Mike needs to apply for CPT if he wants to work in the US.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "InternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.",
+  "tests": [
+    {
+      "id": "tc_2e5a39f7",
+      "questions": "Based on the above information, is the following statement true or false? Mike is an international student and has a J1 visa.",
+      "conclusions": "∃x (InternationalStudent(x) ∧ J1Visa(x)) ::: Mike is an international student and has a J1 visa. FALSE"
+    },
+    {
+      "id": "tc_d9cf6504",
+      "questions": "Based on the above information, is the following statement true or false? Mike is an international student who wants to work in the US and needs to apply for CPT.",
+      "conclusions": "US(mike) ∧ InternationalStudent(mike) ∧ Work(mike) → NeedsToApply(mike, CPT()) ::: TRUE"
+    },
+    {
+      "id": "tc_b8a3c4d0",
+      "questions": "Based on the above information, is the following statement true or false? If Mike is an international student and wants to work in the US, then Mike has either an F1 visa or a J1 visa and needs to apply for CPT.",
+      "conclusions": "(InternationalStudent(mike) ∧ Work(mike)) → ( (F1Visa(mike) ∨ J1Visa(mike)) ∧ NeedsToApply(mike, CPT()) ) ::: FALSE"
+    },
+    {
+      "id": "tc_5f7ce54a",
+      "questions": "Based on the above information, is the following statement true or false? If Mike is an international student and has a J1 visa, then Mike does not need to apply for CPT or OPT.",
+      "conclusions": "US(mike) ∧ InternationalStudent(mike) ∧ J1Visa(mike) → ¬NeedsToApply(mike, CPT()) ∧ ¬NeedsToApply(mike, OPT()) ::: FALSE"
+    },
+    {
+      "id": "tc_eaac3a7c",
+      "questions": "Based on the above information, is the following statement true or false? Mike is an international student in the US and has an F1 visa and wants to work in the US.",
+      "conclusions": "InternationalStudent(mike) ∧ US(mike) ∧ F1Visa(mike) ∧ Work(mike) ::: TRUE"
+    },
+    {
+      "id": "tc_beb160f9",
+      "questions": "Based on the above information, is the following statement true or false? Mike needs to apply for CPT or OPT and is an international student in the US with an F1 visa.",
+      "conclusions": "(NeedsToApply(mike, CPT()) ∨ NeedsToApply(mike, OPT())) ∧ InternationalStudent(mike) ∧ US(mike) ∧ F1Visa(mike) ::: TRUE"
+    },
+    {
+      "id": "tc_8735cdd1",
+      "questions": "Based on the above information, is the following statement true or false? If Mike is an international student and wants to work in the US, then Mike needs to apply for CPT.",
+      "conclusions": "(InternationalStudent(mike) ∧ Work(mike)) → NeedsToApply(mike, CPT()) ::: TRUE"
+    },
+    {
+      "id": "tc_ae921f30",
+      "questions": "Based on the above information, is the following statement true or false? If Mike is an international student who wants to work in the US, then Mike has an F1 visa and needs to apply for CPT.",
+      "conclusions": "(InternationalStudent(mike) ∧ Work(mike)) → (F1Visa(mike) ∧ NeedsToApply(mike, CPT())) ::: FALSE"
+    },
+    {
+      "id": "tc_76c6c647",
+      "questions": "Based on the above information, is the following statement true or false? Mike is an international student in the US, and if he wants to work in the US, then he has an F1 visa and needs to apply for CPT.",
+      "conclusions": "US(mike) ∧ InternationalStudent(mike) ∧ (Work(mike) → (F1Visa(mike) ∧ NeedsToApply(mike, CPT()))) ::: TRUE"
+    },
+    {
+      "id": "tc_60afe0b2",
+      "questions": "Based on the above information, is the following statement true or false? If Mike is an international student in the US and wants to work in the US, then Mike has an F1 visa.",
+      "conclusions": "US(mike) ∧ InternationalStudent(mike) ∧ Work(mike) → F1Visa(mike) ::: FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_cffdb3a2",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x (InternationalStudent(x) ∧ US(x) ∧ Work(x) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_16beb45a",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: International students in US have either an F1 visa or a J1 visa. An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x (InternationalStudent(x) ∧ US(x) ∧ Work(x) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_128bb2ba",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ⊕ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT())) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_4f3862e9",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ∧ Person(mike) ::: Mike is an international student in the US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_15df1384",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ∧ Person(mike) ::: Mike is an international student in the US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_0618893b",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nPerson(mike) ∧ InternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in the US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_81fa37ec",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in the US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_0f8108a0",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in US.\n∀x (InternationalStudent(x) ∧ US(x) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → (NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT()))) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_14ea9e80",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ∧ Person(mike) ::: Mike is an international student in the US.\n∀x ((InternationalStudent(x) ∧ US(x)) → (F1Visa(x) ∨ J1Visa(x))) ::: International students in US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT())) ::: An international student in US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ Work(x)) → NeedsToApply(x, CPT())) ::: Mike needs to apply for CPT if he wants to work in the US."
+    },
+    {
+      "id": "sol_b40e6cbc",
+      "text": "# Predicates:\nInternationalStudent(x) ::: x is an international student.\nUS(x) ::: x is in the US.\nF1Visa(x) ::: x has an F1 visa.\nJ1Visa(x) ::: x has a J1 visa.\nNeedsToApply(x, y) ::: x needs to apply for y.\nCPT() ::: CPT.\nOPT() ::: OPT.\nWork(x) ::: x wants to work in the US.\nPerson(x) ::: x is a person.\n\n# Premises:\nInternationalStudent(mike) ∧ US(mike) ::: Mike is an international student in the US.\n∀x (InternationalStudent(x) ∧ US(x) → F1Visa(x) ∨ J1Visa(x)) ::: International students in the US have either an F1 visa or a J1 visa.\n∀x ((InternationalStudent(x) ∧ US(x) ∧ F1Visa(x) ∧ Work(x)) → NeedsToApply(x, CPT()) ∨ NeedsToApply(x, OPT())) ::: An international student in the US with an F1 visa needs to apply for CPT or OPT if the student wants to work in the US.\n∀x (InternationalStudent(x) ∧ US(x) ∧ Work(x) → NeedsToApply(x, CPT())) ::: If an international student in the US wants to work, they need to apply for CPT."
+    }
+  ],
+  "validation": {
+    "id": "tc_9b4381f4",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? Mike has an F1 visa.",
+    "conclusions": "F1Visa(mike) ::: Mike has an F1 visa. unknown"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "problem_slug": "FOLIO_dev_197",
+  "problem_text": "If an animal barks, then Jane does not like it. All dogs are animals that bark. If an animal jumps, then Jane likes it. If an animal has legs, then it jumps. If an animal is terricolous, then it has legs. If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs.",
+  "n_tests": 10,
+  "n_solutions": 10,
+  "predicates": "Barks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.",
+  "tests": [
+    {
+      "id": "tc_93a5d60d",
+      "questions": "Based on the above information, is the following statement true or false? KiKi is an animal that barks.",
+      "conclusions": "Barks(kiki) ::: KiKi is an animal that barks. FALSE"
+    },
+    {
+      "id": "tc_8215c74a",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is an animal that barks, then Jane likes it.",
+      "conclusions": "Barks(kiki) → ¬Likes(jane, kiki) ::: FALSE"
+    },
+    {
+      "id": "tc_cd107d0f",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is terricolous, then Jane does not like KiKi.",
+      "conclusions": "Terricolous(kiki) → ¬Likes(jane, kiki) ::: TRUE"
+    },
+    {
+      "id": "tc_45616c74",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi has legs, then KiKi is an animal that barks.",
+      "conclusions": "HasLegs(kiki) → Barks(kiki) ::: FALSE"
+    },
+    {
+      "id": "tc_1261409d",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is terricolous, then KiKi is an animal that barks.",
+      "conclusions": "Terricolous(kiki) → Barks(kiki) ::: FALSE"
+    },
+    {
+      "id": "tc_49afd571",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is an animal that barks, then Jane likes KiKi.",
+      "conclusions": "Barks(kiki) → ¬Likes(jane, kiki) ::: TRUE"
+    },
+    {
+      "id": "tc_ed1c7e53",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is terricolous, then Jane likes KiKi.",
+      "conclusions": "Terricolous(kiki) → Likes(jane, kiki) ::: FALSE"
+    },
+    {
+      "id": "tc_55f2105f",
+      "questions": "Based on the above information, is the following statement true or false? KiKi is an animal that barks and Jane likes it.",
+      "conclusions": "Barks(kiki) ∧ Likes(jane, kiki) ::: FALSE"
+    },
+    {
+      "id": "tc_692f98db",
+      "questions": "Based on the above information, is the following statement true or false? If KiKi is an animal that barks and KiKi is terricolous, then Jane does not like KiKi.",
+      "conclusions": "Barks(kiki) ∧ Terricolous(kiki) → ¬Likes(kiki, kiki) ::: TRUE"
+    },
+    {
+      "id": "tc_27b5f7f4",
+      "questions": "Based on the above information, is the following statement true or false? KiKi is terricolous and Jane likes KiKi.",
+      "conclusions": "Terricolous(kiki) ∧ Likes(jane, kiki) ::: KiKi is terricolous and Jane likes KiKi. FALSE"
+    }
+  ],
+  "candidate_solutions": [
+    {
+      "id": "sol_b9478dc4",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Dog(x) → (Animal(x) ∧ Barks(x))) ::: All dogs are animals that bark.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n(¬Jumps(kiki) ∧ ¬HasLegs(kiki)) → (Terricolous(kiki) ∨ HasLegs(kiki)) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_0640a93d",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (KiKi(x) → (¬Jumps(x) → (Terricolous(x) ∨ HasLegs(x)))) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_30a5ecd4",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x (Barks(x) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Jumps(x) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\nKiKi(kiki) ∧ (¬Jumps(kiki) ∧ ¬HasLegs(kiki)) → (Terricolous(kiki) ∨ HasLegs(kiki)) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_0e776dc1",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\nKiKi(kiki) ∧ (¬Jumps(kiki) ∧ ¬HasLegs(kiki)) → (Terricolous(kiki) ∨ HasLegs(kiki)) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_3130a6f6",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x (Barks(x) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Jumps(x) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\nKiKi(kiki) ∧ ¬Jumps(kiki) ∧ ¬HasLegs(kiki) → Terricolous(kiki) ∨ HasLegs(kiki) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_47d3b282",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Dog(x) → (Animal(x) ∧ Barks(x))) ::: All dogs are animals that bark.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\nKiKi(kiki) ∧ ¬Jumps(kiki) ∧ ¬HasLegs(kiki) → Terricolous(kiki) ∨ HasLegs(kiki) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_9dd3433b",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Jumps(x) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\nKiKi(kiki) ∧ ¬Jumps(kiki) ∧ ¬HasLegs(kiki) → Terricolous(kiki) ∨ HasLegs(kiki) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_7ef988dd",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Dog(x) → (Animal(x) ∧ Barks(x))) ::: All dogs are animals that bark.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\nKiKi(kiki) ∧ ¬Jumps(kiki) ∧ ¬HasLegs(kiki) → Terricolous(kiki) ∨ HasLegs(kiki) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_8018bc34",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x (Dog(x) → (Animal(x) ∧ Barks(x))) ::: All dogs are animals that bark.\n∀x ((Animal(x) ∧ Barks(x)) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x ((Animal(x) ∧ Jumps(x)) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\nKiKi(kiki) ∧ ¬Jumps(kiki) ∧ ¬HasLegs(kiki) → Terricolous(kiki) ∨ HasLegs(kiki) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    },
+    {
+      "id": "sol_3b239854",
+      "text": "# Predicates:\nBarks(x) ::: x is an animal that barks.\nLikes(x, y) ::: x likes y.\nDog(x) ::: x is a dog.\nAnimal(x) ::: x is an animal.\nJumps(x) ::: x jumps.\nHasLegs(x) ::: x has legs.\nTerricolous(x) ::: x is terricolous.\nKiKi(x) ::: x is KiKi.\n\n# Premises:\n∀x (Dog(x) → Barks(x)) ::: All dogs bark.\n∀x (Barks(x) → ¬Likes(jane, x)) ::: If an animal barks, then Jane does not like it.\n∀x (Jumps(x) → Likes(jane, x)) ::: If an animal jumps, then Jane likes it.\n∀x (HasLegs(x) → Jumps(x)) ::: If an animal has legs, then it jumps.\n∀x (Terricolous(x) → HasLegs(x)) ::: If an animal is terricolous, then it has legs.\n(KiKi(kiki) ∧ ¬Jumps(kiki)) ∧ ¬HasLegs(kiki) → (Terricolous(kiki) ∨ HasLegs(kiki)) ::: If KiKi neither jumps nor has legs, then KiKi is terricolous or has legs."
+    }
+  ],
+  "validation": {
+    "id": "tc_8a14692c",
+    "questions": "Based on the above information, is the following statement true, false, or uncertain? KiKi is terricolous.",
+    "conclusions": "Terricolous(kiki) ::: KiKi is terricolous. unknown"
+  }
+}
